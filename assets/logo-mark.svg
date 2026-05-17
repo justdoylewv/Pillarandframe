@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Pillar &amp; Frame mark">
+  <defs>
+    <linearGradient id="pf-mark-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FA8DB"></stop>
+      <stop offset="50%" stop-color="#7366C7"></stop>
+      <stop offset="100%" stop-color="#E088AF"></stop>
+    </linearGradient>
+    <linearGradient id="pf-mark-soft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FA8DB" stop-opacity="0.55"></stop>
+      <stop offset="50%" stop-color="#7366C7" stop-opacity="0.55"></stop>
+      <stop offset="100%" stop-color="#E088AF" stop-opacity="0.55"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="46" height="46" rx="6" fill="none" stroke="url(#pf-mark-grad)" stroke-width="2"></rect>
+  <rect x="9" y="9" width="30" height="30" rx="3" fill="none" stroke="url(#pf-mark-soft)" stroke-width="1.5"></rect>
+  <path d="M20 17 L20 31 L31 24 Z" fill="url(#pf-mark-grad)"></path>
+</svg>

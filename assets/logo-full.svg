@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="280" height="64" role="img" aria-label="Pillar &amp; Frame">
+  <defs>
+    <linearGradient id="pf-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FA8DB"></stop>
+      <stop offset="50%" stop-color="#7366C7"></stop>
+      <stop offset="100%" stop-color="#E088AF"></stop>
+    </linearGradient>
+    <linearGradient id="pf-grad-soft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FA8DB" stop-opacity="0.55"></stop>
+      <stop offset="50%" stop-color="#7366C7" stop-opacity="0.55"></stop>
+      <stop offset="100%" stop-color="#E088AF" stop-opacity="0.55"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <g transform="translate(4,8)">
+    
+    <rect x="1" y="1" width="46" height="46" rx="6" fill="none" stroke="url(#pf-grad)" stroke-width="2"></rect>
+    
+    <rect x="9" y="9" width="30" height="30" rx="3" fill="none" stroke="url(#pf-grad-soft)" stroke-width="1.5"></rect>
+    
+    <path d="M20 17 L20 31 L31 24 Z" fill="url(#pf-grad)"></path>
+  </g>
+
+  
+  <g transform="translate(68,0)" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif">
+    <text x="0" y="32" font-size="22" font-weight="700" letter-spacing="-0.02em">Pillar</text>
+    <text x="68" y="32" font-size="22" font-weight="400" fill="rgba(255,255,255,0.5)">&amp;</text>
+    <text x="86" y="32" font-size="22" font-weight="700" letter-spacing="-0.02em">Frame</text>
+    <text x="0" y="50" font-size="9" font-weight="600" letter-spacing="0.18em" fill="rgba(255,255,255,0.5)">DOCUMENTARY · CONVERSION</text>
+  </g>
+</svg>
