@@ -77,7 +77,7 @@ const Nav = ({ onCTA, accent }) => {
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           <a href="#contact" style={{ fontSize: 13.5, color: 'var(--fg-2)', fontWeight: 500, textDecoration: 'none' }}>Contact</a>
           <Btn variant="primary" onClick={onCTA} style={{ background: 'var(--accent-dyn, var(--pf-aqua))', color: '#0B0B0B' }}>
-            Book a discovery call
+            Book the free Trust Audit
           </Btn>
         </div>
       </div>

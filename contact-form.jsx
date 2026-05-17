@@ -19,9 +19,24 @@ const labelStyle = {
   marginBottom: 8, display: 'block',
 };
 
+const VERTICAL_OPTIONS = [
+  'Capital campaign / mission-driven',
+  'Growth-stage product',
+  'Local trust business / service',
+  'Not sure yet',
+];
+const TIER_OPTIONS = [
+  'Local ($5K Foundation)',
+  'Growth ($15–25K Foundation)',
+  'Enterprise ($40K+ Foundation)',
+  'Not sure — that\'s what the Trust Audit is for',
+];
+
 const ContactForm = () => {
   const [data, setData] = useStateC({
-    name: '', org: '', email: '', tier: 'Tier 2 — Conversion Campaign',
+    name: '', org: '', email: '',
+    vertical: VERTICAL_OPTIONS[3],
+    tier: TIER_OPTIONS[3],
     moment: '', deadline: '',
   });
   const [errors, setErrors] = useStateC({});
@@ -74,10 +89,10 @@ const ContactForm = () => {
               <h3 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.02em', margin: '0 0 14px' }}>
                 Brief received.
               </h3>
-              <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 auto 28px', maxWidth: 520 }}>
-                We'll respond within two business days with a 30-minute call slot. If your moment isn't a fit, we'll tell you that too — and point you toward a partner who is.
+              <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 auto 28px', maxWidth: 540 }}>
+                Doyle will respond within two business days with a Trust Audit slot on his calendar. If your moment isn't a fit, he'll tell you that too — and point you toward a partner who is.
               </p>
-              <Btn variant="ghost" onClick={() => { setSubmitted(false); setData({ name: '', org: '', email: '', tier: 'Tier 2 — Conversion Campaign', moment: '', deadline: '' }); setTouched({}); }}>
+              <Btn variant="ghost" onClick={() => { setSubmitted(false); setData({ name: '', org: '', email: '', vertical: VERTICAL_OPTIONS[3], tier: TIER_OPTIONS[3], moment: '', deadline: '' }); setTouched({}); }}>
                 Send another brief
               </Btn>
             </div>
@@ -95,19 +110,19 @@ const ContactForm = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 64, alignItems: 'start' }} className="grid-2">
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <Eyebrow>Book a discovery call</Eyebrow>
+              <Eyebrow>Book the Trust Audit</Eyebrow>
             </div>
             <h2 style={{ fontSize: 'clamp(34px, 4vw, 52px)', margin: '0 0 16px', lineHeight: 1.05, letterSpacing: '-0.025em' }}>
-              Tell us about <span className="gradient-text">the moment.</span>
+              Book the <span className="gradient-text">Trust Audit.</span>
             </h2>
-            <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 32, maxWidth: 460 }}>
-              A 30-minute call. No deck, no pitch. We'll walk your existing plan, tell you where we'd come in, and what it would cost. If we're not a fit, we'll say so.
+            <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 32, maxWidth: 500 }}>
+              A 30-minute call with the founder. No deck. No pitch. We'll walk your current situation, tell you where we'd come in, and write you a report on it within 48 hours.
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
               {[
                 'Response within 2 business days',
-                'No follow-up sequence — one reply, then it\'s on you',
-                'Audit credit if we move forward in 60 days',
+                'No newsletter signup, no automated sequence',
+                'Doyle delivers every audit personally — when you book, you book his calendar',
               ].map(l => (
                 <li key={l} style={{ display: 'flex', gap: 12, fontSize: 14.5, color: 'var(--fg-1)', lineHeight: 1.5 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pf-aqua-400)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}>
@@ -143,7 +158,7 @@ const ContactForm = () => {
                   value={data.org}
                   onChange={e => update('org', e.target.value)}
                   onBlur={() => { touch('org'); setErrors(validate()); }}
-                  placeholder="Mercy Health Foundation"
+                  placeholder="Your organization"
                   style={{ ...inputStyle, borderColor: showErr('org') ? 'var(--danger)' : 'var(--border-1)' }}
                 />
                 {showErr('org') && <FieldError text={errors.org}/>}
@@ -164,14 +179,29 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label style={labelStyle}>Where would we come in?</label>
+              <label style={labelStyle}>Vertical</label>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                {[
-                  'Tier 1 — Campaign Audit',
-                  'Tier 2 — Conversion Campaign',
-                  'Tier 3 — Annual Engine',
-                  'Not sure yet',
-                ].map(t => (
+                {VERTICAL_OPTIONS.map(v => (
+                  <button type="button" key={v} onClick={() => update('vertical', v)}
+                    style={{
+                      padding: '8px 14px', borderRadius: 'var(--r-full)',
+                      fontSize: 13, fontWeight: 500, cursor: 'pointer',
+                      fontFamily: 'var(--font-sans)',
+                      border: `1px solid ${data.vertical === v ? 'var(--pf-aqua)' : 'var(--border-2)'}`,
+                      background: data.vertical === v ? 'var(--pf-aqua)' : 'var(--surface-2)',
+                      color: data.vertical === v ? '#0B0B0B' : 'var(--fg-1)',
+                      transition: 'all 150ms var(--ease-out)',
+                    }}>
+                    {v}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label style={labelStyle}>Trust Engine tier you're considering</label>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                {TIER_OPTIONS.map(t => (
                   <button type="button" key={t} onClick={() => update('tier', t)}
                     style={{
                       padding: '8px 14px', borderRadius: 'var(--r-full)',
@@ -195,7 +225,7 @@ const ContactForm = () => {
                 value={data.moment}
                 onChange={e => update('moment', e.target.value)}
                 onBlur={() => { touch('moment'); setErrors(validate()); }}
-                placeholder="Capital campaign closing in Q4. Public phase Sept–Nov. Goal: $4M against $1.2M raised so far. We've shot a sizzle but it isn't converting on email…"
+                placeholder="ED capital campaign closing in Q4. Public phase Sept–Nov. Goal: $4M against $1.2M raised so far. We've shot a sizzle but it isn't converting on email…"
                 style={{ ...inputStyle, resize: 'vertical', fontFamily: 'var(--font-sans)', lineHeight: 1.5, borderColor: showErr('moment') ? 'var(--danger)' : 'var(--border-1)' }}
               />
               {showErr('moment') && <FieldError text={errors.moment}/>}
@@ -216,9 +246,9 @@ const ContactForm = () => {
               marginTop: 6, gap: 16, flexWrap: 'wrap',
             }}>
               <span style={{ fontSize: 12, color: 'var(--fg-3)' }}>
-                We don't add you to a newsletter. One reply, then it's on you.
+                No newsletter signup. No automated sequence. Doyle replies personally.
               </span>
-              <Btn variant="emphasis" size="lg" type="submit">Send brief →</Btn>
+              <Btn variant="emphasis" size="lg" type="submit">Send my brief →</Btn>
             </div>
           </form>
         </div>
@@ -262,13 +292,13 @@ const FinalCTA = ({ onCTA }) => {
           <div style={{ position: 'relative' }}>
             <Eyebrow style={{ marginBottom: 18 }}>Start here</Eyebrow>
             <h2 className="h-display" style={{ fontSize: 'clamp(42px, 6vw, 80px)', margin: '0 0 18px', lineHeight: 1.02 }}>
-              Start with <span className="gradient-text">the Audit.</span>
+              Start with the <span className="gradient-text">free Trust Audit.</span>
             </h2>
-            <p style={{ fontSize: 19, color: 'var(--fg-2)', maxWidth: 620, margin: '0 auto 36px', lineHeight: 1.55 }}>
-              Two weeks. $4,500. A Campaign Conversion Map you can use whether you build with us or take it elsewhere.
+            <p style={{ fontSize: 18, color: 'var(--fg-2)', maxWidth: 720, margin: '0 auto 36px', lineHeight: 1.55 }}>
+              30 minutes. A written report in 48 hours. A Trust Engine tier and scope recommendation. The full pillar themes index. A direct line to the founder. You keep all of it whether or not you ever hire us.
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Btn variant="emphasis" size="lg" onClick={onCTA}>Book a discovery call →</Btn>
+              <Btn variant="emphasis" size="lg" onClick={onCTA}>Book my Trust Audit →</Btn>
               <Btn variant="ghost" size="lg" onClick={onCTA}>Email the team</Btn>
             </div>
           </div>

@@ -13,23 +13,24 @@ const { useEffect: useEffectApp } = React;
 
 const HERO_VARIANTS = {
   centered: {
-    headline: 'How fundraising teams<br/>raise <span class="gradient-text">7-figure campaigns</span><br/>in 8 weeks, not 8 months.',
-    sub: 'Pillar & Frame produces documentary-grade campaign content engineered for one outcome metric you have already committed to — and writes the Conversion Map before anyone touches a camera.',
+    headline: 'Authentic storytelling.<br/><span class="gradient-text">Productized.</span>',
+    sub: 'Two days of capture. A year of authentic content. Real humans, real moments, deployable across every channel your audience uses to decide if they trust you. Productized into three tiers with fixed pricing. Built around an AI infrastructure your team installs and uses for years.',
     intrigue: [
-      'The <strong>two-page document</strong> that tells you in 14 days whether your current creative will move your number — or whether you need to start over.',
-      'Why a <strong>$4,500 audit</strong> outperforms a $60,000 sizzle reel in the inbox (and what most agencies will not say out loud).',
-      'The "Conversion Map" template we use internally — included as a bonus, even if you never hire us for a campaign.',
-      'A real <strong>full-refund guarantee</strong> if we conclude we cannot move your number. (Yes, in writing. Yes, you keep the document.)',
+      'How a <strong>two-day capture</strong> turns into a year of content your audience actually believes — without a single fabricated voice, AI face, or stock B-roll cutaway.',
+      'Why the <strong>Voice Profile</strong> we deliver — installed as a working AI skill inside your team\'s ChatGPT or Claude — produces voice-consistent copy in 90 seconds and keeps producing it long after we\'re gone.',
+      'Why <strong>"Real Human Origin"</strong> is about to become the most valuable signal in marketing — and why the agencies racing to generate more content with AI are commodifying themselves.',
+      'The <strong>Capture Day SOP</strong> that turns shoot day into the most meaningful day your team has had all year — and the reason 60% of our Growth-tier clients come from word of mouth.',
+      'How the <strong>free Trust Audit</strong> works — 30 minutes with the founder, a written report in 48 hours, no pitch on the call. Worth doing whether you hire us or not.',
     ],
   },
   split: {
-    headline: 'Stop buying sizzle.<br/><span class="gradient-text">Start shipping campaigns.</span>',
-    sub: 'A documentary-grade Conversion Map in 14 days for $4,500 — refunded if we cannot move your number. Two audit slots left this quarter.',
+    headline: 'Capture once.<br/><span class="gradient-text">Earn for years.</span>',
+    sub: 'The Trust Engine — built once, deployed forever. Two days of capture. A year of authentic content. A Voice Profile your team installs as a working AI skill. A free Trust Audit to start.',
     intrigue: [
-      '<strong>8–12 page Conversion Map</strong>, written before a camera touches your campaign.',
-      '<strong>3–5 sourced story angles</strong> we already see in your footage.',
-      '<strong>AI Voice Profile (Lite)</strong> bonus your team uses from day one.',
-      '<strong>Full refund</strong> if the audit concludes we are not a fit.',
+      '<strong>Two days of capture</strong>, a year of authentic content — hero film, social cuts, stills, written copy.',
+      '<strong>Voice Profile</strong> ships as a deployable AI skill installed in your team\'s own ChatGPT or Claude.',
+      '<strong>Real Human Origin</strong> mark on every asset. No fabricated faces, voices, or testimonials.',
+      '<strong>Free Trust Audit</strong> — 30 minutes with the founder, written report in 48 hours.',
     ],
   },
 };
@@ -80,7 +81,7 @@ function App() {
 
       {/* §1 + §2 + §3 + §4 — audience, headline, back-up, intrigue */}
       {t.hero === 'split'
-        ? <HeroSplit headline={headline} sub={variant.sub} intrigue={variant.intrigue} onPrimary={toContact} onSecondary={toOffer}/>
+        ? <HeroSplit headline={headline} sub={variant.sub} intrigue={variant.intrigue} onPrimary={toContact} onSecondary={toWork}/>
         : <HeroCentered headline={headline} sub={variant.sub} intrigue={variant.intrigue} onPrimary={toContact} onSecondary={toWork}/>}
 
       {/* logo bar — supporting credentials */}
@@ -103,8 +104,8 @@ function App() {
       {/* Sprinkled CTA */}
       <InlineCTA
         headline="Already nodding? Skip ahead."
-        sub="Book the 30-minute call. No deck, no pitch."
-        label="Book a discovery call →"
+        sub="Book the free Trust Audit. 30 minutes with the founder. Written report in 48 hours. No deck. No pitch."
+        label="Book the free Trust Audit →"
         onCTA={toContact}/>
 
       {/* §9 — Social proof */}

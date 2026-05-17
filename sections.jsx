@@ -2,9 +2,13 @@
 const { useState: useStateS, useEffect: useEffectS, useRef: useRefS } = React;
 
 // ---------- LogoStrip ----------
+// [FILL: confirm logo treatments for Memorial Health Marysville and Powerfield Energy.
+//  Decide whether Local Trust Trio logos are public or anonymized.]
 const LogoStrip = () => {
-  const logos = [
-    'MERCY HEALTH', 'NORTHWELL', 'VANDERBILT', 'CLEVELAND CLINIC', 'ATRIUM HEALTH', 'KIPP',
+  const archetypes = [
+    { label: 'MEMORIAL HEALTH MARYSVILLE', italic: false },
+    { label: 'POWERFIELD ENERGY', italic: false },
+    { label: 'A 3-business local cohort — IT, mortgage, real estate', italic: true },
   ];
   return (
     <div style={{
@@ -14,15 +18,19 @@ const LogoStrip = () => {
       <div className="container" style={{
         display: 'flex', alignItems: 'center', gap: 48, flexWrap: 'wrap', justifyContent: 'space-between',
       }}>
-        <Eyebrow style={{ flexShrink: 0 }}>Trusted by teams running campaigns at</Eyebrow>
+        <Eyebrow style={{ flexShrink: 0 }}>Where the engine has been built</Eyebrow>
         <div style={{
           display: 'flex', gap: 'clamp(20px, 4vw, 48px)', alignItems: 'center', flexWrap: 'wrap',
         }}>
-          {logos.map(n =>
-            <span key={n} style={{
-              fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 13,
-              letterSpacing: '0.12em', color: 'var(--fg-2)', opacity: 0.75,
-            }}>{n}</span>
+          {archetypes.map(a =>
+            <span key={a.label} style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: a.italic ? 500 : 700,
+              fontStyle: a.italic ? 'italic' : 'normal',
+              fontSize: 13,
+              letterSpacing: a.italic ? '0' : '0.12em',
+              color: 'var(--fg-2)', opacity: 0.75,
+            }}>{a.label}</span>
           )}
         </div>
       </div>
@@ -30,44 +38,47 @@ const LogoStrip = () => {
   );
 };
 
-// ---------- Services breakdown ----------
+// ---------- Services (Module 9 — The Trust Engine product reveal) ----------
 const Services = ({ accent }) => {
   const [active, setActive] = useStateS(0);
   const ref = useReveal();
   const services = [
     {
-      tag: 'Documentary fundraiser content',
-      title: 'Films engineered for the moment that needs to convert.',
-      copy: 'Two-day on-site capture, one hero film, three to five short-form cuts mapped to specific funnel stages, a photo library, and ad-ready creative — built around a number you\'ve already committed to.',
-      bullets: ['Hero film (90s–3min)', '3–5 short cuts, all aspect ratios', '10–15 hero stills, 40+ supporting', 'Landing page + email copy'],
+      tag: 'Content library',
+      title: 'A year of authentic content from two days of capture.',
+      copy: 'Hero film, social shorts, photography library, written assets — all from one on-site capture cycle, scoped to your audience and the moment you need to convert against. Real Human Origin mark on every deliverable.',
+      bullets: ['Hero brand or campaign film', 'Short-form video cuts', 'Photography library', 'Written content for web, social, email'],
     },
     {
-      tag: 'AI voice profiles',
-      title: 'Your organization\'s voice, captured as a working skill.',
-      copy: 'A trained voice profile your team can use across briefs, drafts, and channels. Mapped to your existing tone guide, not a generic LLM impression.',
-      bullets: ['Voice audit + sample set', 'Trained voice profile (Skill)', 'Drafting playbook for the team', 'Quarterly refresh on Tier 3'],
+      tag: 'Voice Profile',
+      title: 'Your voice, shipped as a deployable AI skill.',
+      copy: 'A working AI skill installed in your team\'s own ChatGPT or Claude — trained on your real source material. Your marketing intern produces a voice-consistent donor letter, sales email, or social post in 90 seconds, not a week. It gets sharper the more your team uses it.',
+      bullets: ['Custom AI skill, installed in your tools', 'Trained on your real interviews', 'Drafting playbook for the team', 'Yours forever — no subscription'],
     },
     {
-      tag: 'Campaign audit',
-      title: 'A two-week diagnostic on the campaign you\'re already running.',
-      copy: 'We map your asset gap, identify three to five story angles with source material, and hand back a Conversion Map. Credit applies to a full engagement.',
-      bullets: ['Campaign Conversion Map', 'Asset gap analysis', '3–5 story angles, sourced', '90-min strategy session'],
+      tag: 'Quote Library',
+      title: 'A searchable archive your team pulls from for years.',
+      copy: 'Every quote captured, tagged by theme, speaker, date, and use case. Your team finds the right verbatim quote for the right asset in ten seconds. Every quote attributed. Every use auditable.',
+      bullets: ['Searchable database', 'Tagged by theme & speaker', 'Attribution baked in', 'Real Human Origin mark on every line'],
     },
   ];
 
   return (
-    <section id="services" className="section ground-dark" data-screen-label="S6 Solution">
+    <section id="services" className="section ground-dark" data-screen-label="The Solution">
       <div className="container reveal" ref={ref}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', flexWrap: 'wrap', gap: 24, marginBottom: 56 }}>
-          <div style={{ maxWidth: 680 }}>
+          <div style={{ maxWidth: 720 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
               <Eyebrow>The solution</Eyebrow>
             </div>
             <h2 style={{ fontSize: 'clamp(34px, 4vw, 52px)', margin: '14px 0 16px', lineHeight: 1.05, letterSpacing: '-0.025em' }}>
-              Two services. <span className="gradient-text">One job.</span>
+              Meet the <span className="gradient-text">Trust Engine.</span>
             </h2>
-            <p style={{ fontSize: 18, color: 'var(--fg-2)', lineHeight: 1.55, maxWidth: 600 }}>
-              We design content engineered for an outcome you've already committed to — and the voice profile to keep producing on that level after we leave.
+            <p style={{ fontSize: 18, color: 'var(--fg-2)', lineHeight: 1.55, maxWidth: 660 }}>
+              The Trust Engine is the storytelling system that turns two days of capture into a year of authentic content. We audit your story and your audience. We come on-site for two days. We build you a content library, a Voice Profile that ships as a deployable AI tool your team installs, and a searchable Quote Library your marketing team pulls from for years. Then we hand it off. Or we run the ongoing deployment for you. Your call. No retainer minimum.
+            </p>
+            <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.55, maxWidth: 660, marginTop: 12 }}>
+              One product. Three productized tiers. Identical methodology across all three.
             </p>
           </div>
         </div>
@@ -134,24 +145,24 @@ const Services = ({ accent }) => {
 const Process = () => {
   const steps = [
     {
-      n: '01', t: 'Brief',
+      n: '01', t: 'Audit',
       sub: 'Week 0',
-      d: 'A 30-minute call, a scoped audit, and a Conversion Map for the campaign you\'re already running. You can take it from there or scale up.',
+      d: 'Free Trust Audit. 30 minutes with the founder. Written report within 48 hours. Pillar themes mapped to your audience, content gap analysis, a draft of what your library could look like, a specific Trust Engine tier and scope recommendation. Yours to keep whether you work with us or not.',
     },
     {
       n: '02', t: 'Capture',
       sub: 'Week 2–3',
-      d: 'Two days on site. Documentary-grade interviews, observation B-roll, hero stills. We shoot to a brief, not to a wishlist.',
+      d: 'Two days on site. Day 1 is interviews and photography. Day 2 is b-roll. We arrive early. Set the room. Coffee, water, food, music. Subjects get pre-shoot prep calls that calm the nerves. Real moments, captured cleanly. (Local tier may compress to one focused capture day where scope permits.)',
     },
     {
-      n: '03', t: 'Cut',
-      sub: 'Week 4–5',
-      d: 'One hero film, three to five short cuts mapped to funnel stages, a photo library, and landing page + email copy ready to ship.',
+      n: '03', t: 'Library',
+      sub: 'Week 4–6',
+      d: 'Hero film, social shorts, photography library, written assets. Voice Profile delivered as a four-artifact package with the deployable AI skill at the center. Quote Library delivered as a searchable database. Real Human Origin mark on every asset.',
     },
     {
-      n: '04', t: 'Compound',
-      sub: 'Ongoing',
-      d: 'Your assets and voice profile get re-cut and re-deployed across the next campaign. The library compounds. The work multiplies.',
+      n: '04', t: 'Deploy or Compound',
+      sub: 'Week 6+',
+      d: 'Library Review meeting at week six. Walk through what was built, what\'s been deployed, what\'s still in the library. The optional Engine retainer is offered here — never before. Cancel any month. The work compounds.',
     },
   ];
   const ref = useReveal();
@@ -164,7 +175,7 @@ const Process = () => {
             Four phases. <span className="gradient-text">No filler.</span>
           </h2>
           <p style={{ fontSize: 18, color: 'var(--fg-2)', lineHeight: 1.55 }}>
-            We come in when there's a defined moment that needs to convert. We don't run media. We don't pad the timeline.
+            Foundation to library handoff in six to eight weeks. We hand the engine off — or run the ongoing deployment for you. No retainer minimum.
           </p>
         </div>
 
@@ -203,14 +214,14 @@ const Process = () => {
 const CaseStudyHighlight = () => {
   const ref = useReveal();
   return (
-    <section id="work" className="section ground-dark" data-screen-label="S7 Credentials">
+    <section id="work" className="section ground-dark" data-screen-label="Credentials">
       <div className="container reveal" ref={ref}>
         <div style={{ maxWidth: 760, marginBottom: 40 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
             <Eyebrow>Credentials</Eyebrow>
           </div>
           <h2 style={{ fontSize: 'clamp(32px, 3.8vw, 52px)', margin: '0 0 14px', lineHeight: 1.05, letterSpacing: '-0.025em' }}>
-            28 campaigns. <span className="gradient-text">Receipts on every one.</span>
+            <span className="gradient-text">Receipts.</span>
           </h2>
           <p style={{ fontSize: 18, color: 'var(--fg-2)', lineHeight: 1.55, margin: 0, maxWidth: 640 }}>
             One featured engagement below. Aggregate numbers in the social proof section.
@@ -219,30 +230,26 @@ const CaseStudyHighlight = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 56, alignItems: 'center' }} className="grid-2">
           <div>
             <FrameInner>
-              <HeroVideo aspectRatio="16/10" label="Capital campaign · 02:14"/>
+              {/* [FILL: Memorial hero film embed if approved for public use; or a representative BTS reel.] */}
+              <HeroVideo aspectRatio="16/10" label="Memorial · ED capital campaign"/>
             </FrameInner>
           </div>
           <div>
-            <Eyebrow color="var(--pf-rose)">Featured work</Eyebrow>
+            <Eyebrow color="var(--pf-rose)">Featured engagement</Eyebrow>
             <h2 style={{ fontSize: 'clamp(30px, 3.4vw, 44px)', margin: '14px 0 16px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-              Mercy Health Foundation, capital campaign hero film.
+              Memorial Health Marysville — ED capital campaign.
             </h2>
-            <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 28 }}>
-              A 24-month, $40M capital campaign with an eight-week public phase. We delivered one hero film, four short-form cuts mapped to email + paid social funnel stages, and a 120-image library. Their team ran the spend.
+            <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 24 }}>
+              A capital campaign for an independent hospital's Emergency Department expansion. One Trust Engine produced the hero film, the soundbite library organized by theme, written copy for donor letters and case statement support, and a Voice Profile + Quote Library their development team is still using.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 32 }}>
-              <div>
-                <div className="gradient-text" style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>$2.4M</div>
-                <div style={{ fontSize: 12, color: 'var(--fg-2)', marginTop: 6, lineHeight: 1.4 }}>raised in 8 weeks</div>
-              </div>
-              <div>
-                <div className="gradient-text" style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>3.6×</div>
-                <div style={{ fontSize: 12, color: 'var(--fg-2)', marginTop: 6, lineHeight: 1.4 }}>email reply rate vs. prior</div>
-              </div>
-              <div>
-                <div className="gradient-text" style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>120</div>
-                <div style={{ fontSize: 12, color: 'var(--fg-2)', marginTop: 6, lineHeight: 1.4 }}>library assets, still in use</div>
-              </div>
+            <div style={{
+              padding: '16px 20px', marginBottom: 28,
+              background: 'rgba(244,114,182,0.06)', border: '1px dashed rgba(244,114,182,0.32)',
+              borderRadius: 'var(--r-md)',
+              fontSize: 13.5, color: 'var(--fg-2)', lineHeight: 1.55,
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em', color: 'var(--pf-rose-400)', marginRight: 8 }}>[FILL]</span>
+              Outcome numbers — campaign goal $XX million, dollars raised, donors engaged — pending verification with Memorial Foundation. Per Audit-Report.md, keep outcome language story-based until sourced.
             </div>
             <Btn variant="ghost">Read the full case study →</Btn>
           </div>
@@ -253,17 +260,24 @@ const CaseStudyHighlight = () => {
 };
 
 // ---------- Metrics strip ----------
+// Numbers we can stand behind today. Discipline: publish what we can defend; flag what isn't verified.
 const Metrics = () => {
   const ref = useReveal();
   const items = [
-    { v: '$2.4M', l: 'raised in 8 weeks for a regional health system capital campaign' },
-    { v: '312%',  l: 'CTR lift on paid social against control creative' },
-    { v: '4.1×',  l: 'application volume vs. prior recruiting cycle' },
-    { v: '11 days', l: 'median time from brief to first cut of the hero film' },
+    { v: 'Hundreds', l: 'of corporate interviews directed across ten countries (Doyle\'s pre-P&F catalog at Stories Inc, continuing through P&F)' },
+    { v: '3',        l: 'anchored vertical archetypes at launch — capital campaigns, growth-stage product, local trust businesses' },
+    { v: '6–8 wks',  l: 'from kickoff to library handoff. Every Trust Engine. Fixed.' },
+    { v: '100%',     l: 'of deliverables carry the Real Human Origin mark. Zero fabricated faces, voices, or testimonials.' },
   ];
   return (
     <section className="section--tight ground-dark">
       <div className="container reveal" ref={ref}>
+        <div style={{ maxWidth: 720, marginBottom: 32 }}>
+          <Eyebrow>What the methodology has produced</Eyebrow>
+          <p style={{ fontSize: 14.5, color: 'var(--fg-2)', lineHeight: 1.55, margin: '10px 0 0', maxWidth: 640 }}>
+            We are deliberately publishing only what is real and verifiable. This section will grow as Trust Engine engagements close and Memorial outcome data lands.
+          </p>
+        </div>
         <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1,
           background: 'var(--border-1)', borderRadius: 'var(--r-lg)', overflow: 'hidden',
@@ -272,7 +286,7 @@ const Metrics = () => {
           {items.map((m, i) => (
             <div key={i} style={{ background: 'var(--surface-1)', padding: '32px 28px' }} className="surface-card">
               <div className="gradient-text" style={{
-                fontSize: 44, fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1, marginBottom: 10,
+                fontSize: 42, fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1, marginBottom: 10,
               }}>{m.v}</div>
               <div style={{ fontSize: 13.5, color: 'var(--fg-2)', lineHeight: 1.5 }}>{m.l}</div>
             </div>
@@ -288,55 +302,64 @@ const Pricing = ({ onSelect }) => {
   const ref = useReveal();
   const tiers = [
     {
-      tier: 'Tier 1', name: 'The Campaign Audit',
-      price: '$4,500', duration: '2 weeks',
-      desc: 'A diagnostic on the campaign you\'re already running.',
+      tier: 'Tier 1', name: 'Local',
+      price: '$5,000', duration: 'Foundation · retainer $1,650/mo · no minimum',
+      desc: 'For service businesses doing $500K–$3M/year. Local owners who win on reputation but lose online — premium home services, contractors, advisors, brokers, IT, mortgage, real estate.',
       bullets: [
-        'Campaign Conversion Map',
-        'Asset gap analysis against your plan',
-        'Three to five story angles, with source material',
-        '90-minute strategy session',
-        'Credit applies to Tier 2 or 3 within 60 days',
+        'Trust Audit, delivered by Doyle',
+        'One focused capture day (or two, when warranted)',
+        'Hero brand film + short-form video cuts',
+        'Photography library',
+        'Written content for web, social, email',
+        'Voice Profile as a deployable AI tool',
+        'Quote Library as a searchable database',
+        'Library Review meeting at week six',
       ],
+      cta: 'Start with this tier →',
     },
     {
-      tier: 'Tier 2', name: 'The Conversion Campaign', featured: true,
-      price: '$18K–$24K', duration: '4–6 weeks',
-      desc: 'A full documentary-grade campaign mapped to one outcome metric.',
+      tier: 'Tier 2', name: 'Growth', featured: true,
+      price: '$15,000–$25,000', duration: 'Foundation · retainer $5K–$8K/mo · no minimum',
+      desc: 'For mid-market product or service companies (50–500 employees), growth-stage SaaS or B2B, mission-driven organizations running a capital campaign.',
       bullets: [
-        'Two-day on-site documentary capture',
-        'One hero film (90s–3min) + 3–5 short cuts',
-        'Photo library (10–15 hero, 40+ supporting)',
-        'Landing page + email sequence copy',
-        'Paid social asset versions, all aspect ratios',
+        'Everything in the Local tier',
+        'Two-day on-site capture',
+        'Larger asset library scoped to the audit',
+        'Hero campaign or brand film',
+        'Sales enablement or donor stewardship asset suite',
+        'Expanded written content for proposals, donor letters, or case statements',
+        'Performance reporting at 90-day intervals if on retainer',
       ],
+      cta: 'Book the Trust Audit →',
     },
     {
-      tier: 'Tier 3', name: 'The Annual Engine',
-      price: '$32K–$40K /qtr', duration: 'Annual',
-      desc: 'A compounding asset library and voice profile across the year.',
+      tier: 'Tier 3', name: 'Enterprise',
+      price: 'Starting $40,000', duration: 'Foundation · retainer custom · no minimum',
+      desc: 'For multi-campaign organizations, multi-location or multi-stakeholder teams, buyers who need embedded Creative Direction.',
       bullets: [
-        'One Conversion Campaign per quarter',
-        'Monthly always-on cadence between launches',
-        'Growing asset library, compounding over time',
-        'Voice Profile Skill quarterly refresh',
-        'Quarterly content audit + monthly working session',
+        'Everything in the Growth tier',
+        'Custom-scoped capture (multi-day, multi-location)',
+        'Embedded Fractional Creative Direction from Doyle',
+        'Dedicated editor and VA support',
+        'Cross-team distribution strategy',
+        'Quarterly strategy reviews',
       ],
+      cta: 'Start with this tier →',
     },
   ];
 
   return (
-    <section id="pricing" className="section ground-mid" data-screen-label="S13 Price">
+    <section id="pricing" className="section ground-mid" data-screen-label="The Full Price List">
       <div className="container reveal" ref={ref}>
-        <div style={{ maxWidth: 720, marginBottom: 56 }}>
+        <div style={{ maxWidth: 760, marginBottom: 56 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
             <Eyebrow>The full price list</Eyebrow>
           </div>
           <h2 style={{ fontSize: 'clamp(34px, 4vw, 52px)', margin: '14px 0 16px', lineHeight: 1.05, letterSpacing: '-0.025em' }}>
-            Three tiers. <span className="gradient-text">Start at the bottom.</span>
+            Three tiers. One engine. <span className="gradient-text">Fixed pricing.</span>
           </h2>
           <p style={{ fontSize: 18, color: 'var(--fg-2)', lineHeight: 1.55 }}>
-            Audit first. If it concludes you need more, scale up. We refund the Audit if it concludes we cannot move your number.
+            The methodology is identical across all three. Tiers change scope and embedded support. Foundation stands on its own — no retainer required. Retainer is the upsell at the Library Review meeting, not a precondition.
           </p>
         </div>
 
@@ -348,7 +371,7 @@ const Pricing = ({ onSelect }) => {
   );
 };
 
-const TierCard = ({ tier, name, price, duration, desc, bullets, featured, onSelect }) => {
+const TierCard = ({ tier, name, price, duration, desc, bullets, featured, cta, onSelect }) => {
   const [hover, setHover] = useStateS(false);
   const wrap = {
     padding: featured ? 1 : 0,
@@ -399,7 +422,7 @@ const TierCard = ({ tier, name, price, duration, desc, bullets, featured, onSele
           ))}
         </ul>
         <Btn variant={featured ? 'emphasis' : 'secondary'} style={{ width: '100%', justifyContent: 'center', background: featured ? undefined : 'var(--surface-2)', color: featured ? undefined : 'var(--fg-1)', borderColor: featured ? undefined : 'var(--border-2)' }} onClick={onSelect}>
-          {featured ? 'Book a discovery call →' : 'Start with this tier →'}
+          {cta || (featured ? 'Book the Trust Audit →' : 'Start with this tier →')}
         </Btn>
       </div>
     </div>
@@ -410,29 +433,29 @@ const TierCard = ({ tier, name, price, duration, desc, bullets, featured, onSele
 const WhoWorkWith = () => {
   const ref = useReveal();
   const yes = [
-    'Fundraising or capital campaigns with a public phase',
-    'Recruiting pushes against a real headcount target',
-    'Customer or patient acquisition with a tracked metric',
-    'Major launches or milestone moments on a deadline',
-    'Service-line awareness campaigns with budget already approved',
+    'You have a real story that isn\'t fully told yet',
+    'Your audience is choosing based on trust, not price',
+    'You\'re tired of paying for content that doesn\'t earn',
+    'You want infrastructure your team can deploy, not another vendor folder',
+    'You\'re at one of the three anchored verticals — capital campaigns/mission-driven nonprofits, growth-stage product companies, or local trust businesses — or close enough that the methodology obviously translates',
   ];
   const no = [
-    'Content as an experiment without a goal',
-    'Generic brand video without an outcome metric',
-    'One-off projects with no strategy or distribution',
-    'Media buying — your team or agency runs spend',
-    'Standalone always-on content calendars',
+    'You want a single hero video and nothing else',
+    'You want scripted, brand-controlled, talking-head ads',
+    'You want AI-generated content at maximum volume',
+    'You want the cheapest option in the market',
+    'You want a retainer minimum to justify your decision internally — we won\'t sign one',
   ];
   return (
     <section className="section ground-dark">
       <div className="container reveal" ref={ref}>
-        <div style={{ maxWidth: 720, marginBottom: 48 }}>
+        <div style={{ maxWidth: 760, marginBottom: 48 }}>
           <Eyebrow>Scope</Eyebrow>
           <h2 style={{ fontSize: 'clamp(32px, 3.6vw, 46px)', margin: '14px 0 12px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
             Saying no is part of the brief.
           </h2>
-          <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.55, maxWidth: 580 }}>
-            We're sharper when the work has somewhere to go. Here's where we come in — and where we don't.
+          <p style={{ fontSize: 17, color: 'var(--fg-2)', lineHeight: 1.55, maxWidth: 640 }}>
+            We're sharper when the work has somewhere to go. We don't sell media buying — your team or your media partner runs the spend. We don't sell standalone always-on content calendars. We don't sell generic brand video.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, border: '1px solid var(--border-1)', borderRadius: 'var(--r-lg)', overflow: 'hidden' }} className="grid-2 hairline">
@@ -476,27 +499,43 @@ const FAQ = () => {
   const items = [
     {
       q: 'How fast can we start?',
-      a: 'Most engagements kick off within two weeks of brief. Capture days are typically scheduled 3–4 weeks out depending on travel and access to interview subjects.',
+      a: 'Most Trust Engine engagements kick off within two weeks of the proposal landing. Capture days are typically scheduled 3–4 weeks out depending on travel and subject access.',
     },
     {
-      q: 'Do you run our paid spend or buy media?',
-      a: 'No. We design ad-ready creative and direction in every aspect ratio. Your team or media partner runs the spend. We\'ll work alongside them on the asset spec.',
+      q: 'Why is the Trust Audit free?',
+      a: 'The audit is the easiest way to find out if we\'re a fit. For us, and for you. Charging for it filtered out the wrong people. Free filters in the right ones.',
     },
     {
-      q: 'What happens if the audit shows you can\'t move our number?',
-      a: 'We tell you, in writing, with the reasoning. You keep the Conversion Map. The audit fee still applies — we don\'t run pro-bono diagnostics — but you walk with a document you can use elsewhere.',
+      q: 'What if the Trust Audit shows we\'re not a fit?',
+      a: 'We say so, in the written report, before we send the proposal. You keep the report. You keep the time. We don\'t try to upsell you into a tier you don\'t need. We\'d rather refer you to someone who can help than ship work that wastes your money or your moment.',
     },
     {
       q: 'Who owns the footage and the cuts?',
-      a: 'You do, on delivery. We retain the right to show finished work in our case studies unless you ask us not to in the brief.',
+      a: 'You do. Full rights, full files, full library. You also own the Voice Profile and Quote Library — they live in your AI tools and your database, not ours.',
     },
     {
-      q: 'What does the AI voice profile actually do?',
-      a: 'It\'s a trained skill mapped to your existing tone guide — your team uses it to draft on-brief copy faster. It\'s scoped to a specific use case (campaign emails, donor stewardship, internal comms), not a generic ghostwriter.',
+      q: 'What does the AI Voice Profile actually do?',
+      a: 'It\'s a custom AI skill we build from your real source material. Your team installs it in their own ChatGPT or Claude. They type a request — "draft a donor thank-you note about the ED expansion in our voice" — and it produces a draft in your voice using your real quotes. It gets sharper as your team uses it. It\'s yours forever.',
+    },
+    {
+      q: 'What does the Real Human Origin mark do?',
+      a: 'It\'s a visible commitment on every asset we deliver. Similar to organic food labeling. It signals to your audience that what they\'re seeing was captured, not fabricated. The mark travels with the work for as long as the work exists.',
+    },
+    {
+      q: 'Why no retainer minimum?',
+      a: 'Because the work should hold the relationship. Not the contract.',
     },
     {
       q: 'We already have a brand video. Can you just edit it down?',
-      a: 'Sometimes. The Audit will tell you. We say no when the source footage was shot to a different brief than the one you need to convert against.',
+      a: 'We don\'t. Every Trust Engine is the full system. If you want a one-off edit, we\'ll refer you to people who do that work well.',
+    },
+    {
+      q: 'How is this different from a regular video agency?',
+      a: 'Three things. We deliver the Voice Profile and Quote Library as deployable AI tools, not PDFs. We refuse to fabricate human moments with AI. We treat the capture day like the most meaningful day of your team\'s year. Those three things are what make this an engine instead of a project.',
+    },
+    {
+      q: 'Can we upgrade tiers later?',
+      a: 'Yes. We scope the next phase at the Library Review meeting. Many clients start at Growth and move to Enterprise after the first year.',
     },
   ];
   return (
@@ -595,16 +634,16 @@ const FounderNote = () => {
               <Eyebrow color="var(--pf-rose)" style={{ marginBottom: 14 }}>A note from the founder</Eyebrow>
               <p style={{
                 fontSize: 22, fontWeight: 500, lineHeight: 1.45, letterSpacing: '-0.01em',
-                margin: '0 0 22px', maxWidth: 660,
+                margin: '0 0 22px', maxWidth: 700,
               }}>
-                "Performance teams can't make work this good. Documentary shops can't make work this measurable. We do both — and every engagement is scoped to a number you care about."
+                "Most agencies are racing to use AI to make more polished content faster. We took the opposite bet. We treat AI as the deployment layer, not the production layer. We refuse to fabricate human moments. Those moments are the only thing left that can't be commoditized — and they're about to be worth more than anything else in your library."
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: 'var(--fg-2)' }}>
-                <span style={{ fontWeight: 600, color: 'var(--fg-1)' }}>Rae Holland</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: 'var(--fg-2)', flexWrap: 'wrap' }}>
+                <span style={{ fontWeight: 600, color: 'var(--fg-1)' }}>Doyle Maurer</span>
                 <span style={{ width: 4, height: 4, borderRadius: 2, background: 'var(--border-2)' }}/>
                 <span>Founder, Pillar &amp; Frame</span>
                 <span style={{ width: 4, height: 4, borderRadius: 2, background: 'var(--border-2)' }}/>
-                <span>15 yrs documentary · ex-direct response</span>
+                <span>Photojournalism school · 200+ wedding video days · hundreds of corporate interviews across ten countries</span>
               </div>
             </div>
           </div>
@@ -622,21 +661,22 @@ const Footer = () => (
     background: 'var(--bg-elevated)',
   }}>
     <div className="container" style={{
-      display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48,
+      display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40,
     }}>
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="assets/logo-mark.svg" width="28" height="28" alt=""/>
           <span style={{ fontWeight: 700, color: '#fff', letterSpacing: '-0.01em', fontSize: 16 }}>Pillar &amp; Frame</span>
         </div>
-        <p style={{ marginTop: 20, fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.6, maxWidth: 360 }}>
-          Story-based trust and conversion content for organizations already distributing with clear goals.
+        <p style={{ marginTop: 20, fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.6, maxWidth: 320, fontStyle: 'italic' }}>
+          Authentic storytelling, productized. Built in Ohio. Deployed everywhere.
         </p>
       </div>
       {[
-        { h: 'Services', l: ['Campaign Audit', 'Conversion Campaign', 'Annual Engine', 'AI voice profiles'] },
-        { h: 'Work', l: ['Healthcare', 'Higher ed', 'Nonprofit', 'B2B'] },
-        { h: 'Company', l: ['Approach', 'Journal', 'Contact', 'Discovery call'] },
+        { h: 'Pillar & Frame', l: ['About', 'Our Authenticity Standard', 'Newsletter', 'Contact'] },
+        { h: 'Product',        l: ['How It Works', 'Case Studies', 'Pricing', 'Trust Audit'] },
+        { h: 'Programs',       l: ['City Spotlight', 'The Crew Cut'] },
+        { h: 'Connect',        l: ['LinkedIn', 'Instagram', 'Email'] },
       ].map(col => (
         <div key={col.h}>
           <Eyebrow>{col.h}</Eyebrow>
@@ -648,11 +688,15 @@ const Footer = () => (
     </div>
     <div className="container" style={{
       marginTop: 48, paddingTop: 24, borderTop: '1px solid var(--border-1)',
-      display: 'flex', justifyContent: 'space-between',
+      display: 'flex', justifyContent: 'space-between', gap: 18, flexWrap: 'wrap',
       fontSize: 12, color: 'var(--fg-3)', fontFamily: 'var(--font-mono)',
     }}>
-      <span>© 2026 Pillar &amp; Frame</span>
-      <span>Brooklyn · Nashville</span>
+      <span>© Pillar &amp; Frame {new Date().getFullYear()}</span>
+      <span style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+        <a href="#" style={{ color: 'var(--fg-3)', textDecoration: 'none' }}>Privacy</a>
+        <a href="#" style={{ color: 'var(--fg-3)', textDecoration: 'none' }}>Terms</a>
+        <span>Built in Ohio</span>
+      </span>
     </div>
   </footer>
 );

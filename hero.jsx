@@ -162,24 +162,24 @@ const HeroCentered = ({ headline, sub, intrigue, onPrimary, onSecondary }) => (
           background: 'var(--pf-rose)', color: '#0B0B0B', borderRadius: 'var(--r-sm)',
           letterSpacing: '0.1em',
         }}>ATTENTION</span>
-        <span>Marketing directors &amp; fundraising leaders running a real campaign in the next 90 days.</span>
+        <span>Capital-campaign directors, founders of growth-stage product companies, and owner-operators of local trust businesses about to spend real money on content.</span>
       </div>
       {/* Section 2 — Demand attention (headline) */}
       <h1 className="h-display" style={{ margin: '0 auto 22px', maxWidth: 1000 }}
           dangerouslySetInnerHTML={{ __html: headline }}/>
       {/* Section 3 — Back up the promise */}
       <p className="lede" style={{
-        margin: '0 auto 32px', maxWidth: 720,
-        color: 'rgba(255,255,255,0.82)', fontSize: 20,
+        margin: '0 auto 32px', maxWidth: 760,
+        color: 'rgba(255,255,255,0.82)', fontSize: 19,
       }}>{sub}</p>
-      {/* Section 4 — Intrigue bullets */}
+      {/* Section 4 — Intrigue bullets (Sabri "what you'll discover" stack) */}
       <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: '10px 28px',
+        display: 'flex', flexDirection: 'column', gap: 12,
         maxWidth: 760, margin: '0 auto 36px', textAlign: 'left',
-      }} className="grid-2 stagger">
+      }} className="stagger">
         {intrigue.map((line, i) => (
-          <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 14.5, lineHeight: 1.5, color: 'var(--fg-1)' }}>
-            <span style={{ flexShrink: 0, marginTop: 6,
+          <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start', fontSize: 15, lineHeight: 1.55, color: 'var(--fg-1)' }}>
+            <span style={{ flexShrink: 0, marginTop: 8,
               width: 6, height: 6, borderRadius: '50%',
               background: 'var(--grad-brand-h)', boxShadow: 'var(--glow-aqua)',
             }}/>
@@ -188,22 +188,26 @@ const HeroCentered = ({ headline, sub, intrigue, onPrimary, onSecondary }) => (
         ))}
       </div>
       <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-        <Btn variant="emphasis" size="lg" onClick={onPrimary}>Book a discovery call →</Btn>
+        <Btn variant="emphasis" size="lg" onClick={onPrimary}>Book the free Trust Audit →</Btn>
         <Btn variant="ghost" size="lg" onClick={onSecondary}>See the work</Btn>
       </div>
       <div style={{
-        marginTop: 22, display: 'flex', alignItems: 'center', gap: 18, justifyContent: 'center',
+        marginTop: 22, display: 'flex', alignItems: 'center', gap: 14, justifyContent: 'center',
         fontSize: 12.5, color: 'var(--fg-2)', flexWrap: 'wrap',
       }}>
-        <span>30-minute call · No pitch deck</span>
+        <span>30-minute call</span>
+        <span style={{ width: 4, height: 4, borderRadius: 2, background: 'var(--border-2)' }}/>
+        <span>No pitch deck</span>
+        <span style={{ width: 4, height: 4, borderRadius: 2, background: 'var(--border-2)' }}/>
+        <span>Written report in 48 hours</span>
         <span style={{ width: 4, height: 4, borderRadius: 2, background: 'var(--border-2)' }}/>
         <span>Response within 2 business days</span>
       </div>
 
-      {/* hero film frame */}
+      {/* hero film frame — [FILL: replace placeholder with a real BTS shot from a shoot — camera rig, lighting set, subject mid-interview. Faces over equipment when possible.] */}
       <div style={{ marginTop: 64, maxWidth: 1080, margin: '64px auto 0' }}>
         <FrameInner>
-          <HeroVideo aspectRatio="16/9" label="Reel · 02:14"/>
+          <HeroVideo aspectRatio="16/9" label="BTS · Capture Day"/>
         </FrameInner>
       </div>
     </div>
@@ -242,7 +246,7 @@ const HeroSplit = ({ headline, sub, intrigue, onPrimary, onSecondary }) => (
             background: 'var(--pf-rose)', color: '#0B0B0B', borderRadius: 'var(--r-sm)',
             letterSpacing: '0.1em',
           }}>ATTENTION</span>
-          <span>Marketing &amp; fundraising leaders.</span>
+          <span>Capital campaigns &middot; growth-stage product &middot; local trust businesses.</span>
         </div>
         {/* S2 */}
         <h1 className="h1" style={{ fontSize: 'clamp(44px, 5.6vw, 80px)', margin: '0 0 20px', lineHeight: 1.02 }}
@@ -264,14 +268,15 @@ const HeroSplit = ({ headline, sub, intrigue, onPrimary, onSecondary }) => (
           ))}
         </ul>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Btn variant="emphasis" size="lg" onClick={onPrimary}>Book a discovery call →</Btn>
-          <Btn variant="ghost" size="lg" onClick={onSecondary}>See the offer</Btn>
+          <Btn variant="emphasis" size="lg" onClick={onPrimary}>Book the free Trust Audit →</Btn>
+          <Btn variant="ghost" size="lg" onClick={onSecondary}>See the work</Btn>
         </div>
       </div>
 
       <div>
         <FrameInner>
-          <HeroVideo aspectRatio="4/5" label="Mercy Health · 02:14"/>
+          {/* [FILL: replace placeholder with real BTS shoot photo — camera rig, lighting, subject mid-interview] */}
+          <HeroVideo aspectRatio="4/5" label="BTS · Capture Day"/>
         </FrameInner>
       </div>
     </div>
