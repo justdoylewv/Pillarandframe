@@ -1,4 +1,4 @@
-/* global React, Eyebrow, Btn, FrameInner, HeroVideo, useReveal */
+/* global React, Eyebrow, Btn, FrameInner, HeroVideo, Still, useReveal */
 const { useState: useStateS, useEffect: useEffectS, useRef: useRefS } = React;
 
 // ---------- LogoStrip ----------
@@ -114,30 +114,144 @@ const Services = ({ accent }) => {
             ))}
           </div>
           {/* panel */}
-          <div style={{ padding: '40px 44px' }}>
-            <Eyebrow color="var(--pf-aqua-400)" style={{ marginBottom: 12 }}>{services[active].tag}</Eyebrow>
-            <h3 style={{ fontSize: 30, fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.015em', margin: '0 0 16px' }}>
-              {services[active].title}
-            </h3>
-            <p style={{ fontSize: 16.5, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px', maxWidth: 620 }}>
-              {services[active].copy}
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
-              {services[active].bullets.map((b, i) => (
-                <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
-                  <span style={{
-                    width: 5, height: 5, borderRadius: '50%',
-                    background: 'var(--accent-dyn, var(--pf-aqua))',
-                    flexShrink: 0, marginTop: 6,
-                  }}/>
-                  <span style={{ fontSize: 14, color: 'var(--fg-1)', lineHeight: 1.4 }}>{b}</span>
-                </div>
-              ))}
+          <div style={{ padding: '40px 44px', display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 36, alignItems: 'start' }} className="grid-2 services-panel">
+            <div>
+              <Eyebrow color="var(--pf-aqua-400)" style={{ marginBottom: 12 }}>{services[active].tag}</Eyebrow>
+              <h3 style={{ fontSize: 28, fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.015em', margin: '0 0 16px' }}>
+                {services[active].title}
+              </h3>
+              <p style={{ fontSize: 15.5, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
+                {services[active].copy}
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
+                {services[active].bullets.map((b, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
+                    <span style={{
+                      width: 5, height: 5, borderRadius: '50%',
+                      background: 'var(--accent-dyn, var(--pf-aqua))',
+                      flexShrink: 0, marginTop: 6,
+                    }}/>
+                    <span style={{ fontSize: 14, color: 'var(--fg-1)', lineHeight: 1.4 }}>{b}</span>
+                  </div>
+                ))}
+              </div>
             </div>
+            <DeliverablePreview kind={active}/>
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 900px) {
+          .services-panel { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
+  );
+};
+
+// ---------- Deliverable preview (per Services tab) ----------
+// Small visual placeholder that shows what each deliverable type LOOKS LIKE.
+// Swap with real previews before launch.
+const DeliverablePreview = ({ kind }) => {
+  if (kind === 0) {
+    // Content Library — stills mosaic
+    return (
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+        <div style={{ gridColumn: '1 / -1' }}>
+          <Still aspectRatio="16/9" label="Hero film — 90s" kind="portrait" seed={0}/>
+        </div>
+        <Still aspectRatio="1/1"   label="Portrait" kind="portrait" seed={1}/>
+        <Still aspectRatio="1/1"   label="B-roll"   kind="interior" seed={2}/>
+      </div>
+    );
+  }
+  if (kind === 1) {
+    // Voice Profile — AI chat interface mock
+    return (
+      <div style={{
+        background: 'var(--surface-2)', border: '1px solid var(--border-1)',
+        borderRadius: 'var(--r-lg)', padding: 16, position: 'relative',
+        fontFamily: 'var(--font-mono)',
+      }}>
+        <div style={{
+          position: 'absolute', right: 12, top: 12,
+          fontSize: 9, padding: '3px 7px', borderRadius: 'var(--r-sm)',
+          background: 'rgba(244,114,182,0.18)', color: 'var(--pf-rose-400)',
+          border: '1px solid rgba(244,114,182,0.32)', letterSpacing: '0.1em',
+        }}>FILL</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, fontSize: 10.5, color: 'var(--fg-2)', letterSpacing: '0.08em' }}>
+          <span style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--success)' }}/>
+          INSTALLED · YOUR ORG VOICE PROFILE
+        </div>
+        <div style={{
+          padding: '10px 12px', background: 'var(--surface-3)',
+          borderRadius: 'var(--r-md)', marginBottom: 10,
+          fontSize: 12, color: 'var(--fg-1)', lineHeight: 1.5, fontFamily: 'var(--font-sans)',
+        }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-2)' }}>YOU →&nbsp;</span>
+          Draft a donor thank-you for the ED expansion in our voice.
+        </div>
+        <div style={{
+          padding: '10px 12px', background: 'rgba(34,211,238,0.08)',
+          border: '1px solid rgba(34,211,238,0.24)',
+          borderRadius: 'var(--r-md)', marginBottom: 10,
+          fontSize: 12, color: 'var(--fg-1)', lineHeight: 1.55, fontFamily: 'var(--font-sans)',
+        }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--pf-aqua-400)' }}>VOICE PROFILE →&nbsp;</span>
+          When the new ED opens next spring, it'll be because of people like you who decided this town's emergency care couldn't wait. Thank you, simply — and on behalf of every neighbor who'll walk through those doors…
+        </div>
+        <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
+          {['re-draft', 'shorten', 'add quote'].map(t => (
+            <span key={t} style={{
+              fontSize: 9.5, padding: '3px 8px', borderRadius: 'var(--r-full)',
+              background: 'var(--surface-1)', border: '1px solid var(--border-1)',
+              color: 'var(--fg-2)', letterSpacing: '0.04em',
+            }}>{t}</span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  // kind === 2 — Quote Library — searchable database mock
+  const rows = [
+    { theme: 'urgency',   speaker: 'Dr. Joel Ascher', q: '"This isn\'t a building. It\'s the difference between getting care now and getting it forty minutes from now."' },
+    { theme: 'community', speaker: 'Pastor Joe',      q: '"Every name on that donor wall is a neighbor who decided not to wait."' },
+    { theme: 'craft',     speaker: 'Leigh Anne G.',   q: '"The team showed up at 6 a.m. We didn\'t. They got the sunrise shot anyway."' },
+  ];
+  return (
+    <div style={{
+      background: 'var(--surface-2)', border: '1px solid var(--border-1)',
+      borderRadius: 'var(--r-lg)', overflow: 'hidden', position: 'relative',
+      fontFamily: 'var(--font-mono)',
+    }}>
+      <div style={{
+        position: 'absolute', right: 12, top: 12,
+        fontSize: 9, padding: '3px 7px', borderRadius: 'var(--r-sm)',
+        background: 'rgba(244,114,182,0.18)', color: 'var(--pf-rose-400)',
+        border: '1px solid rgba(244,114,182,0.32)', letterSpacing: '0.1em', zIndex: 1,
+      }}>FILL</div>
+      <div style={{
+        padding: '12px 16px', background: 'var(--surface-3)',
+        borderBottom: '1px solid var(--border-1)',
+        display: 'flex', alignItems: 'center', gap: 10,
+        fontSize: 10.5, color: 'var(--fg-2)', letterSpacing: '0.08em',
+      }}>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="10" cy="10" r="7"/><line x1="20" y1="20" x2="15" y2="15"/></svg>
+        SEARCH · TAG: URGENCY · SPEAKER: ANY
+      </div>
+      {rows.map((r, i) => (
+        <div key={i} style={{
+          padding: '12px 16px',
+          borderTop: i === 0 ? 'none' : '1px solid var(--border-1)',
+        }}>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 6, fontSize: 10, color: 'var(--fg-2)', letterSpacing: '0.06em' }}>
+            <span style={{ padding: '2px 7px', borderRadius: 'var(--r-sm)', background: 'rgba(34,211,238,0.10)', border: '1px solid rgba(34,211,238,0.24)', color: 'var(--pf-aqua-400)' }}>{r.theme.toUpperCase()}</span>
+            <span style={{ alignSelf: 'center' }}>{r.speaker}</span>
+          </div>
+          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12.5, color: 'var(--fg-1)', lineHeight: 1.5 }}>{r.q}</div>
+        </div>
+      ))}
+    </div>
   );
 };
 
@@ -293,6 +407,73 @@ const Metrics = () => {
           ))}
         </div>
       </div>
+    </section>
+  );
+};
+
+// ---------- Work gallery (visual proof — replace tiles with real shoot imagery) ----------
+// 6 tiles, mixed videos + stills, labeled by deliverable type.
+// Each tile is a placeholder. Swap with real assets from recent Trust Engine deliverables.
+const WorkGallery = () => {
+  const ref = useReveal();
+  const tiles = [
+    { type: 'video', aspect: '16/9',  label: 'Hero film · Memorial ED campaign',     kind: 'portrait',  seed: 0 },
+    { type: 'still', aspect: '4/5',   label: 'Portraits · donor stewardship',        kind: 'portrait',  seed: 1 },
+    { type: 'still', aspect: '4/5',   label: 'B-roll · operating environment',       kind: 'interior',  seed: 2 },
+    { type: 'still', aspect: '4/5',   label: 'Capture day · behind the scenes',      kind: 'portrait',  seed: 3 },
+    { type: 'still', aspect: '4/5',   label: 'Stills · Quote Library reference',     kind: 'landscape', seed: 4 },
+    { type: 'video', aspect: '16/9',  label: 'Social cut · vertical, 60s',           kind: 'portrait',  seed: 5 },
+  ];
+  return (
+    <section className="section ground-dark" data-screen-label="Work gallery">
+      <div className="container reveal" ref={ref}>
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
+          gap: 24, flexWrap: 'wrap', marginBottom: 32,
+        }}>
+          <div style={{ maxWidth: 640 }}>
+            <Eyebrow>From the library</Eyebrow>
+            <h2 style={{ fontSize: 'clamp(28px, 3vw, 38px)', margin: '12px 0 10px', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+              More of the work.
+            </h2>
+            <p style={{ fontSize: 15.5, color: 'var(--fg-2)', lineHeight: 1.55, margin: 0, maxWidth: 560 }}>
+              Hero films, portraits, b-roll, social cuts — pulled from recent Trust Engine deliverables. Each tile here is a placeholder for a real asset.
+            </p>
+          </div>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '6px 12px', borderRadius: 'var(--r-full)',
+            background: 'rgba(244,114,182,0.08)',
+            border: '1px solid rgba(244,114,182,0.32)',
+            fontSize: 11.5, fontWeight: 600, letterSpacing: '0.1em',
+            color: 'var(--pf-rose-400)', fontFamily: 'var(--font-mono)',
+          }}>
+            <span style={{ width: 7, height: 7, borderRadius: 4, background: 'var(--pf-rose)' }}/>
+            [FILL] · SWAP TILES WITH REAL CAPTURES
+          </div>
+        </div>
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12,
+        }} className="grid-3 work-gallery">
+          {tiles.map((t, i) => (
+            <div key={i} style={{
+              gridRow: t.aspect === '16/9' ? 'auto' : 'auto',
+            }}>
+              {t.type === 'video'
+                ? <HeroVideo aspectRatio={t.aspect} label={t.label} autoplayHint={false}/>
+                : <Still aspectRatio={t.aspect} label={t.label} kind={t.kind} seed={t.seed}/>}
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 900px) {
+          .work-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 560px) {
+          .work-gallery { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 };
@@ -629,6 +810,14 @@ const FounderNote = () => {
                 <circle cx="60" cy="48" r="22" fill="rgba(255,255,255,0.08)"/>
                 <path d="M 20 120 C 20 88 36 76 60 76 C 84 76 100 88 100 120 Z" fill="rgba(255,255,255,0.08)"/>
               </svg>
+              {/* FILL hint */}
+              <div style={{
+                position: 'absolute', right: -2, top: -2,
+                fontFamily: 'var(--font-mono)', fontSize: 9,
+                padding: '3px 7px', borderRadius: 'var(--r-sm)',
+                background: 'rgba(244,114,182,0.32)', color: '#fff',
+                letterSpacing: '0.1em',
+              }}>FILL</div>
             </div>
             <div>
               <Eyebrow color="var(--pf-rose)" style={{ marginBottom: 14 }}>A note from the founder</Eyebrow>
@@ -702,6 +891,6 @@ const Footer = () => (
 );
 
 Object.assign(window, {
-  LogoStrip, Services, Process, CaseStudyHighlight, Metrics, Pricing,
+  LogoStrip, Services, Process, CaseStudyHighlight, Metrics, WorkGallery, Pricing,
   WhoWorkWith, FAQ, FounderNote, Footer,
 });

@@ -213,9 +213,34 @@ const TestimonialsSection = () => {
                 <path d="M9.5 4C5.4 5.5 3 9 3 13v6h7v-7H6.5c0-2.7 1.4-4.8 4-5.7L9.5 4zm10 0c-4.1 1.5-6.5 5-6.5 9v6h7v-7h-3.5c0-2.7 1.4-4.8 4-5.7L19.5 4z"/>
               </svg>
               <blockquote style={{ margin: 0, fontSize: 14.5, color: 'var(--fg-2)', lineHeight: 1.55, fontStyle: 'italic' }}>{t.q}</blockquote>
-              <figcaption style={{ marginTop: 'auto', borderTop: '1px solid var(--border-1)', paddingTop: 16 }}>
-                <div style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--fg-pure, #fff)' }}>{t.n}</div>
-                <div style={{ fontSize: 12.5, color: 'var(--fg-2)', marginTop: 2 }}>{t.r}</div>
+              <figcaption style={{ marginTop: 'auto', borderTop: '1px solid var(--border-1)', paddingTop: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
+                {/* Portrait placeholder — swap with real headshot when client quote is filled */}
+                <div style={{
+                  width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
+                  background: `linear-gradient(135deg, ${['#1F1B33','#221C1A','#1F2333'][i]} 0%, ${['#14213A','#3A1E14','#142B3A'][i]} 100%)`,
+                  border: '1px solid var(--border-2)', position: 'relative', overflow: 'hidden',
+                }}>
+                  <div style={{
+                    position: 'absolute', left: '20%', top: '60%', width: 24, height: 24,
+                    borderRadius: '50%', background: `radial-gradient(circle, ${['rgba(34,211,238,0.6)','rgba(244,114,182,0.6)','rgba(139,92,246,0.6)'][i]}, transparent 65%)`,
+                    filter: 'blur(3px)',
+                  }}/>
+                  <svg viewBox="0 0 44 44" style={{ position: 'absolute', inset: 0 }}>
+                    <circle cx="22" cy="18" r="8" fill="rgba(255,255,255,0.10)"/>
+                    <path d="M 7 44 C 7 32 13 27 22 27 C 31 27 37 32 37 44 Z" fill="rgba(255,255,255,0.10)"/>
+                  </svg>
+                  <div style={{
+                    position: 'absolute', right: -2, top: -2,
+                    fontFamily: 'var(--font-mono)', fontSize: 7,
+                    padding: '1px 4px', borderRadius: 'var(--r-sm)',
+                    background: 'rgba(244,114,182,0.32)', color: '#fff',
+                    letterSpacing: '0.1em',
+                  }}>FILL</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--fg-pure, #fff)' }}>{t.n}</div>
+                  <div style={{ fontSize: 12.5, color: 'var(--fg-2)', marginTop: 2 }}>{t.r}</div>
+                </div>
               </figcaption>
             </figure>
           ))}

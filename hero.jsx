@@ -113,6 +113,15 @@ const HeroVideo = ({ aspectRatio = '16/10', label = 'Hero film · 2:14', autopla
           fontWeight: 600,
         }}>Click to play ▸</div>
       )}
+      {/* FILL hint */}
+      <div style={{
+        position: 'absolute', right: 10, top: 10,
+        fontFamily: 'var(--font-mono)', fontSize: 9,
+        padding: '3px 7px', borderRadius: 'var(--r-sm)',
+        background: 'rgba(244,114,182,0.18)', color: 'var(--pf-rose-400)',
+        border: '1px solid rgba(244,114,182,0.32)',
+        letterSpacing: '0.1em',
+      }}>FILL</div>
     </div>
   );
 };
@@ -283,4 +292,93 @@ const HeroSplit = ({ headline, sub, intrigue, onPrimary, onSecondary }) => (
   </section>
 );
 
-Object.assign(window, { HeroCentered, HeroSplit, HeroVideo });
+// ---------- Still placeholder (documentary photo) ----------
+// Cinematic still tile — used in WorkGallery and other proof slots.
+// Each tile takes a label + a seed (0..n) so each one renders a different gradient/silhouette
+// composition. Replace with real shoot imagery before launch.
+const Still = ({ aspectRatio = '4/3', label = 'Still', kind = 'portrait', seed = 0 }) => {
+  const palettes = [
+    { a: '#1F1B33', b: '#14213A', c: '#0F1E2E', d: '#221530', glow1: 'rgba(34,211,238,0.55)', glow2: 'rgba(244,114,182,0.45)' },
+    { a: '#221C1A', b: '#3A1E14', c: '#2E1A0F', d: '#301518', glow1: 'rgba(244,114,182,0.55)', glow2: 'rgba(232,184,91,0.45)' },
+    { a: '#1A1F33', b: '#14253A', c: '#0F2A2E', d: '#15303A', glow1: 'rgba(34,211,238,0.55)', glow2: 'rgba(139,92,246,0.45)' },
+    { a: '#231F33', b: '#1E143A', c: '#1F0F2E', d: '#241530', glow1: 'rgba(139,92,246,0.55)', glow2: 'rgba(244,114,182,0.45)' },
+    { a: '#1F2333', b: '#142B3A', c: '#0F2E2A', d: '#15302B', glow1: 'rgba(91,199,138,0.50)', glow2: 'rgba(34,211,238,0.45)' },
+    { a: '#33231F', b: '#3A1E14', c: '#2E2A0F', d: '#302515', glow1: 'rgba(232,184,91,0.50)', glow2: 'rgba(244,114,182,0.45)' },
+  ];
+  const p = palettes[seed % palettes.length];
+
+  // Silhouette compositions — three rough archetypes
+  const silhouettes = {
+    portrait: <path d="M 0 500 L 0 360 C 120 340 220 320 290 280 C 320 260 340 230 360 210 C 380 195 410 192 442 212 C 472 232 484 268 522 288 C 600 320 700 340 800 360 L 800 500 Z" fill="url(#silg)"/>,
+    landscape: <path d="M 0 500 L 0 380 C 100 360 200 340 350 340 C 500 340 620 360 800 380 L 800 500 Z" fill="url(#silg)"/>,
+    interior:  <path d="M 0 500 L 0 240 L 120 240 L 120 360 L 280 360 L 280 220 L 520 220 L 520 360 L 680 360 L 680 240 L 800 240 L 800 500 Z" fill="url(#silg)" opacity="0.7"/>,
+  };
+
+  return (
+    <div style={{
+      position: 'relative', aspectRatio, width: '100%',
+      borderRadius: 'var(--r-lg)', overflow: 'hidden',
+      background: '#0a0a0a',
+    }}>
+      {/* gradient ground */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: `linear-gradient(135deg, ${p.a} 0%, ${p.b} 35%, ${p.c} 65%, ${p.d} 100%)`,
+      }}/>
+      {/* vignette */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'radial-gradient(120% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%)',
+      }}/>
+      {/* practical lights */}
+      <div style={{
+        position: 'absolute', left: '14%', top: '62%', width: 100, height: 100,
+        borderRadius: '50%', background: `radial-gradient(circle, ${p.glow1}, transparent 65%)`,
+        filter: 'blur(8px)',
+      }}/>
+      <div style={{
+        position: 'absolute', right: '16%', top: '22%', width: 120, height: 120,
+        borderRadius: '50%', background: `radial-gradient(circle, ${p.glow2}, transparent 65%)`,
+        filter: 'blur(10px)',
+      }}/>
+      {/* silhouette */}
+      <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.6,
+      }}>
+        <defs>
+          <linearGradient id="silg" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#000" stopOpacity="0.5"/>
+            <stop offset="100%" stopColor="#000" stopOpacity="0.95"/>
+          </linearGradient>
+        </defs>
+        {silhouettes[kind] || silhouettes.portrait}
+      </svg>
+      {/* film grain */}
+      <div style={{
+        position: 'absolute', inset: 0, opacity: 0.06, mixBlendMode: 'overlay',
+        backgroundImage: 'radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)',
+        backgroundSize: '3px 3px',
+      }}/>
+      {/* label tag */}
+      <div style={{
+        position: 'absolute', left: 12, bottom: 10,
+        fontFamily: 'var(--font-mono)', fontSize: 10.5,
+        background: 'rgba(11,13,18,0.72)', backdropFilter: 'blur(8px)',
+        padding: '4px 9px', borderRadius: 'var(--r-sm)',
+        color: '#fff', border: '1px solid var(--border-1)',
+        letterSpacing: '0.05em',
+      }}>{label}</div>
+      {/* FILL hint */}
+      <div style={{
+        position: 'absolute', right: 10, top: 10,
+        fontFamily: 'var(--font-mono)', fontSize: 9,
+        padding: '3px 7px', borderRadius: 'var(--r-sm)',
+        background: 'rgba(244,114,182,0.18)', color: 'var(--pf-rose-400)',
+        border: '1px solid rgba(244,114,182,0.32)',
+        letterSpacing: '0.1em',
+      }}>FILL</div>
+    </div>
+  );
+};
+
+Object.assign(window, { HeroCentered, HeroSplit, HeroVideo, Still });

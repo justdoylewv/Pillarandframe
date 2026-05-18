@@ -1,7 +1,7 @@
 /* global React, ReactDOM,
    Nav, Btn, Eyebrow, FrameInner, useReveal,
-   HeroCentered, HeroSplit,
-   LogoStrip, Services, Process, CaseStudyHighlight, Metrics, Pricing,
+   HeroCentered, HeroSplit, Still,
+   LogoStrip, Services, Process, CaseStudyHighlight, Metrics, WorkGallery, Pricing,
    WhoWorkWith, FAQ, FounderNote, Footer,
    ContactForm, FinalCTA,
    ProblemSection, BenefitsSection, TestimonialsSection,
@@ -94,9 +94,10 @@ function App() {
       <Services accent={t.accent}/>
       <Process/>
 
-      {/* §7 — Credentials (featured work + metrics) */}
+      {/* §7 — Credentials (featured work + metrics + gallery) */}
       <CaseStudyHighlight/>
       <Metrics/>
+      <WorkGallery/>
 
       {/* §8 — Benefits (features → benefits) */}
       <BenefitsSection/>
