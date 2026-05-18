@@ -5,8 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Pillar &amp; Frame — Authentic storytelling. Productized.</title>
   <meta name="description" content="Two days of capture. A year of authentic content. The Trust Engine — built once, deployed forever. Three productized tiers. Free Trust Audit to start."/>
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Pillar &amp; Frame — Authentic storytelling. Productized."/>
+  <meta property="og:description" content="Two days of capture. A year of authentic content. Built around a Voice Profile your team installs as a working AI skill. Free Trust Audit to start."/>
+  <meta property="og:image" content="assets/logo-full.svg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Pillar &amp; Frame — Authentic storytelling. Productized."/>
+  <meta name="twitter:description" content="The Trust Engine — built once, deployed forever. Free Trust Audit to start."/>
+  <meta name="twitter:image" content="assets/logo-full.svg"/>
+
+  <!-- Font preload: prevents FOUT on first paint of headlines -->
+  <link rel="preload" href="fonts/Inter-VariableFont_opsz_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
+
   <link rel="stylesheet" href="tokens.css"/>
   <link rel="icon" href="assets/logo-mark.svg"/>
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg"/>
   <style>
     body { margin: 0; background: var(--bg-deep); overflow-x: hidden; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
@@ -119,5 +134,10 @@
   <script type="text/babel" src="dr-sections.jsx"></script>
   <script type="text/babel" src="contact-form.jsx"></script>
   <script type="text/babel" src="app.jsx"></script>
+
+  <!-- GoHighLevel form embed helper: handles iframe auto-resize for embedded
+       lead forms. Safe to leave loaded even when no GHL iframes are on the
+       page — it's a no-op listener for cross-frame messages. -->
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
