@@ -25,8 +25,7 @@
    Deck description sits in a sub-row below, right-aligned so the headline
    gets to breathe and the page reads top-down, not column-split. */
 .lp-head {
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px 64px;
+  padding: 0 0 64px;
   display: block;
 }
 .lp-head__l {
@@ -157,8 +156,6 @@
 .lp-problem {
   display: grid; grid-template-columns: 5fr 7fr;
   gap: 80px; align-items: start;
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
 }
 .lp-problem__h {
   font-family: var(--font-display); font-weight: 400;
@@ -188,10 +185,6 @@
 /* ============================================
    MECHANISM — four-phase horizontal flow
    ============================================ */
-.lp-mech {
-  padding: 0 64px;
-  max-width: 1440px; margin: 0 auto;
-}
 .lp-mech__flow {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 0; border-top: 1px solid var(--shale);
@@ -246,8 +239,6 @@
 .lp-creds {
   display: grid; grid-template-columns: 1fr 1.2fr;
   gap: 80px; align-items: center;
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
 }
 .lp-creds__still { aspect-ratio: 4 / 5; max-width: 460px; }
 .lp-creds__r .lp-h { max-width: 18ch; margin-bottom: 36px; }
@@ -278,9 +269,6 @@
 /* ============================================
    FEATURES → BENEFITS  · two-column comparison
    ============================================ */
-.lp-fb {
-  max-width: 1440px; margin: 0 auto; padding: 0 64px;
-}
 .lp-fb__table {
   border-top: 1px solid var(--shale);
   border-bottom: 1px solid var(--shale);
@@ -319,8 +307,6 @@
 .lp-idea {
   display: grid; grid-template-columns: 1fr 1.1fr;
   gap: 96px; align-items: center;
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
 }
 .lp-idea__l { display: flex; justify-content: center; }
 .lp-idea__badge {
@@ -362,10 +348,6 @@
 /* ============================================
    SOCIAL PROOF — case study + stats
    ============================================ */
-.lp-proof {
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
-}
 .lp-case {
   display: grid; grid-template-columns: 1.1fr 1fr;
   gap: 64px; align-items: stretch;
@@ -448,8 +430,7 @@
   color: #807A6E; line-height: 1.5;
 }
 .lp-stats__verified {
-  max-width: 1440px; margin: 32px auto 0;
-  padding: 0 64px;
+  margin-top: 32px;
   font-family: var(--font-mono); font-size: 10px;
   text-transform: uppercase; letter-spacing: 0.22em;
   color: #807A6E;
@@ -461,7 +442,6 @@
 .lp-offer {
   text-align: center;
   max-width: 1100px; margin: 0 auto;
-  padding: 0 64px;
 }
 .lp-offer__pre {
   display: inline-flex; align-items: center; gap: 14px;
@@ -523,8 +503,6 @@
    INCLUDED — 4 boxed items
    ============================================ */
 .lp-incl {
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 0; border-top: 1px solid var(--shale);
 }
@@ -556,8 +534,7 @@
    VALUE STACK
    ============================================ */
 .lp-stack {
-  max-width: 1100px; margin: 0 auto;
-  padding: 0 64px;
+  max-width: 1100px;
 }
 .lp-stack__list {
   border-top: 1px solid var(--shale);
@@ -627,8 +604,6 @@
    GUARANTEE — 4 commitments on bone
    ============================================ */
 .lp-guar {
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 0;
   border-top: 1px solid rgba(10,10,11,0.18);
@@ -670,8 +645,6 @@
 .lp-scar {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: center;
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
 }
 .lp-scar__body p {
   font-size: 19px; line-height: 1.55;
@@ -742,7 +715,6 @@
    ============================================ */
 .lp-ps {
   max-width: 1100px; margin: 0 auto;
-  padding: 0 64px;
 }
 .lp-ps__mark {
   display: inline-block;
@@ -784,10 +756,6 @@
 /* ============================================
    PRICING
    ============================================ */
-.lp-price {
-  max-width: 1440px; margin: 0 auto;
-  padding: 0 64px;
-}
 .lp-price__lede {
   max-width: 60ch;
   font-size: 18px; line-height: 1.55;
@@ -879,8 +847,7 @@
   .lp-fb__row, .lp-fb__row-h { grid-template-columns: 1fr; gap: 8px; }
 }
 @media (max-width: 720px) {
-  .lp-section, .lp-head, .lp-mech, .lp-creds, .lp-fb, .lp-proof,
-  .lp-offer, .lp-incl, .lp-stack, .lp-guar, .lp-scar, .lp-ps, .lp-price {
+  .lp-section, .lp-hero {
     padding-left: 24px; padding-right: 24px;
   }
   .lp-incl, .lp-guar { grid-template-columns: 1fr; }
