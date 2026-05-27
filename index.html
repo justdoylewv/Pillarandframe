@@ -1,143 +1,905 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-screen-label="Pillar & Frame — Landing">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Pillar &amp; Frame — Authentic storytelling. Productized.</title>
-  <meta name="description" content="Two days of capture. A year of authentic content. The Trust Engine — built once, deployed forever. Three productized tiers. Free Trust Audit to start."/>
+  <title>Pillar &amp; Frame — Capture once. Earn for years.</title>
+  <meta name="description" content="Two days of capture. A year of content your audience actually believes. The Trust Engine — built once, deployed forever. Free Trust Audit to start."/>
 
   <!-- Open Graph / social share -->
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Pillar &amp; Frame — Authentic storytelling. Productized."/>
-  <meta property="og:description" content="Two days of capture. A year of authentic content. Built around a Voice Profile your team installs as a working AI skill. Free Trust Audit to start."/>
-  <meta property="og:image" content="assets/logo-full.svg"/>
+  <meta property="og:title" content="Pillar &amp; Frame — Capture once. Earn for years."/>
+  <meta property="og:description" content="Two days of capture. A year of authentic content. Built around a Voice Profile your team runs as an AI tool. Free Trust Audit to start."/>
+  <meta property="og:image" content="assets/logo-monogram.svg"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Pillar &amp; Frame — Authentic storytelling. Productized."/>
+  <meta name="twitter:title" content="Pillar &amp; Frame — Capture once. Earn for years."/>
   <meta name="twitter:description" content="The Trust Engine — built once, deployed forever. Free Trust Audit to start."/>
-  <meta name="twitter:image" content="assets/logo-full.svg"/>
+  <meta name="twitter:image" content="assets/logo-monogram.svg"/>
 
-  <!-- Font preload: prevents FOUT on first paint of headlines -->
-  <link rel="preload" href="fonts/Inter-VariableFont_opsz_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
-
-  <link rel="stylesheet" href="tokens.css"/>
-  <link rel="icon" href="assets/logo-mark.svg"/>
-  <link rel="apple-touch-icon" href="assets/logo-mark.svg"/>
-  <style>
-    body { margin: 0; background: var(--bg-deep); overflow-x: hidden; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-    .container--narrow { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
-    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out); }
-    .reveal.is-visible { opacity: 1; transform: none; }
-
-    button { font-family: var(--font-sans); }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px;
-      border-radius: var(--r-md); font-weight: 600; font-size: 14.5px;
-      cursor: pointer; transition: all 150ms var(--ease-out);
-      border: 1px solid transparent; box-shadow: var(--inset-glow);
-    }
-    .btn:active { transform: scale(0.98); filter: brightness(0.92); }
-    .btn--primary { background: var(--pf-aqua); color: #0B0B0B; }
-    .btn--primary:hover { background: var(--pf-aqua-400); }
-    .btn--emphasis { background: var(--grad-warm); color: #fff; box-shadow: var(--inset-glow), var(--glow-emphasis); }
-    .btn--emphasis:hover { filter: brightness(1.08); }
-    .btn--ghost { background: transparent; color: var(--fg-1); border-color: var(--border-2); }
-    .btn--ghost:hover { background: var(--surface-1); border-color: var(--border-3); }
-    .btn--lg { padding: 16px 26px; font-size: 15.5px; }
-
-    .accent-blue   { --accent-dyn: var(--pf-aqua);   --accent-glow: var(--glow-aqua);   --accent-grad: linear-gradient(90deg, var(--pf-aqua), var(--pf-aqua-400)); }
-    .accent-purple { --accent-dyn: var(--pf-violet); --accent-glow: var(--glow-violet); --accent-grad: linear-gradient(90deg, var(--pf-aqua), var(--pf-violet)); }
-    .accent-pink   { --accent-dyn: var(--pf-rose);   --accent-glow: var(--glow-rose);   --accent-grad: linear-gradient(90deg, var(--pf-violet), var(--pf-rose)); }
-
-    /* Section ground variants */
-    .ground-dark  { background: var(--bg-deep); color: var(--fg-1); }
-    .ground-mid   { background: var(--bg-elevated); color: var(--fg-1); }
-    .ground-light { background: #F5F3EE; color: #14171E; }
-    .ground-light .eyebrow { color: rgba(20,23,30,0.55); }
-    .ground-light h1, .ground-light h2, .ground-light h3, .ground-light h4 { color: #0B0B0B; }
-    .ground-light p { color: rgba(20,23,30,0.72); }
-    .ground-light .hairline { border-color: rgba(11,11,11,0.08) !important; }
-    .ground-light .surface-card { background: #fff; border-color: rgba(11,11,11,0.08); box-shadow: 0 1px 0 rgba(11,11,11,0.04); }
-    .ground-light .faq-item { border-color: rgba(11,11,11,0.10); }
-    .ground-light .num-chip { background: rgba(11,11,11,0.05); color: rgba(11,11,11,0.55); border-color: rgba(11,11,11,0.08); }
-    .ground-light input, .ground-light textarea, .ground-light select {
-      background: #fff; color: #14171E; border-color: rgba(11,11,11,0.12) !important;
-    }
-    /* Dark cards keep their own text colors even on a light ground */
-    .ground-light .surface-card.dark-card,
-    .ground-light .surface-card.dark-card h1,
-    .ground-light .surface-card.dark-card h2,
-    .ground-light .surface-card.dark-card h3,
-    .ground-light .surface-card.dark-card h4,
-    .ground-light .surface-card.dark-card p { color: var(--fg-1); }
-    .ground-light .surface-card.dark-card h1,
-    .ground-light .surface-card.dark-card h2,
-    .ground-light .surface-card.dark-card h3,
-    .ground-light .surface-card.dark-card h4 { color: var(--fg-pure); }
-    .ground-light .surface-card.dark-card .eyebrow { color: var(--fg-2); }
-
-    /* Section divider hairline */
-    .section { padding: clamp(64px, 9vw, 128px) 0; }
-    .section--tight { padding: clamp(48px, 6vw, 80px) 0; }
-
-    /* Eyebrow re-decl as class */
-    .eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-2); }
-
-    .gradient-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 12px 6px 8px; border-radius: var(--r-full);
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border-1);
-      font-size: 12px; color: var(--fg-1); font-weight: 500;
-    }
-    .gradient-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grad-brand); }
-
-    /* Frame motif */
-    .frame {
-      position: relative;
-      padding: 8px;
-      border-radius: calc(var(--r-lg) + 4px);
-      background: linear-gradient(var(--surface-1),var(--surface-1)) padding-box,
-                  var(--grad-brand) border-box;
-      border: 1px solid transparent;
-    }
-
-    /* Focus */
-    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--pf-aqua) !important; box-shadow: 0 0 0 3px rgba(34,211,238,0.22); }
-
-    /* Reveal */
-    .stagger > * { transition-delay: 0ms; }
-    .stagger > *:nth-child(2) { transition-delay: 60ms; }
-    .stagger > *:nth-child(3) { transition-delay: 120ms; }
-    .stagger > *:nth-child(4) { transition-delay: 180ms; }
-    .stagger > *:nth-child(5) { transition-delay: 240ms; }
-
-    @media (max-width: 900px) {
-      .grid-3 { grid-template-columns: 1fr !important; }
-      .grid-2 { grid-template-columns: 1fr !important; }
-      .hero-split { grid-template-columns: 1fr !important; }
-      .hero-bleed-text { padding: 24px !important; }
-      .nav-links { display: none !important; }
-      .h-display { font-size: 48px !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/colors_and_type.css"/>
+  <link rel="stylesheet" href="assets/site.css"/>
+  <link rel="stylesheet" href="assets/landing.css"/>
+  <link rel="icon" type="image/svg+xml" href="assets/logo-monogram.svg"/>
+  <link rel="apple-touch-icon" href="assets/logo-monogram.svg"/>
 </head>
-<body>
-  <div id="root"></div>
+<body data-theme="dark">
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- ============================================
+     Reusable inline SVG defs
+     ============================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-corner" viewBox="0 0 24 24"><path d="M1 8 L1 1 L8 1" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
 
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="primitives.jsx"></script>
-  <script type="text/babel" src="hero.jsx"></script>
-  <script type="text/babel" src="sections.jsx"></script>
-  <script type="text/babel" src="dr-sections.jsx"></script>
-  <script type="text/babel" src="contact-form.jsx"></script>
-  <script type="text/babel" src="app.jsx"></script>
+<!-- ============================================
+     Announcement bar + Nav
+     ============================================ -->
+<div class="pf-bar">
+  <div>
+    <span class="pf-bar__dot"></span>
+    Now booking · Trust audits · Summer 2026
+  </div>
+  <a href="#offer">The free Trust Audit ↗</a>
+</div>
 
-  <!-- GoHighLevel form embed helper: handles iframe auto-resize for embedded
-       lead forms. Safe to leave loaded even when no GHL iframes are on the
-       page — it's a no-op listener for cross-frame messages. -->
-  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<nav class="pf-nav">
+  <a class="pf-lockup" href="#top">
+    <img src="assets/logo-monogram.svg" alt="" style="width:28px;height:28px;color:#F1ECE2"/>
+    <span class="pf-lockup__name">Pillar <em>&amp;</em> Frame</span>
+  </a>
+  <div class="pf-nav__links">
+    <a href="#work" class="pf-link">Work</a>
+    <a href="#engine" class="pf-link">How it works</a>
+    <a href="#pricing" class="pf-link">Pricing</a>
+    <a href="#faq" class="pf-link">FAQ</a>
+  </div>
+  <div class="pf-nav__right">
+    <span class="pf-mode">Reel 26</span>
+    <a href="#offer" class="pf-btn pf-btn--spark">
+      Book the free Trust Audit <svg width="14" height="14"><use href="#i-arrow"/></svg>
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============================================
+       SECTIONS 1–4 · HERO
+       ============================================ -->
+  <section class="lp-hero" data-screen-label="01 Hero">
+    <div class="lp-hero__l">
+      <div class="lp-hero__pre">For the founders, directors, and owners whose buyers choose them on trust, not price.
+      </div>
+
+      <h1 class="lp-hero__h">
+        Two days of capture.<br/>
+        <em>A year of content</em><br/>
+        your audience actually believes.
+      </h1>
+
+      <p class="lp-hero__sub">
+        We turn your real story into a content library, a Voice Profile your team runs as an AI tool, and a searchable Quote Library you pull from for years. Real people. Real moments. No fabricated faces, voices, or testimonials.
+      </p>
+
+      <div class="lp-hero__cta">
+        <a href="#offer" class="pf-btn pf-btn--spark pf-btn--lg">
+          Book the free Trust Audit <svg width="16" height="16"><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#work" class="pf-btn pf-btn--ghost pf-btn--lg">
+          See the work
+        </a>
+      </div>
+      <div class="lp-hero__micro">
+        30 min with Doyle · Written report in 48 hours · No pitch on the call
+      </div>
+    </div>
+
+    <div class="lp-hero__r">
+      <div class="pf-still lp-hero__still" style="background:linear-gradient(135deg,#2A1810 0%,#3D2418 60%,#1A0F08 100%)">
+        <div class="pf-still__grain"></div>
+        <span style="position:absolute;top:12px;left:12px;color:rgba(255,255,255,0.85)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+        <span style="position:absolute;top:12px;right:12px;color:rgba(255,255,255,0.85);transform:rotate(90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+        <span style="position:absolute;bottom:12px;left:12px;color:rgba(255,255,255,0.85);transform:rotate(-90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+        <span style="position:absolute;bottom:12px;right:12px;color:rgba(255,255,255,0.85);transform:rotate(180deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+
+        <div class="pf-hero__caption">
+          <div class="pf-caption-bar"></div>
+          <div class="pf-caption-name">Capture Day · Day 1</div>
+          <div class="pf-caption-role">Interview block 03 · Memorial Health</div>
+        </div>
+        <span class="pf-tc">TC 09:14:22:08 · BTS</span>
+      </div>
+      <img class="pf-rho-float" src="assets/certified-human-made-badge-light.svg" alt="Real Human Origin"/>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 5 · LEAD BULLETS
+       ============================================ -->
+  <section class="lp-section lp-bullets-section" data-screen-label="05 Lead bullets">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>What you'll learn first</span></div>
+        <h2 class="lp-h">Here's what you'll learn <em>before</em> you spend another dollar on content.</h2>
+      </div>
+    </div>
+
+    <ul class="lp-bullets">
+      <li>
+        <span class="lp-bullets__check"><svg width="18" height="18"><use href="#i-check"/></svg></span>
+        <span>How one two-day capture becomes <strong>a full year of content</strong>, without a single fabricated voice, AI face, or stock cutaway.</span>
+      </li>
+      <li>
+        <span class="lp-bullets__check"><svg width="18" height="18"><use href="#i-check"/></svg></span>
+        <span>Why the <strong>Voice Profile</strong> we build, installed inside your team's own ChatGPT or Claude, writes in your real voice in <em>90 seconds</em> &mdash; and keeps working long after we're gone.</span>
+      </li>
+      <li>
+        <span class="lp-bullets__check"><svg width="18" height="18"><use href="#i-check"/></svg></span>
+        <span>Why <em>"real human origin"</em> is about to be the most valuable signal in marketing &mdash; and why the agencies racing to generate more with AI are quietly commoditizing themselves.</span>
+      </li>
+      <li>
+        <span class="lp-bullets__check"><svg width="18" height="18"><use href="#i-check"/></svg></span>
+        <span>The <strong>Capture Day</strong> approach that turns shoot day into the most meaningful day your team has all year (and the reason the work keeps referring itself).</span>
+      </li>
+      <li>
+        <span class="lp-bullets__check"><svg width="18" height="18"><use href="#i-check"/></svg></span>
+        <span>How the <strong>free Trust Audit</strong> works: 30 minutes, a written report in 48 hours, no pitch. Worth doing whether you hire us or not.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================================
+       SECTION 6 · PROBLEM (bone)
+       ============================================ -->
+  <section class="lp-surface lp-surface--bone" data-screen-label="06 Problem">
+    <div class="lp-section lp-section--loose">
+      <div class="lp-head" style="padding-left:0;padding-right:0">
+        <div class="lp-head__l">
+          <div class="lp-lab lp-lab--ink"><span>The problem</span></div>
+          <h2 class="lp-h lp-h--ink">If you've been here, you already know.</h2>
+        </div>
+      </div>
+
+      <div class="lp-problem">
+        <div>
+          <div class="pf-still" style="aspect-ratio:5/6;background:linear-gradient(160deg,#1A1A1F 0%,#3D3A45 50%,#0A0A0B 100%)">
+            <div class="pf-still__grain"></div>
+            <span style="position:absolute;top:12px;left:12px;color:rgba(255,255,255,0.7)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+            <span style="position:absolute;top:12px;right:12px;color:rgba(255,255,255,0.7);transform:rotate(90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+            <span style="position:absolute;bottom:12px;left:12px;color:rgba(255,255,255,0.7);transform:rotate(-90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+            <span style="position:absolute;bottom:12px;right:12px;color:rgba(255,255,255,0.7);transform:rotate(180deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+            <div style="position:absolute;left:24px;bottom:24px;color:#807A6E;font-family:var(--font-mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase">
+              Stock thumbnail · 0 plays
+            </div>
+            <div style="position:absolute;top:50%;left:0;right:0;text-align:center;transform:translateY(-50%);font-family:var(--font-display);font-style:italic;font-size:96px;color:rgba(255,255,255,0.08);letter-spacing:-0.02em">
+              ◷
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-problem__body">
+          <p>You have a real story. You just haven't been able to package it in a way that earns.</p>
+
+          <p>You hired a crew once. The footage looked great in the room. Then it landed on a page nobody watches.</p>
+
+          <p>You hired an agency for monthly posts. They left when the retainer ran out, and they took the system with them. You rented the work. You never owned it.</p>
+
+          <p>You tried doing it yourself. You ran out of time before you ran out of ideas.</p>
+
+          <p>And now AI is about to flood every feed with content that looks real and isn't. Faces nobody filmed. Voices nobody spoke. Your audience is about to lose the ability to tell what's true. <em>Your real story has to cut through that.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 7 · MECHANISM
+       ============================================ -->
+  <section class="lp-section" id="engine" data-screen-label="07 Mechanism">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>The mechanism</span></div>
+        <h2 class="lp-h">Meet <em>the Trust Engine.</em></h2>
+      </div>
+      <div class="lp-head__r">
+        <p class="lp-deck">
+          The storytelling system that turns two days of capture into a year of authentic content. Hospital running a campaign, founder building a personal brand, local business that wins on reputation &mdash; the story changes, the engine doesn't.
+        </p>
+      </div>
+    </div>
+
+    <div class="lp-mech">
+      <div class="lp-mech__flow">
+        <article class="lp-mech__step lp-mech__step--audit">
+          <div class="lp-mech__head">
+            <span class="lp-mech__no">№ 01</span>
+            <span class="lp-mech__name">Phase one</span>
+          </div>
+          <h3 class="lp-mech__h">Audit.</h3>
+          <p class="lp-mech__body">Free. 30 minutes with Doyle. A written report in 48 hours. We map where your story is, where the gaps are, and what's worth filming.</p>
+          <div class="lp-mech__tag lp-mech__tag--free">
+            <span>Free · 30 min</span>
+            <span>48-hr report</span>
+          </div>
+        </article>
+
+        <article class="lp-mech__step">
+          <div class="lp-mech__head">
+            <span class="lp-mech__no">№ 02</span>
+            <span class="lp-mech__name">Phase two</span>
+          </div>
+          <h3 class="lp-mech__h">Capture.</h3>
+          <p class="lp-mech__body">Two days on site. Day one is interviews and photography. Day two is b-roll. We set the room, bring the coffee, calm the nerves, and capture real moments cleanly.</p>
+          <div class="lp-mech__tag">
+            <span>2 days on site</span>
+            <span>Real people only</span>
+          </div>
+        </article>
+
+        <article class="lp-mech__step">
+          <div class="lp-mech__head">
+            <span class="lp-mech__no">№ 03</span>
+            <span class="lp-mech__name">Phase three</span>
+          </div>
+          <h3 class="lp-mech__h">Library.</h3>
+          <p class="lp-mech__body">Hero film, short cuts, photography, written assets. A Voice Profile delivered as a working AI tool. A searchable Quote Library. Every asset marked real.</p>
+          <div class="lp-mech__tag">
+            <span>6&ndash;8 weeks</span>
+            <span>Yours to own</span>
+          </div>
+        </article>
+
+        <article class="lp-mech__step">
+          <div class="lp-mech__head">
+            <span class="lp-mech__no">№ 04</span>
+            <span class="lp-mech__name">Phase four</span>
+          </div>
+          <h3 class="lp-mech__h">Deploy <em>or</em> compound.</h3>
+          <p class="lp-mech__body">Take the library and run it yourself, or let us run the ongoing deployment. Your call. No retainer minimum.</p>
+          <div class="lp-mech__tag">
+            <span>Optional retainer</span>
+            <span>Cancel any month</span>
+          </div>
+        </article>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:32px;flex-wrap:wrap;gap:16px">
+        <span style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.22em;color:#807A6E">Four phases · No filler</span>
+        <a href="#offer" class="pf-btn pf-btn--ghost">See how it works <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 8 · CREDENTIALS
+       ============================================ -->
+  <section class="lp-section" data-screen-label="08 Credentials">
+    <div class="lp-creds">
+      <div class="lp-creds__l">
+        <div class="pf-still lp-creds__still" style="background:linear-gradient(180deg,#4A463E 0%,#807A6E 100%)">
+          <div class="pf-still__grain"></div>
+          <span style="position:absolute;top:12px;left:12px;color:rgba(255,255,255,0.85)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+          <span style="position:absolute;top:12px;right:12px;color:rgba(255,255,255,0.85);transform:rotate(90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+          <span style="position:absolute;bottom:12px;left:12px;color:rgba(255,255,255,0.85);transform:rotate(-90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+          <span style="position:absolute;bottom:12px;right:12px;color:rgba(255,255,255,0.85);transform:rotate(180deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+          <div class="pf-hero__caption">
+            <div class="pf-caption-bar"></div>
+            <div class="pf-caption-name">Doyle Maurer</div>
+            <div class="pf-caption-role">Founder · Director · Behind every camera</div>
+          </div>
+          <span class="pf-tc">[ FILL · Founder portrait ]</span>
+        </div>
+      </div>
+
+      <div class="lp-creds__r">
+        <div class="lp-lab"><span>Credentials</span></div>
+        <h2 class="lp-h">Who's behind <em>the camera.</em></h2>
+        <div class="lp-creds__body">
+          <p>Pillar &amp; Frame is led by Doyle Maurer. Photojournalism school. 200-plus wedding video days. Hundreds of corporate interviews directed across more than ten countries.</p>
+          <p>Doyle delivers <strong style="color:var(--paper);font-weight:500">every</strong> Trust Audit and creative-directs <strong style="color:var(--paper);font-weight:500">every</strong> engagement personally. No junior account person. No warm-up call.</p>
+        </div>
+        <div class="lp-creds__sig">
+          <div class="lp-creds__stat">
+            <span class="lp-creds__stat-n">200<span style="color:var(--yellow-500);font-style:italic">+</span></span>
+            <span class="lp-creds__stat-l">Wedding video days</span>
+          </div>
+          <div class="lp-creds__stat">
+            <span class="lp-creds__stat-n">10<span style="color:var(--yellow-500);font-style:italic">+</span></span>
+            <span class="lp-creds__stat-l">Countries captured</span>
+          </div>
+          <div class="lp-creds__stat">
+            <span class="lp-creds__stat-n">100<span style="color:var(--yellow-500);font-style:italic">%</span></span>
+            <span class="lp-creds__stat-l">Founder-delivered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 9 · FEATURES TO BENEFITS
+       ============================================ -->
+  <section class="lp-surface lp-surface--ink" data-screen-label="09 Features to benefits">
+    <div class="lp-section">
+      <div class="lp-head" style="padding-left:0;padding-right:0">
+        <div class="lp-head__l">
+          <div class="lp-lab"><span>Features &rarr; benefits</span></div>
+          <h2 class="lp-h">What you get. And <em>why it matters.</em></h2>
+        </div>
+      </div>
+
+      <div class="lp-fb">
+        <div class="lp-fb__table">
+          <div class="lp-fb__row-h">
+            <div>You get</div>
+            <div>Which means</div>
+          </div>
+          <div class="lp-fb__row">
+            <div class="lp-fb__feat">Two days of on-site <em>capture</em></div>
+            <div class="lp-fb__ben"><strong>A year of content</strong> from a single production cycle. One disruption, one calendar week of asks, one ROI to defend.</div>
+          </div>
+          <div class="lp-fb__row">
+            <div class="lp-fb__feat">A <em>Voice Profile</em> installed as an AI tool in your team's ChatGPT or Claude</div>
+            <div class="lp-fb__ben"><strong>A voice-consistent letter, email, or post in 90 seconds.</strong> Faster every month. Owned by your team, not by us.</div>
+          </div>
+          <div class="lp-fb__row">
+            <div class="lp-fb__feat">A searchable <em>Quote Library,</em> tagged by theme, speaker, and use</div>
+            <div class="lp-fb__ben"><strong>The right verbatim quote for the right asset in ten seconds.</strong> Every one attributed. Every one defensible.</div>
+          </div>
+          <div class="lp-fb__row">
+            <div class="lp-fb__feat">The <em>Real Human Origin</em> mark on every asset</div>
+            <div class="lp-fb__ben"><strong>Your audience can tell what's real</strong> in a feed about to flood with what isn't.</div>
+          </div>
+          <div class="lp-fb__row">
+            <div class="lp-fb__feat">Capture Day run as <em>a real experience</em></div>
+            <div class="lp-fb__ben"><strong>A team that remembers the day.</strong> Subjects who become advocates. Referrals that follow.</div>
+          </div>
+          <div class="lp-fb__row">
+            <div class="lp-fb__feat">Three fixed tiers, <em>no retainer minimum</em></div>
+            <div class="lp-fb__ben"><strong>You know the cost before the call.</strong> The work holds the relationship. Not the contract.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 10 · BIG IDEA · Real Human Origin
+       ============================================ -->
+  <section class="lp-section lp-section--loose" data-screen-label="10 Big idea">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>The big idea</span></div>
+        <h2 class="lp-h">We took <em>the opposite bet</em> on AI.</h2>
+      </div>
+      <div class="lp-head__r">
+        <p class="lp-deck">
+          Most agencies are racing to use AI to make more polished content, faster. We treat AI as the deployment layer, not the production layer. That single decision is what makes this an engine instead of a project.
+        </p>
+      </div>
+    </div>
+
+    <div class="lp-idea">
+      <div class="lp-idea__l">
+        <img class="lp-idea__badge" src="assets/certified-human-made-badge-light.svg" alt="Real Human Origin · No AI · No Stock · Verbatim"/>
+      </div>
+
+      <div class="lp-idea__r">
+        <div class="lp-idea__pts">
+          <div class="lp-idea__pt">
+            <span class="lp-idea__pt-h">Feed AI.<br/>Don't fake with it.</span>
+            <span class="lp-idea__pt-b">The Voice Profile and Quote Library ship as deployable tools your team owns and keeps using.</span>
+          </div>
+          <div class="lp-idea__pt">
+            <span class="lp-idea__pt-h">Refuse to<br/>fabricate humans.</span>
+            <span class="lp-idea__pt-b">Every face is a real person we filmed. Every voice is real audio. Every quote is verbatim. We mark it.</span>
+          </div>
+          <div class="lp-idea__pt">
+            <span class="lp-idea__pt-h">Treat capture day<br/>like it matters.</span>
+            <span class="lp-idea__pt-b">Because it's usually the most honest day your team has all year. That's the part no competitor can copy.</span>
+          </div>
+        </div>
+        <p class="lp-idea__kicker">
+          AI can mimic confidence.<br/>
+          It <em>can't mimic courage.</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 11 · SOCIAL PROOF
+       ============================================ -->
+  <section class="lp-surface lp-surface--ink" id="work" data-screen-label="11 Social proof">
+    <div class="lp-section">
+      <div class="lp-head" style="padding-left:0;padding-right:0">
+        <div class="lp-head__l">
+          <div class="lp-lab"><span>Receipts</span></div>
+          <h2 class="lp-h">What the work <em>has produced.</em></h2>
+        </div>
+        <div class="lp-head__r">
+          <p class="lp-deck">
+            Featured below: an independent hospital's Emergency Department capital campaign. One Trust Engine produced the hero film, the soundbite library, donor letter copy, and tools the development team still uses.
+          </p>
+        </div>
+      </div>
+
+      <div class="lp-proof">
+        <div class="lp-case">
+          <div class="lp-case__l">
+            <div class="pf-still lp-case__still" style="background:linear-gradient(135deg,#1A0A3F 0%,#3A12A0 50%,#0A0A0B 100%)">
+              <div class="pf-still__grain"></div>
+              <span style="position:absolute;top:12px;left:12px;color:rgba(255,255,255,0.85)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+              <span style="position:absolute;top:12px;right:12px;color:rgba(255,255,255,0.85);transform:rotate(90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+              <span style="position:absolute;bottom:12px;left:12px;color:rgba(255,255,255,0.85);transform:rotate(-90deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+              <span style="position:absolute;bottom:12px;right:12px;color:rgba(255,255,255,0.85);transform:rotate(180deg)"><svg width="18" height="18"><use href="#i-corner"/></svg></span>
+              <div class="pf-hero__caption">
+                <div class="pf-caption-bar"></div>
+                <div class="pf-caption-name">Memorial Health · Marysville</div>
+                <div class="pf-caption-role">Emergency Department · Capital campaign</div>
+              </div>
+              <span class="pf-tc">[ FILL · Hero film embed ]</span>
+              <button class="pf-play" aria-label="Play hero film">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="7 4 19 12 7 20 7 4"/></svg>
+              </button>
+            </div>
+            <div class="lp-case__cat">Featured engagement · Healthcare · 2025</div>
+          </div>
+
+          <div>
+            <h3 class="lp-case__h">A community hospital's <em>biggest ask in a decade,</em> told in its donors' own words.</h3>
+            <div class="lp-case__body">
+              <p>An independent hospital running a capital campaign for its Emergency Department. One Trust Engine produced the hero film, a soundbite library organized by theme, written copy for donor letters and case-support documents, and a Voice Profile and Quote Library their development team still uses.</p>
+            </div>
+
+            <blockquote class="lp-case__pull">
+              "[<span style="color:#807A6E;font-style:normal;font-family:var(--font-mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase">FILL · Real quote from a named Memorial stakeholder. Pulled from a working-with-us moment, not just the campaign outcome.</span>]"
+              <div class="lp-case__pull-attr">— Named stakeholder · Memorial Foundation</div>
+            </blockquote>
+
+            <div class="lp-case__fill" style="margin-top:24px">
+              <span class="lp-case__fill-tag">Fill</span>
+              Memorial outcome numbers (campaign goal, dollars raised, donors engaged) once verified with Memorial Foundation. Until verified, we keep this story-based, not numbers-based. Nothing fabricated.
+            </div>
+
+            <a href="#" class="lp-case__link" style="margin-top:24px">
+              Read the full case study <svg width="13" height="13"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="lp-stats">
+          <div class="lp-stats__cell">
+            <div class="lp-stats__n">Hundreds</div>
+            <div class="lp-stats__l">of interviews directed</div>
+          </div>
+          <div class="lp-stats__cell">
+            <div class="lp-stats__n">10<em>+</em></div>
+            <div class="lp-stats__l">countries captured</div>
+          </div>
+          <div class="lp-stats__cell">
+            <div class="lp-stats__n">6&ndash;8 <em>wk</em></div>
+            <div class="lp-stats__l">kickoff to library handoff · every engine</div>
+          </div>
+          <div class="lp-stats__cell">
+            <div class="lp-stats__n">100<em>%</em></div>
+            <div class="lp-stats__l">of deliverables carry the Real Human Origin mark</div>
+          </div>
+        </div>
+        <div class="lp-stats__verified" style="padding-left:0;padding-right:0">
+          What the methodology has produced. Verified only. Nothing fabricated.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 12 · OFFER (yellow)
+       ============================================ -->
+  <section class="lp-surface lp-surface--yellow" id="offer" data-screen-label="12 Offer">
+    <div class="lp-section lp-section--loose">
+      <div class="lp-offer">
+        <div class="lp-offer__pre">
+          <span class="pf-bar__dot"></span>
+          The offer
+        </div>
+
+        <h2 class="lp-offer__h">
+          The free Trust Audit.<br/>
+          30 minutes. <em>No pitch.</em>
+        </h2>
+
+        <p class="lp-offer__deck">
+          The easiest way for both of us to find out if there's a fit. The founder runs every one.
+        </p>
+
+        <div class="lp-offer__grid">
+          <div class="lp-offer__cell">
+            <div class="lp-offer__cell-lab">On the call</div>
+            <h3 class="lp-offer__cell-h">30 min with Doyle.</h3>
+            <p class="lp-offer__cell-b">The founder runs every one. No junior account person. No warm-up call. Bring questions; we'll bring the diagnostic.</p>
+          </div>
+          <div class="lp-offer__cell">
+            <div class="lp-offer__cell-lab">After the call</div>
+            <h3 class="lp-offer__cell-h">A written audit in 48 hours.</h3>
+            <p class="lp-offer__cell-b">Yours to keep, whether you hire us or not. Use it to brief us, brief anyone else, or do nothing with it.</p>
+          </div>
+          <div class="lp-offer__cell">
+            <div class="lp-offer__cell-lab">Not on the call</div>
+            <h3 class="lp-offer__cell-h">A pitch.</h3>
+            <p class="lp-offer__cell-b">The Trust Engine proposal lands with the report, as a separate appendix you can act on or ignore.</p>
+          </div>
+        </div>
+
+        <div class="lp-offer__cta">
+          <a href="#" class="pf-btn pf-btn--ink pf-btn--lg" style="font-size:16px;padding:18px 28px">
+            Book the free Trust Audit <svg width="16" height="16"><use href="#i-arrow"/></svg>
+          </a>
+          <span style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(10,10,11,0.6)">
+            Calendar opens in a new tab · Doyle confirms every booking
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 13 · WHAT'S INCLUDED
+       ============================================ -->
+  <section class="lp-section" data-screen-label="13 What's included">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>What's included</span></div>
+        <h2 class="lp-h">What you walk away <em>with.</em></h2>
+      </div>
+      <div class="lp-head__r">
+        <p class="lp-deck">
+          When the audit is free, "bonus" framing reads as a gimmick. So here's what's simply included &mdash; whether you hire us or not.
+        </p>
+      </div>
+    </div>
+
+    <div class="lp-incl">
+      <article class="lp-incl__item">
+        <div class="lp-incl__no">№ 01 · The diagnostic</div>
+        <h3 class="lp-incl__h">The full <em>Pillar Themes Report.</em></h3>
+        <p class="lp-incl__b">Not just the themes we recommend. The full index of every story moment, content gap, and visual motif we found across your channels. Keep it. Use it with anyone.</p>
+      </article>
+
+      <article class="lp-incl__item">
+        <div class="lp-incl__no">№ 02 · The recommendation</div>
+        <h3 class="lp-incl__h">A specific tier and <em>scope.</em></h3>
+        <p class="lp-incl__b">Not "you need content." A real recommendation, scoped to your moment, with a written reason and a draft of what your library could include.</p>
+      </article>
+
+      <article class="lp-incl__item">
+        <div class="lp-incl__no">№ 03 · The standard</div>
+        <h3 class="lp-incl__h">The <em>authenticity standard,</em> applied to your work.</h3>
+        <p class="lp-incl__b">How the Real Human Origin mark, the Voice Profile, and our no-fabrication commitment would show up in your specific library. A working part of the diagnostic.</p>
+      </article>
+
+      <article class="lp-incl__item">
+        <div class="lp-incl__no">№ 04 · The line</div>
+        <h3 class="lp-incl__h">A direct line to <em>the founder.</em></h3>
+        <p class="lp-incl__b">Doyle delivers your audit. Follow-up goes straight to Doyle, answered in hours. Not days. Not by a team you've never met.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 14 · STACK THE VALUE
+       ============================================ -->
+  <section class="lp-surface lp-surface--ink" data-screen-label="14 Stack the value">
+    <div class="lp-section">
+      <div class="lp-head" style="padding-left:0;padding-right:0">
+        <div class="lp-head__l">
+          <div class="lp-lab"><span>What this would cost</span></div>
+          <h2 class="lp-h">What this would cost <em>anywhere else.</em></h2>
+        </div>
+      </div>
+
+      <div class="lp-stack">
+        <div class="lp-stack__list">
+          <div class="lp-stack__row">
+            <div class="lp-stack__row-l">A written content audit from a strategy consultant</div>
+            <div class="lp-stack__row-r">$2,500 &ndash; $5,000</div>
+          </div>
+          <div class="lp-stack__row">
+            <div class="lp-stack__row-l">A pillar-themes mapping from a brand agency</div>
+            <div class="lp-stack__row-r">$1,500 &ndash; $3,500</div>
+          </div>
+          <div class="lp-stack__row">
+            <div class="lp-stack__row-l">A content gap analysis across channels</div>
+            <div class="lp-stack__row-r">$1,000 &ndash; $2,500</div>
+          </div>
+          <div class="lp-stack__row">
+            <div class="lp-stack__row-l">A scoped engagement recommendation</div>
+            <div class="lp-stack__row-r lp-stack__row--note">usually buried inside a sales call you have to sit through</div>
+          </div>
+        </div>
+
+        <div class="lp-stack__total">
+          <div class="lp-stack__total-l">Typical market rate for what's in the Trust Audit</div>
+          <div class="lp-stack__total-r">$5,000 &ndash; $10,000+</div>
+        </div>
+
+        <div class="lp-stack__free">
+          <div class="lp-stack__free-l">What it costs <em>from us</em></div>
+          <div class="lp-stack__free-r">Free.</div>
+        </div>
+
+        <div class="lp-stack__commit">
+          <div>What you commit in return</div>
+          <div>30 minutes · Nothing else</div>
+        </div>
+
+        <div class="lp-stack__cta">
+          <a href="#" class="pf-btn pf-btn--spark pf-btn--lg">
+            Book the free Trust Audit <svg width="16" height="16"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 15 · GUARANTEE (bone)
+       ============================================ -->
+  <section class="lp-surface lp-surface--bone" data-screen-label="15 Guarantee">
+    <div class="lp-section lp-section--loose">
+      <div class="lp-head" style="padding-left:0;padding-right:0">
+        <div class="lp-head__l">
+          <div class="lp-lab lp-lab--ink"><span>Reverse the risk</span></div>
+          <h2 class="lp-h lp-h--ink">The guarantee, <em>in writing.</em></h2>
+        </div>
+      </div>
+
+      <div class="lp-guar">
+        <article class="lp-guar__item">
+          <div class="lp-guar__seal"><span class="lp-guar__seal-dot"></span>Commitment 01</div>
+          <h3 class="lp-guar__h">No pitch <em>on the call.</em></h3>
+          <p class="lp-guar__b">The audit is a diagnostic. The Trust Engine proposal arrives with the report as a separate appendix you can act on or ignore.</p>
+        </article>
+
+        <article class="lp-guar__item">
+          <div class="lp-guar__seal"><span class="lp-guar__seal-dot"></span>Commitment 02</div>
+          <h3 class="lp-guar__h">You keep the report, <em>no strings.</em></h3>
+          <p class="lp-guar__b">Delivered in 48 hours. Use it to brief us, brief anyone else, or do nothing. We don't claim ownership.</p>
+        </article>
+
+        <article class="lp-guar__item">
+          <div class="lp-guar__seal"><span class="lp-guar__seal-dot"></span>Commitment 03</div>
+          <h3 class="lp-guar__h">Real Human Origin, <em>guaranteed.</em></h3>
+          <p class="lp-guar__b">Every deliverable carries the mark, committed in writing in every proposal. If we ever ship a fabricated face, a cloned voice, or a synthetic testimonial, the engagement is voidable with a full refund.</p>
+        </article>
+
+        <article class="lp-guar__item">
+          <div class="lp-guar__seal"><span class="lp-guar__seal-dot"></span>Commitment 04</div>
+          <h3 class="lp-guar__h">No retainer minimum, <em>ever.</em></h3>
+          <p class="lp-guar__b">Cancel any month. The work compounds, or it doesn't. The contract never holds you. The library does.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 16 · SCARCITY
+       ============================================ -->
+  <section class="lp-section" data-screen-label="16 Scarcity">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>Honest urgency</span></div>
+        <h2 class="lp-h">No countdown clocks. <em>One real constraint.</em></h2>
+      </div>
+    </div>
+
+    <div class="lp-scar">
+      <div class="lp-scar__body">
+        <p>The founder's calendar. Doyle delivers every audit and creative-directs every engine personally.</p>
+        <p>We hold a limited number of Trust Audits each week. When the calendar fills, the next opening moves to the following week. No manufactured urgency. The slot you don't book today is the one someone else will.</p>
+
+        <div style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:8px 14px;border:1px dashed var(--shale);font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.22em;color:#807A6E">
+          <span style="display:inline-block;width:6px;height:6px;background:var(--yellow-500);border-radius:999px"></span>
+          [ FILL · Doyle to lock public capacity line ]
+        </div>
+
+        <div class="lp-scar__cta">
+          <a href="#" class="pf-btn pf-btn--spark pf-btn--lg">
+            Book the free Trust Audit <svg width="16" height="16"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="lp-cal">
+        <div class="lp-cal__head">
+          <div class="lp-cal__week">Week of June 1</div>
+          <div class="lp-cal__cap">Capacity · live</div>
+        </div>
+        <div class="lp-cal__grid">
+          <div class="lp-cal__slot lp-cal__slot--taken"><span class="lp-cal__slot-d">Mon</span><span class="lp-cal__slot-t">9:30</span></div>
+          <div class="lp-cal__slot lp-cal__slot--taken"><span class="lp-cal__slot-d">Tue</span><span class="lp-cal__slot-t">11:00</span></div>
+          <div class="lp-cal__slot lp-cal__slot--open"><span class="lp-cal__slot-d">Wed</span><span class="lp-cal__slot-t">2:00</span></div>
+          <div class="lp-cal__slot lp-cal__slot--taken"><span class="lp-cal__slot-d">Thu</span><span class="lp-cal__slot-t">10:30</span></div>
+          <div class="lp-cal__slot lp-cal__slot--open"><span class="lp-cal__slot-d">Fri</span><span class="lp-cal__slot-t">3:30</span></div>
+        </div>
+        <div class="lp-cal__foot">
+          2 of 5 slots remain this week · Next week opens Friday at 5pm ET
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 17 · P.S.
+       ============================================ -->
+  <section class="lp-surface lp-surface--ink" data-screen-label="17 P.S.">
+    <div class="lp-section lp-section--loose">
+      <div class="lp-ps">
+        <div class="lp-ps__mark">P.S.</div>
+        <div class="lp-ps__body">
+          <p>If you skipped to the bottom, here's the whole thing in one breath.</p>
+          <p>Spend 30 minutes. Walk away with a written diagnostic on your content, a recommendation on which tier fits, and a draft of what your library could look like. It costs nothing. You keep the report whether you hire us or not. Doyle delivers <em>every one</em> personally.</p>
+          <p>The agencies racing to AI-generate everything are commoditizing themselves. The ones still saying <em>"we don't touch AI"</em> are pretending it's 2019. We took the real position. AI as the deployment layer. Humans as the production layer. Real moments on every asset. Tools your team runs in its own voice for years.</p>
+          <p>If that resonates, book the call.</p>
+        </div>
+
+        <div class="lp-ps__sig">
+          <span class="lp-ps__sig-name">Doyle<em>.</em></span>
+          <span class="lp-ps__sig-role">Founder · Pillar &amp; Frame</span>
+        </div>
+
+        <div class="lp-ps__cta">
+          <a href="#" class="pf-btn pf-btn--spark pf-btn--lg">
+            Book the free Trust Audit <svg width="16" height="16"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRICING
+       ============================================ -->
+  <section class="lp-section" id="pricing" data-screen-label="Pricing">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>Pricing</span></div>
+        <h2 class="lp-h">Three tiers. <em>One engine.</em></h2>
+      </div>
+    </div>
+
+    <div class="lp-price">
+      <div class="lp-price__grid">
+        <article class="lp-tier">
+          <div class="lp-tier__lab">Tier 01 · Local</div>
+          <h3 class="lp-tier__name">Foundation</h3>
+          <div class="lp-tier__price">$5,000</div>
+          <div class="lp-tier__retainer">Optional retainer · $1,650/mo · No minimum</div>
+          <p class="lp-tier__sub">For owner-operated businesses that win on reputation and want to win online too.</p>
+          <div class="lp-tier__cta">
+            <a href="#offer" class="pf-btn pf-btn--ghost">Book the free Trust Audit <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="lp-tier lp-tier--feature">
+          <div class="lp-tier__lab">Tier 02 · Growth</div>
+          <h3 class="lp-tier__name">Foundation</h3>
+          <div class="lp-tier__price">$15,000 &ndash; $25,000</div>
+          <div class="lp-tier__retainer">Optional retainer · $5,000 &ndash; $8,000/mo · No minimum</div>
+          <p class="lp-tier__sub">For mid-market product or service companies and mission-driven orgs running a campaign.</p>
+          <div class="lp-tier__cta">
+            <a href="#offer" class="pf-btn pf-btn--spark">Book the free Trust Audit <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="lp-tier">
+          <div class="lp-tier__lab">Tier 03 · Enterprise</div>
+          <h3 class="lp-tier__name">Foundation</h3>
+          <div class="lp-tier__price">From $40,000</div>
+          <div class="lp-tier__retainer">Custom retainer · No minimum</div>
+          <p class="lp-tier__sub">For multi-location, multi-stakeholder, or multi-campaign organizations needing embedded creative direction.</p>
+          <div class="lp-tier__cta">
+            <a href="#offer" class="pf-btn pf-btn--ghost">Book the free Trust Audit <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="pf-footer" id="faq">
+  <div class="pf-footer__top">
+    <div class="pf-footer__brand">
+      <img src="assets/logo-monogram.svg" alt="" style="width:56px;height:56px;color:#F1ECE2"/>
+      <div>
+        <div class="pf-footer__name">Pillar <em>&amp;</em> Frame</div>
+        <div class="pf-footer__tag">Authentic storytelling, productized.</div>
+      </div>
+    </div>
+    <p class="lp-footer-note">
+      Built in Ohio.<br/>
+      Deployed everywhere.
+    </p>
+  </div>
+
+  <div class="pf-footer__cols">
+    <div class="pf-footer__col">
+      <div class="pf-footer__head">Pillar &amp; Frame</div>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Our Authenticity Standard</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="pf-footer__col">
+      <div class="pf-footer__head">Product</div>
+      <ul>
+        <li><a href="#engine">How It Works</a></li>
+        <li><a href="#work">Case Studies</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#offer">Trust Audit</a></li>
+      </ul>
+    </div>
+    <div class="pf-footer__col">
+      <div class="pf-footer__head">Connect</div>
+      <ul>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="mailto:hello@pillarandframe.com">Email</a></li>
+      </ul>
+    </div>
+    <div class="pf-footer__col" style="text-align:right">
+      <img class="pf-footer__rho" src="assets/certified-human-made-badge-light.svg" alt="Real Human Origin"/>
+    </div>
+  </div>
+
+  <div class="pf-footer__bottom">
+    <div class="pf-footer__credits">
+      <span>© Pillar &amp; Frame · 2026</span>
+      <span>·</span>
+      <a href="#">Privacy</a>
+      <span>·</span>
+      <a href="#">Terms</a>
+    </div>
+    <div class="pf-footer__credits">
+      <span>Real Human Origin · No AI · No Stock · Verbatim · Always</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Light scroll-spy for nav active state.
+  (function(){
+    const links = document.querySelectorAll(".pf-nav__links .pf-link");
+    const map = {};
+    links.forEach(l => {
+      const id = l.getAttribute("href").replace("#","");
+      if (id) map[id] = l;
+    });
+    const ids = Object.keys(map);
+    if (!ids.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove("is-active"));
+          const id = e.target.id;
+          if (map[id]) map[id].classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  })();
+</script>
+
 </body>
 </html>

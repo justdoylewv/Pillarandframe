@@ -1,0 +1,307 @@
+/* =========================================================================
+   PILLAR & FRAME — Foundations
+   Colors, type, spacing, motion, elevation.
+   Three colors hold the system: purple (signature), black (base), yellow (spark).
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ---------------------------------------------------------------------
+     COLOR — RAW PALETTE
+     Three families. Locked. Nothing else gets to be a "brand" color.
+     --------------------------------------------------------------------- */
+
+  /* Purple — the signature. Lead with it. Premium, creative, unexpected
+     in trust categories. Never reads as blue, never reads as pink. */
+  --purple-1000: #1A0A3F; /* near-black violet — surface depth on dark UI */
+  --purple-900:  #260A6E;
+  --purple-800:  #3A12A0;
+  --purple-700:  #4A1CC4;
+  --purple-600:  #5B27D4; /* SIGNATURE — the one that should make people look */
+  --purple-500:  #7849E0;
+  --purple-400:  #9D78EC;
+  --purple-300:  #C0A4F4;
+  --purple-200:  #DCCAFA;
+  --purple-100:  #EFE6FB; /* large soft fills, paper-light surfaces */
+
+  /* Black — the cinematic base. Most of the brand lives here.
+     A subtle violet undertone separates us from generic-tech black. */
+  --black:       #0A0A0B; /* true black for film frames / hero surfaces */
+  --ink:         #141319; /* off-black surface — slight violet warmth */
+  --coal:        #1F1D26; /* card surface on dark — stacks on ink */
+  --shale:       #2A2733; /* hairline borders on dark, divider tone */
+
+  /* Yellow — the spark. Punctuation, not paragraphs.
+     Vivid, citric, never gold/mustard. */
+  --yellow-700:  #B58B00; /* pressed state / printed feel */
+  --yellow-600:  #E6B800; /* hover on light surfaces */
+  --yellow-500:  #FFCE1A; /* SIGNATURE spark */
+  --yellow-400:  #FFDC55;
+  --yellow-300:  #FFE889;
+  --yellow-200:  #FFF1B8;
+  --yellow-100:  #FFF8DA; /* soft tint for large fills, highlight bars */
+
+  /* Neutrals — warm grays. We are a film studio, not a SaaS dashboard.
+     Bone/paper for light layouts; ash for hierarchy on white. */
+  --paper:       #FAF8F3; /* default light surface */
+  --bone:        #F1ECE2; /* slightly warmer off-white — pull-quote pages */
+  --ash-100:     #E5DFD3;
+  --ash-300:     #BFB7A8;
+  --ash-500:     #807A6E;
+  --ash-700:     #4A463E;
+  --ash-900:     #1F1D17;
+
+  /* ---------------------------------------------------------------------
+     COLOR — SEMANTIC TOKENS
+     Use these in components. The raw palette is for the system itself.
+     Light surfaces by default; flip via [data-theme="dark"].
+     --------------------------------------------------------------------- */
+  --bg:          var(--paper);
+  --bg-elev:     #FFFFFF;
+  --bg-quote:    var(--bone);
+
+  --fg:          var(--black);
+  --fg-muted:    var(--ash-700);
+  --fg-subtle:   var(--ash-500);
+
+  --rule:        var(--ash-100);   /* hairline divider */
+  --rule-strong: var(--ash-300);
+
+  --accent:      var(--purple-600);
+  --accent-ink:  var(--purple-900);
+  --accent-soft: var(--purple-100);
+
+  --spark:       var(--yellow-500);
+  --spark-soft:  var(--yellow-100);
+  --spark-ink:   var(--yellow-700);
+
+  /* Focus + selection */
+  --focus-ring:  var(--purple-600);
+  --selection:   var(--yellow-300);
+}
+
+/* Dark theme — the default world of Pillar & Frame.
+   Use this whenever you want film-studio mode. */
+[data-theme="dark"] {
+  --bg:          var(--black);
+  --bg-elev:     var(--ink);
+  --bg-quote:    var(--coal);
+
+  --fg:          var(--paper);
+  --fg-muted:    #B7B0A0;
+  --fg-subtle:   var(--ash-500);
+
+  --rule:        var(--shale);
+  --rule-strong: #3D3947;
+
+  --accent:      var(--purple-500); /* slightly lighter on dark for legibility */
+  --accent-ink:  var(--purple-300);
+  --accent-soft: var(--purple-1000);
+
+  --spark:       var(--yellow-500);
+  --spark-soft:  rgba(255, 206, 26, 0.14);
+  --spark-ink:   var(--yellow-300);
+}
+
+/* =========================================================================
+   TYPE
+   Editorial display (Instrument Serif) + workhorse sans (Geist)
+   + mono (Geist Mono) for credits, timecode, labels.
+   ========================================================================= */
+:root {
+  --font-display: "Instrument Serif", "Times New Roman", "Cormorant Garamond", serif;
+  --font-sans:    "Geist", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "Geist Mono", "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Type scale — modular, large at the top.
+     Display sizes are generous; this is a brand that takes up space. */
+  --t-mega:    clamp(56px, 9vw, 168px);   /* film-poster hero */
+  --t-display: clamp(44px, 6.5vw, 112px); /* primary headlines */
+  --t-h1:      clamp(36px, 4.5vw, 72px);
+  --t-h2:      clamp(28px, 3.2vw, 48px);
+  --t-h3:      24px;
+  --t-h4:      20px;
+  --t-body:    17px;   /* the workhorse — generous for boards + execs */
+  --t-body-lg: 19px;
+  --t-small:   14px;
+  --t-micro:   12px;   /* labels, credits, timecode */
+
+  --lh-tight:  0.95;
+  --lh-snug:   1.08;
+  --lh-body:   1.55;
+  --lh-loose:  1.7;
+
+  --track-display: -0.018em; /* serif display: tight */
+  --track-body:    -0.005em;
+  --track-label:    0.16em;  /* small-caps / credits — generous tracking */
+
+  /* ---------------------------------------------------------------------
+     SEMANTIC TYPE — apply directly with class names or copy into your
+     own selectors. Body inherits font-sans by default.
+     --------------------------------------------------------------------- */
+}
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--track-body);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.t-mega,
+.t-display,
+.t-h1,
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Instrument Serif has one weight; rely on size + italic */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+}
+
+.t-mega    { font-size: var(--t-mega); }
+.t-display { font-size: var(--t-display); line-height: var(--lh-snug); }
+.t-h1      { font-size: var(--t-h1);    line-height: var(--lh-snug); }
+.t-h2      { font-size: var(--t-h2);    line-height: var(--lh-snug); }
+
+.t-h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--t-h3);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.t-h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--t-h4);
+  line-height: 1.3;
+}
+
+.t-body    { font-size: var(--t-body); line-height: var(--lh-body); text-wrap: pretty; }
+.t-body-lg { font-size: var(--t-body-lg); line-height: var(--lh-body); text-wrap: pretty; }
+.t-small   { font-size: var(--t-small); line-height: 1.5; }
+
+/* Label / credit style — the filmstrip voice.
+   All-caps, mono, generously tracked. Use sparingly. */
+.t-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--track-label);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+/* Italic display — Instrument Serif's italic is a genuine secondary voice.
+   Use for emphasis inside a headline, or as a single-word stylistic accent. */
+.t-italic { font-style: italic; }
+
+/* Pull-quote — the heart of our system. Real human words deserve scale. */
+.t-quote {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 56px);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+/* =========================================================================
+   SPACING + RADIUS + BORDER
+   Tight system. Rectangles dominate (film frames). Soft radii are rare.
+   ========================================================================= */
+:root {
+  --s-0:  0px;
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+  --s-11: 192px;
+
+  /* Radii — kept conservative. Film frames are sharp.
+     We use square corners as a brand statement; small radius for inputs. */
+  --r-0:  0px;       /* default — most surfaces */
+  --r-1:  2px;       /* inputs, chips */
+  --r-2:  4px;       /* buttons (still nearly square) */
+  --r-pill: 999px;   /* badges, the Real Human Origin mark */
+
+  /* Borders — hairline is the workhorse */
+  --border-hair:   1px solid var(--rule);
+  --border-strong: 1px solid var(--rule-strong);
+  --border-accent: 1.5px solid var(--accent);
+}
+
+/* =========================================================================
+   ELEVATION
+   We don't lean on shadows — black surfaces stack via tone, light surfaces
+   stack via hairlines. These exist for the few cases that need them.
+   ========================================================================= */
+:root {
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(10, 10, 11, 0.06), 0 0 0 1px rgba(10, 10, 11, 0.04);
+  --shadow-2: 0 8px 24px -8px rgba(10, 10, 11, 0.12), 0 0 0 1px rgba(10, 10, 11, 0.04);
+  --shadow-3: 0 24px 64px -16px rgba(10, 10, 11, 0.28); /* modal-level */
+  --shadow-spark: 0 0 0 3px var(--yellow-100); /* focus halo on light */
+}
+
+/* =========================================================================
+   MOTION
+   Restrained, cinematic. No bounce. Like a film cut or a slow dissolve.
+   ========================================================================= */
+:root {
+  --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);  /* slow-in, decisive out */
+  --ease-cut:    cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-instant: 80ms;
+  --dur-fast:    160ms;
+  --dur-med:     280ms;
+  --dur-slow:    520ms;
+  --dur-film:    900ms; /* hero entrances, title-card holds */
+}
+
+/* =========================================================================
+   GLOBAL UTILITIES
+   ========================================================================= */
+::selection { background: var(--selection); color: var(--black); }
+
+.rule-hair   { border-top: var(--border-hair); }
+.rule-strong { border-top: var(--border-strong); }
+
+.surface-dark  { background: var(--black); color: var(--paper); }
+.surface-ink   { background: var(--ink);   color: var(--paper); }
+.surface-paper { background: var(--paper); color: var(--black); }
+.surface-bone  { background: var(--bone);  color: var(--black); }
+
+.spark-mark {
+  background: var(--yellow-500);
+  color: var(--black);
+  padding: 0 0.18em;
+  font-weight: inherit;
+}
+
+/* Brand wordmark helper — Pillar & Frame set in the display face with a
+   pronounced italic ampersand. The ampersand is the hero of the wordmark. */
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.brand-wordmark .amp {
+  font-style: italic;
+  font-feature-settings: "salt" 1;
+  color: var(--accent);
+  padding: 0 0.04em;
+}

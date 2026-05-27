@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pillar &amp; Frame">
+  <!-- Two pillars -->
+  <rect x="12" y="10" width="5" height="44" fill="currentColor"/>
+  <rect x="47" y="10" width="5" height="44" fill="currentColor"/>
+  <!-- Frame rule connecting the pillars -->
+  <rect x="17" y="29" width="30" height="2" fill="currentColor"/>
+  <!-- Yellow spark -->
+  <circle cx="32" cy="40" r="3" fill="#FFCE1A"/>
+</svg>

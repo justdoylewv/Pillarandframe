@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Certified Human Made">
+  <defs>
+    <path id="chmTopD" d="M 120,120 m -92,0 a 92,92 0 0,1 184,0" fill="none"></path>
+    <path id="chmBottomD" d="M 120,120 m 92,0 a 92,92 0 0,1 -184,0" fill="none"></path>
+  </defs>
+
+  <g fill="#0A0A0B">
+    <g transform="translate(120 120)">
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(0)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(11.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(22.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(33.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(45)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(56.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(67.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(78.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(90)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(101.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(112.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(123.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(135)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(146.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(157.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(168.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(180)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(191.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(202.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(213.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(225)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(236.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(247.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(258.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(270)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(281.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(292.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(303.75)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(315)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(326.25)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(337.5)"></rect>
+      <rect x="-1.5" y="-118" width="3" height="8" transform="rotate(348.75)"></rect>
+    </g>
+  </g>
+
+  <circle cx="120" cy="120" r="108" fill="none" stroke="#0A0A0B" stroke-width="1.5"></circle>
+  <circle cx="120" cy="120" r="102" fill="none" stroke="#0A0A0B" stroke-width="0.75" opacity="0.55"></circle>
+
+  <g transform="translate(120 120)" fill="#0A0A0B" opacity="0.10">
+    <polygon points="0,-70 3,0 -3,0"></polygon>
+    <g transform="rotate(15)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(30)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(45)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(60)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(75)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(90)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(105)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(120)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(135)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(150)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(165)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(180)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(195)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(210)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(225)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(240)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(255)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(270)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(285)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(300)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(315)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(330)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+    <g transform="rotate(345)"><polygon points="0,-70 3,0 -3,0"></polygon></g>
+  </g>
+
+  <circle cx="120" cy="120" r="76" fill="none" stroke="#0A0A0B" stroke-width="1.5"></circle>
+  <circle cx="120" cy="120" r="72" fill="none" stroke="#0A0A0B" stroke-width="0.5" opacity="0.45"></circle>
+
+  <text fill="#0A0A0B" font-family="&#39;Geist Mono&#39;, ui-monospace, &#39;SFMono-Regular&#39;, Menlo, monospace" font-size="13" font-weight="600" letter-spacing="3.6">
+    <textPath href="#chmTopD" startOffset="50%" text-anchor="middle">CERTIFIED · HUMAN · MADE</textPath>
+  </text>
+  <text fill="#0A0A0B" font-family="&#39;Geist Mono&#39;, ui-monospace, &#39;SFMono-Regular&#39;, Menlo, monospace" font-size="10" font-weight="500" letter-spacing="2.4">
+    <textPath href="#chmBottomD" startOffset="50%" text-anchor="middle">PILLAR &amp; FRAME · OHIO · EST. 2021</textPath>
+  </text>
+
+  <!-- Center monogram: two pillars + frame rule + yellow spark (dark variant) -->
+  <g transform="translate(120 120)" fill="#0A0A0B">
+    <rect x="-30" y="-32" width="8" height="64"></rect>
+    <rect x="22" y="-32" width="8" height="64"></rect>
+    <rect x="-22" y="-3" width="44" height="3"></rect>
+  </g>
+  <circle cx="120" cy="136" r="5" fill="#FFCE1A"></circle>
+</svg>
