@@ -541,15 +541,120 @@
         </div>
 
         <div class="lp-offer__cta">
-          <a href="#" class="pf-btn pf-btn--ink pf-btn--lg" style="font-size:16px;padding:18px 28px">
+          <a href="#apply" class="pf-btn pf-btn--ink pf-btn--lg" style="font-size:16px;padding:18px 28px">
             Book a 30-minute call <svg width="16" height="16"><use href="#i-arrow"/></svg>
           </a>
           <span style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(10,10,11,0.6)">
-            Calendar opens in a new tab · Every booking confirmed by Pillar &amp; Frame
+            Application is below · We come back inside 48 hours · Every booking confirmed by Pillar &amp; Frame
           </span>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ============================================
+       APPLY · The actual application form
+       ============================================ -->
+  <section class="lp-section" id="apply" data-screen-label="12b Apply">
+    <div class="lp-head" style="padding-left:0;padding-right:0">
+      <div class="lp-head__l">
+        <div class="lp-lab"><span>Apply</span></div>
+        <h2 class="lp-h">Tell us about your company. <em>We come back inside 48 hours.</em></h2>
+      </div>
+      <div class="lp-head__r">
+        <p class="lp-deck">
+          If it looks like a fit, we book the 30-minute strategy call. If it does not, we say so and tell you why. No follow-up sequence. No nurture emails. Either way, you get an honest read.
+        </p>
+      </div>
+    </div>
+
+    <!--
+      Wire this form to a real endpoint before launch:
+      - Formspree:      action="https://formspree.io/f/YOUR_FORM_ID"
+      - GoHighLevel:    action="https://services.leadconnectorhq.com/hooks/<...>"
+      - Vercel API:     action="/api/apply" + create api/apply.js
+      Until then, the form will POST to the placeholder and the JS
+      handler below will show a generic error.
+    -->
+    <form class="lp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Authority Engine application"/>
+
+      <div class="lp-form__row">
+        <label class="lp-form__field">
+          <span class="lp-form__label">Full name</span>
+          <input type="text" name="name" required autocomplete="name" placeholder="Your name"/>
+        </label>
+        <label class="lp-form__field">
+          <span class="lp-form__label">Work email</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="you@company.com"/>
+        </label>
+      </div>
+
+      <div class="lp-form__row">
+        <label class="lp-form__field">
+          <span class="lp-form__label">Company</span>
+          <input type="text" name="company" required autocomplete="organization" placeholder="Company name"/>
+        </label>
+        <label class="lp-form__field">
+          <span class="lp-form__label">Your role</span>
+          <input type="text" name="role" required autocomplete="organization-title" placeholder="Founder, CEO, Head of..."/>
+        </label>
+      </div>
+
+      <div class="lp-form__row">
+        <label class="lp-form__field">
+          <span class="lp-form__label">Annual revenue</span>
+          <select name="revenue" required>
+            <option value="" disabled selected>Choose a range</option>
+            <option value="under-5m">Under $5M</option>
+            <option value="5-10m">$5M to $10M</option>
+            <option value="10-25m">$10M to $25M</option>
+            <option value="25-50m">$25M to $50M</option>
+            <option value="over-50m">Over $50M</option>
+          </select>
+        </label>
+        <label class="lp-form__field">
+          <span class="lp-form__label">Marketing &amp; growth budget</span>
+          <select name="decision_maker" required>
+            <option value="" disabled selected>Where you sit on it</option>
+            <option value="own">I own the decision</option>
+            <option value="shared">Shared decision</option>
+            <option value="influence">I influence it</option>
+            <option value="other">Someone else owns it</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="lp-form__field">
+        <span class="lp-form__label">What does your company sell, and who buys it?</span>
+        <input type="text" name="what_you_sell" required placeholder="One line. Product or service, and the kind of buyer."/>
+      </label>
+
+      <label class="lp-form__field">
+        <span class="lp-form__label">What is the biggest constraint on your authority position right now?</span>
+        <textarea name="constraint" rows="4" required placeholder="The honest version. Time, system, story, distribution, something else."></textarea>
+      </label>
+
+      <label class="lp-form__field">
+        <span class="lp-form__label">Anything else worth knowing? (optional)</span>
+        <textarea name="notes" rows="3" placeholder="Context that would help us read the fit."></textarea>
+      </label>
+
+      <!-- Honeypot for bots. Real users will not fill this. -->
+      <label class="lp-form__honeypot" aria-hidden="true">
+        Website
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"/>
+      </label>
+
+      <div class="lp-form__foot">
+        <button type="submit" class="pf-btn pf-btn--spark pf-btn--lg">
+          Send the application <svg width="16" height="16"><use href="#i-arrow"/></svg>
+        </button>
+        <span class="lp-form__note">
+          We read every one personally. If you are a fit, you get a calendar link. If not, you get the read on why, and we both move on.
+        </span>
+      </div>
+    </form>
   </section>
 
   <!-- ============================================
@@ -834,7 +939,7 @@
         </div>
 
         <div class="lp-ps__cta">
-          <a href="#" class="pf-btn pf-btn--spark pf-btn--lg">
+          <a href="#apply" class="pf-btn pf-btn--spark pf-btn--lg">
             Book a 30-minute call <svg width="16" height="16"><use href="#i-arrow"/></svg>
           </a>
         </div>
@@ -930,6 +1035,48 @@
       });
     }, { rootMargin: "-30% 0px -60% 0px" });
     ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  })();
+
+  // Apply form: AJAX submit so the success state renders in-page
+  // instead of bouncing to the form provider's thank-you screen.
+  // Falls back to a normal POST if fetch fails.
+  (function(){
+    const form = document.querySelector(".lp-form");
+    if (!form) return;
+    const successHTML = `
+      <div class="lp-form__success">
+        <div class="lp-form__success-mark">Application received.</div>
+        <p>Thanks. We read every one personally and come back inside 48 hours, business days. If you are a fit, you get a calendar link. If not, you get the read on why.</p>
+        <p class="lp-form__success-meta">Pillar &amp; Frame</p>
+      </div>`;
+    form.addEventListener("submit", async (e) => {
+      const submit = form.querySelector("button[type=submit]");
+      // Honeypot: silently swallow bots.
+      const honey = form.querySelector("input[name='_gotcha']");
+      if (honey && honey.value) { e.preventDefault(); return; }
+      // Native validity check first.
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      e.preventDefault();
+      const originalLabel = submit.innerHTML;
+      submit.disabled = true;
+      submit.innerHTML = "Sending…";
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+        if (!res.ok) throw new Error("send-failed");
+        form.outerHTML = successHTML;
+      } catch (err) {
+        submit.disabled = false;
+        submit.innerHTML = originalLabel;
+        const note = form.querySelector(".lp-form__note");
+        if (note) {
+          note.innerHTML = 'Something went wrong sending the form. Email <a href="mailto:hello@pillarandframe.com" style="color:var(--yellow-500);text-decoration:underline">hello@pillarandframe.com</a> and we will pick it up from there.';
+        }
+      }
+    });
   })();
 </script>
 

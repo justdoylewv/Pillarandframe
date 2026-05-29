@@ -829,6 +829,122 @@
 }
 
 /* ============================================
+   APPLY FORM
+   ============================================ */
+.lp-form {
+  max-width: 820px;
+  display: flex; flex-direction: column;
+  gap: 22px;
+}
+.lp-form__row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.lp-form__field {
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+.lp-form__label {
+  font-family: var(--font-mono); font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.22em;
+  color: #B7B0A0;
+}
+.lp-form input[type="text"],
+.lp-form input[type="email"],
+.lp-form select,
+.lp-form textarea {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--paper);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--shale);
+  border-radius: 0;
+  padding: 14px 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 160ms, background 160ms;
+}
+.lp-form input::placeholder,
+.lp-form textarea::placeholder {
+  color: #6E6859;
+}
+.lp-form input:focus,
+.lp-form select:focus,
+.lp-form textarea:focus {
+  border-color: var(--yellow-500);
+  background: rgba(255,206,26,0.04);
+}
+.lp-form input:invalid:not(:placeholder-shown),
+.lp-form select:invalid,
+.lp-form textarea:invalid:not(:placeholder-shown) {
+  /* keep silent — we only show validity on submit, not while typing */
+}
+.lp-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #B7B0A0 50%),
+    linear-gradient(135deg, #B7B0A0 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) 22px,
+    calc(100% - 16px) 22px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding-right: 40px;
+}
+.lp-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.lp-form__honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+.lp-form__foot {
+  display: flex; flex-direction: column;
+  gap: 16px; align-items: flex-start;
+  margin-top: 12px;
+  padding-top: 28px;
+  border-top: 1px solid var(--shale);
+}
+.lp-form__note {
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: #807A6E;
+  line-height: 1.7;
+  max-width: 60ch;
+}
+.lp-form__success {
+  max-width: 60ch;
+  padding: 36px 0;
+  border-top: 1px solid var(--shale);
+  border-bottom: 1px solid var(--shale);
+}
+.lp-form__success-mark {
+  display: inline-block;
+  font-family: var(--font-display); font-style: italic;
+  font-size: 56px; line-height: 1; letter-spacing: -0.02em;
+  color: var(--yellow-500);
+  margin-bottom: 24px;
+}
+.lp-form__success p {
+  font-size: 18px; line-height: 1.55;
+  color: var(--paper);
+  margin: 0 0 14px;
+}
+.lp-form__success-meta {
+  font-family: var(--font-mono); font-size: 11px !important;
+  text-transform: uppercase; letter-spacing: 0.22em;
+  color: #807A6E !important;
+  margin-top: 22px !important;
+}
+
+/* ============================================
    Responsive — gentle breakpoints
    ============================================ */
 @media (max-width: 1100px) {
@@ -857,4 +973,5 @@
   .lp-offer__grid { grid-template-columns: 1fr; }
   .lp-offer__cell { border-right: none; border-bottom: 1px solid rgba(10,10,11,0.2); }
   .lp-offer__cell:last-child { border-bottom: none; }
+  .lp-form__row { grid-template-columns: 1fr; }
 }
