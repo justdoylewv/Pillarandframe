@@ -70,40 +70,49 @@ The feed stays full. The leadership stays visible. The proof does the selling be
       "A hospital foundation films the story of its new emergency department while it's built. Donor films now, opening-day content later, from the same effort.",
     story: `"Emergencies don't wait for convenience."
 
-That is the first line of the film, and it is the whole argument.
+That is the first line of the film. It is also the whole reason we made it.
 
-Memorial Health's emergency department in Marysville, Ohio opened in the late 1990s. Today it runs at a capacity the community outgrew years ago. Essentially a 15-bed ER. Hallways occupied by ultrasound machines and EKG carts, because there is nowhere else to put them. Days when the whole department fills and ten more patients sit in the waiting room.
+Memorial Health is building a new emergency department in Marysville, Ohio. A $56 million project, breaking ground in 2026. The current ED opened in the late 1990s, and the community outgrew it years ago.
+
+Here is what that looks like from the inside. Essentially a 15-bed ER. Hallways holding ultrasound machines and EKG carts, because there is nowhere else to put them. Days when the whole department fills and ten more people wait in the lobby.
 
 The community keeps growing. The department cannot.
 
-So Memorial Health is building. A new emergency department, expanding to 24 beds, designed for faster access, advanced care, and the teams who deliver it. And a build like that comes with a story problem most campaigns miss: the fundraising needs donor content now, but the most powerful moments are happening in real time, and they do not wait for a ribbon cutting.
+A capital campaign has a timing problem most people miss. The fundraising needs donor content now. But the moments that actually move people are happening in real time, and they do not wait for a ribbon cutting.
 
-Our job: capture the story while it happens.
+So we filmed the story while it happened.
 
-We filmed the people who carry the argument better than any brochure. The doctors and nurses working around the limits of a building from another era. Hospital leadership laying out what 2050 looks like for this community. And a husband who got a phone call no one wants, about a car accident, about his wife. The emergency department is where that story turned.
+We pointed the camera at the people who carry the argument better than any brochure. A doctor who runs the department at 15 beds and knows exactly what 24 would change. A board member who runs a utility and thinks about infrastructure for a living. And a husband named Joe, who got a call from a number he did not recognize, about a car accident, about his wife.
 
-One effort, two payoffs. Donor films that move people to give during the campaign. And a documented record of the build that becomes opening-day content when the doors open.
+His line is the one that stays with you. "They saved my wife's life."
 
-From the same footage, we mined the soundbites and cut the standalone pieces: 30 to 60 second stories, each one built around a moment that actually happened.`,
+That is the whole job. Find the true moment and protect it. Don't script it. Don't polish it into something it isn't. Let the person say the real thing, and get out of the way.
+
+One shoot, two payoffs. Donor films that move people to give during the campaign. And a documented record of the build that becomes opening-day content when the doors open. Same footage, twice the life.
+
+From that footage we mined the soundbites and cut the standalone pieces. Thirty to sixty second stories, each one built around a moment that actually happened.
+
+The film is done. The campaign has what it needs to raise the money. And when the new department opens, the story of how it got built is already told.`,
     pullQuote: {
       quote: "They saved my wife's life.",
-      attribution: "From the campaign film",
+      attribution: "Joe Rhea, Husband and Caregiver, from the Build Forward campaign film",
     },
     whatWeBuilt: [
-      "Campaign hero film for the emergency department expansion",
-      "Soundbite mining across all filmed interviews",
-      "Standalone 30-60 second donor stories cut from the best moments",
+      "Campaign hero film for the emergency department expansion, delivered in four cuts: captioned and clean, with two title-card versions",
+      "Soundbite mining across every filmed interview",
+      "Standalone 30 to 60 second donor stories cut from the best moments",
+      "A subtitle file so the clean cuts caption anywhere they run",
       "A filmed record of the build for opening-day content",
     ],
     stats: [
-      { value: "15", label: "beds today" },
-      { value: "24", label: "beds in the new ED" },
+      { value: "$56M", label: "Build Forward capital campaign" },
+      { value: "15 → 24", label: "beds in the new emergency department" },
       { value: "1", label: "story, filmed as it happens" },
     ],
     heroImage: null,
     gallery: [],
-    videoUrl: null,
-    videoProvider: null,
+    videoUrl: "https://drive.google.com/file/d/1gwlPto68E1S5QE4Z3nlmGfEGiCeHdDQA/view?usp=drive_link",
+    videoProvider: "gdrive",
     nextSlug: "dg-lending",
     ctaHeading: "Raising money to build something?",
     ctaServiceLabel: "See the Trust Engine",
