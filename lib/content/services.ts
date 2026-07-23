@@ -51,7 +51,7 @@ export const TIERS: Tier[] = [
 ];
 
 export const TIER_TABLE_NOTE =
-  "If you're not sure, start with Onsite. It's the sweet spot: we do the filming, you get real assets, without a full production. Prices are starting points. Filming is $2,500 a day, edits are $350 a long film and $100 a short, so any tier scopes up or down cleanly.";
+  "Every engagement starts with the full foundations build, strategy baked in. Same system at every tier. You are buying a system that runs, not a one-off video. The only thing that changes is who holds the camera.";
 
 export const TIER_DETAILS: TierDetail[] = [
   {
@@ -125,7 +125,7 @@ export const TRUST_ENGINE_FAQ: FaqItem[] = [
   {
     question: "What if I outgrow my tier?",
     answer:
-      "They stack cleanly. DIY clients add a filming day. Onsite clients come back for the Full library. Filming is $2,500 a day, edits are $350 a long film and $100 a short.",
+      "They stack cleanly. DIY clients add a filming day. Onsite clients come back for the Full library. Same foundations underneath, so you never start over.",
   },
   {
     question: "Why not just run ads?",

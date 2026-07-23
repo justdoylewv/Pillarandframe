@@ -181,8 +181,8 @@ export default function HomePage() {
                   The Trust Engine
                 </h3>
                 <p className="mb-8 text-base leading-relaxed text-ash-700">
-                  We capture your real stories on film, turn them into a system
-                  of assets, and put them to work on LinkedIn and Google. Three
+                  We capture your real stories on film, turn them into a content
+                  waterfall, and put them to work on LinkedIn and Google. Three
                   ways in: do it yourself with our software, have us film a day,
                   or go all in. Coaching built in, every month.
                 </p>

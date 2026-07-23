@@ -15,7 +15,7 @@ import type { Tier } from "@/lib/content/types";
 export const metadata: Metadata = {
   title: "The Trust Engine",
   description:
-    "Three ways in, one engine. Capture real stories, turn them into a system of assets, put them to work. DIY with our software, one onsite filming day, or the full library. Coaching built in.",
+    "Three ways in, one engine. Capture real stories, turn them into a content waterfall, put them to work. DIY with our software, one onsite filming day, or the full library. Coaching built in.",
   alternates: { canonical: "/trust-engine" },
 };
 
@@ -27,13 +27,13 @@ const ENGINE_MOVES = [
   },
   {
     number: "02",
-    title: "The system of assets.",
-    body: "If a transcript can make it, it's in the box. Long films, short videos, stills, a quote bank, written copy, templates, and your positioning, all pulled from your own words.",
+    title: "The content waterfall.",
+    body: "One interview transcript, and everything flows down from it. We cut the long films and short videos, then keep going in writing: post captions, email newsletters, and quote images, all in your own words. Each transcript also trains a growing voice profile that learns how you talk, so every round sounds more like you and takes less work. It compounds over time.",
   },
   {
     number: "03",
     title: "Put to work.",
-    body: "A distribution guide for where it all goes. Organic first: LinkedIn and your Google Business Profile, the two surfaces buyers and AI check. Then retargeting the people already paying attention.",
+    body: "A distribution guide for where it all goes, and if you'd rather not run it, we do it for you. The focus for trust is LinkedIn and your Google Business Profile, the two surfaces buyers and AI check first. Post there consistently, then retarget the people already paying attention.",
   },
 ];
 
@@ -63,15 +63,15 @@ export default function TrustEnginePage() {
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-8">
-            The Trust Engine &middot; Story-led film studio
+            The Trust Engine &middot; For founder-driven service brands
           </Kicker>
           <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
             You know your work. You just don&rsquo;t know what to say about it.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
             That&rsquo;s not a talent problem. It&rsquo;s a system problem. The
-            Trust Engine captures your real stories, turns them into a system
-            of assets, and puts them to work where buyers are looking. With
+            Trust Engine captures your real stories, turns them into a content
+            waterfall, and puts them to work where buyers are looking. With
             coaching every month, so you&rsquo;re never doing this alone.
           </p>
           <div className="mt-12">
@@ -115,7 +115,7 @@ export default function TrustEnginePage() {
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">One engine</Kicker>
           <h2 className="max-w-4xl font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Capture real stories. Turn them into a system. Put them to work.
+            Capture real stories. Turn them into a waterfall. Put them to work.
           </h2>
           <p className="mt-6 text-lg text-ash-700">
             Every tier runs on the same method.
@@ -329,6 +329,10 @@ export default function TrustEnginePage() {
               builds the answer from what it finds on exactly these surfaces.
               Fresh, real proof, posted consistently. That&rsquo;s how you end
               up in the answer.
+            </p>
+            <p>
+              You get the guide for all of it. Prefer it handled? We run the
+              posting for you, so the content actually goes out on schedule.
             </p>
           </div>
         </div>

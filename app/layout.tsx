@@ -57,7 +57,7 @@ const ORG_JSONLD = {
   name: "Pillar & Frame",
   url: SITE_URL,
   description:
-    "A story-led film studio in Ohio. Real stories captured on film, turned into a system of assets, put to work on LinkedIn and Google, with monthly coaching built in.",
+    "A story-led film studio in Ohio. Real stories captured on film, turned into a content waterfall, put to work on LinkedIn and Google, with monthly coaching built in. Built for founder-driven service brands.",
   areaServed: {
     "@type": "State",
     name: "Ohio",
@@ -77,7 +77,7 @@ const SERVICE_JSONLD = {
   name: "Pillar & Frame",
   url: SITE_URL,
   description:
-    "Story-led film studio. The Trust Engine: real stories captured on film, turned into a system of assets, put to work on LinkedIn and Google Business Profiles. Plus systems coaching for CRM, follow-up, and automations.",
+    "Story-led film studio for founder-driven service brands. The Trust Engine: real stories captured on film, turned into a content waterfall, put to work on LinkedIn and Google Business Profiles. Plus systems coaching for CRM, follow-up, and automations.",
   areaServed: [
     { "@type": "State", name: "Ohio" },
     { "@type": "Country", name: "United States" },
