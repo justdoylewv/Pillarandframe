@@ -3,8 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import MediaFrame from "@/components/MediaFrame";
 import { BOOKING_URL, CONTACT_EMAIL, CTA_LABEL } from "@/lib/content/site";
+import { getCaseStudy } from "@/lib/content/caseStudies";
 
 export const metadata: Metadata = {
   title: {
@@ -137,6 +138,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Client strip */}
+      <section className="border-b border-ash-100 bg-black">
+        <div className="mx-auto max-w-7xl px-6 py-8">
+          <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ash-500">
+              Trusted by
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+              {["Frontier Technologies", "Memorial Health", "DG Lending", "Wealthstrong"].map(
+                (name) => (
+                  <span
+                    key={name}
+                    className="font-serif text-lg tracking-tight text-ash-300 md:text-xl"
+                  >
+                    {name}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* The real problem */}
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
@@ -175,7 +199,7 @@ export default function HomePage() {
           <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
             {/* Card 1: The Trust Engine */}
             <Link href="/trust-engine" className="group block bg-paper">
-              <ImagePlaceholder aspect="video" label="Filming still coming soon" />
+              <MediaFrame aspect="video" alt="The Trust Engine" caption="Filming still coming soon" />
               <div className="p-8 md:p-10">
                 <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
                   The Trust Engine
@@ -194,7 +218,7 @@ export default function HomePage() {
             </Link>
             {/* Card 2: Systems Coaching */}
             <Link href="/systems-coaching" className="group block bg-paper">
-              <ImagePlaceholder aspect="video" label="Working session still coming soon" />
+              <MediaFrame aspect="video" alt="Systems Coaching" caption="Working session still coming soon" />
               <div className="p-8 md:p-10">
                 <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
                   Systems Coaching
@@ -277,28 +301,39 @@ export default function HomePage() {
               <span className="h-[1px] w-8 bg-current" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            {SELECTED_WORK.map((work) => (
-              <Link
-                key={work.slug}
-                href={`/work/${work.slug}`}
-                className="group block border-t border-ash-100 pt-8"
-              >
-                <div className="mb-4 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
-                  <span>{work.industry}</span>
-                </div>
-                <h3 className="mb-3 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
-                  {work.client}
-                </h3>
-                <p className="mb-6 font-serif text-lg italic leading-relaxed text-ash-500">
-                  {work.line}
-                </p>
-                <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
-                  Read the story
-                  <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
-                </span>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2">
+            {SELECTED_WORK.map((work) => {
+              const study = getCaseStudy(work.slug);
+              return (
+                <Link
+                  key={work.slug}
+                  href={`/work/${work.slug}`}
+                  className="group block"
+                >
+                  <MediaFrame
+                    aspect="video"
+                    image={study?.heroImage ?? null}
+                    videoUrl={study?.videoUrl ?? null}
+                    videoProvider={study?.videoProvider ?? null}
+                    alt={work.client}
+                    caption={`${work.client} still coming soon`}
+                  />
+                  <div className="mt-6 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
+                    <span>{work.industry}</span>
+                  </div>
+                  <h3 className="mb-3 mt-3 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
+                    {work.client}
+                  </h3>
+                  <p className="mb-6 font-serif text-lg italic leading-relaxed text-ash-500">
+                    {work.line}
+                  </p>
+                  <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
+                    Read the story
+                    <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
           <div className="mt-12 text-center md:hidden">
             <Link

@@ -4,7 +4,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import MediaFrame from "@/components/MediaFrame";
 import JsonLd from "@/components/JsonLd";
 import PullQuoteBlock from "@/components/PullQuoteBlock";
 import VideoEmbed from "@/components/VideoEmbed";
@@ -102,8 +102,15 @@ export default function CaseStudyPage({ params }: PageProps) {
 
       {/* Hero image */}
       <div className="mx-auto max-w-7xl px-6">
-        {study.heroImage ? (
-          <div className="relative aspect-video overflow-hidden bg-bone">
+        {study.videoUrl && study.videoProvider ? (
+          // The film is the hero: poster thumbnail with inline play.
+          <VideoEmbed
+            url={study.videoUrl}
+            provider={study.videoProvider}
+            title={`${study.client} film`}
+          />
+        ) : study.heroImage ? (
+          <div className="relative aspect-video overflow-hidden border border-ash-100 bg-bone">
             <Image
               src={study.heroImage}
               alt={study.client}
@@ -113,20 +120,9 @@ export default function CaseStudyPage({ params }: PageProps) {
             />
           </div>
         ) : (
-          <ImagePlaceholder aspect="video" />
+          <MediaFrame aspect="video" alt={study.client} caption={`${study.client} still coming soon`} />
         )}
       </div>
-
-      {/* Video */}
-      {study.videoUrl && study.videoProvider && (
-        <section className="mx-auto my-16 max-w-5xl px-6">
-          <VideoEmbed
-            url={study.videoUrl}
-            provider={study.videoProvider}
-            title={`${study.client} film`}
-          />
-        </section>
-      )}
 
       {/* The story */}
       <article className="mx-auto mt-24 max-w-[980px] px-6">
@@ -175,15 +171,12 @@ export default function CaseStudyPage({ params }: PageProps) {
         <section className="mx-auto mt-24 max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {study.gallery.map((img, i) => (
-              <div key={img} className="relative aspect-[4/3] overflow-hidden bg-bone">
-                <Image
-                  src={img}
-                  alt={`${study.client} photo ${i + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
+              <MediaFrame
+                key={img}
+                image={img}
+                alt={`${study.client} photo ${i + 1}`}
+                aspect="still"
+              />
             ))}
           </div>
         </section>
