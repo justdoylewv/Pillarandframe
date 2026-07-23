@@ -33,7 +33,7 @@ const ENGINE_MOVES = [
   {
     number: "03",
     title: "Put to work.",
-    body: "A distribution guide for where it all goes, and if you'd rather not run it, we do it for you. The focus for trust is LinkedIn and your Google Business Profile, the two surfaces buyers and AI check first. Post there consistently, then retarget the people already paying attention.",
+    body: "A distribution guide for where it all goes, and if you'd rather not run it, we do it for you. LinkedIn puts you in front of your audience. Your website, your pinned social posts, and your Google Business Profile are what AI reads when someone asks who to trust. Keep them fed, then retarget the people already paying attention.",
   },
 ];
 
@@ -309,26 +309,30 @@ export default function TrustEnginePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Where trust gets checked</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Two surfaces decide how safe you look.
+            Your audience checks LinkedIn. AI reads the rest.
           </h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
             <p>
               <strong className="font-semibold text-black">LinkedIn</strong> is
-              where your buyers spend their research time. A real person with a
-              clear point of view and filmed proof beats any company page.
+              where you build a personal brand in front of your audience. A real
+              person with a clear point of view and filmed proof beats any
+              company page. It is how buyers get to know you before the first
+              call.
             </p>
             <p>
+              When someone asks AI who to trust, it can&rsquo;t read your
+              LinkedIn. It reads{" "}
               <strong className="font-semibold text-black">
-                Google Business Profile
-              </strong>{" "}
-              is the second check. Reviews, photos, videos, activity. A profile
-              that looks alive reads safer and ranks better.
+                your website, your pinned social posts, and your Google Business
+                Profile
+              </strong>
+              . Those three are the core of AI SEO. Keep them fed with fresh,
+              real proof, and that is how you end up in the answer.
             </p>
             <p>
-              And the newer reality: when someone asks AI who to trust, it
-              builds the answer from what it finds on exactly these surfaces.
-              Fresh, real proof, posted consistently. That&rsquo;s how you end
-              up in the answer.
+              A Google Business Profile that looks alive, with recent photos,
+              videos, and posts, reads safer and ranks better. The pinned posts
+              come straight from your foundations build.
             </p>
             <p>
               You get the guide for all of it. Prefer it handled? We run the
