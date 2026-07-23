@@ -4,6 +4,7 @@ import Image from "next/image";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
+import HomeReel from "@/components/HomeReel";
 import { BOOKING_URL, CONTACT_EMAIL, CTA_LABEL } from "@/lib/content/site";
 import { getCaseStudy } from "@/lib/content/caseStudies";
 
@@ -138,26 +139,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Client strip */}
-      <section className="border-b border-ash-100 bg-black">
-        <div className="mx-auto max-w-7xl px-6 py-8">
-          <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ash-500">
-              Trusted by
-            </span>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-              {["Frontier Technologies", "Memorial Health", "DG Lending", "Wealthstrong"].map(
-                (name) => (
-                  <span
-                    key={name}
-                    className="font-serif text-lg tracking-tight text-ash-300 md:text-xl"
-                  >
-                    {name}
-                  </span>
-                )
-              )}
+      {/* Reel showcase */}
+      <section className="bg-black py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Kicker dark className="mb-6">
+                In motion
+              </Kicker>
+              <h2 className="font-serif text-3xl tracking-tight text-paper md:text-4xl">
+                Short-form work, always running.
+              </h2>
             </div>
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300 transition-colors hover:text-paper"
+            >
+              See all work
+              <span className="h-[1px] w-8 bg-current" />
+            </Link>
           </div>
+          <HomeReel />
+          <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
+            Trusted by Frontier Technologies &middot; Memorial Health &middot; DG
+            Lending &middot; Wealthstrong
+          </p>
         </div>
       </section>
 
