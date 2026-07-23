@@ -10,48 +10,54 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "frontier-technologies",
     client: "Frontier Technologies",
     service: "Trust Engine",
-    tags: ["Trust Engine", "IT services"],
-    oneLiner: "Thirty-five years of proof, finally visible.",
+    tags: ["Trust Engine", "Personal brand", "IT services"],
+    oneLiner: "A founder's personal brand, built and run every week.",
     metaTitle: "Frontier Technologies | Work",
     metaDescription:
-      "How a 35-year IT services company turned its founder's credibility into a LinkedIn trust engine: story strategy, capture days, and a daily motion into named accounts.",
-    story: `Thirty-five years in business. Contracts that ran nearly a decade. A founder whose philosophy you could build a company on, because she did.
+      "How we built a founder's personal brand on LinkedIn: brand story, content pillars, weekly founder video, images, and captions, reaching director-level buyers in their niche.",
+    story: `The credibility was already there. Nobody outside the company could see it.
 
-Almost none of it was visible.
+Frontier Technologies is an IT services company with more than thirty years behind it and a CEO, Reshma Moorthy, whose point of view could carry a company. It has. The question was never whether Reshma had something to say. It was that the people who needed to hear it, director-level buyers doing quiet research, had no way to find her.
 
-Frontier Technologies is an IT services company with the kind of proof most businesses can only claim. Twenty-plus years of federal work. An early win that became an 8-year government IT modernization contract. The problem was never credibility. The problem was that buyers doing their quiet research could not find it.
+So we built her a personal brand from the ground up.
 
-So we built the engine.
+First the story. Who she is, what she stands for, the handful of ideas she wants to be known for. We turned that into content pillars, so every post ladders up to a point of view instead of chasing a feed.
 
-It started with story strategy: what Frontier wants to be known for, said plainly, in the leadership's real voice. Then capture. We filmed the founder's story and mined it for the moments that carry weight. Her operating principles came out in single sentences you do not forget.
+Then the engine. We film Reshma, long form and short. We cut the videos, design the images, and write the captions in her voice. Then we post to LinkedIn every week. She shows up on camera. We handle everything after.
 
-From one capture, a library. Founder story content. Short clips. Written posts in a documented voice, so every piece sounds like her and none of it sounds like a content calendar. A newsletter on the themes their buyers actually worry about.
+A little over a year in, the account has grown by around five hundred followers. The number is not the point. Who they are is. Most of them sit at director level inside the exact accounts Frontier wants to be known in. This is not reach for its own sake. It is the right room, filling up.
 
-Then the part most people skip: distribution with an aim. A named list of ideal accounts. Daily, human, one-to-one motion into that list, in the founder's voice. Not ads. People.
+And the brand is starting to do what a brand does. More conversations. Invitations to guest on other people's podcasts. People reaching out because they finally understand what Frontier does, and who is behind it.
 
-Along the way, the numbers taught us something. The organic founder content was outreaching the paid ads with the buyers who mattered. So the plan followed the evidence. More of what works, aimed at the list.
+The best proof is quieter. Relationships that reopened. People who went back and looked again, because they watched her show up, week after week, saying true things. Respect that came from the work, not from asking for it.
 
-The feed stays full. The leadership stays visible. The proof does the selling before the first call.`,
-    pullQuote: {
-      quote:
-        "It's not about the technology, but it's about the outcome the customer is looking for.",
-      attribution: "Jayashree, Founder, Frontier Technologies",
-    },
+A personal brand does not arrive in a launch. It comes online slowly, then all at once. Reshma's is coming online.`,
+    pullQuote: null,
     whatWeBuilt: [
-      "Story strategy and a documented founder voice profile",
-      "Capture days: founder story, deep-dive interview, solution content",
-      "Monthly founder content engine for LinkedIn",
-      "LinkedIn newsletter on modernization themes",
-      "Daily one-to-one outreach motion into a named account list",
-      "Monthly reporting in accounts reached, conversations, and calls booked",
+      "A personal brand story and positioning for the CEO",
+      "Content pillars every post ladders up to",
+      "Founder filming, long form and short form",
+      "Branded images and carousels, captions written in her voice",
+      "Weekly LinkedIn posting, filmed, edited, and published for her",
+      "A documented voice profile that keeps every post sounding like her",
+      "Monthly reporting on who is following and engaging, not just how many",
     ],
     stats: [
-      { value: "35", label: "years in business" },
-      { value: "8", label: "videos a month" },
-      { value: "1", label: "named account list worked daily" },
+      { value: "500+", label: "new followers, mostly director-level" },
+      { value: "52+", label: "founder posts, filmed and written for them" },
+      { value: "1", label: "personal brand, coming online" },
     ],
-    heroImage: null,
-    gallery: [],
+    heroImage:
+      "https://drive.google.com/thumbnail?id=1p7haul1hesAqRWqQV0fweJFPCje1coLu&sz=w1200",
+    heroImageAspect: "portrait",
+    gallery: [
+      "https://drive.google.com/thumbnail?id=1Vk5budj0XHurz61RWXA7D0H6q8JBLq8z&sz=w1200",
+      "https://drive.google.com/thumbnail?id=15c7g0CtsctA0ijDetRbDmKPrJOxmP01d&sz=w1200",
+      "https://drive.google.com/thumbnail?id=1kkRGebf6GdquQFEVI56hAYtpMHRaxP5J&sz=w1200",
+      "https://drive.google.com/thumbnail?id=1rnGVtCvEr70QG_TfE4ZGdROyUBWIqYJj&sz=w1200",
+      "https://drive.google.com/thumbnail?id=1z7KOfGhw9Hc0SxfV0XHEDba4VfkqgSWW&sz=w1200",
+      "https://drive.google.com/thumbnail?id=1pKK20dq67eV7t4OCvk8xY1mOwzerVdwp&sz=w1200",
+    ],
     videoUrl: null,
     videoProvider: null,
     nextSlug: "memorial-health",

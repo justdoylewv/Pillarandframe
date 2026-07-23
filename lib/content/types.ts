@@ -52,6 +52,7 @@ export interface CaseStudy {
   whatWeBuilt: string[];
   stats: Stat[];
   heroImage: string | null;
+  heroImageAspect?: "video" | "portrait" | "square";
   gallery: string[];
   videoUrl: string | null;
   videoProvider: VideoProvider | null;

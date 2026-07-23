@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
@@ -110,13 +109,17 @@ export default function CaseStudyPage({ params }: PageProps) {
             title={`${study.client} film`}
           />
         ) : study.heroImage ? (
-          <div className="relative aspect-video overflow-hidden border border-ash-100 bg-bone">
-            <Image
-              src={study.heroImage}
+          <div
+            className={
+              study.heroImageAspect === "portrait"
+                ? "mx-auto max-w-sm sm:max-w-md"
+                : ""
+            }
+          >
+            <MediaFrame
+              image={study.heroImage}
               alt={study.client}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1280px) 100vw, 1280px"
+              aspect={study.heroImageAspect ?? "video"}
             />
           </div>
         ) : (
@@ -169,13 +172,14 @@ export default function CaseStudyPage({ params }: PageProps) {
       {/* Gallery */}
       {study.gallery.length > 0 && (
         <section className="mx-auto mt-24 max-w-7xl px-6">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Kicker className="mb-10">The work</Kicker>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {study.gallery.map((img, i) => (
               <MediaFrame
                 key={img}
                 image={img}
-                alt={`${study.client} photo ${i + 1}`}
-                aspect="still"
+                alt={`${study.client} content ${i + 1}`}
+                aspect="square"
               />
             ))}
           </div>
