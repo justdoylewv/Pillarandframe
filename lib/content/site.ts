@@ -1,6 +1,7 @@
 // Sitewide constants. One edit to BOOKING_URL turns every CTA on the site live.
 
-export const BOOKING_URL = "#"; // TODO: drop in GHL calendar link
+export const BOOKING_URL =
+  "https://api.leadconnectorhq.com/widget/bookings/strategycallpillarandframe";
 
 export const SITE_URL = "https://pillarandframe.com";
 export const SITE_NAME = "Pillar & Frame";
