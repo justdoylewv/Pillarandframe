@@ -211,10 +211,10 @@ export default function HomePage() {
                   The Trust Engine
                 </h3>
                 <p className="mb-8 text-base leading-relaxed text-ash-700">
-                  We capture your real stories on film, turn them into a content
-                  waterfall, and put them to work on LinkedIn and Google. Three
-                  ways in: do it yourself with our software, have us film a day,
-                  or go all in. Coaching built in, every month.
+                  We film you once a month and turn it into a full month of
+                  videos, posts, and graphics in your voice. A launch kit to
+                  start, then done-for-you content all year, put to work on
+                  LinkedIn and Google. Coaching built in.
                 </p>
                 <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
                   See the Trust Engine

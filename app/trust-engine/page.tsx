@@ -4,55 +4,81 @@ import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import { BOOKING_URL, CTA_LABEL } from "@/lib/content/site";
 import {
-  TIERS,
-  TIER_DETAILS,
-  TIER_TABLE_NOTE,
+  A_LA_CARTE,
+  CADENCE,
+  FULL_ENGINE,
+  HOW_IT_WORKS,
+  LAUNCH_KIT,
+  LAUNCH_KIT_OFFER,
+  MONTHLY_DELIVERABLES,
+  POST_FOR_YOU,
+  PRICING_NOTE,
   TRUST_ENGINE_FAQ,
-  VALUE_FLOOR,
+  type Offer,
 } from "@/lib/content/services";
-import type { Tier } from "@/lib/content/types";
 
 export const metadata: Metadata = {
   title: "The Trust Engine",
   description:
-    "Three ways in, one engine. Capture real stories, turn them into a content waterfall, put them to work. DIY with our software, one onsite filming day, or the full library. Coaching built in.",
+    "A done-for-you content engine for founder-driven service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. A launch kit to start, coaching built in.",
   alternates: { canonical: "/trust-engine" },
 };
 
-const ENGINE_MOVES = [
-  {
-    number: "01",
-    title: "Capture.",
-    body: "Real stories, real people. Part documentary, part promo. We do the homework first: what you want to be known for, what your audience actually cares about. The topics come from that. On the day, we run the topics and stay open for the moments you didn't plan.",
-  },
-  {
-    number: "02",
-    title: "The content waterfall.",
-    body: "One interview transcript, and everything flows down from it. We cut the long films and short videos, then keep going in writing: post captions, email newsletters, and quote images, all in your own words. Each transcript also trains a growing voice profile that learns how you talk, so every round sounds more like you and takes less work. It compounds over time.",
-  },
-  {
-    number: "03",
-    title: "Put to work.",
-    body: "A distribution guide for where it all goes, and if you'd rather not run it, we do it for you. LinkedIn puts you in front of your audience. Your website, your pinned social posts, and your Google Business Profile are what AI reads when someone asks who to trust. Keep them fed, then retarget the people already paying attention.",
-  },
-];
-
-const TABLE_ROWS: { label: string; key: keyof Tier }[] = [
-  { label: "Best for", key: "bestFor" },
-  { label: "Filming", key: "filming" },
-  { label: "Long films", key: "longFilms" },
-  { label: "Short videos", key: "shortVideos" },
-  { label: "Foundations + guides", key: "foundations" },
-  { label: "Distribution guide", key: "distributionGuide" },
-  { label: "Monthly coaching", key: "monthlyCoaching" },
-  { label: "Delivery", key: "delivery" },
-];
-
-function MostPopularBadge() {
+function Tick() {
   return (
-    <span className="inline-block rounded-[2px] bg-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-black">
-      Most popular
-    </span>
+    <span className="mt-2 h-[3px] w-[3px] shrink-0 bg-gold-500" aria-hidden="true" />
+  );
+}
+
+function OfferCard({ offer, featured = false }: { offer: Offer; featured?: boolean }) {
+  return (
+    <div
+      className={`flex flex-col border p-8 md:p-10 ${
+        featured ? "border-purple-600 bg-paper" : "border-ash-100 bg-paper"
+      }`}
+    >
+      {offer.badge && (
+        <div className="mb-6">
+          <span className="inline-block rounded-[2px] bg-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-black">
+            {offer.badge}
+          </span>
+        </div>
+      )}
+      <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
+        {offer.name}
+      </h3>
+      <p className="mt-4 flex items-baseline gap-2">
+        <span className="font-serif text-5xl tracking-tight text-black">
+          {offer.price}
+        </span>
+        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
+          {offer.period}
+        </span>
+      </p>
+      {offer.setup && (
+        <p className="mt-3 text-sm text-ash-700">{offer.setup}</p>
+      )}
+      {offer.note && (
+        <p className="mt-2 text-sm leading-relaxed text-ash-500">{offer.note}</p>
+      )}
+      <ul className="mt-8 space-y-3 border-t border-ash-100 pt-8">
+        {offer.includes.map((item) => (
+          <li key={item} className="flex gap-3 text-sm leading-relaxed text-ash-700">
+            <Tick />
+            {item}
+          </li>
+        ))}
+      </ul>
+      <div className="mt-8">
+        <CtaButton
+          href={BOOKING_URL}
+          variant={featured ? "solid" : "outline"}
+          className="w-full text-center"
+        >
+          {CTA_LABEL}
+        </CtaButton>
+      </div>
+    </div>
   );
 }
 
@@ -66,13 +92,17 @@ export default function TrustEnginePage() {
             The Trust Engine &middot; For founder-driven service brands
           </Kicker>
           <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
-            You know your work. You just don&rsquo;t know what to say about it.
+            You&rsquo;re great at the work. You&rsquo;re invisible online.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
-            That&rsquo;s not a talent problem. It&rsquo;s a system problem. The
-            Trust Engine captures your real stories, turns them into a content
-            waterfall, and puts them to work where buyers are looking. With
-            coaching every month, so you&rsquo;re never doing this alone.
+            That&rsquo;s not a talent problem. It&rsquo;s a visibility problem.
+            We film you once a month and turn it into a full month of content in
+            your voice. Videos, posts, captions, graphics. You show up as
+            yourself. We do the rest.
+          </p>
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
+            Done for you &middot; Filmed in your voice &middot; Real human
+            origin, no AI, no stock
           </p>
           <div className="mt-12">
             <CtaButton href={BOOKING_URL}>{CTA_LABEL}</CtaButton>
@@ -89,207 +119,154 @@ export default function TrustEnginePage() {
           </h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
             <p>
-              It lives in your head. It lives in finished work nobody outside
-              the building sees. It lives in clients who would say wonderful
-              things on camera, except nobody ever asked.
+              You know you should post. But you&rsquo;re busy running the
+              business. So you don&rsquo;t, or you start and go quiet by March.
             </p>
             <p>
-              And the usual fixes don&rsquo;t hold. Posting when inspiration
-              strikes turns into silence by March. Hiring a videographer gets
-              you one nice video and no plan. Ads rent attention that stops the
-              day the spend stops.
+              Meanwhile your buyers look you up before they ever call. Show up
+              looking trustworthy and you win. Stay quiet and the competitor who
+              posts gets the deal. You never even know it happened.
             </p>
             <p>
-              Meanwhile your buyers are doing quiet research. LinkedIn. Your
-              Google profile. What AI says when they ask who to trust.
+              The two hard jobs are making the content and keeping it
+              consistent. We take both off your plate.
             </p>
           </div>
           <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl leading-snug text-black md:text-3xl">
-            Ads rent attention. Proof compounds.
+            The deal goes to whoever looks safer online. Not whoever does better
+            work.
           </p>
         </div>
       </section>
 
-      {/* The engine */}
+      {/* How it works */}
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <Kicker className="mb-6">One engine</Kicker>
-          <h2 className="max-w-4xl font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Capture real stories. Turn them into a waterfall. Put them to work.
+          <Kicker className="mb-6">How it works</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            You do almost nothing.
           </h2>
-          <p className="mt-6 text-lg text-ash-700">
-            Every tier runs on the same method.
-          </p>
-          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
-            {ENGINE_MOVES.map((move) => (
-              <div key={move.number} className="border-t border-ash-100 pt-8">
+          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+            {HOW_IT_WORKS.map((step) => (
+              <div key={step.num} className="border-t border-ash-100 pt-8">
                 <span className="mb-6 block font-mono text-[10px] uppercase tracking-[0.3em] text-ash-300">
-                  {move.number}
+                  {step.num}
                 </span>
                 <h3 className="mb-4 font-serif text-2xl tracking-tight text-black">
-                  {move.title}
+                  {step.title}
                 </h3>
                 <p className="text-base leading-relaxed text-ash-700">
-                  {move.body}
+                  {step.body}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-16 max-w-3xl text-lg leading-relaxed text-ash-700">
-            And through all of it:{" "}
-            <strong className="font-semibold text-black">
-              monthly coaching built in.
-            </strong>{" "}
-            What to post, how to say it, what to film next. A system plus
-            someone in your corner.
-          </p>
         </div>
       </section>
 
-      {/* Three ways in: the tier table */}
+      {/* Discovery / North Star */}
       <section className="bg-paper py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <Kicker className="mb-6">How to work with us</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Three ways in. One engine.
-          </h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ash-700">
-            Do it yourself with our software. Have us film a simple day. Or go
-            all in. Every tier comes with the foundations, the guides, and
-            everything we can pull from your transcripts. The only thing that
-            changes is who holds the camera, and how much we make.
-          </p>
-
-          {/* Desktop table */}
-          <div className="mt-16 hidden overflow-x-auto md:block">
-            <table className="w-full border-collapse text-left">
-              <thead>
-                <tr className="border-b border-ash-100">
-                  <th className="w-1/4 pb-6" aria-label="Feature" />
-                  {TIERS.map((tier) => (
-                    <th key={tier.name} className="w-1/4 px-6 pb-6 align-bottom font-normal">
-                      {tier.mostPopular && (
-                        <div className="mb-3">
-                          <MostPopularBadge />
-                        </div>
-                      )}
-                      <span className="block font-serif text-3xl tracking-tight text-black">
-                        {tier.number}. {tier.name}
-                      </span>
-                      <span className="mt-2 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                        {tier.subtitle}
-                      </span>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {TABLE_ROWS.map((row) => (
-                  <tr key={row.label} className="border-b border-ash-100">
-                    <td className="py-5 pr-6 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                      {row.label}
-                    </td>
-                    {TIERS.map((tier) => (
-                      <td key={tier.name} className="px-6 py-5 text-sm text-ash-700">
-                        {tier[row.key] as string}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-                <tr>
-                  <td className="py-6 pr-6 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                    Investment
-                  </td>
-                  {TIERS.map((tier) => (
-                    <td key={tier.name} className="px-6 py-6">
-                      <span className="font-serif text-2xl tracking-tight text-black">
-                        {tier.investment}
-                      </span>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Mobile: stacked cards */}
-          <div className="mt-12 space-y-8 md:hidden">
-            {TIERS.map((tier) => (
-              <div key={tier.name} className="border border-ash-100 bg-paper p-6">
-                {tier.mostPopular && (
-                  <div className="mb-4">
-                    <MostPopularBadge />
-                  </div>
-                )}
-                <h3 className="font-serif text-3xl tracking-tight text-black">
-                  {tier.number}. {tier.name}
-                </h3>
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                  {tier.subtitle}
-                </p>
-                <dl className="mt-6 space-y-4">
-                  {TABLE_ROWS.map((row) => (
-                    <div key={row.label} className="flex justify-between gap-4 border-t border-ash-100 pt-4">
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                        {row.label}
-                      </dt>
-                      <dd className="text-right text-sm text-ash-700">
-                        {tier[row.key] as string}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-                <p className="mt-6 border-t border-ash-100 pt-6">
-                  <span className="font-serif text-3xl tracking-tight text-black">
-                    {tier.investment}
-                  </span>
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-10 max-w-3xl text-base leading-relaxed text-ash-500">
-            {TIER_TABLE_NOTE}
-          </p>
-        </div>
-      </section>
-
-      {/* Tier details */}
-      <section className="border-t border-ash-100 bg-paper pb-24 sm:pb-32">
         <div className="mx-auto max-w-[980px] px-6">
-          {TIER_DETAILS.map((tier) => (
-            <div key={tier.number} className="border-b border-ash-100 py-14">
-              <span className="mb-6 block font-mono text-[10px] uppercase tracking-[0.3em] text-ash-300">
-                {tier.number}
-              </span>
-              <h3 className="mb-6 font-serif text-2xl tracking-tight text-black md:text-3xl">
-                {tier.heading}
-              </h3>
-              <div className="space-y-4 text-lg leading-relaxed text-ash-700">
-                {tier.paragraphs.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
-            </div>
-          ))}
+          <Kicker className="mb-6">Before the camera</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            It starts with your story, not a camera.
+          </h2>
+          <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
+            <p>
+              Great content starts with a clear story. Before we film anything,
+              we get to the core of who you are and what you stand for. A short
+              survey on your own time, then one focused hour where we ask the
+              questions and pull the story out of you.
+            </p>
+            <p>
+              That hour becomes your Content Marketing Guide: what you want to be
+              known for, what your audience actually wants, and the one belief
+              everything hangs on. Every clip, post, and caption gets checked
+              against it. It&rsquo;s why your content sounds like you and points
+              one direction. You keep it, whether you stay with us or not.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* What every tier includes */}
+      {/* The launch kit */}
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <Kicker className="mb-6">The value floor</Kicker>
-          <h2 className="max-w-3xl font-serif text-4xl tracking-tight text-black md:text-5xl">
-            If a transcript can make it, it&rsquo;s in the box.
+          <Kicker className="mb-6">To start</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            One shoot fills your library.
           </h2>
-          <p className="mt-6 text-lg text-ash-700">
-            Same floor, no matter which tier you pick:
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ash-700">
+            Your first shoot builds a whole kit of content. It works all year,
+            and we keep using it for months before we film again.
           </p>
-          <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-14">
-            {VALUE_FLOOR.map((item) => (
-              <div key={item.title} className="border-t border-ash-100 pt-8">
-                <h3 className="mb-3 font-serif text-xl tracking-tight text-black md:text-2xl">
-                  {item.title}
+          <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
+            {LAUNCH_KIT.map((item) => (
+              <div key={item.label} className="flex gap-4 border-t border-ash-100 pt-6">
+                <Tick />
+                <div>
+                  <h3 className="font-serif text-xl tracking-tight text-black">
+                    {item.label}
+                  </h3>
+                  <p className="mt-1 text-base leading-relaxed text-ash-700">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
+            The same kit for every client. Everything you need to get going, a
+            branded look that makes every video yours, and a simple guide to use
+            it all. Only your stories change.
+          </p>
+        </div>
+      </section>
+
+      {/* Every month */}
+      <section className="bg-paper py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <Kicker className="mb-6">Every month</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            Same set of content, every month.
+          </h2>
+          <div className="mt-14 divide-y divide-ash-100 border-y border-ash-100">
+            {MONTHLY_DELIVERABLES.map((item) => (
+              <div
+                key={item.label}
+                className="grid grid-cols-[auto_1fr] items-baseline gap-x-6 py-6 sm:grid-cols-[6rem_14rem_1fr]"
+              >
+                <span className="font-serif text-4xl tracking-tight text-black">
+                  {item.count}
+                </span>
+                <span className="font-serif text-xl tracking-tight text-black">
+                  {item.label}
+                </span>
+                <span className="col-span-2 mt-2 text-base leading-relaxed text-ash-700 sm:col-span-1 sm:mt-0">
+                  {item.body}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
+            One filming session becomes a full month of content. Your launch kit
+            keeps working underneath it all year.
+          </p>
+        </div>
+      </section>
+
+      {/* The rhythm / cadence */}
+      <section className="bg-bone py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <Kicker className="mb-6">The rhythm</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            One big shoot to start. Then we keep it alive.
+          </h2>
+          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+            {CADENCE.map((item) => (
+              <div key={item.when} className="border-t border-ash-100 pt-8">
+                <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-ash-500">
+                  {item.when}
                 </h3>
                 <p className="text-base leading-relaxed text-ash-700">
                   {item.body}
@@ -297,10 +274,6 @@ export default function TrustEnginePage() {
               </div>
             ))}
           </div>
-          <p className="mt-14 max-w-3xl text-lg leading-relaxed text-ash-700">
-            On the DIY tier, the software produces these for you. On Onsite and
-            Full, we do. Either way, it comes from your own words.
-          </p>
         </div>
       </section>
 
@@ -332,7 +305,7 @@ export default function TrustEnginePage() {
             <p>
               A Google Business Profile that looks alive, with recent photos,
               videos, and posts, reads safer and ranks better. The pinned posts
-              come straight from your foundations build.
+              come straight from your launch kit.
             </p>
             <p>
               You get the guide for all of it. Prefer it handled? We run the
@@ -342,8 +315,109 @@ export default function TrustEnginePage() {
         </div>
       </section>
 
-      {/* Proof */}
+      {/* Pricing */}
       <section className="border-t border-ash-100 bg-paper py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <Kicker className="mb-6">Simple pricing</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            One number. No surprises.
+          </h2>
+          <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <OfferCard offer={FULL_ENGINE} featured />
+            <OfferCard offer={LAUNCH_KIT_OFFER} />
+          </div>
+
+          {/* Optional posting */}
+          <div className="mt-8 flex flex-col gap-4 border border-ash-100 bg-bone p-8 md:flex-row md:items-center md:justify-between">
+            <div>
+              <div className="mb-2 flex items-baseline gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
+                  Optional
+                </span>
+                <span className="font-serif text-2xl tracking-tight text-black">
+                  {POST_FOR_YOU.price}
+                  <span className="ml-1 font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
+                    {POST_FOR_YOU.period}
+                  </span>
+                </span>
+              </div>
+              <p className="max-w-2xl text-base leading-relaxed text-ash-700">
+                {POST_FOR_YOU.body}
+              </p>
+            </div>
+          </div>
+
+          {/* A la carte */}
+          <div className="mt-16">
+            <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
+              Not ready for all of it? Start with one piece.
+            </h3>
+            <div className="mt-8 divide-y divide-ash-100 border-y border-ash-100">
+              {A_LA_CARTE.map((item) => (
+                <div
+                  key={item.what}
+                  className="grid grid-cols-1 gap-x-8 gap-y-2 py-6 sm:grid-cols-[14rem_1fr]"
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-serif text-xl tracking-tight text-black">
+                      {item.what}
+                    </span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-purple-600">
+                      {item.price}
+                    </span>
+                  </div>
+                  <p className="text-base leading-relaxed text-ash-700">
+                    {item.goodIf}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-10 max-w-3xl text-base leading-relaxed text-ash-500">
+            {PRICING_NOTE}
+          </p>
+        </div>
+      </section>
+
+      {/* Guarantee */}
+      <section className="bg-bone py-24 sm:py-32">
+        <div className="mx-auto max-w-[980px] px-6">
+          <Kicker className="mb-6">The guarantee</Kicker>
+          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+            Love it, or we keep working.
+          </h2>
+          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
+            <div className="border-t border-ash-100 pt-8">
+              <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-ash-500">
+                Love it, or we fix it
+              </h3>
+              <p className="text-lg leading-relaxed text-ash-700">
+                Show up and tell your stories, and you&rsquo;ll get content
+                you&rsquo;re proud to put your name on. If something misses, we
+                redo it until it&rsquo;s right. No charge.
+              </p>
+            </div>
+            <div className="border-t border-ash-100 pt-8">
+              <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-ash-500">
+                No lock-in
+              </h3>
+              <p className="text-lg leading-relaxed text-ash-700">
+                After three months, you&rsquo;re free to leave anytime. And
+                everything we make is yours to keep, forever.
+              </p>
+            </div>
+          </div>
+          <p className="mt-10 max-w-3xl text-base leading-relaxed text-ash-500">
+            Why three months? Trust takes a little time to build. If you
+            can&rsquo;t give it ninety days, we&rsquo;re probably not the right
+            fit.
+          </p>
+        </div>
+      </section>
+
+      {/* Proof */}
+      <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">Running now</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
@@ -358,9 +432,9 @@ export default function TrustEnginePage() {
                 Frontier Technologies
               </h3>
               <p className="mb-6 text-base leading-relaxed text-ash-700">
-                A 35-year IT company&rsquo;s leadership becomes the visible
-                authority in their lane. Founder story content, a newsletter, a
-                daily motion into named accounts.
+                A founder&rsquo;s personal brand, built from scratch and posted
+                every week. Director-level buyers, more conversations, podcast
+                invitations. The brand coming online.
               </p>
               <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
                 Read the story
@@ -393,7 +467,7 @@ export default function TrustEnginePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Fit</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Built for businesses that run on trust.
+            Built for owners who are great at the work.
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
             <div className="border-t border-ash-100 pt-8">
@@ -402,10 +476,10 @@ export default function TrustEnginePage() {
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
                 Your clients choose you because they trust you. Lenders,
-                advisors, consultants, builders, IT partners, healthcare. You
-                have real stories and happy clients. You&rsquo;re willing to
-                get on camera, even nervously. Nervous works. We coach you
-                through it.
+                advisors, consultants, builders, IT partners, healthcare.
+                You&rsquo;re too busy running the business to post consistently,
+                and you&rsquo;re willing to get on camera, even nervously.
+                Nervous works. We coach you through it.
               </p>
             </div>
             <div className="border-t border-ash-100 pt-8">
@@ -414,7 +488,8 @@ export default function TrustEnginePage() {
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
                 You want overnight virality, or content nobody has to show up
-                for. The engine runs on real people.
+                for. The engine runs on real people, and it needs ninety days to
+                build.
               </p>
             </div>
           </div>
@@ -447,7 +522,7 @@ export default function TrustEnginePage() {
             No pitch on the call
           </Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-paper md:text-6xl">
-            See what the engine would look like for you.
+            You show up as yourself. We do the rest.
           </h2>
           <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-ash-300 md:text-xl">
             Thirty minutes. We talk through your story, your content, and where

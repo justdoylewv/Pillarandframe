@@ -1,136 +1,240 @@
-import type { FaqItem, Tier, TierDetail } from "./types";
+import type { FaqItem } from "./types";
 
-// The Trust Engine tier table, transcribed from CONTENT.md.
+// The Trust Engine offer. Transcribed from the offer sheet, one-pager, and
+// discovery doc. Done-for-you monthly content service: we film you once a
+// month and turn it into a month of content in your voice.
 
-export const TIERS: Tier[] = [
+// How it works, in four steps.
+export const HOW_IT_WORKS: { num: string; title: string; body: string }[] = [
   {
-    number: "1",
-    name: "DIY",
-    subtitle: "Software · you film",
-    bestFor: "Doers on a budget",
-    filming: "Your phone (guided)",
-    longFilms: "Your own",
-    shortVideos: "Your own",
-    foundations: "Yes",
-    distributionGuide: "Yes",
-    monthlyCoaching: "Yes",
-    delivery: "Software, studio review",
-    investment: "$149/mo",
-    mostPopular: false,
+    num: "1",
+    title: "You talk.",
+    body: "We plan your topics on a short call, then film you. That is your part, and we guide you the whole way.",
   },
   {
-    number: "2",
-    name: "Onsite",
-    subtitle: "We film · one day",
-    bestFor: "A clean, simple start",
-    filming: "1 onsite day",
-    longFilms: "3",
-    shortVideos: "12 objection-busters",
-    foundations: "Yes",
-    distributionGuide: "Yes",
-    monthlyCoaching: "Yes",
-    delivery: "Done for you",
-    investment: "$6,000",
-    mostPopular: true,
+    num: "2",
+    title: "We build.",
+    body: "One filming session becomes a full month of content. Videos, captions, written posts, and quote graphics, all in your voice.",
   },
   {
-    number: "3",
-    name: "Full",
-    subtitle: "We film · 1-2 days",
-    bestFor: "All in on content",
-    filming: "1-2 onsite days",
-    longFilms: "5",
-    shortVideos: "52",
-    foundations: "Yes",
-    distributionGuide: "Yes",
-    monthlyCoaching: "Yes",
-    delivery: "Done for you",
-    investment: "$12,000",
-    mostPopular: false,
+    num: "3",
+    title: "You approve.",
+    body: "Everything lands in one place. Give it a thumbs up. Done.",
+  },
+  {
+    num: "4",
+    title: "It goes live.",
+    body: "Post it yourself, or let us post it for you. Your call.",
   },
 ];
 
-export const TIER_TABLE_NOTE =
-  "Every engagement starts with the full foundations build, strategy baked in. Same system at every tier. You are buying a system that runs, not a one-off video. The only thing that changes is who holds the camera.";
+// The kickoff launch kit that fills your library. The same kit for every
+// client; only the stories change.
+export const LAUNCH_KIT: { label: string; body: string }[] = [
+  {
+    label: "A messaging playbook",
+    body: "Your brand story map: what to say, how to say it, your content pillars. Every video topic planned before we film.",
+  },
+  {
+    label: "Your story, on film",
+    body: "Who you are and why people should trust you.",
+  },
+  {
+    label: "A customer win",
+    body: "One real success story. Proof that you deliver.",
+  },
+  {
+    label: "What you do, in depth",
+    body: "Your service explained in a longer film, cut into clips all year.",
+  },
+  {
+    label: "Five objections, answered",
+    body: "The five reasons people hesitate to buy, handled on camera before they even call.",
+  },
+  {
+    label: "30 professional images",
+    body: "Portraits and real, in-action working shots.",
+  },
+  {
+    label: "A free lead-magnet guide",
+    body: "A simple giveaway that turns viewers into leads.",
+  },
+  {
+    label: "Five branded graphics",
+    body: "On-brand images for your feed: quotes, proof, key numbers, with templates.",
+  },
+  {
+    label: "A distribution guide",
+    body: "Where everything goes. What to pin, what to put on your website.",
+  },
+  {
+    label: "Your branded look",
+    body: "A branded intro, outro, and name-and-title motion. Built once, on everything after.",
+  },
+];
 
-export const TIER_DETAILS: TierDetail[] = [
+// What lands every month, same set every time.
+export const MONTHLY_DELIVERABLES: {
+  count: string;
+  label: string;
+  body: string;
+}[] = [
   {
-    number: "1",
-    heading: "DIY · Service as a software · $149/mo",
-    paragraphs: [
-      "Our software builds your brand from your story, then coaches you to film your own content on your phone.",
-      "The system runs the backend. It drafts your positioning, your assets, and your distribution plan: organic first, then retargeting the people already watching.",
-      "Nothing ships without our studio's review. You get the system and the review, not the crew.",
-    ],
+    count: "8",
+    label: "Short videos",
+    body: "Ready to post, captioned and branded.",
   },
   {
-    number: "2",
-    heading: "Onsite · Simple, clean, the one most people pick · $6,000",
-    paragraphs: [
-      "We come to you for a day. Simple, well-made videos.",
-      "Three long films and twelve short objection-busters: the answers to the questions that stop people from buying.",
-      "Plus the full foundations. A real start without a big production, at the price that makes the most sense for most businesses.",
-    ],
+    count: "8",
+    label: "Written posts",
+    body: "In your voice, ready to post.",
   },
   {
-    number: "3",
-    heading: "Full · The 52 and 5 · $12,000",
-    paragraphs: [
-      "The big one. One or two filming days, and the full library: fifty-two short videos and five films.",
-      "A year of content in a couple of days. Everything the engine can produce.",
-    ],
+    count: "4",
+    label: "Image graphics",
+    body: "On-brand for your feed, styles rotating quarterly.",
+  },
+  {
+    count: "All",
+    label: "Captions and quotes",
+    body: "Captions for every video, plus quote graphics from your best lines.",
+  },
+  {
+    count: "1",
+    label: "Long-form piece",
+    body: "A guide, an article, or a customer story.",
   },
 ];
 
-export const VALUE_FLOOR: { title: string; body: string }[] = [
+// How we film you across the year.
+export const CADENCE: { when: string; body: string }[] = [
   {
-    title: "Brand positioning and storytelling.",
-    body: "Who you are, and the story that pulls people in.",
+    when: "To start",
+    body: "One bigger kickoff shoot that builds your whole launch kit. Content that lasts all year.",
   },
   {
-    title: "The evergreen asset pack.",
-    body: "Templates, a phone-filming guide, stills from your footage, a quote bank, and written copy. Everything we can pull from your transcripts.",
+    when: "Every quarter",
+    body: "We come to you in person to film. Better footage, deeper stories, real face time.",
   },
   {
-    title: "A distribution guide.",
-    body: "Where it all goes. Organic first, then retargeting the people already paying attention.",
+    when: "Every month",
+    body: "A short online filming session between visits, so your content stays fresh.",
   },
   {
-    title: "Monthly coaching.",
-    body: "A standing session with our team: review what ran, plan what's next, unstick whatever's stuck.",
+    when: "Optional",
+    body: "Film from your phone. We send a few questions, you film short clips whenever it suits you.",
   },
 ];
+
+// Pricing: two headline offers, an optional posting add-on, and on-ramps.
+export interface Offer {
+  name: string;
+  badge?: string;
+  price: string;
+  period: string;
+  setup?: string;
+  note?: string;
+  includes: string[];
+}
+
+export const FULL_ENGINE: Offer = {
+  name: "The full engine",
+  badge: "Most popular",
+  price: "$2,500",
+  period: "/month",
+  setup: "+ $5,000 to build your launch kit up front",
+  note: "3-month minimum. Start it all up front and the kit drops to $5,000.",
+  includes: [
+    "Your content plan and launch kit to start",
+    "Your branded look on every video",
+    "We come to you once a quarter to film",
+    "A quick monthly filming session in between",
+    "A planning and coaching call every month",
+    "A full month of content, every month, in your voice",
+  ],
+};
+
+export const LAUNCH_KIT_OFFER: Offer = {
+  name: "Just the launch kit",
+  price: "$7,500",
+  period: "one-time",
+  note: "The whole kit, built once, yours to keep. No monthly plan. You run it yourself.",
+  includes: [
+    "Your content plan to keep",
+    "The complete launch kit",
+    "Your story, a customer win, your service explained, five answers to doubts",
+    "A free guide, five graphics, a how-to guide",
+    "Your branded look for every video",
+  ],
+};
+
+export const POST_FOR_YOU = {
+  price: "+$750",
+  period: "/mo",
+  body: "Don't want to post it yourself? We post everything from your accounts and reply to your comments on LinkedIn and Google, so you stay active without lifting a finger.",
+};
+
+export const A_LA_CARTE: { what: string; price: string; goodIf: string }[] = [
+  {
+    what: "A content plan",
+    price: "$1,500",
+    goodIf: "You want the plan, not the filming. One call, and you walk away with a clear plan for your content.",
+  },
+  {
+    what: "A monthly coach",
+    price: "$750/mo",
+    goodIf: "You film and post yourself, but want an expert to plan, review, and guide you each month.",
+  },
+  {
+    what: "Your branded look",
+    price: "$2,000",
+    goodIf: "A branded intro, outro, and matching graphics so your videos look like a show. Yours to keep.",
+  },
+  {
+    what: "Just the guides",
+    price: "from $500",
+    goodIf: "The plan and how-to guides, built for you to run with.",
+  },
+];
+
+export const PRICING_NOTE =
+  "Prices are a starting point and get confirmed before you sign. Not ready for all of it? Start with one piece and grow into the full engine. Whatever you buy now counts toward it.";
 
 export const TRUST_ENGINE_FAQ: FaqItem[] = [
   {
     question: "How much of my time does this take?",
     answer:
-      "DIY: a few phone sessions a month, guided. Onsite: one day on camera. Full: one or two. After that, the system and the coaching carry it.",
+      "Almost none. A short planning call and one filming session a month. We come to you in person every quarter and hop on a quick video call in between. You show up as yourself. We handle everything after.",
   },
   {
     question: "I freeze on camera. Will this work?",
     answer:
-      "Yes. The interview format does the heavy lifting: real questions, real answers, no scripts to memorize. Most people are nervous before. The footage never shows it.",
+      "Yes. We ask the questions and pull the story out of you. Real questions, real answers, no scripts to memorize. Most people are nervous before. The footage never shows it.",
   },
   {
     question: "We tried posting. Nothing happened.",
     answer:
-      "One-off posting isn't a system. This is a library, a plan for where it goes, and monthly coaching to keep it moving. Consistency is the strategy.",
+      "One-off posting isn't a system. This is a full month of content, planned around one clear story, delivered on time every month. Consistency is the strategy.",
   },
   {
     question: "Who actually does the work?",
     answer:
-      "A studio team: producers, editors, and coaches. Senior review on everything before it ships. You get a system that runs, not a freelancer who disappears.",
+      "A studio team: producers, editors, and coaches, with senior review on everything before it ships. You get a service that runs, not a freelancer who disappears.",
   },
   {
-    question: "What if I outgrow my tier?",
+    question: "Can I start smaller, or get more?",
     answer:
-      "They stack cleanly. DIY clients add a filming day. Onsite clients come back for the Full library. Same foundations underneath, so you never start over.",
+      "Start with the full engine, or start with one piece: a content plan, your branded look, or a monthly coach. Whatever you buy now counts toward the full engine. Want more each month? Move up a plan.",
   },
   {
-    question: "Why not just run ads?",
+    question: "Is there a contract?",
     answer:
-      "Ads amplify a working system. They can't replace one. Organic first, then retargeting the people already watching. You own the asset either way.",
+      "A three-month minimum, because trust takes a little time to build. After that you can leave anytime, and everything we make is yours to keep, forever.",
+  },
+  {
+    question: "Is it really all filmed? No AI, no stock?",
+    answer:
+      "Real human origin. No AI-generated content, no stock footage. If it didn't happen, it doesn't go in the work.",
   },
 ];
 
