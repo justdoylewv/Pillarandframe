@@ -9,8 +9,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "frontier-technologies",
     client: "Frontier Technologies",
-    service: "Trust Engine",
-    tags: ["Trust Engine", "Personal brand", "IT services"],
+    service: "The Engine",
+    tags: ["The Engine", "Personal brand", "IT services"],
     oneLiner: "A founder's personal brand, built and run every week.",
     metaTitle: "Frontier Technologies | Work",
     metaDescription:
@@ -62,14 +62,14 @@ A personal brand does not arrive in a launch. It comes online slowly, then all a
     videoProvider: null,
     nextSlug: "memorial-health",
     ctaHeading: "Want your proof working like this?",
-    ctaServiceLabel: "See the Trust Engine",
-    ctaServiceHref: "/trust-engine",
+    ctaServiceLabel: "See The Engine",
+    ctaServiceHref: "/engine",
   },
   {
     slug: "memorial-health",
     client: "Memorial Health",
-    service: "Trust Engine",
-    tags: ["Trust Engine", "Healthcare", "Capital campaign"],
+    service: "The Engine",
+    tags: ["The Engine", "Healthcare", "Capital campaign"],
     oneLiner: "A new emergency department, filmed while it's built.",
     metaTitle: "Memorial Health | Work",
     metaDescription:
@@ -121,8 +121,8 @@ The film is done. The campaign has what it needs to raise the money. And when th
     videoProvider: "gdrive",
     nextSlug: "frontier-technologies",
     ctaHeading: "Raising money to build something?",
-    ctaServiceLabel: "See the Trust Engine",
-    ctaServiceHref: "/trust-engine",
+    ctaServiceLabel: "See The Engine",
+    ctaServiceHref: "/engine",
   },
 ];
 

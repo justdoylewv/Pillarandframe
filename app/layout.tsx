@@ -18,7 +18,7 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Pillar & Frame | Story-led film studio. The Trust Engine.",
+    default: "Pillar & Frame | Story-led film studio. The Engine.",
     template: "%s | Pillar & Frame",
   },
   description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   openGraph: {
-    title: "Pillar & Frame | Story-led film studio. The Trust Engine.",
+    title: "Pillar & Frame | Story-led film studio. The Engine.",
     description:
       "Real stories captured on film, turned into a year of content, put to work on LinkedIn and Google. A system, with coaching along the way.",
     type: "website",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pillar & Frame",
     description:
-      "A story-led film studio in Ohio. The Founder Launch Kit and the Trust Engine.",
+      "A story-led film studio in Ohio. The Foundation and The Engine.",
   },
   icons: {
     icon: "/favicon.svg",
@@ -77,7 +77,7 @@ const SERVICE_JSONLD = {
   name: "Pillar & Frame",
   url: SITE_URL,
   description:
-    "Story-led film studio for founder-driven service brands. The Trust Engine: real stories captured on film, turned into a content waterfall, put to work on LinkedIn and Google Business Profiles. Plus systems coaching for CRM, follow-up, and automations.",
+    "Story-led film studio for founder-driven service brands. The Engine: real stories captured on film, turned into a content waterfall, put to work on LinkedIn and Google Business Profiles. Plus systems coaching for CRM, follow-up, and automations.",
   areaServed: [
     { "@type": "State", name: "Ohio" },
     { "@type": "Country", name: "United States" },
@@ -87,16 +87,16 @@ const SERVICE_JSONLD = {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "Founder Launch Kit",
-        url: `${SITE_URL}/founder-launch-kit`,
+        name: "The Foundation",
+        url: `${SITE_URL}/foundation`,
       },
     },
     {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "The Trust Engine",
-        url: `${SITE_URL}/trust-engine`,
+        name: "The Engine",
+        url: `${SITE_URL}/engine`,
       },
     },
   ],

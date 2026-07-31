@@ -1,6 +1,6 @@
 import type { FaqItem } from "./types";
 
-// The Trust Engine: the monthly retainer that runs after the Founder Launch
+// The Engine: the monthly retainer that runs after the Founder Launch
 // Kit sets the foundations. We film you once a month and turn it into a month
 // of content in your voice.
 
@@ -92,7 +92,7 @@ export interface Offer {
 }
 
 export const RETAINER: Offer = {
-  name: "The Trust Engine",
+  name: "The Engine",
   badge: "The retainer",
   price: "$2,500",
   period: "/month",
@@ -115,9 +115,9 @@ export const POST_FOR_YOU = {
 
 export const TRUST_ENGINE_FAQ: FaqItem[] = [
   {
-    question: "Do I need the Founder Launch Kit first?",
+    question: "Do I need The Foundation first?",
     answer:
-      "Usually, yes. The Launch Kit is your foundation: your story, your Content Marketing Guide, your branded look, your profiles installed. The Trust Engine keeps it running every month. If your foundations are already solid, we can start the retainer directly.",
+      "Usually, yes. The Foundation is your starting point: your story, your Content Marketing Guide, your branded look, your profiles installed. The Engine keeps it running every month. If your foundations are already solid, we can start the retainer directly.",
   },
   {
     question: "How much of my time does this take?",

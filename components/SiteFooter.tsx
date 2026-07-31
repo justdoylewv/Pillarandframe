@@ -16,8 +16,8 @@ const COLUMNS: {
   {
     heading: "Services",
     links: [
-      { label: "Founder Launch Kit", href: "/founder-launch-kit" },
-      { label: "The Trust Engine", href: "/trust-engine" },
+      { label: "The Foundation", href: "/foundation" },
+      { label: "The Engine", href: "/engine" },
     ],
   },
   {

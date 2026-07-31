@@ -1,4 +1,4 @@
-export type ServiceName = "Trust Engine" | "Systems Coaching";
+export type ServiceName = "The Engine" | "Systems Coaching";
 
 export type VideoProvider = "youtube" | "vimeo" | "mux" | "gdrive";
 

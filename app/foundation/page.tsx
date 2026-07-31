@@ -5,10 +5,10 @@ import CtaButton from "@/components/CtaButton";
 import { BOOKING_URL } from "@/lib/content/site";
 
 export const metadata: Metadata = {
-  title: "The Founder Launch Kit",
+  title: "The Foundation",
   description:
     "One filming day. Thirty days later your Google profile, social profiles, and website copy are written, shot, and installed. Not handed over. For founder-led service businesses.",
-  alternates: { canonical: "/founder-launch-kit" },
+  alternates: { canonical: "/foundation" },
 };
 
 const FIT_CALL = "Book a 15-minute fit call";
@@ -270,7 +270,7 @@ const FLK_FAQ: { question: string; answers: string[] }[] = [
     question: "What happens after 30 days?",
     answers: [
       "You own everything and you owe us nothing. There is no monthly, no contract, nothing to cancel.",
-      "If it works and you want help keeping it current, that is a conversation for day 30. That is the Trust Engine. Not today.",
+      "If it works and you want help keeping it current, that is a conversation for day 30. That is The Engine. Not today.",
     ],
   },
 ];
@@ -288,7 +288,7 @@ export default function FounderLaunchKitPage() {
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-8">
-            The Founder Launch Kit &middot; 30 days &middot; Installed
+            The Foundation &middot; 30 days &middot; Installed
           </Kicker>
           <h1 className="font-serif text-5xl leading-[1.02] tracking-tight text-black sm:text-6xl md:text-7xl">
             In 30 days, be the one they{" "}
@@ -625,7 +625,7 @@ export default function FounderLaunchKitPage() {
               No monthly commitment. Nothing to cancel.
             </p>
             <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-ash-500">
-              $5,000 is the founding-client rate for the first ten Launch Kits. In
+              $5,000 is the founding-client rate for the first ten Foundations. In
               exchange, we get to document yours and use it as the case study.
               After ten, it goes to $7,500.
             </p>
@@ -887,7 +887,7 @@ export default function FounderLaunchKitPage() {
                 choice when the phone starts ringing.
               </p>
               <p>
-                And the founding rate holds for the first ten Launch Kits. After
+                And the founding rate holds for the first ten Foundations. After
                 that it is $7,500, because by then we will have the case studies to
                 justify it.
               </p>
@@ -919,10 +919,10 @@ export default function FounderLaunchKitPage() {
           </p>
           <p className="mt-10">
             <Link
-              href="/trust-engine"
+              href="/engine"
               className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300 transition-colors hover:text-paper"
             >
-              Already launched? See the Trust Engine retainer &rarr;
+              Already launched? See The Engine retainer &rarr;
             </Link>
           </p>
         </div>

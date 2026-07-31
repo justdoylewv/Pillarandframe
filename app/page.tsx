@@ -10,10 +10,10 @@ import { getCaseStudy } from "@/lib/content/caseStudies";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Pillar & Frame | Story-led film studio. The Trust Engine.",
+    absolute: "Pillar & Frame | Story-led film studio. The Foundation.",
   },
   description:
-    "You know your work. We help you say it. Real stories captured on film, turned into a year of content, put to work on LinkedIn and Google. A system, with coaching along the way.",
+    "One filming day. Thirty days later your Google profile, social profiles, and website copy are written, shot, and installed. Not handed over. For founder-led service businesses.",
   alternates: { canonical: "/" },
 };
 
@@ -22,18 +22,18 @@ const HERO_IMAGE: string | null = null; // TODO: drop in real interview/BTS stil
 const PROBLEM_BLOCKS = [
   {
     number: "01",
-    title: "You don't know what to say.",
-    body: "You have twenty years of stories and a blank page. That's not a talent problem. Nobody hands you the topics.",
+    title: "They check you out before they call.",
+    body: "Someone gets your name. Then they Google you. In the next 48 hours they compare you against every competitor they can find, and decide who to call first.",
   },
   {
     number: "02",
-    title: "You don't know how to say it.",
-    body: "On camera you tighten up. In writing you sound like everyone else. The real version of you, the one clients trust, never makes it into the content.",
+    title: "You are not in that room.",
+    body: "Your Google profile is. Your photos, your reviews, your story. If those are empty or say nothing, you look smaller online than you actually are.",
   },
   {
     number: "03",
-    title: "You don't know where it goes.",
-    body: "One post here, one video there, then silence for a month. Meanwhile your buyers are checking LinkedIn, reading your Google profile, and asking AI who to trust.",
+    title: "Fixing it keeps landing on you.",
+    body: "Your web guy is waiting on copy you never send. You sit down to write your About page and freeze. It has been stuck on your desk for two years.",
   },
 ];
 
@@ -49,8 +49,8 @@ const HOW_WE_WORK = [
     body: "We film real people saying true things. No stock footage. No AI-generated anything. Quotes stay verbatim. Proof like that can't be copied, because it only happened to you.",
   },
   {
-    title: "A system, not a shoot.",
-    body: "Anyone can hand you a video. We hand you a library, a plan for where it all goes, and coaching every month so it keeps moving.",
+    title: "Installed, not delivered.",
+    body: "Anyone can hand you a folder. We log in and load every profile ourselves, then send you before and after screenshots of exactly what changed.",
   },
   {
     title: "You keep everything.",
@@ -101,16 +101,16 @@ export default function HomePage() {
               className="animate-slideUp font-serif text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl md:text-6xl lg:text-7xl"
               style={{ animationDelay: "100ms" }}
             >
-              The deal doesn&rsquo;t go to whoever does better work. It goes to
-              whoever looks safer online.
+              In 30 days, be the one they{" "}
+              <span className="italic text-purple-400">call first</span>.
             </h1>
             <p
               className="mt-8 max-w-[700px] animate-slideUp font-serif text-lg italic leading-relaxed text-ash-300 md:text-xl"
               style={{ animationDelay: "200ms" }}
             >
-              You know your work is good. What&rsquo;s missing is the system:
-              what to say, how to say it, and where it goes. We build that
-              system with you, and coach you the whole way.
+              Right now you are losing jobs in a room you are not in. We film
+              you for one day, write every word your business needs, and then we
+              log in and install all of it ourselves.
             </p>
             <div
               className="mt-12 flex animate-slideUp flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6"
@@ -119,8 +119,8 @@ export default function HomePage() {
               <CtaButton href={BOOKING_URL} variant="solidLight">
                 {CTA_LABEL}
               </CtaButton>
-              <CtaButton href="/work" variant="outlineLight">
-                See the work
+              <CtaButton href="/foundation" variant="outlineLight">
+                See The Foundation
               </CtaButton>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function HomePage() {
           <HomeReel />
           <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
             Trusted by Frontier Technologies &middot; Memorial Health &middot; DG
-            Lending &middot; Wealthstrong
+            Lending
           </p>
         </div>
       </section>
@@ -160,7 +160,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">The real problem</Kicker>
           <h2 className="max-w-3xl font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Making content isn&rsquo;t hard. Making it without a system is.
+            You look smaller online than you actually are.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
             {PROBLEM_BLOCKS.map((block) => (
@@ -178,7 +178,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-20 max-w-3xl font-serif text-2xl leading-snug text-black md:text-3xl">
-            A system answers all three. Coaching keeps it moving.
+            We take it off your desk. All of it. In 30 days.
           </p>
         </div>
       </section>
@@ -188,56 +188,76 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">What we do</Kicker>
           <h2 className="max-w-3xl font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Two services. One job: make you the obvious choice.
+            Everyone hands you a folder.{" "}
+            <span className="italic text-purple-600">We log in.</span>
           </h2>
-          <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
-            {/* Card 1: Founder Launch Kit */}
-            <Link href="/founder-launch-kit" className="group block bg-paper">
-              <MediaFrame aspect="video" alt="Founder Launch Kit" caption="Filming still coming soon" />
-              <div className="p-8 md:p-10">
-                <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
-                  Foundations &middot; one-time
-                </span>
-                <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
-                  Founder Launch Kit
-                </h3>
-                <p className="mb-8 text-base leading-relaxed text-ash-700">
-                  One filming day. Thirty days later your Google profile, social
-                  profiles, and website copy are written, shot, and installed.
-                  Not handed over. We log in and load every profile ourselves.
-                </p>
-                <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
-                  See the Founder Launch Kit
-                  <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
-                </span>
-              </div>
-            </Link>
-            {/* Card 2: The Trust Engine */}
-            <Link href="/trust-engine" className="group block bg-paper">
-              <MediaFrame aspect="video" alt="The Trust Engine" caption="Working session still coming soon" />
-              <div className="p-8 md:p-10">
-                <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
-                  Retainer &middot; monthly
-                </span>
-                <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
-                  The Trust Engine
-                </h3>
-                <p className="mb-8 text-base leading-relaxed text-ash-700">
-                  Once your foundations are set, we keep you visible. We film you
-                  once a month and turn it into a full month of videos, posts, and
-                  graphics in your voice. Coaching built in.
-                </p>
-                <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
-                  See the Trust Engine
-                  <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
-                </span>
-              </div>
-            </Link>
-          </div>
-          <p className="mx-auto mt-16 max-w-2xl text-center font-serif text-xl italic leading-relaxed text-ash-700 md:text-2xl">
-            Start with the foundations. Keep it running with the retainer. One
-            studio for both.
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
+            Every agency delivers files and a guide, and then six hours of
+            copying and pasting lands on you. It never gets done. So we do it.
           </p>
+
+          {/* The Foundation: the core offer */}
+          <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+            <Link href="/foundation" className="group block">
+              <MediaFrame aspect="video" alt="The Foundation" caption="Filming still coming soon" />
+            </Link>
+            <div>
+              <span className="mb-4 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
+                The Foundation &middot; $5,000 &middot; 30 days
+              </span>
+              <h3 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+                One filming day. Everything installed.
+              </h3>
+              <p className="mt-6 text-lg leading-relaxed text-ash-700">
+                We film you once, write every word your business needs, and then
+                load it into your Google profile, your social profiles, and your
+                website copy ourselves. Eight videos, thirty photos, and every
+                field filled in. Live, not in a folder.
+              </p>
+              <ul className="mt-8 space-y-3">
+                {[
+                  "Your Google Business Profile, filled in and live",
+                  "Eight videos and thirty photos from one day",
+                  "Website copy, social bios, and your bio bank",
+                  "We install it. Nothing left on your desk.",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-base leading-relaxed text-ash-700">
+                    <span className="mt-2 h-[3px] w-[3px] shrink-0 bg-gold-500" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10">
+                <CtaButton href="/foundation">See The Foundation</CtaButton>
+              </div>
+            </div>
+          </div>
+
+          {/* The Engine: the secondary, after-the-fact offer */}
+          <div className="mt-16 border-t border-ash-100 pt-10">
+            <div className="flex flex-col gap-6 md:flex-row md:items-baseline md:justify-between">
+              <div className="max-w-2xl">
+                <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
+                  After the foundation
+                </span>
+                <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
+                  The Engine
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-ash-700">
+                  Want to stay visible after it is installed? We film you once a
+                  month and turn it into a full month of content. Only if you
+                  want it, and only once the foundation is set.
+                </p>
+              </div>
+              <Link
+                href="/engine"
+                className="group inline-flex shrink-0 items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black"
+              >
+                See The Engine
+                <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -375,12 +395,13 @@ export default function HomePage() {
             No pitch on the call
           </Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-paper md:text-6xl">
-            Open to a strategy call?
+            You talk for one day. We{" "}
+            <span className="italic text-gold-500">install</span> the rest.
           </h2>
           <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-ash-300 md:text-xl">
-            Thirty minutes. We talk through your story, your content, and your
-            systems. You get a written report within 48 hours, whether we work
-            together or not.
+            Fifteen minutes, and we will tell you in the first five whether this
+            is right for you. If it is not, we will say so and tell you what we
+            would do instead. No deck. No proposal.
           </p>
           <div className="mt-12">
             <CtaButton href={BOOKING_URL} variant="solidLight">

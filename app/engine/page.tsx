@@ -13,10 +13,10 @@ import {
 } from "@/lib/content/services";
 
 export const metadata: Metadata = {
-  title: "The Trust Engine",
+  title: "The Engine",
   description:
-    "The monthly retainer for founder-led service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. Coaching built in. Picks up where the Founder Launch Kit leaves off.",
-  alternates: { canonical: "/trust-engine" },
+    "The monthly retainer for founder-led service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. Coaching built in. Picks up where the The Foundation leaves off.",
+  alternates: { canonical: "/engine" },
 };
 
 function Tick() {
@@ -29,25 +29,25 @@ export default function TrustEnginePage() {
       {/* Hero */}
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-8">The Trust Engine &middot; The retainer</Kicker>
+          <Kicker className="mb-8">The Engine &middot; The retainer</Kicker>
           <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
             The hardest part isn&rsquo;t the first post. It&rsquo;s the fiftieth.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
             Once your foundations are set, staying visible is a consistency
-            problem. The Trust Engine solves it. We film you once a month and
+            problem. The Engine solves it. We film you once a month and
             turn it into a full month of content in your voice. Videos, posts,
             captions, graphics. You show up as yourself. We do the rest.
           </p>
           <p className="mt-6 text-base leading-relaxed text-ash-700">
             New here? Start with the{" "}
             <Link
-              href="/founder-launch-kit"
+              href="/foundation"
               className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
             >
-              Founder Launch Kit
+              The Foundation
             </Link>
-            . It builds the foundation. The Trust Engine keeps it running.
+            . It builds the foundation. The Engine keeps it running.
           </p>
           <div className="mt-12">
             <CtaButton href={BOOKING_URL}>{CTA_LABEL}</CtaButton>
@@ -135,7 +135,7 @@ export default function TrustEnginePage() {
             ))}
           </div>
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
-            One filming session becomes a full month of content. Your Launch Kit
+            One filming session becomes a full month of content. Your Foundation
             keeps working underneath it all year.
           </p>
         </div>
@@ -265,10 +265,10 @@ export default function TrustEnginePage() {
           <p className="mt-8 text-base leading-relaxed text-ash-500">
             Not launched yet? Start with the{" "}
             <Link
-              href="/founder-launch-kit"
+              href="/foundation"
               className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
             >
-              Founder Launch Kit
+              The Foundation
             </Link>{" "}
             ($5,000 one-time), then continue on the retainer. Prices get confirmed
             before you sign.
