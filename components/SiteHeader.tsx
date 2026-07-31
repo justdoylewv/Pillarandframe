@@ -6,7 +6,6 @@ import Wordmark from "@/components/Wordmark";
 import { BOOKING_URL, CTA_LABEL } from "@/lib/content/site";
 
 const NAV_LINKS = [
-  { href: "/foundation", label: "The Foundation" },
   { href: "/engine", label: "The Engine" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },

@@ -42,7 +42,7 @@ export default function TrustEnginePage() {
           <p className="mt-6 text-base leading-relaxed text-ash-700">
             New here? Start with the{" "}
             <Link
-              href="/foundation"
+              href="/"
               className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
             >
               The Foundation
@@ -265,7 +265,7 @@ export default function TrustEnginePage() {
           <p className="mt-8 text-base leading-relaxed text-ash-500">
             Not launched yet? Start with the{" "}
             <Link
-              href="/foundation"
+              href="/"
               className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
             >
               The Foundation

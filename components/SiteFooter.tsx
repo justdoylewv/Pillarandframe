@@ -16,7 +16,7 @@ const COLUMNS: {
   {
     heading: "Services",
     links: [
-      { label: "The Foundation", href: "/foundation" },
+      { label: "The Foundation", href: "/" },
       { label: "The Engine", href: "/engine" },
     ],
   },

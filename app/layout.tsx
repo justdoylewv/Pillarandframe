@@ -88,7 +88,7 @@ const SERVICE_JSONLD = {
       itemOffered: {
         "@type": "Service",
         name: "The Foundation",
-        url: `${SITE_URL}/foundation`,
+        url: SITE_URL,
       },
     },
     {

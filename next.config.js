@@ -3,9 +3,10 @@ const nextConfig = {
   async redirects() {
     return [
       // The Foundation (previously the Founder Launch Kit)
-      { source: "/founder-launch-kit", destination: "/foundation", permanent: true },
-      { source: "/foundations", destination: "/foundation", permanent: true },
-      { source: "/launch-kit", destination: "/foundation", permanent: true },
+      { source: "/foundation", destination: "/", permanent: true },
+      { source: "/founder-launch-kit", destination: "/", permanent: true },
+      { source: "/foundations", destination: "/", permanent: true },
+      { source: "/launch-kit", destination: "/", permanent: true },
       // The Engine (previously the Trust Engine)
       { source: "/trust-engine", destination: "/engine", permanent: true },
       { source: "/systems-coaching", destination: "/engine", permanent: true },
