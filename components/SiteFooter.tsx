@@ -2,8 +2,6 @@ import Link from "next/link";
 import Wordmark from "@/components/Wordmark";
 import {
   BOOKING_URL,
-  CITY_SPOTLIGHT_LINE,
-  CITY_SPOTLIGHT_URL,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   FOOTER_TAGLINE,
@@ -94,17 +92,7 @@ export default function SiteFooter() {
               Book a free strategy call
             </a>
           </div>
-          <p className="mt-8 text-xs text-ash-500">
-            <a
-              href={CITY_SPOTLIGHT_URL}
-              target="_blank"
-              rel="noopener"
-              className="transition-colors hover:text-black"
-            >
-              {CITY_SPOTLIGHT_LINE}
-            </a>
-          </p>
-          <p className="mt-3 text-xs text-ash-300">
+          <p className="mt-8 text-xs text-ash-300">
             &copy; 2026 Pillar &amp; Frame &middot; Ohio
           </p>
         </div>

@@ -818,9 +818,8 @@ export default function HomePage() {
               in 30 days instead of six months.
             </p>
             <p>
-              We also run City Spotlight Ohio, where we sit down with local
-              business owners and film their stories for the sake of the story.
-              You are not going to be our first interview.
+              We sit down with business owners and film their stories most weeks
+              of the year. You are not going to be our first interview.
             </p>
           </div>
           <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
