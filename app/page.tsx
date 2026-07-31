@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
 import { BOOKING_URL } from "@/lib/content/site";
 import { getCaseStudy } from "@/lib/content/caseStudies";
+import { HERO_PHOTO, PHOTO_STRIP } from "@/lib/content/photos";
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const HERO_IMAGE: string | null = null; // TODO: drop in real interview/BTS still (public/uploads/...)
+// Placeholder capture-day photo. Swap in lib/content/photos.ts.
+const HERO_IMAGE: string | null = HERO_PHOTO;
 
 const FIT_CALL = "Book a 15-minute fit call";
 
@@ -222,16 +223,14 @@ export default function HomePage() {
       <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-black sm:min-h-[80vh]">
         {HERO_IMAGE && (
           <div className="absolute inset-0">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={HERO_IMAGE}
-              alt="Behind the scenes on a Pillar and Frame capture day"
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="100vw"
-              quality={85}
+              alt="A capture day, shot on location"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black" />
           </div>
         )}
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-28 sm:py-32">
@@ -523,6 +522,24 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Photography, shown rather than described */}
+        <div className="mx-auto mt-16 max-w-7xl px-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {PHOTO_STRIP.map((photo) => (
+              <MediaFrame
+                key={photo.src}
+                image={photo.src}
+                alt={photo.alt}
+                aspect="portrait"
+              />
+            ))}
+          </div>
+          <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
+            Thirty finished photos from one day. Real people, real rooms, no
+            stock.
+          </p>
         </div>
       </section>
 

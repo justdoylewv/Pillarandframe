@@ -5,6 +5,7 @@ import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import JsonLd from "@/components/JsonLd";
 import { BOOKING_URL, CITY_SPOTLIGHT_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
+import { ABOUT_PHOTO } from "@/lib/content/photos";
 
 export const metadata: Metadata = {
   title: "About",
@@ -112,7 +113,7 @@ export default function AboutPage() {
 
       {/* Behind the scenes */}
       <div className="mx-auto max-w-7xl px-6">
-        <MediaFrame aspect="wide" alt="Pillar and Frame on a capture day" caption="Behind the scenes coming soon" />
+        <MediaFrame aspect="wide" image={ABOUT_PHOTO} alt="Pillar and Frame on a capture day" />
       </div>
 
       {/* What we do about it */}
