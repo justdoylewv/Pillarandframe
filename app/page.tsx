@@ -183,6 +183,13 @@ const FAQ: { question: string; answers: string[] }[] = [
     ],
   },
   {
+    question: "Why is it $5,000 when it says $7,500?",
+    answers: [
+      "This is early founder pricing. The first ten clients pay $5,000, and in exchange we get to document the build and use it as a case study.",
+      "After those ten, it goes to $7,500. Same work either way. You are getting the early rate for being early.",
+    ],
+  },
+  {
     question: "What happens after 30 days?",
     answers: [
       "You own everything and you owe us nothing. There is no monthly, no contract, nothing to cancel.",
@@ -277,7 +284,8 @@ export default function HomePage() {
                 {FIT_CALL}
               </CtaButton>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                $5,000 &middot; one project &middot; yours forever
+                <span className="text-gold-500">$5,000 early founder pricing</span>{" "}
+                &middot; first 10 clients &middot; then $7,500
               </span>
             </div>
           </div>
@@ -592,10 +600,10 @@ export default function HomePage() {
           </p>
 
           <div className="mt-12 border border-shale bg-ink p-10 text-center md:p-16">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-              One vendor. One day of your time. Thirty days.
+            <span className="inline-block rounded-[2px] bg-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-black">
+              Early founder pricing &middot; first 10 clients
             </span>
-            <p className="mt-6 font-mono text-sm uppercase tracking-[0.15em] text-ash-500 line-through">
+            <p className="mt-8 font-mono text-sm uppercase tracking-[0.15em] text-ash-500 line-through">
               $7,500
             </p>
             <p className="my-3 font-serif text-7xl tracking-tight text-gold-500 md:text-8xl">
@@ -611,9 +619,9 @@ export default function HomePage() {
               No monthly commitment. Nothing to cancel.
             </p>
             <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-ash-500">
-              $5,000 is the founding-client rate for the first ten. In exchange,
-              we get to document yours and use it as the case study. After ten, it
-              goes to $7,500.
+              This is early founder pricing. The first ten clients pay $5,000. In
+              exchange, we get to document yours and use it as the case study.
+              After ten, it goes to $7,500.
             </p>
             <div className="mt-10">
               <CtaButton href={BOOKING_URL} variant="solidLight">
@@ -797,6 +805,14 @@ export default function HomePage() {
                 <strong className="font-semibold text-black">before</strong> your
                 season, not during it. Film in the slow weeks. Be the obvious
                 choice when the phone starts ringing.
+              </p>
+              <p>
+                And this is early founder pricing. The{" "}
+                <strong className="font-semibold text-black">
+                  first ten clients pay $5,000
+                </strong>
+                . After that it is $7,500, because by then we will have the case
+                studies to justify it.
               </p>
             </div>
           </div>
