@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pillar & Frame",
     description:
-      "A story-led film studio in Ohio. The Trust Engine and Systems Coaching.",
+      "A story-led film studio in Ohio. The Founder Launch Kit and the Trust Engine.",
   },
   icons: {
     icon: "/favicon.svg",
@@ -87,16 +87,16 @@ const SERVICE_JSONLD = {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "The Trust Engine",
-        url: `${SITE_URL}/trust-engine`,
+        name: "Founder Launch Kit",
+        url: `${SITE_URL}/founder-launch-kit`,
       },
     },
     {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "Systems Coaching",
-        url: `${SITE_URL}/systems-coaching`,
+        name: "The Trust Engine",
+        url: `${SITE_URL}/trust-engine`,
       },
     },
   ],

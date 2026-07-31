@@ -71,18 +71,6 @@ const SELECTED_WORK = [
     industry: "Healthcare",
     line: "A new emergency department, filmed while it's built.",
   },
-  {
-    slug: "dg-lending",
-    client: "DG Lending",
-    industry: "Mortgage lending",
-    line: "80+ videos, then a CRM that finally matches how loans move.",
-  },
-  {
-    slug: "wealthstrong",
-    client: "Wealthstrong",
-    industry: "Wealth management",
-    line: "The audit that said \"don't send yet\" and mapped what to fix first.",
-  },
 ];
 
 export default function HomePage() {
@@ -203,18 +191,41 @@ export default function HomePage() {
             Two services. One job: make you the obvious choice.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
-            {/* Card 1: The Trust Engine */}
-            <Link href="/trust-engine" className="group block bg-paper">
-              <MediaFrame aspect="video" alt="The Trust Engine" caption="Filming still coming soon" />
+            {/* Card 1: Founder Launch Kit */}
+            <Link href="/founder-launch-kit" className="group block bg-paper">
+              <MediaFrame aspect="video" alt="Founder Launch Kit" caption="Filming still coming soon" />
               <div className="p-8 md:p-10">
+                <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
+                  Foundations &middot; one-time
+                </span>
+                <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
+                  Founder Launch Kit
+                </h3>
+                <p className="mb-8 text-base leading-relaxed text-ash-700">
+                  One filming day. Thirty days later your Google profile, social
+                  profiles, and website copy are written, shot, and installed.
+                  Not handed over. We log in and load every profile ourselves.
+                </p>
+                <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
+                  See the Founder Launch Kit
+                  <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
+                </span>
+              </div>
+            </Link>
+            {/* Card 2: The Trust Engine */}
+            <Link href="/trust-engine" className="group block bg-paper">
+              <MediaFrame aspect="video" alt="The Trust Engine" caption="Working session still coming soon" />
+              <div className="p-8 md:p-10">
+                <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300">
+                  Retainer &middot; monthly
+                </span>
                 <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
                   The Trust Engine
                 </h3>
                 <p className="mb-8 text-base leading-relaxed text-ash-700">
-                  We film you once a month and turn it into a full month of
-                  videos, posts, and graphics in your voice. A launch kit to
-                  start, then done-for-you content all year, put to work on
-                  LinkedIn and Google. Coaching built in.
+                  Once your foundations are set, we keep you visible. We film you
+                  once a month and turn it into a full month of videos, posts, and
+                  graphics in your voice. Coaching built in.
                 </p>
                 <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
                   See the Trust Engine
@@ -222,28 +233,10 @@ export default function HomePage() {
                 </span>
               </div>
             </Link>
-            {/* Card 2: Systems Coaching */}
-            <Link href="/systems-coaching" className="group block bg-paper">
-              <MediaFrame aspect="video" alt="Systems Coaching" caption="Working session still coming soon" />
-              <div className="p-8 md:p-10">
-                <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
-                  Systems Coaching
-                </h3>
-                <p className="mb-8 text-base leading-relaxed text-ash-700">
-                  The other half: the follow-up. We get inside the tools you
-                  already pay for (CRM, email, automations) and fix the leaks
-                  with your team, so attention becomes clients.
-                </p>
-                <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
-                  See Systems Coaching
-                  <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
-                </span>
-              </div>
-            </Link>
           </div>
           <p className="mx-auto mt-16 max-w-2xl text-center font-serif text-xl italic leading-relaxed text-ash-700 md:text-2xl">
-            Content brings people in. Systems turn them into clients. We built a
-            service for each half.
+            Start with the foundations. Keep it running with the retainer. One
+            studio for both.
           </p>
         </div>
       </section>

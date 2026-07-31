@@ -10,32 +10,12 @@ import { CASE_STUDIES } from "@/lib/content/caseStudies";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Real clients, real systems, real numbers. Trust engines and systems coaching across healthcare, lending, wealth management, and IT.",
+    "Real clients, real numbers. Story-led film and content work across healthcare, IT, and founder-led service brands.",
   alternates: { canonical: "/work" },
 };
 
-const FILTERS = [
-  { key: "all", label: "All" },
-  { key: "trust-engine", label: "Trust Engine" },
-  { key: "systems-coaching", label: "Systems Coaching" },
-] as const;
-
-const SERVICE_KEYS: Record<string, string> = {
-  "Trust Engine": "trust-engine",
-  "Systems Coaching": "systems-coaching",
-};
-
-interface PageProps {
-  searchParams: { service?: string };
-}
-
-export default function WorkPage({ searchParams }: PageProps) {
-  const active =
-    FILTERS.find((f) => f.key === searchParams.service)?.key ?? "all";
-  const studies =
-    active === "all"
-      ? CASE_STUDIES
-      : CASE_STUDIES.filter((c) => SERVICE_KEYS[c.service] === active);
+export default function WorkPage() {
+  const studies = CASE_STUDIES;
 
   // Lead with a project that has real media so the featured frame showcases
   // footage, not an empty placeholder.
@@ -74,28 +54,9 @@ export default function WorkPage({ searchParams }: PageProps) {
             Real clients. Real systems. Real numbers.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
-            Four stories. Two services. Every number below is real, and every
-            quote is verbatim.
+            Real clients. Every number below is real, and every quote is
+            verbatim.
           </p>
-
-          {/* Filter chips */}
-          <div className="mt-12 flex flex-wrap gap-3">
-            {FILTERS.map((filter) => (
-              <Link
-                key={filter.key}
-                href={
-                  filter.key === "all" ? "/work" : `/work?service=${filter.key}`
-                }
-                className={`rounded-[2px] border px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors ${
-                  active === filter.key
-                    ? "border-black bg-black text-paper"
-                    : "border-ash-300 text-ash-700 hover:border-black hover:text-black"
-                }`}
-              >
-                {filter.label}
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 

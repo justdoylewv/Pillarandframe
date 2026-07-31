@@ -1,10 +1,10 @@
 import type { FaqItem } from "./types";
 
-// The Trust Engine offer. Transcribed from the offer sheet, one-pager, and
-// discovery doc. Done-for-you monthly content service: we film you once a
-// month and turn it into a month of content in your voice.
+// The Trust Engine: the monthly retainer that runs after the Founder Launch
+// Kit sets the foundations. We film you once a month and turn it into a month
+// of content in your voice.
 
-// How it works, in four steps.
+// How it works, in four steps (the monthly loop).
 export const HOW_IT_WORKS: { num: string; title: string; body: string }[] = [
   {
     num: "1",
@@ -25,51 +25,6 @@ export const HOW_IT_WORKS: { num: string; title: string; body: string }[] = [
     num: "4",
     title: "It goes live.",
     body: "Post it yourself, or let us post it for you. Your call.",
-  },
-];
-
-// The kickoff launch kit that fills your library. The same kit for every
-// client; only the stories change.
-export const LAUNCH_KIT: { label: string; body: string }[] = [
-  {
-    label: "A messaging playbook",
-    body: "Your brand story map: what to say, how to say it, your content pillars. Every video topic planned before we film.",
-  },
-  {
-    label: "Your story, on film",
-    body: "Who you are and why people should trust you.",
-  },
-  {
-    label: "A customer win",
-    body: "One real success story. Proof that you deliver.",
-  },
-  {
-    label: "What you do, in depth",
-    body: "Your service explained in a longer film, cut into clips all year.",
-  },
-  {
-    label: "Five objections, answered",
-    body: "The five reasons people hesitate to buy, handled on camera before they even call.",
-  },
-  {
-    label: "30 professional images",
-    body: "Portraits and real, in-action working shots.",
-  },
-  {
-    label: "A free lead-magnet guide",
-    body: "A simple giveaway that turns viewers into leads.",
-  },
-  {
-    label: "Five branded graphics",
-    body: "On-brand images for your feed: quotes, proof, key numbers, with templates.",
-  },
-  {
-    label: "A distribution guide",
-    body: "Where everything goes. What to pin, what to put on your website.",
-  },
-  {
-    label: "Your branded look",
-    body: "A branded intro, outro, and name-and-title motion. Built once, on everything after.",
   },
 ];
 
@@ -106,12 +61,8 @@ export const MONTHLY_DELIVERABLES: {
   },
 ];
 
-// How we film you across the year.
+// The filming rhythm across the year.
 export const CADENCE: { when: string; body: string }[] = [
-  {
-    when: "To start",
-    body: "One bigger kickoff shoot that builds your whole launch kit. Content that lasts all year.",
-  },
   {
     when: "Every quarter",
     body: "We come to you in person to film. Better footage, deeper stories, real face time.",
@@ -121,12 +72,15 @@ export const CADENCE: { when: string; body: string }[] = [
     body: "A short online filming session between visits, so your content stays fresh.",
   },
   {
+    when: "Every month",
+    body: "A planning and coaching call: review what ran, plan what is next, unstick whatever is stuck.",
+  },
+  {
     when: "Optional",
     body: "Film from your phone. We send a few questions, you film short clips whenever it suits you.",
   },
 ];
 
-// Pricing: two headline offers, an optional posting add-on, and on-ramps.
 export interface Offer {
   name: string;
   badge?: string;
@@ -137,34 +91,19 @@ export interface Offer {
   includes: string[];
 }
 
-export const FULL_ENGINE: Offer = {
-  name: "The full engine",
-  badge: "Most popular",
+export const RETAINER: Offer = {
+  name: "The Trust Engine",
+  badge: "The retainer",
   price: "$2,500",
   period: "/month",
-  setup: "+ $5,000 to build your launch kit up front",
-  note: "3-month minimum. Start it all up front and the kit drops to $5,000.",
+  note: "Three-month minimum. After that you are month to month. Leave anytime, and everything we make is yours to keep.",
   includes: [
-    "Your content plan and launch kit to start",
-    "Your branded look on every video",
+    "A full month of content, every month, in your voice",
     "We come to you once a quarter to film",
     "A quick monthly filming session in between",
     "A planning and coaching call every month",
-    "A full month of content, every month, in your voice",
-  ],
-};
-
-export const LAUNCH_KIT_OFFER: Offer = {
-  name: "Just the launch kit",
-  price: "$7,500",
-  period: "one-time",
-  note: "The whole kit, built once, yours to keep. No monthly plan. You run it yourself.",
-  includes: [
-    "Your content plan to keep",
-    "The complete launch kit",
-    "Your story, a customer win, your service explained, five answers to doubts",
-    "A free guide, five graphics, a how-to guide",
-    "Your branded look for every video",
+    "Captions, quote graphics, and a long-form piece",
+    "Your voice profile, kept current",
   ],
 };
 
@@ -174,33 +113,12 @@ export const POST_FOR_YOU = {
   body: "Don't want to post it yourself? We post everything from your accounts and reply to your comments on LinkedIn and Google, so you stay active without lifting a finger.",
 };
 
-export const A_LA_CARTE: { what: string; price: string; goodIf: string }[] = [
-  {
-    what: "A content plan",
-    price: "$1,500",
-    goodIf: "You want the plan, not the filming. One call, and you walk away with a clear plan for your content.",
-  },
-  {
-    what: "A monthly coach",
-    price: "$750/mo",
-    goodIf: "You film and post yourself, but want an expert to plan, review, and guide you each month.",
-  },
-  {
-    what: "Your branded look",
-    price: "$2,000",
-    goodIf: "A branded intro, outro, and matching graphics so your videos look like a show. Yours to keep.",
-  },
-  {
-    what: "Just the guides",
-    price: "from $500",
-    goodIf: "The plan and how-to guides, built for you to run with.",
-  },
-];
-
-export const PRICING_NOTE =
-  "Prices are a starting point and get confirmed before you sign. Not ready for all of it? Start with one piece and grow into the full engine. Whatever you buy now counts toward it.";
-
 export const TRUST_ENGINE_FAQ: FaqItem[] = [
+  {
+    question: "Do I need the Founder Launch Kit first?",
+    answer:
+      "Usually, yes. The Launch Kit is your foundation: your story, your Content Marketing Guide, your branded look, your profiles installed. The Trust Engine keeps it running every month. If your foundations are already solid, we can start the retainer directly.",
+  },
   {
     question: "How much of my time does this take?",
     answer:
@@ -222,87 +140,13 @@ export const TRUST_ENGINE_FAQ: FaqItem[] = [
       "A studio team: producers, editors, and coaches, with senior review on everything before it ships. You get a service that runs, not a freelancer who disappears.",
   },
   {
-    question: "Can I start smaller, or get more?",
-    answer:
-      "Start with the full engine, or start with one piece: a content plan, your branded look, or a monthly coach. Whatever you buy now counts toward the full engine. Want more each month? Move up a plan.",
-  },
-  {
     question: "Is there a contract?",
     answer:
-      "A three-month minimum, because trust takes a little time to build. After that you can leave anytime, and everything we make is yours to keep, forever.",
+      "A three-month minimum, because trust takes a little time to build. After that you are month to month, and everything we make is yours to keep, forever.",
   },
   {
-    question: "Is it really all filmed? No AI, no stock?",
+    question: "Why not just run ads?",
     answer:
-      "Real human origin. No AI-generated content, no stock footage. If it didn't happen, it doesn't go in the work.",
-  },
-];
-
-// Systems Coaching.
-
-// [PRICE PLACEHOLDER] Set these when the coaching prices are final; the
-// price line stays hidden while null.
-export const AUDIT_PRICE: string | null = null; // e.g. "$XXX, one time"
-export const COACHING_PRICE: string | null = null; // e.g. "$XXX/mo"
-
-export const LEAKS: string[] = [
-  "Appointment reminder workflows, fully built, saved as drafts. Never published. Never fired once.",
-  "Seven phone numbers. Four of them forwarding to nowhere.",
-  "Thousands of contacts, half of them untagged. Nobody can send the right message to the right people.",
-  "A big email blast, ready to go, on a sending domain that was never verified. One click from landing the whole list in spam.",
-];
-
-export const WHAT_GETS_FIXED: { title: string; body: string }[] = [
-  {
-    title: "Pipelines",
-    body: "that match how your clients actually move, not how the software wishes they did.",
-  },
-  {
-    title: "Follow-up and nurture",
-    body: "that pause and restart themselves. A returning client never gets the wrong email at the wrong time.",
-  },
-  {
-    title: "Review requests",
-    body: "that go out on time and build your Google profile while you sleep.",
-  },
-  {
-    title: "Email deliverability",
-    body: "so the messages you send actually arrive.",
-  },
-  {
-    title: "Calendars and call routing",
-    body: "so every number rings somewhere and every booking lands.",
-  },
-  {
-    title: "Tags and data hygiene",
-    body: "so \"send this to past clients\" takes one minute, not one week.",
-  },
-];
-
-export const SYSTEMS_COACHING_FAQ: FaqItem[] = [
-  {
-    question: "Which tools do you work in?",
-    answer:
-      "GoHighLevel is home turf. We also work across the usual stack around it: Zapier, email platforms, calendars, phone systems. If you own it, we can probably coach it.",
-  },
-  {
-    question: "Do we need GoHighLevel?",
-    answer:
-      "No. The method is the same: audit, priorities, build together. The tool is just where we do it.",
-  },
-  {
-    question: "Can you just do it for us?",
-    answer:
-      "For urgent, high-risk fixes, yes. Long term, coaching wins. Your team keeps the knowledge, and you stop paying rent on your own systems.",
-  },
-  {
-    question: "How long does this run?",
-    answer:
-      "The audit takes about a week. Coaching runs month to month. Most teams keep a rhythm until the roadmap is done, then call us when something new comes up.",
-  },
-  {
-    question: "What if we already have a marketing agency?",
-    answer:
-      "Keep them. This is the plumbing their campaigns drain into. Agencies love us, because their leads stop leaking.",
+      "Ads amplify a working system. They can't replace one. Organic first, then retargeting the people already watching. You own the asset either way.",
   },
 ];

@@ -4,105 +4,50 @@ import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import { BOOKING_URL, CTA_LABEL } from "@/lib/content/site";
 import {
-  A_LA_CARTE,
   CADENCE,
-  FULL_ENGINE,
   HOW_IT_WORKS,
-  LAUNCH_KIT,
-  LAUNCH_KIT_OFFER,
   MONTHLY_DELIVERABLES,
   POST_FOR_YOU,
-  PRICING_NOTE,
+  RETAINER,
   TRUST_ENGINE_FAQ,
-  type Offer,
 } from "@/lib/content/services";
 
 export const metadata: Metadata = {
   title: "The Trust Engine",
   description:
-    "A done-for-you content engine for founder-driven service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. A launch kit to start, coaching built in.",
+    "The monthly retainer for founder-led service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. Coaching built in. Picks up where the Founder Launch Kit leaves off.",
   alternates: { canonical: "/trust-engine" },
 };
 
 function Tick() {
-  return (
-    <span className="mt-2 h-[3px] w-[3px] shrink-0 bg-gold-500" aria-hidden="true" />
-  );
-}
-
-function OfferCard({ offer, featured = false }: { offer: Offer; featured?: boolean }) {
-  return (
-    <div
-      className={`flex flex-col border p-8 md:p-10 ${
-        featured ? "border-purple-600 bg-paper" : "border-ash-100 bg-paper"
-      }`}
-    >
-      {offer.badge && (
-        <div className="mb-6">
-          <span className="inline-block rounded-[2px] bg-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-black">
-            {offer.badge}
-          </span>
-        </div>
-      )}
-      <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
-        {offer.name}
-      </h3>
-      <p className="mt-4 flex items-baseline gap-2">
-        <span className="font-serif text-5xl tracking-tight text-black">
-          {offer.price}
-        </span>
-        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
-          {offer.period}
-        </span>
-      </p>
-      {offer.setup && (
-        <p className="mt-3 text-sm text-ash-700">{offer.setup}</p>
-      )}
-      {offer.note && (
-        <p className="mt-2 text-sm leading-relaxed text-ash-500">{offer.note}</p>
-      )}
-      <ul className="mt-8 space-y-3 border-t border-ash-100 pt-8">
-        {offer.includes.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-relaxed text-ash-700">
-            <Tick />
-            {item}
-          </li>
-        ))}
-      </ul>
-      <div className="mt-8">
-        <CtaButton
-          href={BOOKING_URL}
-          variant={featured ? "solid" : "outline"}
-          className="w-full text-center"
-        >
-          {CTA_LABEL}
-        </CtaButton>
-      </div>
-    </div>
-  );
+  return <span className="mt-2 h-[3px] w-[3px] shrink-0 bg-gold-500" aria-hidden="true" />;
 }
 
 export default function TrustEnginePage() {
   return (
     <div className="animate-fadeIn">
-      {/* Hero: light, big serif */}
+      {/* Hero */}
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-8">
-            The Trust Engine &middot; For founder-driven service brands
-          </Kicker>
+          <Kicker className="mb-8">The Trust Engine &middot; The retainer</Kicker>
           <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
-            You&rsquo;re great at the work. You&rsquo;re invisible online.
+            The hardest part isn&rsquo;t the first post. It&rsquo;s the fiftieth.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
-            That&rsquo;s not a talent problem. It&rsquo;s a visibility problem.
-            We film you once a month and turn it into a full month of content in
-            your voice. Videos, posts, captions, graphics. You show up as
-            yourself. We do the rest.
+            Once your foundations are set, staying visible is a consistency
+            problem. The Trust Engine solves it. We film you once a month and
+            turn it into a full month of content in your voice. Videos, posts,
+            captions, graphics. You show up as yourself. We do the rest.
           </p>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
-            Done for you &middot; Filmed in your voice &middot; Real human
-            origin, no AI, no stock
+          <p className="mt-6 text-base leading-relaxed text-ash-700">
+            New here? Start with the{" "}
+            <Link
+              href="/founder-launch-kit"
+              className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
+            >
+              Founder Launch Kit
+            </Link>
+            . It builds the foundation. The Trust Engine keeps it running.
           </p>
           <div className="mt-12">
             <CtaButton href={BOOKING_URL}>{CTA_LABEL}</CtaButton>
@@ -115,26 +60,26 @@ export default function TrustEnginePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Why content stalls</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Your best proof is invisible.
+            Posting when inspiration strikes turns into silence by March.
           </h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
             <p>
-              You know you should post. But you&rsquo;re busy running the
-              business. So you don&rsquo;t, or you start and go quiet by March.
+              You launch strong. Then a busy week hits, the posts stop, and the
+              momentum you paid to build quietly leaks away.
             </p>
             <p>
-              Meanwhile your buyers look you up before they ever call. Show up
-              looking trustworthy and you win. Stay quiet and the competitor who
-              posts gets the deal. You never even know it happened.
+              Meanwhile your buyers keep doing their quiet research. LinkedIn.
+              Your Google profile. What AI says when they ask who to trust. A
+              feed that went dark in the spring reads as a business that stopped
+              paying attention.
             </p>
             <p>
-              The two hard jobs are making the content and keeping it
-              consistent. We take both off your plate.
+              The two hard jobs are making the content and keeping it consistent.
+              We take both off your plate, every month.
             </p>
           </div>
           <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl leading-snug text-black md:text-3xl">
-            The deal goes to whoever looks safer online. Not whoever does better
-            work.
+            Ads rent attention. Proof compounds.
           </p>
         </div>
       </section>
@@ -164,65 +109,6 @@ export default function TrustEnginePage() {
         </div>
       </section>
 
-      {/* Discovery / North Star */}
-      <section className="bg-paper py-24 sm:py-32">
-        <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-6">Before the camera</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            It starts with your story, not a camera.
-          </h2>
-          <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
-            <p>
-              Great content starts with a clear story. Before we film anything,
-              we get to the core of who you are and what you stand for. A short
-              survey on your own time, then one focused hour where we ask the
-              questions and pull the story out of you.
-            </p>
-            <p>
-              That hour becomes your Content Marketing Guide: what you want to be
-              known for, what your audience actually wants, and the one belief
-              everything hangs on. Every clip, post, and caption gets checked
-              against it. It&rsquo;s why your content sounds like you and points
-              one direction. You keep it, whether you stay with us or not.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The launch kit */}
-      <section className="bg-bone py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <Kicker className="mb-6">To start</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            One shoot fills your library.
-          </h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ash-700">
-            Your first shoot builds a whole kit of content. It works all year,
-            and we keep using it for months before we film again.
-          </p>
-          <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
-            {LAUNCH_KIT.map((item) => (
-              <div key={item.label} className="flex gap-4 border-t border-ash-100 pt-6">
-                <Tick />
-                <div>
-                  <h3 className="font-serif text-xl tracking-tight text-black">
-                    {item.label}
-                  </h3>
-                  <p className="mt-1 text-base leading-relaxed text-ash-700">
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
-            The same kit for every client. Everything you need to get going, a
-            branded look that makes every video yours, and a simple guide to use
-            it all. Only your stories change.
-          </p>
-        </div>
-      </section>
-
       {/* Every month */}
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
@@ -249,22 +135,22 @@ export default function TrustEnginePage() {
             ))}
           </div>
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
-            One filming session becomes a full month of content. Your launch kit
+            One filming session becomes a full month of content. Your Launch Kit
             keeps working underneath it all year.
           </p>
         </div>
       </section>
 
-      {/* The rhythm / cadence */}
+      {/* The rhythm */}
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">The rhythm</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            One big shoot to start. Then we keep it alive.
+            We film you once a month. That is the whole ask.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-            {CADENCE.map((item) => (
-              <div key={item.when} className="border-t border-ash-100 pt-8">
+            {CADENCE.map((item, i) => (
+              <div key={i} className="border-t border-ash-100 pt-8">
                 <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-ash-500">
                   {item.when}
                 </h3>
@@ -303,11 +189,6 @@ export default function TrustEnginePage() {
               real proof, and that is how you end up in the answer.
             </p>
             <p>
-              A Google Business Profile that looks alive, with recent photos,
-              videos, and posts, reads safer and ranks better. The pinned posts
-              come straight from your launch kit.
-            </p>
-            <p>
               You get the guide for all of it. Prefer it handled? We run the
               posting for you, so the content actually goes out on schedule.
             </p>
@@ -317,65 +198,80 @@ export default function TrustEnginePage() {
 
       {/* Pricing */}
       <section className="border-t border-ash-100 bg-paper py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Simple pricing</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
             One number. No surprises.
           </h2>
-          <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <OfferCard offer={FULL_ENGINE} featured />
-            <OfferCard offer={LAUNCH_KIT_OFFER} />
+          <div className="mt-16 border border-purple-600 bg-paper p-8 md:p-12">
+            {RETAINER.badge && (
+              <div className="mb-6">
+                <span className="inline-block rounded-[2px] bg-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-black">
+                  {RETAINER.badge}
+                </span>
+              </div>
+            )}
+            <div className="flex flex-col gap-8 md:flex-row md:justify-between">
+              <div>
+                <h3 className="font-serif text-3xl tracking-tight text-black">
+                  {RETAINER.name}
+                </h3>
+                <p className="mt-4 flex items-baseline gap-2">
+                  <span className="font-serif text-6xl tracking-tight text-black">
+                    {RETAINER.price}
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
+                    {RETAINER.period}
+                  </span>
+                </p>
+                {RETAINER.note && (
+                  <p className="mt-4 max-w-xs text-sm leading-relaxed text-ash-500">
+                    {RETAINER.note}
+                  </p>
+                )}
+              </div>
+              <ul className="flex-1 space-y-3 md:max-w-md">
+                {RETAINER.includes.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-ash-700">
+                    <Tick />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-10 border-t border-ash-100 pt-8">
+              <CtaButton href={BOOKING_URL}>{CTA_LABEL}</CtaButton>
+            </div>
           </div>
 
           {/* Optional posting */}
-          <div className="mt-8 flex flex-col gap-4 border border-ash-100 bg-bone p-8 md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="mb-2 flex items-baseline gap-3">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                  Optional
+          <div className="mt-8 border border-ash-100 bg-bone p-8">
+            <div className="mb-2 flex items-baseline gap-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
+                Optional
+              </span>
+              <span className="font-serif text-2xl tracking-tight text-black">
+                {POST_FOR_YOU.price}
+                <span className="ml-1 font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
+                  {POST_FOR_YOU.period}
                 </span>
-                <span className="font-serif text-2xl tracking-tight text-black">
-                  {POST_FOR_YOU.price}
-                  <span className="ml-1 font-mono text-[11px] uppercase tracking-[0.2em] text-ash-500">
-                    {POST_FOR_YOU.period}
-                  </span>
-                </span>
-              </div>
-              <p className="max-w-2xl text-base leading-relaxed text-ash-700">
-                {POST_FOR_YOU.body}
-              </p>
+              </span>
             </div>
+            <p className="max-w-2xl text-base leading-relaxed text-ash-700">
+              {POST_FOR_YOU.body}
+            </p>
           </div>
 
-          {/* A la carte */}
-          <div className="mt-16">
-            <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
-              Not ready for all of it? Start with one piece.
-            </h3>
-            <div className="mt-8 divide-y divide-ash-100 border-y border-ash-100">
-              {A_LA_CARTE.map((item) => (
-                <div
-                  key={item.what}
-                  className="grid grid-cols-1 gap-x-8 gap-y-2 py-6 sm:grid-cols-[14rem_1fr]"
-                >
-                  <div className="flex items-baseline gap-4">
-                    <span className="font-serif text-xl tracking-tight text-black">
-                      {item.what}
-                    </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-purple-600">
-                      {item.price}
-                    </span>
-                  </div>
-                  <p className="text-base leading-relaxed text-ash-700">
-                    {item.goodIf}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p className="mt-10 max-w-3xl text-base leading-relaxed text-ash-500">
-            {PRICING_NOTE}
+          <p className="mt-8 text-base leading-relaxed text-ash-500">
+            Not launched yet? Start with the{" "}
+            <Link
+              href="/founder-launch-kit"
+              className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
+            >
+              Founder Launch Kit
+            </Link>{" "}
+            ($5,000 one-time), then continue on the retainer. Prices get confirmed
+            before you sign.
           </p>
         </div>
       </section>
@@ -403,16 +299,11 @@ export default function TrustEnginePage() {
                 No lock-in
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
-                After three months, you&rsquo;re free to leave anytime. And
+                A three-month minimum, then month to month. Leave anytime, and
                 everything we make is yours to keep, forever.
               </p>
             </div>
           </div>
-          <p className="mt-10 max-w-3xl text-base leading-relaxed text-ash-500">
-            Why three months? Trust takes a little time to build. If you
-            can&rsquo;t give it ninety days, we&rsquo;re probably not the right
-            fit.
-          </p>
         </div>
       </section>
 
@@ -467,7 +358,7 @@ export default function TrustEnginePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Fit</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Built for owners who are great at the work.
+            Built for owners who want to stay visible.
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
             <div className="border-t border-ash-100 pt-8">
@@ -475,11 +366,10 @@ export default function TrustEnginePage() {
                 For you if
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
-                Your clients choose you because they trust you. Lenders,
-                advisors, consultants, builders, IT partners, healthcare.
-                You&rsquo;re too busy running the business to post consistently,
-                and you&rsquo;re willing to get on camera, even nervously.
-                Nervous works. We coach you through it.
+                Your clients choose you because they trust you, and you want to
+                stay in front of them without it landing on your desk every week.
+                You&rsquo;re willing to get on camera once a month. We handle the
+                rest.
               </p>
             </div>
             <div className="border-t border-ash-100 pt-8">
@@ -488,8 +378,8 @@ export default function TrustEnginePage() {
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
                 You want overnight virality, or content nobody has to show up
-                for. The engine runs on real people, and it needs ninety days to
-                build.
+                for. The engine runs on real people, and it rewards consistency
+                over months, not days.
               </p>
             </div>
           </div>

@@ -119,11 +119,16 @@ The film is done. The campaign has what it needs to raise the money. And when th
     gallery: [],
     videoUrl: "https://drive.google.com/file/d/1gwlPto68E1S5QE4Z3nlmGfEGiCeHdDQA/view?usp=drive_link",
     videoProvider: "gdrive",
-    nextSlug: "dg-lending",
+    nextSlug: "frontier-technologies",
     ctaHeading: "Raising money to build something?",
     ctaServiceLabel: "See the Trust Engine",
     ctaServiceHref: "/trust-engine",
   },
+];
+
+// Retired with the Systems Coaching service. Kept for reference; not rendered
+// on the site. Restore by moving an entry back into CASE_STUDIES.
+export const ARCHIVED_CASE_STUDIES: CaseStudy[] = [
   {
     slug: "dg-lending",
     client: "DG Lending",

@@ -16,8 +16,8 @@ const COLUMNS: {
   {
     heading: "Services",
     links: [
+      { label: "Founder Launch Kit", href: "/founder-launch-kit" },
       { label: "The Trust Engine", href: "/trust-engine" },
-      { label: "Systems Coaching", href: "/systems-coaching" },
     ],
   },
   {
@@ -25,8 +25,7 @@ const COLUMNS: {
     links: [
       { label: "Frontier Technologies", href: "/work/frontier-technologies" },
       { label: "Memorial Health", href: "/work/memorial-health" },
-      { label: "DG Lending", href: "/work/dg-lending" },
-      { label: "Wealthstrong", href: "/work/wealthstrong" },
+      { label: "All work", href: "/work" },
     ],
   },
   {
