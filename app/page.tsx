@@ -648,9 +648,9 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ash-300">
-            Your average job is what, twenty thousand? Forty? If looking bigger
+            Your average job is what, ten thousand? Twenty? If looking bigger
             online wins you one job this year that you would otherwise have lost
-            in that window, this paid for itself several times over.
+            in that window, this paid for itself twice over.
           </p>
         </div>
       </section>
