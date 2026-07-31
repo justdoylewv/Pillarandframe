@@ -228,6 +228,9 @@ export default function HomePage() {
               src={HERO_IMAGE}
               alt="A capture day, shot on location"
               referrerPolicy="no-referrer"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black" />

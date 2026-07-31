@@ -10,7 +10,7 @@ import { ABOUT_PHOTO } from "@/lib/content/photos";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Most good businesses run on referrals until the referrals dry up. After fifteen years filming everyone from local shops to the Fortune 500, we built a studio that fixes exactly that.",
+    "Referrals are the best business you get. We help you get more of them, and make sure they close. After fifteen years filming everyone from local shops to the Fortune 500.",
   alternates: { canonical: "/about" },
 };
 
@@ -19,7 +19,7 @@ const ABOUT_JSONLD = {
   "@type": "AboutPage",
   name: "About Pillar & Frame",
   description:
-    "A story-led film studio in Ohio for businesses that run on referrals and want something more durable underneath them.",
+    "A story-led film studio in Ohio that helps referral-driven businesses earn more referrals and convert the ones they already get.",
   url: `${SITE_URL}/about`,
   mainEntity: {
     "@type": "Organization",
@@ -59,13 +59,15 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-8">The studio</Kicker>
           <h1 className="font-serif text-5xl leading-[1.02] tracking-tight text-black sm:text-6xl md:text-7xl">
-            Referrals are a great business.{" "}
-            <span className="italic text-purple-600">Until they are not.</span>
+            Referrals are the best business you get.{" "}
+            <span className="italic text-purple-600">
+              We help you get more.
+            </span>
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
             Pillar &amp; Frame is a story-led film studio in Ohio. We build the
-            thing most good businesses never got around to building: proof that
-            works when word of mouth goes quiet.
+            proof that makes a referral easy to give, easy to say yes to, and
+            far more likely to happen again.
           </p>
         </div>
       </section>
@@ -89,24 +91,28 @@ export default function AboutPage() {
           </div>
           <div className="mt-12 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
             <p>
-              Every one of those is said by someone who is good at their work.
-              That is what makes it worth fixing. The business runs on
-              relationships, the relationships send people, and it works.
+              Every one of those is said by someone who is good at their work,
+              running a business built on relationships. That is a real asset,
+              and it is the reason this is worth doing rather than a reason to
+              start over.
             </p>
             <p>
-              Until the year it does not. A referral partner retires. A big
-              client consolidates. The phone is quieter than last spring and
-              nobody can point to why.
+              Here is what most people miss. A referral is only the first half.
+              Somebody gives your name, and the next thing that happens is they
+              look you up. If what they find is thin, the referral cools before
+              you ever hear about it. Good proof is what closes that loop.
             </p>
             <p>
-              Then the search starts, and there is nothing to find. No story. No
-              proof. A Google profile with four photos from 2019. The business
-              did not get worse. It just was never visible in the first place.
+              The second half is memory. Your network can only refer you when
+              they are thinking about you. People who see you show up, say
+              something useful, and look like they are busy doing good work send
+              you more business. Not because they were sold, because they were
+              reminded.
             </p>
           </div>
           <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl leading-snug text-black md:text-3xl">
-            Referrals are the best thing that can happen to you. They are a
-            terrible thing to depend on.
+            A referral gets you named. What they find decides whether you get
+            called.
           </p>
         </div>
       </section>
@@ -149,9 +155,11 @@ export default function AboutPage() {
               .
             </p>
             <p>
-              None of this replaces referrals. It backs them up. When someone
-              hears your name, what they find should sound like the person who
-              earned the referral in the first place.
+              None of this replaces referrals. It feeds them. When someone hears
+              your name, what they find should sound like the person who earned
+              the referral in the first place. And every time you show up, the
+              people who already like you get a reminder, and something clear to
+              forward when a friend asks who they should call.
             </p>
           </div>
         </div>
@@ -267,11 +275,11 @@ export default function AboutPage() {
             Talk to us
           </Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-paper md:text-6xl">
-            What happens when the referrals slow down?
+            Want more referrals, and more of them to close?
           </h2>
           <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-ash-300 md:text-xl">
-            Fifteen minutes. Tell us what you do and where you are stuck, and we
-            will tell you straight whether we can help.
+            Fifteen minutes. Tell us what you do and how people find you, and
+            we will tell you straight whether we can help.
           </p>
           <div className="mt-12">
             <CtaButton href={BOOKING_URL} variant="solidLight">

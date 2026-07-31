@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
+import MediaFrame from "@/components/MediaFrame";
+import HomeReel from "@/components/HomeReel";
 import { BOOKING_URL, CTA_LABEL } from "@/lib/content/site";
+import { ENGINE_STRIP } from "@/lib/content/photos";
 import {
   CADENCE,
   HOW_IT_WORKS,
@@ -15,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: "The Engine",
   description:
-    "The monthly retainer for founder-led service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. Coaching built in. Picks up where the The Foundation leaves off.",
+    "The monthly retainer for founder-led service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. Coaching built in. Picks up where The Foundation leaves off.",
   alternates: { canonical: "/engine" },
 };
 
@@ -40,7 +43,7 @@ export default function TrustEnginePage() {
             captions, graphics. You show up as yourself. We do the rest.
           </p>
           <p className="mt-6 text-base leading-relaxed text-ash-700">
-            New here? Start with the{" "}
+            New here? Start with{" "}
             <Link
               href="/"
               className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
@@ -137,6 +140,57 @@ export default function TrustEnginePage() {
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
             One filming session becomes a full month of content. Your Foundation
             keeps working underneath it all year.
+          </p>
+        </div>
+      </section>
+
+      {/* The short-form output */}
+      <section className="bg-black py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Kicker dark className="mb-6">
+                The output
+              </Kicker>
+              <h2 className="font-serif text-3xl tracking-tight text-paper md:text-4xl">
+                Eight of these, every month.
+              </h2>
+            </div>
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-300 transition-colors hover:text-paper"
+            >
+              See all work
+              <span className="h-[1px] w-8 bg-current" />
+            </Link>
+          </div>
+          <HomeReel />
+          <p className="mt-10 max-w-2xl text-base leading-relaxed text-ash-300">
+            Captioned, branded, and ready to post. Cut from the session we film
+            with you, in your voice, on your schedule.
+          </p>
+        </div>
+      </section>
+
+      {/* What a month looks like */}
+      <section className="bg-paper py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <Kicker className="mb-6">What a month looks like</Kicker>
+          <h2 className="max-w-3xl font-serif text-4xl tracking-tight text-black md:text-5xl">
+            Stills, graphics, and long form, from the same day.
+          </h2>
+          <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {ENGINE_STRIP.map((photo) => (
+              <MediaFrame
+                key={photo.src}
+                image={photo.src}
+                alt={photo.alt}
+                aspect="square"
+              />
+            ))}
+          </div>
+          <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
+            Real people, real rooms, no stock
           </p>
         </div>
       </section>
@@ -263,7 +317,7 @@ export default function TrustEnginePage() {
           </div>
 
           <p className="mt-8 text-base leading-relaxed text-ash-500">
-            Not launched yet? Start with the{" "}
+            Not launched yet? Start with{" "}
             <Link
               href="/"
               className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
