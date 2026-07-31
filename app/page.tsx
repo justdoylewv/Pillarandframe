@@ -45,68 +45,61 @@ const STEPS = [
   },
 ];
 
-const DESTINATIONS: {
-  title: string;
-  tag?: string;
-  primary?: boolean;
-  why: string;
-  items: string[];
-}[] = [
-  {
-    title: "Your Google Business Profile",
-    tag: "Start here",
-    primary: true,
-    why: "The first thing a stranger sees, and the thing that decides who gets called first. This is the highest-leverage square foot of real estate you own, and it is free.",
-    items: [
-      "An optimized business description, paste-ready and character-perfect",
-      "Every service written out in buyer language",
-      "Category and service-area recommendations",
-      "10 seeded Q&As, the real questions buyers ask",
-      "Your photo set, selected and ordered for upload",
-      "Your first 4 profile posts, written and ready",
-      "A review-request message for any happy client",
-    ],
-  },
+const GOOGLE_DESTINATION = {
+  title: "Your Google Business Profile",
+  tag: "Start here",
+  why: "The first thing a stranger sees, and the thing that decides who gets called first. The highest-leverage square foot you own, and it is free.",
+  items: [
+    "Business description, paste-ready",
+    "Every service, in buyer language",
+    "Categories and service area",
+    "10 seeded Q&As",
+    "Your photo set, ordered for upload",
+    "Your first 4 posts, written",
+    "A review-request message",
+  ],
+};
+
+const DESTINATIONS: { title: string; why: string; items: string[] }[] = [
   {
     title: "Your website",
-    why: "Three pages. The only three that matter to start. Written as a copy-paste document your developer can build from immediately.",
+    why: "Three pages, written as a copy-paste document your developer can build from.",
     items: [
-      "Home: headline, subhead, proof, three service blurbs, story, closing call to action",
-      "About: your full founder story, credentials, values, why you do this",
-      "Services: each one in buyer language, objections answered, clear next step",
+      "Home, with headline, proof, and services",
+      "About, your full founder story",
+      "Services, with objections answered",
     ],
   },
   {
     title: "Your media library",
-    why: "Eight videos and thirty photos, all from one filming day. Mapped to where each one goes.",
+    why: "Eight videos and thirty photos from one filming day, mapped to where each goes.",
     items: [
-      "Your story: who you are and why people trust you",
-      "What you do: your service explained properly",
-      "5 answers to the reasons people hesitate",
-      "One customer win, as proof you deliver",
-      "30 professional photos: headshots, real working shots, your space, your team. No stock.",
-      "Intro, outro, and title graphics in your existing colors",
+      "Your story, and what you do",
+      "5 answers to why people hesitate",
+      "One customer win",
+      "30 photos. No stock.",
+      "Intro, outro, and titles",
     ],
   },
   {
     title: "Your social profiles",
     why: "The vetting stop. They check here after Google and before they call.",
     items: [
-      "Facebook and Instagram bio and about copy",
-      "LinkedIn headline, About section, featured section, banner",
-      "Your pinned founder story post, the one that does the trust work for you",
-      "5 launch posts so the feed is not a ghost town",
-      "Profile photo and banner, sized for each platform",
+      "Facebook and Instagram bios",
+      "LinkedIn headline, About, featured",
+      "A pinned founder story post",
+      "5 launch posts",
+      "Profile photo and banner, sized",
     ],
   },
   {
     title: "Your bio bank",
-    why: "Write it once, use it forever. Every time someone asks you for a bio, it is already done.",
+    why: "Write it once, use it forever. Next time someone asks for a bio, it is done.",
     items: [
-      "Short bio (50 words), medium (100), long (250)",
-      "Your one-liner, for when someone asks what you do",
+      "Short, medium, and long bios",
+      "Your one-liner",
       "Email signature copy",
-      "Directory and association listing copy",
+      "Directory listing copy",
     ],
   },
 ];
@@ -135,8 +128,8 @@ const PROMISES = [
   },
   {
     n: "3",
-    title: "If you would rather not have it, do not pay for it.",
-    body: "Show up and tell us your stories. If you look at the finished kit and you would not put your name on it, we rebuild it. If you still would not, keep everything and we refund you.",
+    title: "If it misses, we rebuild it or refund the build.",
+    body: "Show up and tell us your stories. If you look at the finished kit and you would not put your name on it, we rebuild it. If you still would not, we refund the build half, the $2,500 you pay on delivery. The capture day is the one thing we cannot refund, because the crew, the gear, and the day are already spent. You keep everything we made either way.",
   },
 ];
 
@@ -336,12 +329,8 @@ export default function HomePage() {
               Google profile, your social profiles, and your website.
             </p>
             <p>
-              To be clear about what this is:{" "}
-              <strong className="font-semibold text-paper">
-                words, photos, and video. Not a logo.
-              </strong>{" "}
-              If you have a look you like, we build inside it. What we fix is the
-              part that is actually costing you jobs, which is that every place a
+              We work inside the look you already have. What we fix is the part
+              that is actually costing you jobs, which is that every place a
               customer checks you out is either empty or says nothing.
             </p>
           </div>
@@ -452,31 +441,43 @@ export default function HomePage() {
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
             Five destinations. Every field filled in.
           </h2>
-          <div className="mt-14 space-y-12">
+          {/* Featured: Google */}
+          <div className="mt-12 border border-ash-100 border-l-[3px] border-l-gold-500 bg-bone p-8 md:p-10">
+            <div className="flex flex-wrap items-baseline gap-3">
+              <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
+                {GOOGLE_DESTINATION.title}
+              </h3>
+              <span className="border border-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-gold-700">
+                {GOOGLE_DESTINATION.tag}
+              </span>
+            </div>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-ash-700">
+              {GOOGLE_DESTINATION.why}
+            </p>
+            <ul className="mt-6 grid grid-cols-1 gap-x-10 gap-y-2 sm:grid-cols-2">
+              {GOOGLE_DESTINATION.items.map((it) => (
+                <li key={it} className="flex gap-3 text-[15px] leading-relaxed text-ash-700">
+                  <Tick gold />
+                  <span>{it}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* The other four */}
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             {DESTINATIONS.map((d) => (
-              <div
-                key={d.title}
-                className={`border-l-2 pl-6 md:pl-8 ${
-                  d.primary ? "border-gold-500" : "border-purple-600"
-                }`}
-              >
-                <div className="flex flex-wrap items-baseline gap-3">
-                  <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
-                    {d.title}
-                  </h3>
-                  {d.tag && (
-                    <span className="border border-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-gold-700">
-                      {d.tag}
-                    </span>
-                  )}
-                </div>
-                <p className="mt-3 max-w-2xl text-base leading-relaxed text-ash-700">
+              <div key={d.title} className="border border-ash-100 p-8">
+                <h3 className="font-serif text-xl tracking-tight text-black md:text-2xl">
+                  {d.title}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ash-500">
                   {d.why}
                 </p>
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-5 space-y-2">
                   {d.items.map((it) => (
-                    <li key={it} className="flex gap-3 text-base leading-relaxed text-ash-700">
-                      <Tick gold={d.primary} />
+                    <li key={it} className="flex gap-3 text-[15px] leading-relaxed text-ash-700">
+                      <Tick />
                       <span>{it}</span>
                     </li>
                   ))}
