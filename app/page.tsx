@@ -11,10 +11,10 @@ import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Pillar & Frame | The Foundation. In 30 days, be the one they call first.",
+      "Pillar & Frame | The Foundation. Be the one they call first.",
   },
   description:
-    "One filming day. Thirty days later you have every word, photo, and video your business needs, organized by exactly where it goes, and your Google profile live. For founder-led service businesses.",
+    "One filming day. Your Google profile live inside a month, and every word, photo, and video your business needs delivered over 90 days. For founder-led service businesses.",
   alternates: { canonical: "/" },
 };
 
@@ -37,12 +37,12 @@ const STEPS = [
   {
     n: "03",
     title: "We build it",
-    body: "Every video, photo, and word, written in your voice and organized by destination. Your Messaging Playbook lands in week one, before we roll camera.",
+    body: "Every video, photo, and word, written in your voice and organized by destination. Your Messaging Playbook lands in week two, before we roll camera.",
   },
   {
     n: "04",
     title: "We put it live",
-    body: "Not a folder and a good-luck email. We load your Google profile and your social profiles ourselves, on a call where you watch it happen. Then you keep the full mapped kit.",
+    body: "Not a folder and a good-luck email. Your Google profile goes live by day 30, and we load the rest ourselves as it lands. You keep the full mapped kit.",
   },
 ];
 
@@ -120,7 +120,7 @@ const PROMISES = [
   {
     n: "1",
     title: "It will not die in your downloads.",
-    body: "On handoff day we do not email you a folder and wish you luck. We get on a call and put your Google Business Profile live together. Description, services, photos, Q&As, posts. It is done before we hang up.",
+    body: "We do not email you a folder and wish you luck. We get on a call and put your Google Business Profile live together. Description, services, photos, Q&As, posts. If it is not live by day 45, you do not pay the second half.",
   },
   {
     n: "2",
@@ -137,13 +137,30 @@ const PROMISES = [
 const TIMELINE = [
   {
     when: "Week 1",
-    body: "Kickoff call. We do our research and build your Messaging Playbook. You see it before we film anything.",
+    body: "Kickoff call. We read your reviews, study your market, and start writing.",
   },
-  { when: "Week 2", body: "Capture day. We come to you and film everything." },
-  { when: "Weeks 3 to 4", body: "We build. Editing, writing, design, organizing." },
+  {
+    when: "Week 2",
+    tag: "First delivery",
+    body: "Your Messaging Playbook lands. Your story, your pillars, what you say and how you say it. You approve it before a camera comes out.",
+  },
+  {
+    when: "Weeks 3 to 4",
+    body: "Capture day. We come to you and film the videos and shoot the photos.",
+  },
   {
     when: "Day 30",
-    body: "Handoff. Your kit, the call where we put Google live together, and your launch-week checklist.",
+    tag: "Second delivery",
+    body: "Your Google Business Profile goes live, with your first photos and videos loaded. The thing that decides who gets called first is fixed inside a month.",
+  },
+  {
+    when: "Days 45 to 75",
+    body: "The rest of the library arrives in batches. Website copy, social profiles, your bio bank, the remaining videos.",
+  },
+  {
+    when: "Day 90",
+    tag: "Complete",
+    body: "Everything delivered and installed. Your Content Map in hand, and nothing left on your desk.",
   },
 ];
 
@@ -184,10 +201,10 @@ const FAQ: { question: string; answers: string[] }[] = [
     ],
   },
   {
-    question: "What happens after 30 days?",
+    question: "What happens after the 90 days?",
     answers: [
       "You own everything and you owe us nothing. There is no monthly, no contract, nothing to cancel.",
-      "If it works and you want help keeping it current, that is The Engine, and it is a conversation for day 30. Not today.",
+      "If it works and you want help keeping it current, that is The Engine, and it is a conversation for the end. Not today.",
     ],
   },
 ];
@@ -239,13 +256,13 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-28 sm:py-32">
           <div className="max-w-[980px]">
             <Kicker dark className="mb-8 animate-slideUp">
-              The Foundation &middot; 30 days
+              The Foundation &middot; 90 days
             </Kicker>
             <h1
               className="animate-slideUp font-serif text-5xl leading-[1.02] tracking-tight text-paper sm:text-6xl md:text-7xl"
               style={{ animationDelay: "100ms" }}
             >
-              In 30 days, be the one they{" "}
+              Be the one they{" "}
               <span className="italic text-purple-400">call first</span>.
             </h1>
             <p
@@ -309,7 +326,7 @@ export default function HomePage() {
             </p>
           </div>
           <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl leading-snug text-black md:text-3xl">
-            We take it off your desk. In 30 days.
+            We take it off your desk. All of it.
           </p>
         </div>
       </section>
@@ -524,7 +541,7 @@ export default function HomePage() {
                 <p className="mt-3 text-base leading-relaxed text-ash-700">
                   More comes out on capture day than we can use. You get all of
                   it written out: every topic worth talking about, sorted by where
-                  it belongs. We film eight during your 30 days. The rest is your
+                  it belongs. We film eight of them for you. The rest is your
                   runway.
                 </p>
               </div>
@@ -631,7 +648,8 @@ export default function HomePage() {
             </div>
           </div>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-ash-300">
-            That is five vendors, four months, and you are the project manager.
+            That is five vendors, months of back and forth, and you are the
+            project manager.
             Which is exactly how this got stuck on your desk the first time.
           </p>
 
@@ -723,15 +741,28 @@ export default function HomePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Timeline</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Thirty days. Not six months.
+            Ninety days, with work in your hands in two.
           </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
+            Ninety days is how long it takes to do this properly, without
+            rushing a capture day or thinning the edit. You do not wait ninety
+            days to see anything. Work lands in week two, and the piece that
+            matters most is live inside a month.
+          </p>
           <div className="mt-10 divide-y divide-ash-100 border-y border-ash-100">
             {TIMELINE.map((t) => (
               <div key={t.when} className="grid grid-cols-1 gap-x-8 gap-y-2 py-5 sm:grid-cols-[9rem_1fr]">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-purple-600">
                   {t.when}
                 </span>
-                <p className="text-base leading-relaxed text-ash-700">{t.body}</p>
+                <div>
+                  {t.tag && (
+                    <span className="mb-2 inline-block rounded-[2px] bg-gold-500 px-2 py-[3px] font-mono text-[9px] uppercase tracking-[0.2em] text-black">
+                      {t.tag}
+                    </span>
+                  )}
+                  <p className="text-base leading-relaxed text-ash-700">{t.body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -758,8 +789,8 @@ export default function HomePage() {
                 do not have a developer, we will hand you two we trust.
               </p>
               <p className="mt-4 text-base leading-relaxed text-ash-500">
-                Keeping this focused is exactly why it lands in 30 days instead of
-                six months.
+                Keeping this focused is exactly why it lands in 90 days instead
+                of dragging on for a year.
               </p>
             </div>
           </div>
@@ -815,7 +846,7 @@ export default function HomePage() {
             <p>
               What is new is the price and the packaging. We took the parts a
               local business actually needs, cut everything else, and made it land
-              in 30 days instead of six months.
+              in 90 days instead of dragging on for a year.
             </p>
             <p>
               We sit down with business owners and film their stories most weeks

@@ -189,7 +189,7 @@ export default function AboutPage() {
             <p>
               The big companies solved it by hiring a department. Small
               businesses cannot do that, and they do not need to. They need the
-              same thinking, sized down and finished in thirty days.
+              same thinking, sized down and finished in ninety days.
             </p>
             <p className="text-paper">
               So we took the process we built for the largest clients, cut
