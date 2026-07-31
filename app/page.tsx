@@ -40,8 +40,8 @@ const STEPS = [
   },
   {
     n: "04",
-    title: "We put it live with you",
-    body: "Not a folder and a good-luck email. We get on a call and load your Google profile together, then hand you a launch-week checklist for the rest.",
+    title: "We put it live",
+    body: "Not a folder and a good-luck email. We load your Google profile and your social profiles ourselves, on a call where you watch it happen. Then you keep the full mapped kit.",
   },
 ];
 
@@ -325,8 +325,8 @@ export default function HomePage() {
           <div className="mt-10 max-w-2xl space-y-6 text-lg leading-relaxed text-ash-300">
             <p>
               One day of filming and photography, plus every word your business
-              needs. Written, shot, and organized so it goes straight into your
-              Google profile, your social profiles, and your website.
+              needs. Written, shot, mapped to where it belongs, and loaded into
+              your Google profile, your social profiles, and your website.
             </p>
             <p>
               We work inside the look you already have. What we fix is the part
@@ -370,8 +370,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What makes it different</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            It is organized by{" "}
-            <span className="italic text-purple-600">where it goes</span>.
+            Every piece mapped to{" "}
+            <span className="italic text-purple-600">where you need it</span>.
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
             <div className="space-y-5 text-lg leading-relaxed text-ash-700">
@@ -380,32 +380,42 @@ export default function HomePage() {
                 open it, feel overwhelmed, and it dies in your downloads.
               </p>
               <p>
-                Yours is organized by destination. Every piece sits in a labeled
-                box that says exactly where it goes. The right length. The right
-                field. The right platform.
+                Nothing here arrives loose. Every line is written for one exact
+                place, at the right length for that field, on the right platform.
               </p>
               <p className="text-black">
                 <strong className="font-semibold">
-                  No decisions. No writing. Copy, paste, done.
-                </strong>
+                  Then we put it there for you.
+                </strong>{" "}
+                You still keep the full kit, mapped and labeled, so anyone you
+                hire later can pick it up and keep going.
               </p>
             </div>
             <div className="border border-ash-100 bg-bone p-8">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                From your kit
+                Your kit, mapped
               </span>
-              <div className="mt-6 space-y-4 font-mono text-sm leading-relaxed text-ash-700">
-                <p>
-                  &ldquo;Paste this into your Google Business Profile
-                  description.{" "}
-                  <span className="text-gold-700">750 characters.</span>&rdquo;
-                </p>
-                <p>&ldquo;Paste this into your LinkedIn About section.&rdquo;</p>
-                <p>
-                  &ldquo;This is your home page headline. This is the subhead
-                  under it.&rdquo;
-                </p>
-              </div>
+              <ul className="mt-6 divide-y divide-ash-100">
+                {[
+                  { where: "Google Business Profile", what: "Description, 750 characters" },
+                  { where: "Google Business Profile", what: "Services, categories, 10 Q&As" },
+                  { where: "LinkedIn", what: "Headline and About section" },
+                  { where: "Facebook and Instagram", what: "Bio and about copy" },
+                  { where: "Your website", what: "Home headline and subhead" },
+                ].map((row, i) => (
+                  <li key={i} className="py-3 first:pt-0 last:pb-0">
+                    <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">
+                      {row.where}
+                    </span>
+                    <span className="mt-1 block text-[15px] leading-relaxed text-ash-700">
+                      {row.what}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 border-t border-ash-100 pt-5 text-[15px] leading-relaxed text-black">
+                We load every one of these. You watch it happen.
+              </p>
             </div>
           </div>
         </div>
