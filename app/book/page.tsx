@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
+import MediaFrame from "@/components/MediaFrame";
 import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/content/site";
+import { BOOK_PHOTO } from "@/lib/content/photos";
 
 export const metadata: Metadata = {
   title: "Book a free strategy call",
@@ -71,6 +73,15 @@ export default function BookPage() {
           </p>
         </div>
       </section>
+
+      {/* A frame between the ask and the detail */}
+      <div className="mx-auto max-w-7xl px-6 pt-16">
+        <MediaFrame
+          image={BOOK_PHOTO}
+          alt="A conversation on a capture day"
+          aspect="wide"
+        />
+      </div>
 
       {/* What happens on the call */}
       <section className="bg-paper py-24 sm:py-32">

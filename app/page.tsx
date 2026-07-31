@@ -6,7 +6,7 @@ import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
 import { BOOKING_URL } from "@/lib/content/site";
 import { getCaseStudy } from "@/lib/content/caseStudies";
-import { HERO_PHOTO, PHOTO_STRIP } from "@/lib/content/photos";
+import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 
 export const metadata: Metadata = {
   title: {
@@ -335,6 +335,11 @@ export default function HomePage() {
               that is actually costing you jobs, which is that every place a
               customer checks you out is either empty or says nothing.
             </p>
+          </div>
+          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {WORK_PAIR.map((p) => (
+              <MediaFrame key={p.src} image={p.src} alt={p.alt} aspect="video" dark />
+            ))}
           </div>
         </div>
       </section>

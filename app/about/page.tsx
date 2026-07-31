@@ -5,7 +5,7 @@ import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import JsonLd from "@/components/JsonLd";
 import { BOOKING_URL, CITY_SPOTLIGHT_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
-import { ABOUT_PHOTO } from "@/lib/content/photos";
+import { ABOUT_PHOTO, ABOUT_STRIP } from "@/lib/content/photos";
 
 export const metadata: Metadata = {
   title: "About",
@@ -211,6 +211,11 @@ export default function AboutPage() {
                   {s.k}
                 </span>
               </div>
+            ))}
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {ABOUT_STRIP.map((p) => (
+              <MediaFrame key={p.src} image={p.src} alt={p.alt} aspect="square" dark />
             ))}
           </div>
         </div>

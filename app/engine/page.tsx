@@ -5,7 +5,7 @@ import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
 import { BOOKING_URL, CTA_LABEL } from "@/lib/content/site";
-import { ENGINE_STRIP } from "@/lib/content/photos";
+import { ENGINE_HERO_PHOTO, ENGINE_STRIP } from "@/lib/content/photos";
 import {
   CADENCE,
   HOW_IT_WORKS,
@@ -30,30 +30,45 @@ export default function TrustEnginePage() {
   return (
     <div className="animate-fadeIn">
       {/* Hero */}
-      <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
-        <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-8">The Engine &middot; The retainer</Kicker>
-          <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
+      <section className="relative overflow-hidden bg-black py-24 sm:py-32">
+        <div className="absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={ENGINE_HERO_PHOTO}
+            alt="A monthly filming session, shot on location"
+            referrerPolicy="no-referrer"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[980px] px-6">
+          <Kicker dark className="mb-8">The Engine &middot; The retainer</Kicker>
+          <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl md:text-6xl">
             The hardest part isn&rsquo;t the first post. It&rsquo;s the fiftieth.
           </h1>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-300 md:text-xl">
             Once your foundations are set, staying visible is a consistency
             problem. The Engine solves it. We film you once a month and
             turn it into a full month of content in your voice. Videos, posts,
             captions, graphics. You show up as yourself. We do the rest.
           </p>
-          <p className="mt-6 text-base leading-relaxed text-ash-700">
+          <p className="mt-6 text-base leading-relaxed text-ash-300">
             New here? Start with{" "}
             <Link
               href="/"
-              className="text-purple-600 underline underline-offset-4 hover:text-purple-500"
+              className="text-purple-300 underline underline-offset-4 hover:text-paper"
             >
               The Foundation
             </Link>
             . It builds the foundation. The Engine keeps it running.
           </p>
           <div className="mt-12">
-            <CtaButton href={BOOKING_URL}>{CTA_LABEL}</CtaButton>
+            <CtaButton href={BOOKING_URL} variant="solidLight">
+              {CTA_LABEL}
+            </CtaButton>
           </div>
         </div>
       </section>
