@@ -741,7 +741,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Timeline</Kicker>
           <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Ninety days, with work in your hands in two.
+            Ninety days, with work in your hands in two weeks.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
             Ninety days is how long it takes to do this properly, without
