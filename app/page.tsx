@@ -11,7 +11,7 @@ import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Pillar & Frame | The Foundation. Be the one they call first.",
+      "Pillar & Frame | The Foundation. In 90 days, be the one they call first.",
   },
   description:
     "One filming day. Your Google profile live inside a month, and every word, photo, and video your business needs delivered over 90 days. For founder-led service businesses.",
@@ -64,7 +64,7 @@ const GOOGLE_DESTINATION = {
 const DESTINATIONS: { title: string; why: string; items: string[] }[] = [
   {
     title: "Your website",
-    why: "Three pages, written as a copy-paste document your developer can build from.",
+    why: "Three pages, written as a copy-paste document your developer can build from. We can build it for you as a separate project.",
     items: [
       "Home, with headline, proof, and services",
       "About, your full founder story",
@@ -262,7 +262,7 @@ export default function HomePage() {
               className="animate-slideUp font-serif text-5xl leading-[1.02] tracking-tight text-paper sm:text-6xl md:text-7xl"
               style={{ animationDelay: "100ms" }}
             >
-              Be the one they{" "}
+              In 90 days, be the one they{" "}
               <span className="italic text-purple-400">call first</span>.
             </h1>
             <p
@@ -781,16 +781,20 @@ export default function HomePage() {
             </div>
             <div className="border-t border-ash-100 pt-8">
               <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-ash-500">
-                What we do not do
+                What this does not include
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
-                No logo, no color palette, no truck wrap. We work inside the look
-                you already have. We also do not build or host the website. If you
-                do not have a developer, we will hand you two we trust.
+                A logo, a color palette, or a truck wrap. We work inside the look
+                you already have. The website build is not in this either. You
+                get the copy written and ready to hand to a developer.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-ash-700">
+                Want us to build the site instead? We do that as a separate
+                project. Ask on the call and we will quote it.
               </p>
               <p className="mt-4 text-base leading-relaxed text-ash-500">
-                Keeping this focused is exactly why it lands in 90 days instead
-                of dragging on for a year.
+                Keeping the core engagement focused is exactly why it lands in
+                90 days instead of dragging on for a year.
               </p>
             </div>
           </div>
