@@ -28,9 +28,9 @@ export const BOOK_PHOTO = "/photos/book-conversation.webp";
 
 export const PHOTO_STRIP: Photo[] = [
   { src: "/photos/portrait-01.webp", alt: "A portrait shot on location" },
-  { src: "/photos/portrait-02.webp", alt: "A founder portrait" },
-  { src: "/photos/portrait-03.webp", alt: "A portrait shot on location" },
-  { src: "/photos/portrait-04.webp", alt: "A portrait shot on location" },
+  { src: "/photos/portrait-02.webp", alt: "A founder at work, shot on location" },
+  { src: "/photos/portrait-03.webp", alt: "A founder on a call, shot on location" },
+  { src: "/photos/portrait-04.webp", alt: "A founder outside the office" },
   { src: "/photos/portrait-05.webp", alt: "A portrait shot outdoors" },
   { src: "/photos/portrait-06.webp", alt: "A portrait shot on location" },
 ];
