@@ -1,8 +1,14 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/content/site";
+import { COMING_SOON, SITE_URL } from "@/lib/content/site";
 import { CASE_STUDIES } from "@/lib/content/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // While the holding page is up, every route serves the same thing. Only
+  // list the one URL so crawlers do not index a dozen copies of it.
+  if (COMING_SOON) {
+    return [{ url: SITE_URL, changeFrequency: "daily", priority: 1 }];
+  }
+
   const staticUrls: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/engine`, changeFrequency: "monthly", priority: 0.9 },

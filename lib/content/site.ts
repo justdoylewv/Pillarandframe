@@ -1,5 +1,10 @@
 // Sitewide constants. One edit to BOOKING_URL turns every CTA on the site live.
 
+// The launch switch. While this is true, every route serves the coming soon
+// page and the real site is unreachable. The pages themselves are untouched,
+// so flipping this to false brings the whole site back with no other edits.
+export const COMING_SOON = true;
+
 export const BOOKING_URL =
   "https://api.leadconnectorhq.com/widget/bookings/strategycallpillarandframe";
 

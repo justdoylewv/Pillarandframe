@@ -4,19 +4,36 @@ import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
-import { BOOKING_URL } from "@/lib/content/site";
+import ComingSoon from "@/components/ComingSoon";
+import { BOOKING_URL, COMING_SOON } from "@/lib/content/site";
 import { getCaseStudy } from "@/lib/content/caseStudies";
 import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 
-export const metadata: Metadata = {
-  title: {
-    absolute:
-      "Pillar & Frame | The Foundation. In 90 days, be the one they call first.",
-  },
-  description:
-    "One filming day. Your Google profile live inside a month, and every word, photo, and video your business needs delivered over 90 days. For founder-led service businesses.",
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = COMING_SOON
+  ? {
+      title: { absolute: "Pillar & Frame | Coming soon" },
+      description:
+        "A story-led film studio in Ohio. The new site is on its way. The calendar is open in the meantime.",
+      alternates: { canonical: "/" },
+      openGraph: {
+        title: "Pillar & Frame | Coming soon",
+        description:
+          "A story-led film studio in Ohio. The new site is on its way. The calendar is open in the meantime.",
+      },
+      twitter: {
+        title: "Pillar & Frame | Coming soon",
+        description: "A story-led film studio in Ohio. The new site is on its way.",
+      },
+    }
+  : {
+      title: {
+        absolute:
+          "Pillar & Frame | The Foundation. In 90 days, be the one they call first.",
+      },
+      description:
+        "One filming day. Your Google profile live inside a month, and every word, photo, and video your business needs delivered over 90 days. For founder-led service businesses.",
+      alternates: { canonical: "/" },
+    };
 
 // Placeholder capture-day photo. Swap in lib/content/photos.ts.
 const HERO_IMAGE: string | null = HERO_PHOTO;
@@ -234,6 +251,9 @@ function Tick({ gold = false }: { gold?: boolean }) {
 }
 
 export default function HomePage() {
+  // The full page below is intact and unreachable while the switch is on.
+  if (COMING_SOON) return <ComingSoon />;
+
   return (
     <div className="animate-fadeIn">
       {/* 1. Hero */}

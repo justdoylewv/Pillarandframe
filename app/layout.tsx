@@ -6,7 +6,7 @@ import { GeistMono } from "geist/font/mono";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL } from "@/lib/content/site";
+import { COMING_SOON, SITE_URL } from "@/lib/content/site";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -115,9 +115,9 @@ export default function RootLayout({
       <body>
         <JsonLd data={ORG_JSONLD} />
         <JsonLd data={SERVICE_JSONLD} />
-        <SiteHeader />
+        {!COMING_SOON && <SiteHeader />}
         <main id="main-content">{children}</main>
-        <SiteFooter />
+        {!COMING_SOON && <SiteFooter />}
       </body>
     </html>
   );

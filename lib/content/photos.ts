@@ -55,6 +55,25 @@ export const ENGINE_STRIP: Photo[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// The scrolling band on the coming soon page. Every distinct frame we have.
+// ---------------------------------------------------------------------------
+
+export const MARQUEE_PHOTOS: Photo[] = [
+  { src: "/photos/work-01.webp", alt: "" },
+  { src: "/photos/portrait-02.webp", alt: "" },
+  { src: "/photos/session-01.webp", alt: "" },
+  { src: "/photos/portrait-06.webp", alt: "" },
+  { src: "/photos/work-02.webp", alt: "" },
+  { src: "/photos/portrait-04.webp", alt: "" },
+  { src: "/photos/session-02.webp", alt: "" },
+  { src: "/photos/portrait-01.webp", alt: "" },
+  { src: "/photos/about-session.webp", alt: "" },
+  { src: "/photos/portrait-03.webp", alt: "" },
+  { src: "/photos/session-03.webp", alt: "" },
+  { src: "/photos/portrait-05.webp", alt: "" },
+];
+
+// ---------------------------------------------------------------------------
 // About: frames behind the experience section
 // ---------------------------------------------------------------------------
 
