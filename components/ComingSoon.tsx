@@ -40,13 +40,14 @@ export default function ComingSoon() {
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ash-300 md:text-xl">
-            We spend our days making other people look good on camera. It turns
-            out we are last in line for our own edit. The new site is coming.
+            We spend our days telling other founder stories. Now we are
+            working on ours. The new site is coming soon.
           </p>
 
           <p className="mt-10 max-w-2xl border-t border-shale pt-8 font-serif text-2xl leading-snug text-paper md:text-3xl">
             One filming day. Then every word, photo, and video your business
-            needs, written, shot, and installed over ninety days.
+            needs to close more deals. We plan, capture, write, and install
+            your marketing system in ninety days.
           </p>
 
           <div className="mt-10 flex flex-col items-start gap-x-6 gap-y-4 sm:flex-row sm:items-center">
