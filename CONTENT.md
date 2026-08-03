@@ -6,7 +6,7 @@
 
 ### What changed from v1
 
-- Stealth mode: your name is gone from every page. Founder section removed from Home. About rewritten as a studio page, no bio. Contact shown as hello@pillarandframe.com [CONFIRM this inbox is live].
+- Stealth mode: your name is gone from every page. Founder section removed from Home. About rewritten as a studio page, no bio. Contact shown as doyle@pillarandframe.com [CONFIRM this inbox is live].
 - No personal commitment anywhere: the site never promises clients work with you directly. Everything is "the studio" and "our team": producers, editors, coaches, with senior review before anything ships. Built to scale with the team you're hiring.
 - "Firms" and category jargon removed. The copy talks to "you" and "your business," with concrete examples (lenders, advisors, IT partners) doing the targeting work.
 - Problem-first throughout: you don't know what to say, how to say it, or where it goes. You need a system, not more effort. Coaching runs through the whole engine.
@@ -23,7 +23,7 @@ Pillar & Frame (wordmark, italic purple ampersand) · The Trust Engine · System
 **Footer:**
 - Wordmark + one line: "A story-led film studio in Ohio."
 - Columns: Services (The Trust Engine, Systems Coaching) · Work (Frontier Technologies, Memorial Health, DG Lending, Wealthstrong) · Studio (About, Book a call)
-- Contact: hello@pillarandframe.com · 720.745.0968 [CONFIRM email + whether phone stays public]
+- Contact: doyle@pillarandframe.com · 720.745.0968 [CONFIRM email + whether phone stays public]
 - Line: "City Spotlight Ohio is a Pillar & Frame project." (links to cityspotlightohio.com)
 - (c) 2026 Pillar & Frame · Ohio
 
@@ -156,7 +156,7 @@ H2: **Open to a strategy call?**
 LEAD: Thirty minutes. We talk through your story, your content, and your systems. You get a written report within 48 hours, whether we work together or not.
 
 BUTTON: `Book a free strategy call`
-ALT LINE: Or email hello@pillarandframe.com
+ALT LINE: Or email doyle@pillarandframe.com
 
 ---
 
@@ -791,7 +791,7 @@ LEAD: We talk through your story, your content, and your systems. Where trust is
 
 BOOKING EMBED / BUTTON: `Pick a time` → [BOOKING_URL: GHL calendar, dropped in after build]
 
-ALT LINE: Prefer email? hello@pillarandframe.com
+ALT LINE: Prefer email? doyle@pillarandframe.com
 
 ---
 
@@ -831,7 +831,7 @@ A written rundown within 48 hours: what's working, what's leaking, what we'd fix
 | Item | Where | Status |
 |---|---|---|
 | [BOOKING_URL] GHL calendar link | Every CTA + /book embed | You drop in after build |
-| hello@pillarandframe.com | Footer, /book, CTAs | Confirm the inbox is live and monitored |
+| doyle@pillarandframe.com | Footer, /book, CTAs | Confirm the inbox is live and monitored |
 | Public phone number | Footer | Confirm 720.745.0968 stays on the site or comes off |
 | Coaching audit price + monthly price | /systems-coaching | Placeholder (Wealthstrong diagnostic was $750, for reference) |
 | "Most Popular" badge on Onsite | /trust-engine table | Confirm (your doc reads that way; flagging since the layout was ambiguous) |

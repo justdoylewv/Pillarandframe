@@ -10,7 +10,7 @@ export const BOOKING_URL =
 
 export const SITE_URL = "https://pillarandframe.com";
 export const SITE_NAME = "Pillar & Frame";
-export const CONTACT_EMAIL = "hello@pillarandframe.com";
+export const CONTACT_EMAIL = "doyle@pillarandframe.com";
 export const CONTACT_PHONE = "720.745.0968";
 export const CITY_SPOTLIGHT_URL = "https://cityspotlightohio.com";
 
