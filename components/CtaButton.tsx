@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BOOKING_URL, EVENT_BOOK_CALL } from "@/lib/content/site";
 
 interface CtaButtonProps {
   href: string;
@@ -26,7 +27,10 @@ export default function CtaButton({
   variant = "solid",
   className = "",
 }: CtaButtonProps) {
-  const cls = `inline-block rounded-[2px] px-9 py-4 font-mono text-[11px] font-medium uppercase tracking-[0.2em] transition-colors ${styles[variant]} ${className}`;
+  // Every button pointing at the calendar is a conversion. Tagging it here
+  // means no CTA can be added later and silently go unmeasured.
+  const event = href === BOOKING_URL ? EVENT_BOOK_CALL : "";
+  const cls = `inline-block rounded-[2px] px-9 py-4 font-mono text-[11px] font-medium uppercase tracking-[0.2em] transition-colors ${styles[variant]} ${className} ${event}`;
   const external = href.startsWith("http") || href === "#";
   if (external) {
     return (

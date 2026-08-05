@@ -6,9 +6,9 @@ import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/content/site";
 import { BOOK_PHOTO } from "@/lib/content/photos";
 
 export const metadata: Metadata = {
-  title: "Book a free strategy call",
+  title: "Book a free strategy call, central Ohio",
   description:
-    "Thirty minutes. We talk through your story, your content, and your systems. Written report within 48 hours. No pitch on the call.",
+    "Thirty minutes. We talk through your story, your content, and your systems. Written report in 48 hours. No pitch on the call. Central Ohio.",
   alternates: { canonical: "/book" },
 };
 

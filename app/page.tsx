@@ -5,7 +5,15 @@ import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
 import ComingSoon from "@/components/ComingSoon";
-import { BOOKING_URL, COMING_SOON } from "@/lib/content/site";
+import JsonLd from "@/components/JsonLd";
+import ServiceArea from "@/components/ServiceArea";
+import {
+  BOOKING_URL,
+  COMING_SOON,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/content/site";
+import { faqSchema, serviceSchema } from "@/lib/content/schema";
 import { getCaseStudy } from "@/lib/content/caseStudies";
 import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 
@@ -26,12 +34,13 @@ export const metadata: Metadata = COMING_SOON
       },
     }
   : {
+      // City and service in the title. A referral checking us out and a
+      // category searcher have to see the same two facts in the tab.
       title: {
-        absolute:
-          "Pillar & Frame | The Foundation. In 90 days, be the one they call first.",
+        absolute: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
       },
       description:
-        "One filming day. Your Google profile live inside a month, and every word, photo, and video your business needs delivered over 90 days. For founder-led service businesses.",
+        "One filming day, then every word, photo, and video your business needs, installed over 90 days. For service businesses around Marysville, Ohio.",
       alternates: { canonical: "/" },
     };
 
@@ -256,6 +265,24 @@ export default function HomePage() {
 
   return (
     <div className="animate-fadeIn">
+      {/* Built from the same FAQ array the page renders below, so the markup
+          and the visible answers cannot drift apart. */}
+      <JsonLd data={faqSchema(FAQ)} />
+      {/* The price is the point. Cost questions trigger an AI answer more
+          often than anything else, and almost nobody in this category
+          publishes a number. */}
+      <JsonLd
+        data={serviceSchema({
+          name: "The Foundation",
+          description:
+            "One filming day, then every word, photo, and video a founder-led service business needs, written, shot, and installed across its website, Google Business Profile, and social platforms over 90 days.",
+          url: SITE_URL,
+          price: "5000",
+          unit:
+            "Early founder pricing for the first ten clients. $7,500 after that.",
+        })}
+      />
+
       {/* 1. Hero */}
       <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-black sm:min-h-[80vh]">
         {HERO_IMAGE && (
@@ -880,6 +907,15 @@ export default function HomePage() {
           <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
             Real Human Origin &middot; No AI &middot; No Stock &middot; Verbatim
           </p>
+
+          <div className="mt-12 border-t border-ash-100 pt-10">
+            <Kicker className="mb-6">Where we work</Kicker>
+            <ServiceArea />
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ash-700">
+              We come to you. Capture day happens at your shop, your job site,
+              or wherever your work actually looks like your work.
+            </p>
+          </div>
 
           <div className="mt-12 border border-ash-100 border-l-[3px] border-l-gold-500 bg-bone p-8">
             <Kicker className="mb-5">Why now, honestly</Kicker>

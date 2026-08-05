@@ -8,9 +8,9 @@ import { BOOKING_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
 import { CASE_STUDIES } from "@/lib/content/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Work",
+  title: "Case studies from Ohio businesses",
   description:
-    "Real clients, real numbers. Story-led film and content work across healthcare, IT, and founder-led service brands.",
+    "Real clients, real numbers. Story-led film and content work across healthcare, IT, and founder-led service brands in Ohio.",
   alternates: { canonical: "/work" },
 };
 

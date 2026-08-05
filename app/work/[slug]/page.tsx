@@ -9,6 +9,8 @@ import PullQuoteBlock from "@/components/PullQuoteBlock";
 import VideoEmbed from "@/components/VideoEmbed";
 import Writeup from "@/components/Writeup";
 import { BOOKING_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
+import { ORG_ID, videoSchema } from "@/lib/content/schema";
+import { deriveThumbnail } from "@/lib/video";
 import { CASE_STUDIES, getCaseStudy } from "@/lib/content/caseStudies";
 
 interface PageProps {
@@ -49,13 +51,25 @@ export default function CaseStudyPage({ params }: PageProps) {
     mainEntityOfPage: `${SITE_URL}/work/${study.slug}`,
     articleSection: study.service,
     keywords: study.tags,
-    publisher: {
-      "@type": "Organization",
-      name: "Pillar & Frame",
-      url: SITE_URL,
-    },
-    author: { "@type": "Organization", name: "Pillar & Frame" },
+    publisher: { "@id": ORG_ID },
+    author: { "@id": ORG_ID },
   };
+
+  // Only emitted when there is a film on the page. The transcript is the
+  // payload: it is what makes the video quotable by a search engine or an
+  // assistant rather than an opaque embed.
+  const videoLd =
+    study.videoUrl && study.videoProvider
+      ? videoSchema({
+          name: `${study.client}: ${study.oneLiner}`,
+          description: study.metaDescription,
+          url: `${SITE_URL}/work/${study.slug}`,
+          thumbnailUrl:
+            study.heroImage ??
+            deriveThumbnail(study.videoUrl, study.videoProvider),
+          transcript: study.videoTranscript ?? null,
+        })
+      : null;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -76,6 +90,7 @@ export default function CaseStudyPage({ params }: PageProps) {
     <div className="animate-fadeIn bg-paper pb-24">
       <JsonLd data={articleLd} />
       <JsonLd data={breadcrumbLd} />
+      {videoLd && <JsonLd data={videoLd} />}
 
       {/* Hero */}
       <header className="px-6 pb-16 pt-24">
@@ -107,6 +122,7 @@ export default function CaseStudyPage({ params }: PageProps) {
             url={study.videoUrl}
             provider={study.videoProvider}
             title={`${study.client} film`}
+            transcript={study.videoTranscript ?? null}
           />
         ) : study.heroImage ? (
           <div

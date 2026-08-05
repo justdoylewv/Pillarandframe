@@ -1,12 +1,20 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Instrument_Serif } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
-import { COMING_SOON, SITE_URL } from "@/lib/content/site";
+import {
+  COMING_SOON,
+  ENTITY_DESCRIPTION,
+  PLAUSIBLE_DOMAIN,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/content/site";
+import { siteGraph } from "@/lib/content/schema";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -18,11 +26,12 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Pillar & Frame | Story-led film studio. The Engine.",
-    template: "%s | Pillar & Frame",
+    default: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+    // Page titles carry their own city and service words, so the template
+    // only has to add the brand.
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "You know your work. We help you say it. Real stories captured on film, turned into a year of content, put to work on LinkedIn and Google. A system, with coaching along the way.",
+  description: ENTITY_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   robots: {
     index: true,
@@ -32,74 +41,21 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   openGraph: {
-    title: "Pillar & Frame | Story-led film studio. The Engine.",
-    description:
-      "Real stories captured on film, turned into a year of content, put to work on LinkedIn and Google. A system, with coaching along the way.",
+    title: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+    description: ENTITY_DESCRIPTION,
     type: "website",
-    siteName: "Pillar & Frame",
+    siteName: SITE_NAME,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pillar & Frame",
-    description:
-      "A story-led film studio in Ohio. The Foundation and The Engine.",
+    title: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+    description: ENTITY_DESCRIPTION,
   },
   icons: {
     icon: "/favicon.svg",
   },
   manifest: "/site.webmanifest",
-};
-
-const ORG_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Pillar & Frame",
-  url: SITE_URL,
-  description:
-    "A story-led film studio in Ohio. Real stories captured on film, turned into a content waterfall, put to work on LinkedIn and Google, with monthly coaching built in. Built for founder-driven service brands.",
-  areaServed: {
-    "@type": "State",
-    name: "Ohio",
-    containedInPlace: { "@type": "Country", name: "US" },
-  },
-  subOrganization: {
-    "@type": "Organization",
-    name: "City Spotlight Ohio",
-    url: "https://cityspotlightohio.com",
-  },
-  sameAs: [],
-};
-
-const SERVICE_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Pillar & Frame",
-  url: SITE_URL,
-  description:
-    "Story-led film studio for founder-driven service brands. The Engine: real stories captured on film, turned into a content waterfall, put to work on LinkedIn and Google Business Profiles. Plus systems coaching for CRM, follow-up, and automations.",
-  areaServed: [
-    { "@type": "State", name: "Ohio" },
-    { "@type": "Country", name: "United States" },
-  ],
-  makesOffer: [
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "The Foundation",
-        url: SITE_URL,
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "The Engine",
-        url: `${SITE_URL}/engine`,
-      },
-    },
-  ],
 };
 
 export default function RootLayout({
@@ -113,8 +69,16 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body>
-        <JsonLd data={ORG_JSONLD} />
-        <JsonLd data={SERVICE_JSONLD} />
+        {/* One graph, cross-referenced by id, on every page. */}
+        <JsonLd data={siteGraph()} />
+        {PLAUSIBLE_DOMAIN ? (
+          <Script
+            defer
+            data-domain={PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.outbound-links.tagged-events.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
         {!COMING_SOON && <SiteHeader />}
         <main id="main-content">{children}</main>
         {!COMING_SOON && <SiteFooter />}

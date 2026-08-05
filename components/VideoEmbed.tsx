@@ -11,7 +11,7 @@ interface VideoEmbedProps {
   poster?: string;
 }
 
-export default function VideoEmbed({ url, provider, title, poster }: VideoEmbedProps) {
+function VideoPlayer({ url, provider, title, poster }: VideoEmbedProps) {
   const src = normalizeVideoUrl(url, provider);
   const [posterSrc, setPosterSrc] = useState<string | null>(
     poster ?? deriveThumbnail(url, provider)
@@ -71,6 +71,43 @@ export default function VideoEmbed({ url, provider, title, poster }: VideoEmbedP
         allowFullScreen
         className="absolute inset-0 h-full w-full border-0"
       />
+    </div>
+  );
+}
+
+/**
+ * A video plus its transcript.
+ *
+ * The transcript is rendered into the HTML, not fetched, not collapsed behind
+ * JavaScript. Retrievability is binary: a crawler or a language model that
+ * cannot read the words in a video cannot quote them, and an embed on its own
+ * is an opaque box. The <details> element keeps the page readable for humans
+ * while leaving the text in the markup for everything else.
+ */
+export default function VideoEmbed(
+  props: VideoEmbedProps & { transcript?: string | null }
+) {
+  const { transcript, ...player } = props;
+
+  return (
+    <div>
+      <VideoPlayer {...player} />
+      {transcript && (
+        <details className="mt-4 border-t border-ash-100 pt-4">
+          <summary className="cursor-pointer font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500 transition-colors hover:text-black">
+            Read the transcript
+          </summary>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-ash-700">
+            {transcript
+              .split("\n")
+              .map((line) => line.trim())
+              .filter(Boolean)
+              .map((line, i) => (
+                <p key={i}>{line}</p>
+              ))}
+          </div>
+        </details>
+      )}
     </div>
   );
 }

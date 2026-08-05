@@ -56,6 +56,10 @@ export interface CaseStudy {
   gallery: string[];
   videoUrl: string | null;
   videoProvider: VideoProvider | null;
+  // The spoken words, one paragraph per line. Rendered into the page and into
+  // VideoObject schema. An embed a crawler cannot read is an embed it cannot
+  // cite, so this is what makes a film count for anything in search.
+  videoTranscript?: string | null;
   nextSlug: string;
   ctaHeading: string;
   ctaServiceLabel: string;

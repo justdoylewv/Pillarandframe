@@ -4,7 +4,9 @@ import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
-import { BOOKING_URL, CTA_LABEL } from "@/lib/content/site";
+import JsonLd from "@/components/JsonLd";
+import { BOOKING_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/content/schema";
 import { ENGINE_HERO_PHOTO, ENGINE_STRIP } from "@/lib/content/photos";
 import {
   CADENCE,
@@ -16,9 +18,9 @@ import {
 } from "@/lib/content/services";
 
 export const metadata: Metadata = {
-  title: "The Engine",
+  title: "The Engine | Monthly video, central Ohio",
   description:
-    "The monthly retainer for founder-led service brands. We film you once a month and turn it into a month of videos, posts, captions, and graphics in your voice. Coaching built in. Picks up where The Foundation leaves off.",
+    "The monthly retainer for founder-led brands in central Ohio. We film you once a month and turn it into a month of videos, posts, and captions. $2,500 a month.",
   alternates: { canonical: "/engine" },
 };
 
@@ -29,6 +31,24 @@ function Tick() {
 export default function TrustEnginePage() {
   return (
     <div className="animate-fadeIn">
+      <JsonLd data={faqSchema(TRUST_ENGINE_FAQ)} />
+      <JsonLd
+        data={serviceSchema({
+          name: "The Engine",
+          description:
+            "A monthly retainer for founder-led service brands. We film once a month and turn it into a month of videos, posts, captions, and graphics in the client's own voice, with coaching built in.",
+          url: `${SITE_URL}/engine`,
+          price: "2500",
+          unit: "Per month. Three-month minimum, then month to month.",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "The Engine", path: "/engine" },
+        ])}
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-black py-24 sm:py-32">
         <div className="absolute inset-0">

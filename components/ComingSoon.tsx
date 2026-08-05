@@ -5,6 +5,9 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
   CTA_LABEL,
+  EVENT_EMAIL,
+  PHONE_IS_PUBLIC,
+  SERVICE_AREA_SENTENCE,
 } from "@/lib/content/site";
 import { MARQUEE_PHOTOS } from "@/lib/content/photos";
 
@@ -58,7 +61,7 @@ export default function ComingSoon() {
               Fifteen minutes, no pitch. Or email{" "}
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="text-ash-300 underline underline-offset-4 transition-colors hover:text-paper"
+                className={`text-ash-300 underline underline-offset-4 transition-colors hover:text-paper ${EVENT_EMAIL}`}
               >
                 {CONTACT_EMAIL}
               </a>
@@ -91,14 +94,16 @@ export default function ComingSoon() {
       {/* Footer */}
       <footer className="mx-auto w-full max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-3 text-sm text-ash-500 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-serif italic">A story-led film studio in Ohio.</p>
+          <p>{SERVICE_AREA_SENTENCE}</p>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
-            <a
-              href={`tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`}
-              className="transition-colors hover:text-paper"
-            >
-              {CONTACT_PHONE}
-            </a>
+            {PHONE_IS_PUBLIC && CONTACT_PHONE && (
+              <a
+                href={`tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`}
+                className="transition-colors hover:text-paper"
+              >
+                {CONTACT_PHONE}
+              </a>
+            )}
             <span className="text-ash-700">&copy; 2026 Pillar &amp; Frame</span>
           </div>
         </div>

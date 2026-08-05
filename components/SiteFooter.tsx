@@ -4,7 +4,12 @@ import {
   BOOKING_URL,
   CONTACT_EMAIL,
   CONTACT_PHONE,
+  EVENT_BOOK_CALL,
+  EVENT_EMAIL,
+  EVENT_PHONE,
   FOOTER_TAGLINE,
+  PHONE_IS_PUBLIC,
+  SERVICE_AREA_SENTENCE,
 } from "@/lib/content/site";
 
 const COLUMNS: {
@@ -47,6 +52,11 @@ export default function SiteFooter() {
             <p className="mt-5 font-serif text-base italic leading-relaxed text-ash-500">
               {FOOTER_TAGLINE}
             </p>
+            {/* The same service-area sentence used on the Google profile and
+                every directory listing. One wording, everywhere. */}
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-ash-500">
+              {SERVICE_AREA_SENTENCE}
+            </p>
           </div>
           {COLUMNS.map((col) => (
             <div key={col.heading}>
@@ -74,20 +84,22 @@ export default function SiteFooter() {
             <div className="flex flex-col gap-2 text-sm text-ash-500 sm:flex-row sm:items-center sm:gap-6">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="transition-colors hover:text-black"
+                className={`transition-colors hover:text-black ${EVENT_EMAIL}`}
               >
                 {CONTACT_EMAIL}
               </a>
-              <a
-                href={`tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`}
-                className="transition-colors hover:text-black"
-              >
-                {CONTACT_PHONE}
-              </a>
+              {PHONE_IS_PUBLIC && CONTACT_PHONE && (
+                <a
+                  href={`tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`}
+                  className={`transition-colors hover:text-black ${EVENT_PHONE}`}
+                >
+                  {CONTACT_PHONE}
+                </a>
+              )}
             </div>
             <a
               href={BOOKING_URL}
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500 transition-colors hover:text-black"
+              className={`font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500 transition-colors hover:text-black ${EVENT_BOOK_CALL}`}
             >
               Book a free strategy call
             </a>

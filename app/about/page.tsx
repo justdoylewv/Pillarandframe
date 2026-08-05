@@ -5,27 +5,28 @@ import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import JsonLd from "@/components/JsonLd";
 import { BOOKING_URL, CITY_SPOTLIGHT_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
+import { ORG_ID, breadcrumbSchema } from "@/lib/content/schema";
 import { ABOUT_PHOTO, ABOUT_STRIP } from "@/lib/content/photos";
+import ServiceArea from "@/components/ServiceArea";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About the studio in Marysville, Ohio",
   description:
-    "Referrals are the best business you get. We help you get more of them, and make sure they close. After fifteen years filming everyone from local shops to the Fortune 500.",
+    "Referrals are the best business you get. We help you get more of them, and make sure they close. A video and copy studio in Marysville, Ohio.",
   alternates: { canonical: "/about" },
 };
 
+// The entity anchor. This page points at the organization node defined once in
+// lib/content/schema.ts rather than describing a second, slightly different
+// company, which is how an entity gets muddled in the first place.
 const ABOUT_JSONLD = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Pillar & Frame",
   description:
-    "A story-led film studio in Ohio that helps referral-driven businesses earn more referrals and convert the ones they already get.",
+    "A video and copy studio in Marysville, Ohio that helps referral-driven businesses earn more referrals and convert the ones they already get.",
   url: `${SITE_URL}/about`,
-  mainEntity: {
-    "@type": "Organization",
-    name: "Pillar & Frame",
-    url: SITE_URL,
-  },
+  mainEntity: { "@id": ORG_ID },
 };
 
 const HEARD = [
@@ -53,6 +54,12 @@ export default function AboutPage() {
   return (
     <div className="animate-fadeIn">
       <JsonLd data={ABOUT_JSONLD} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
 
       {/* Hero */}
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
@@ -217,6 +224,13 @@ export default function AboutPage() {
             {ABOUT_STRIP.map((p) => (
               <MediaFrame key={p.src} image={p.src} alt={p.alt} aspect="square" dark />
             ))}
+          </div>
+
+          <div className="mt-16 border-t border-shale pt-10">
+            <Kicker dark className="mb-6">
+              Where we work
+            </Kicker>
+            <ServiceArea dark />
           </div>
         </div>
       </section>
