@@ -18,9 +18,9 @@ import {
 } from "@/lib/content/services";
 
 export const metadata: Metadata = {
-  title: "The Engine | Monthly video, central Ohio",
+  title: "The Engine | Monthly video, Columbus Ohio",
   description:
-    "The monthly retainer for founder-led brands in central Ohio. We film you once a month and turn it into a month of videos, posts, and captions. $2,500 a month.",
+    "The monthly retainer for founder-led brands in Columbus and central Ohio. We film you once a month and turn it into a month of content. $2,500 a month.",
   alternates: { canonical: "/engine" },
 };
 

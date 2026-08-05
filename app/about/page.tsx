@@ -10,9 +10,9 @@ import { ABOUT_PHOTO, ABOUT_STRIP } from "@/lib/content/photos";
 import ServiceArea from "@/components/ServiceArea";
 
 export const metadata: Metadata = {
-  title: "About the studio in Marysville, Ohio",
+  title: "About | Columbus and central Ohio",
   description:
-    "Referrals are the best business you get. We help you get more of them, and make sure they close. A video and copy studio in Marysville, Ohio.",
+    "Referrals are the best business you get. We help you get more of them, and make sure they close. A video and copy studio in Columbus and central Ohio.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,7 +24,7 @@ const ABOUT_JSONLD = {
   "@type": "AboutPage",
   name: "About Pillar & Frame",
   description:
-    "A video and copy studio in Marysville, Ohio that helps referral-driven businesses earn more referrals and convert the ones they already get.",
+    "A video and copy studio serving Columbus and central Ohio that helps referral-driven businesses earn more referrals and convert the ones they already get.",
   url: `${SITE_URL}/about`,
   mainEntity: { "@id": ORG_ID },
 };
@@ -72,9 +72,10 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
-            Pillar &amp; Frame is a story-led film studio in Ohio. We build the
-            proof that makes a referral easy to give, easy to say yes to, and
-            far more likely to happen again.
+            Pillar &amp; Frame is a story-led film studio working across
+            Columbus and central Ohio. We build the proof that makes a referral
+            easy to give, easy to say yes to, and far more likely to happen
+            again.
           </p>
         </div>
       </section>

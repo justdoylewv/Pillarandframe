@@ -37,10 +37,10 @@ export const metadata: Metadata = COMING_SOON
       // City and service in the title. A referral checking us out and a
       // category searcher have to see the same two facts in the tab.
       title: {
-        absolute: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+        absolute: `${SITE_NAME} | Video and Copy Studio in Columbus, Ohio`,
       },
       description:
-        "One filming day, then every word, photo, and video your business needs, installed over 90 days. For service businesses around Marysville, Ohio.",
+        "One filming day, then every word, photo, and video your business needs, installed over 90 days. For service businesses in Columbus and central Ohio.",
       alternates: { canonical: "/" },
     };
 

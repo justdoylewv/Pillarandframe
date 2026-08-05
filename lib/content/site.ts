@@ -32,7 +32,7 @@ export const PRIMARY_CATEGORY = "Video Production Service";
 
 // One line, reused in schema and meta. Keep it factual and keep it short.
 export const ENTITY_DESCRIPTION =
-  "A video and copy studio in Marysville, Ohio. We film founder-led service businesses once, then write, shoot, and install the words, photos, and videos the business needs across its website, Google profile, and social platforms.";
+  "A video and copy studio serving Columbus and central Ohio, based in Marysville. We film founder-led service businesses once, then write, shoot, and install the words, photos, and videos the business needs across its website, Google profile, and social platforms.";
 
 // Schema only. The visible copy on this site stays studio-voiced: "we" is the
 // studio and "you" is the buyer. This exists so Google and the language models
@@ -79,7 +79,7 @@ export const COUNTIES = ["Union", "Delaware", "Franklin"];
 // the Google profile, the directories, and the socials. One sentence, one
 // meaning, everywhere.
 export const SERVICE_AREA_SENTENCE =
-  "Based in Marysville, Ohio, serving Union, Delaware, and Franklin counties.";
+  "Based in Marysville, Ohio, serving Columbus and the central Ohio counties of Union, Delaware, and Franklin.";
 
 // The towns we serve, ordered outward from Marysville.
 //
