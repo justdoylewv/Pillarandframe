@@ -41,12 +41,26 @@ export const FOUNDER_NAME = "Doyle Maurer";
 
 // Profiles that corroborate the entity. Every one of these strengthens the
 // link between the name and the business for both Google and the LLMs.
-// TODO: add the LinkedIn company page, the personal LinkedIn, YouTube,
-// Facebook, and Instagram URLs once they are live.
-export const SAME_AS: string[] = [];
+//
+// The Google entry is the share shortlink. Swap it for the canonical Maps
+// place URL (google.com/maps/place/?q=place_id:...) when you have it: a
+// shortlink is a redirect, and the place URL is the stable identifier.
+//
+// TODO: add LinkedIn (company and personal), YouTube, and Instagram as they
+// go live. LinkedIn and YouTube are the two that move the needle most.
+export const SAME_AS: string[] = [
+  "https://www.facebook.com/pillarandframe/",
+  "https://share.google/teZsErN6NGCl4L5es",
+];
 
 // TODO: same, for the founder. The personal LinkedIn is the highest value one.
 export const FOUNDER_SAME_AS: string[] = [];
+
+// Profiles we link to in the footer. A visible link plus the schema entry is
+// a stronger association than schema on its own.
+export const SOCIAL_LINKS: { label: string; href: string }[] = [
+  { label: "Facebook", href: "https://www.facebook.com/pillarandframe/" },
+];
 
 // ---------------------------------------------------------------------------
 // Where we work
@@ -67,10 +81,39 @@ export const COUNTIES = ["Union", "Delaware", "Franklin"];
 export const SERVICE_AREA_SENTENCE =
   "Based in Marysville, Ohio, serving Union, Delaware, and Franklin counties.";
 
-// The towns listed as the service area on the Google Business Profile. These
-// render on the site only when they match the profile exactly.
-// TODO: paste the 17 towns from the Google Business Profile service area.
-export const SERVICE_AREA_TOWNS: string[] = [];
+// The towns we serve, ordered outward from Marysville.
+//
+// These must match the service area set on the Google Business Profile
+// exactly. Google reads a mismatch between the profile and the site as
+// inconsistency, and a town claimed here but missing there is a claim with
+// nothing behind it. If you add or remove a town on the profile, change it
+// here in the same sitting.
+//
+// Columbus is on the list because we do serve it. That is separate from what
+// we expect to rank for: proximity means the map pack is realistic around
+// Marysville and Union County, and Columbus proper is not a promise.
+export const SERVICE_AREA_TOWNS: string[] = [
+  // Union County
+  "Marysville",
+  "Plain City",
+  "Milford Center",
+  "Richwood",
+  // Delaware County
+  "Delaware",
+  "Powell",
+  "Lewis Center",
+  "Sunbury",
+  "Galena",
+  "Ostrander",
+  // Franklin County
+  "Dublin",
+  "Westerville",
+  "Worthington",
+  "Hilliard",
+  "New Albany",
+  "Upper Arlington",
+  "Columbus",
+];
 
 // ---------------------------------------------------------------------------
 // Contact

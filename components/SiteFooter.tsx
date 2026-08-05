@@ -10,6 +10,7 @@ import {
   FOOTER_TAGLINE,
   PHONE_IS_PUBLIC,
   SERVICE_AREA_SENTENCE,
+  SOCIAL_LINKS,
 } from "@/lib/content/site";
 
 const COLUMNS: {
@@ -96,6 +97,19 @@ export default function SiteFooter() {
                   {CONTACT_PHONE}
                 </a>
               )}
+              {/* Visible links to the same profiles listed in sameAs. The
+                  pair is a stronger association than the schema alone. */}
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.href}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="transition-colors hover:text-black"
+                >
+                  {s.label}
+                </a>
+              ))}
             </div>
             <a
               href={BOOKING_URL}
