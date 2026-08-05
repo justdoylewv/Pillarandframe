@@ -26,7 +26,7 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+    default: `${SITE_NAME} | Video and Copy Studio in Columbus, Ohio`,
     // Page titles carry their own city and service words, so the template
     // only has to add the brand.
     template: `%s | ${SITE_NAME}`,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   openGraph: {
-    title: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+    title: `${SITE_NAME} | Video and Copy Studio in Columbus, Ohio`,
     description: ENTITY_DESCRIPTION,
     type: "website",
     siteName: SITE_NAME,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Video and Copy Studio in Marysville, Ohio`,
+    title: `${SITE_NAME} | Video and Copy Studio in Columbus, Ohio`,
     description: ENTITY_DESCRIPTION,
   },
   icons: {

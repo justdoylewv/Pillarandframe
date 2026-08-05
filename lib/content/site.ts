@@ -32,7 +32,7 @@ export const PRIMARY_CATEGORY = "Video Production Service";
 
 // One line, reused in schema and meta. Keep it factual and keep it short.
 export const ENTITY_DESCRIPTION =
-  "A video and copy studio serving Columbus and central Ohio, based in Marysville. We film founder-led service businesses once, then write, shoot, and install the words, photos, and videos the business needs across its website, Google profile, and social platforms.";
+  "A video and copy studio serving Columbus and central Ohio, based in Delaware, Ohio. We film founder-led service businesses once, then write, shoot, and install the words, photos, and videos the business needs across its website, Google profile, and social platforms.";
 
 // Schema only. The visible copy on this site stays studio-voiced: "we" is the
 // studio and "you" is the buyer. This exists so Google and the language models
@@ -69,19 +69,20 @@ export const SOCIAL_LINKS: { label: string; href: string }[] = [
 // Service-area business. The street address is deliberately not published and
 // not in the schema. City and state are, because they are true and because
 // proximity is what the map pack reads.
-export const BASE_CITY = "Marysville";
+export const BASE_CITY = "Delaware";
 export const BASE_REGION = "Ohio";
 export const BASE_REGION_CODE = "OH";
 
-export const COUNTIES = ["Union", "Delaware", "Franklin"];
+// Home county first, then the metro, then the western edge.
+export const COUNTIES = ["Delaware", "Franklin", "Union"];
 
 // The one public service-area sentence. This exact wording goes on the site,
 // the Google profile, the directories, and the socials. One sentence, one
 // meaning, everywhere.
 export const SERVICE_AREA_SENTENCE =
-  "Based in Marysville, Ohio, serving Columbus and the central Ohio counties of Union, Delaware, and Franklin.";
+  "Based in Delaware, Ohio, serving Columbus and the surrounding counties of Delaware, Franklin, and Union.";
 
-// The towns we serve, ordered outward from Marysville.
+// The towns we serve, ordered outward from Delaware.
 //
 // These must match the service area set on the Google Business Profile
 // exactly. Google reads a mismatch between the profile and the site as
@@ -91,14 +92,9 @@ export const SERVICE_AREA_SENTENCE =
 //
 // Columbus is on the list because we do serve it. That is separate from what
 // we expect to rank for: proximity means the map pack is realistic around
-// Marysville and Union County, and Columbus proper is not a promise.
+// Delaware and the northern suburbs, and Columbus proper is not a promise.
 export const SERVICE_AREA_TOWNS: string[] = [
-  // Union County
-  "Marysville",
-  "Plain City",
-  "Milford Center",
-  "Richwood",
-  // Delaware County
+  // Delaware County, closest to home
   "Delaware",
   "Powell",
   "Lewis Center",
@@ -106,13 +102,18 @@ export const SERVICE_AREA_TOWNS: string[] = [
   "Galena",
   "Ostrander",
   // Franklin County
-  "Dublin",
   "Westerville",
   "Worthington",
-  "Hilliard",
+  "Dublin",
   "New Albany",
   "Upper Arlington",
+  "Hilliard",
   "Columbus",
+  // Union County
+  "Marysville",
+  "Plain City",
+  "Richwood",
+  "Milford Center",
 ];
 
 // ---------------------------------------------------------------------------
