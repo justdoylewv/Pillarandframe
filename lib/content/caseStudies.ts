@@ -117,15 +117,15 @@ The film is done. The campaign has what it needs to raise the money. And when th
     ],
     heroImage: null,
     gallery: [],
-    // Now on YouTube rather than Drive. The poster, the embed URL in the
-    // VideoObject, and the player all derive from this one line, so there is
-    // nothing else to keep in sync.
-    videoUrl: "https://youtu.be/9ZSRcQdhL-0",
-    videoProvider: "youtube",
-    // TODO: paste the transcript, and set videoUploadDate to the YouTube
-    // publish date. Without a date the film cannot earn a video rich result.
-    // Without a transcript nothing can quote it, which is the whole reason to
-    // put a film on a page rather than only on YouTube.
+    // TODO: move this film to YouTube and switch provider to "youtube".
+    // A Drive embed carries player chrome, breaks if a sharing setting
+    // changes, and is worth nothing in search. Re-hosting also fills in
+    // embedUrl and the derived thumbnail automatically.
+    videoUrl: "https://drive.google.com/file/d/1gwlPto68E1S5QE4Z3nlmGfEGiCeHdDQA/view?usp=drive_link",
+    videoProvider: "gdrive",
+    // TODO: paste the transcript, and set videoUploadDate to the publish date
+    // once the film is on YouTube. Without a date it cannot earn a video rich
+    // result; without a transcript nothing can quote it.
     videoTranscript: null,
     videoUploadDate: null,
     nextSlug: "frontier-technologies",

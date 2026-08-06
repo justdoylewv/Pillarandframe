@@ -13,9 +13,24 @@
 // ---------------------------------------------------------------------------
 
 // While this is true, every route serves the coming soon page and the real
-// site is unreachable. The pages themselves are untouched, so flipping this to
-// false brings the whole site back with no other edits.
-export const COMING_SOON = true;
+// site is unreachable. The pages themselves are untouched, so turning it off
+// brings the whole site back with no other edits.
+//
+// Gated by default. It takes an explicit "false" to open the site, so a
+// missing or misspelled variable fails closed rather than publishing early.
+//
+// Two ways to turn it off:
+//
+//   Preview the real site without launching it
+//     In Vercel, add NEXT_PUBLIC_COMING_SOON = false and scope it to the
+//     Preview environment only. Every branch deploy then serves the full site
+//     at its own preview URL, while production stays behind the holding page.
+//     This is the one to use for review.
+//
+//   Launch
+//     Set the same variable to false on Production, or edit the fallback
+//     below. Read at build time, so it takes a redeploy either way.
+export const COMING_SOON = process.env.NEXT_PUBLIC_COMING_SOON !== "false";
 
 // ---------------------------------------------------------------------------
 // Identity
