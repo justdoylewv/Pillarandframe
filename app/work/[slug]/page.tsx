@@ -10,7 +10,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import Writeup from "@/components/Writeup";
 import { BOOKING_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
 import { ORG_ID, videoSchema } from "@/lib/content/schema";
-import { deriveThumbnail } from "@/lib/video";
+import { deriveThumbnail, normalizeVideoUrl } from "@/lib/video";
 import { CASE_STUDIES, getCaseStudy } from "@/lib/content/caseStudies";
 
 interface PageProps {
@@ -58,6 +58,10 @@ export default function CaseStudyPage({ params }: PageProps) {
   // Only emitted when there is a film on the page. The transcript is the
   // payload: it is what makes the video quotable by a search engine or an
   // assistant rather than an opaque embed.
+  //
+  // embedUrl is the player URL for wherever the film is hosted. For a YouTube
+  // film that is the youtube.com/embed/ID form, which is what ties this page
+  // to the video Google has already indexed on YouTube.
   const videoLd =
     study.videoUrl && study.videoProvider
       ? videoSchema({
@@ -67,7 +71,9 @@ export default function CaseStudyPage({ params }: PageProps) {
           thumbnailUrl:
             study.heroImage ??
             deriveThumbnail(study.videoUrl, study.videoProvider),
+          embedUrl: normalizeVideoUrl(study.videoUrl, study.videoProvider),
           transcript: study.videoTranscript ?? null,
+          uploadDate: study.videoUploadDate ?? null,
         })
       : null;
 

@@ -60,6 +60,9 @@ export interface CaseStudy {
   // VideoObject schema. An embed a crawler cannot read is an embed it cannot
   // cite, so this is what makes a film count for anything in search.
   videoTranscript?: string | null;
+  // ISO 8601, for example "2026-03-14". Required for video rich results, so a
+  // film without one is not eligible. Left unset rather than guessed.
+  videoUploadDate?: string | null;
   nextSlug: string;
   ctaHeading: string;
   ctaServiceLabel: string;

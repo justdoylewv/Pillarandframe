@@ -117,8 +117,17 @@ The film is done. The campaign has what it needs to raise the money. And when th
     ],
     heroImage: null,
     gallery: [],
+    // TODO: move this film to YouTube and switch provider to "youtube".
+    // A Drive embed carries player chrome, breaks if a sharing setting
+    // changes, and is worth nothing in search. Re-hosting also fills in
+    // embedUrl and the derived thumbnail automatically.
     videoUrl: "https://drive.google.com/file/d/1gwlPto68E1S5QE4Z3nlmGfEGiCeHdDQA/view?usp=drive_link",
     videoProvider: "gdrive",
+    // TODO: paste the transcript, and set videoUploadDate to the publish date
+    // once the film is on YouTube. Without a date it cannot earn a video rich
+    // result; without a transcript nothing can quote it.
+    videoTranscript: null,
+    videoUploadDate: null,
     nextSlug: "frontier-technologies",
     ctaHeading: "Raising money to build something?",
     ctaServiceLabel: "See The Engine",

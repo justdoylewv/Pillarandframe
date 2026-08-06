@@ -199,9 +199,21 @@ export function faqSchema(
 }
 
 /**
- * A video, with its transcript. Retrievability is binary: a crawler that
- * cannot read the words in a video cannot cite them, so the transcript is the
- * part that actually does the work here.
+ * A video, with its transcript.
+ *
+ * Retrievability is binary: a crawler that cannot read the words in a video
+ * cannot cite them, so the transcript is the part that actually does the work.
+ *
+ * On the two location fields, which are not interchangeable:
+ *   embedUrl   the player. For a film hosted on YouTube this is the
+ *              youtube.com/embed/ID form, and it is what connects this page to
+ *              the video Google has already indexed on YouTube.
+ *   contentUrl the media file itself. Only for video we serve directly, such
+ *              as an mp4 in public/. Never point this at a YouTube page.
+ *
+ * uploadDate is required for video rich results. It stays empty until a real
+ * date is known rather than being guessed, so a video without one simply is
+ * not eligible instead of carrying a date that is wrong.
  */
 export function videoSchema(opts: {
   name: string;
@@ -209,6 +221,7 @@ export function videoSchema(opts: {
   url: string;
   thumbnailUrl?: string | null;
   embedUrl?: string | null;
+  contentUrl?: string | null;
   transcript?: string | null;
   uploadDate?: string | null;
 }) {
@@ -220,6 +233,7 @@ export function videoSchema(opts: {
     url: opts.url,
     thumbnailUrl: opts.thumbnailUrl ?? "",
     embedUrl: opts.embedUrl ?? "",
+    contentUrl: opts.contentUrl ?? "",
     transcript: opts.transcript ?? "",
     uploadDate: opts.uploadDate ?? "",
     publisher: { "@id": ORG_ID },
