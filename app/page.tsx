@@ -351,13 +351,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. The offer, in one line. Given its own beat on a tone step off the
-          hero so it reads as the thesis rather than another hero element. */}
+      {/* 2. The offer. Given its own beat on a tone step off the hero so it
+          reads as the thesis rather than another hero element. The claim
+          carries the size; the mechanism sits under it so the promise is not
+          left floating without the how. */}
       <section className="border-t border-shale bg-ink py-20 sm:py-24">
         <div className="mx-auto max-w-[980px] px-6 text-center">
           <p className="font-serif text-3xl leading-tight tracking-tight text-paper sm:text-4xl md:text-5xl">
             We turn local business owners into{" "}
             <span className="italic text-gold-500">hometown legends.</span>
+          </p>
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ash-300 md:text-xl">
+            By telling their story the way a documentary would, and putting it
+            where their town will actually see it.
           </p>
         </div>
       </section>
