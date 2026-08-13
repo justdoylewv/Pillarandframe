@@ -351,7 +351,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. The problem */}
+      {/* 2. The offer, in one line. Given its own beat on a tone step off the
+          hero so it reads as the thesis rather than another hero element. */}
+      <section className="border-t border-shale bg-ink py-20 sm:py-24">
+        <div className="mx-auto max-w-[980px] px-6 text-center">
+          <p className="font-serif text-3xl leading-tight tracking-tight text-paper sm:text-4xl md:text-5xl">
+            We turn local business owners into{" "}
+            <span className="italic text-gold-500">hometown legends.</span>
+          </p>
+        </div>
+      </section>
+
+      {/* 3. The problem */}
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Why it is still not fixed</Kicker>
