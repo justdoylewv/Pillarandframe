@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "The Engine | Monthly video, Columbus Ohio",
   description:
-    "The monthly retainer for founder-led brands in Columbus and central Ohio. We film you once a month and turn it into a month of content. $2,500 a month.",
+    "The monthly retainer for founder-led brands in Columbus and central Ohio. We film you once a month and make your next month of pieces. $2,500 a month.",
   alternates: { canonical: "/engine" },
 };
 
@@ -36,7 +36,7 @@ export default function TrustEnginePage() {
         data={serviceSchema({
           name: "The Engine",
           description:
-            "A monthly retainer for founder-led service brands. We film once a month and turn it into a month of videos, posts, captions, and graphics in the client's own voice, with coaching built in.",
+            "A monthly retainer for founder-led service brands. We film once a month and make the next month of pieces: videos, written pieces, captions, and quote graphics in the client's own voice, with coaching built in.",
           url: `${SITE_URL}/engine`,
           price: "2500",
           unit: "Per month. Three-month minimum, then month to month.",
@@ -66,14 +66,15 @@ export default function TrustEnginePage() {
         </div>
         <div className="relative z-10 mx-auto max-w-[980px] px-6">
           <Kicker dark className="mb-8">The Engine &middot; The retainer</Kicker>
-          <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl md:text-6xl">
-            The hardest part isn&rsquo;t the first post. It&rsquo;s the fiftieth.
+          <h1 className="font-serif text-4xl leading-[0.95] font-black tracking-tighter text-paper sm:text-5xl md:text-7xl">
+            You show up once a month.{" "}
+            <span className="italic text-purple-300">We keep it running.</span>
           </h1>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-300 md:text-xl">
-            Once your foundations are set, staying visible is a consistency
-            problem. The Engine solves it. We film you once a month and
-            turn it into a full month of content in your voice. Videos, posts,
-            captions, graphics. You show up as yourself. We do the rest.
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ash-300 md:text-xl">
+            One filming session becomes your next month of pieces. Videos,
+            written pieces, and quote graphics from your own words, all in
+            your voice, delivered on time every month. You show up as
+            yourself. We do the rest.
           </p>
           <p className="mt-6 text-base leading-relaxed text-ash-300">
             New here? Start with{" "}
@@ -93,30 +94,20 @@ export default function TrustEnginePage() {
         </div>
       </section>
 
-      {/* The problem */}
+      {/* Keeping it working. The honest gap, named without the doom. */}
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-6">Why content stalls</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Posting when inspiration strikes turns into silence by March.
+          <Kicker className="mb-6">Keeping it working</Kicker>
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
+            Consistency is the hard job. It is ours now.
           </h2>
-          <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
-            <p>
-              You launch strong. Then a busy week hits, the posts stop, and the
-              momentum you paid to build quietly leaks away.
-            </p>
-            <p>
-              Meanwhile your buyers keep doing their quiet research. LinkedIn.
-              Your Google profile. What AI says when they ask who to trust. A
-              feed that went dark in the spring reads as a business that stopped
-              paying attention.
-            </p>
-            <p>
-              The two hard jobs are making the content and keeping it consistent.
-              We take both off your plate, every month.
-            </p>
-          </div>
-          <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl leading-snug text-black md:text-3xl">
+          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-ash-700 md:text-xl">
+            The Foundation gives you the library. The Engine keeps it current:
+            fresh footage every month, new pieces every week, your voice
+            profile kept up to date. What people find always sounds like you do
+            today.
+          </p>
+          <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl italic leading-snug text-black md:text-3xl">
             Ads rent attention. Proof compounds.
           </p>
         </div>
@@ -126,7 +117,7 @@ export default function TrustEnginePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">How it works</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             You do almost nothing.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
@@ -151,8 +142,8 @@ export default function TrustEnginePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">Every month</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            Same set of content, every month.
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
+            The same set of pieces, every month.
           </h2>
           <div className="mt-14 divide-y divide-ash-100 border-y border-ash-100">
             {MONTHLY_DELIVERABLES.map((item) => (
@@ -160,7 +151,7 @@ export default function TrustEnginePage() {
                 key={item.label}
                 className="grid grid-cols-[auto_1fr] items-baseline gap-x-6 py-6 sm:grid-cols-[6rem_14rem_1fr]"
               >
-                <span className="font-serif text-4xl tracking-tight text-black">
+                <span className="font-serif text-4xl font-black tracking-tighter text-black">
                   {item.count}
                 </span>
                 <span className="font-serif text-xl tracking-tight text-black">
@@ -173,7 +164,7 @@ export default function TrustEnginePage() {
             ))}
           </div>
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
-            One filming session becomes a full month of content. Your Foundation
+            One filming session becomes a full month of pieces. Your Foundation
             keeps working underneath it all year.
           </p>
         </div>
@@ -187,7 +178,7 @@ export default function TrustEnginePage() {
               <Kicker dark className="mb-6">
                 The output
               </Kicker>
-              <h2 className="font-serif text-3xl tracking-tight text-paper md:text-4xl">
+              <h2 className="font-serif text-3xl font-black tracking-tighter text-paper md:text-4xl">
                 Eight of these, every month.
               </h2>
             </div>
@@ -211,7 +202,7 @@ export default function TrustEnginePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">What a month looks like</Kicker>
-          <h2 className="max-w-3xl font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="max-w-3xl font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Stills, graphics, and long form, from the same day.
           </h2>
           <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
@@ -234,7 +225,7 @@ export default function TrustEnginePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">The rhythm</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             We film you once a month. That is the whole ask.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
@@ -256,7 +247,7 @@ export default function TrustEnginePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Where trust gets checked</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Your audience checks LinkedIn. AI reads the rest.
           </h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
@@ -279,7 +270,7 @@ export default function TrustEnginePage() {
             </p>
             <p>
               You get the guide for all of it. Prefer it handled? We run the
-              posting for you, so the content actually goes out on schedule.
+              publishing for you, so the pieces actually go out on schedule.
             </p>
           </div>
         </div>
@@ -289,7 +280,7 @@ export default function TrustEnginePage() {
       <section className="border-t border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Simple pricing</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             One number. No surprises.
           </h2>
           <div className="mt-16 border border-purple-600 bg-paper p-8 md:p-12">
@@ -369,7 +360,7 @@ export default function TrustEnginePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">The guarantee</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Love it, or we keep working.
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -378,7 +369,7 @@ export default function TrustEnginePage() {
                 Love it, or we fix it
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
-                Show up and tell your stories, and you&rsquo;ll get content
+                Show up and tell your stories, and you&rsquo;ll get pieces
                 you&rsquo;re proud to put your name on. If something misses, we
                 redo it until it&rsquo;s right. No charge.
               </p>
@@ -400,7 +391,7 @@ export default function TrustEnginePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">Running now</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             The engine, in the wild.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -430,7 +421,7 @@ export default function TrustEnginePage() {
               </h3>
               <p className="mb-6 text-base leading-relaxed text-ash-700">
                 A hospital foundation films its new emergency department while
-                it&rsquo;s built. Donor stories now, opening-day content later,
+                it&rsquo;s built. Donor stories now, opening-day material later,
                 from the same effort.
               </p>
               <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
@@ -446,7 +437,7 @@ export default function TrustEnginePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Fit</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Built for owners who want to stay visible.
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -466,7 +457,7 @@ export default function TrustEnginePage() {
                 Not for you if
               </h3>
               <p className="text-lg leading-relaxed text-ash-700">
-                You want overnight virality, or content nobody has to show up
+                You want overnight virality, or material nobody has to show up
                 for. The engine runs on real people, and it rewards consistency
                 over months, not days.
               </p>
@@ -500,11 +491,11 @@ export default function TrustEnginePage() {
           <Kicker dark className="mb-8 justify-center">
             No pitch on the call
           </Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-paper md:text-6xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-paper md:text-6xl">
             You show up as yourself. We do the rest.
           </h2>
           <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-ash-300 md:text-xl">
-            Thirty minutes. We talk through your story, your content, and where
+            Thirty minutes. We talk through your story, your material, and where
             it should go. Written report in 48 hours, whether we work together
             or not.
           </p>

@@ -8,7 +8,7 @@ import { BOOK_PHOTO } from "@/lib/content/photos";
 export const metadata: Metadata = {
   title: "Book a free strategy call | Columbus, Ohio",
   description:
-    "Thirty minutes. We talk through your story, your content, and your systems. Written report in 48 hours. No pitch on the call. Columbus and central Ohio.",
+    "Thirty minutes. We talk through your story, your material, and your systems. Written report in 48 hours. No pitch on the call. Columbus and central Ohio.",
   alternates: { canonical: "/book" },
 };
 
@@ -50,11 +50,11 @@ export default function BookPage() {
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-8">The strategy call</Kicker>
-          <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
+          <h1 className="font-serif text-4xl leading-[1.05] font-black tracking-tighter text-black sm:text-5xl md:text-6xl">
             Thirty minutes. A written report in 48 hours. No pitch.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
-            We talk through your story, your content, and your systems. Where
+            We talk through your story, your material, and your systems. Where
             trust is being won, where it is leaking, and what we would fix
             first. Then we write it up and send it to you within 48 hours,
             whether we work together or not.

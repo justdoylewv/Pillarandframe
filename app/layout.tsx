@@ -1,8 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Instrument_Serif } from "next/font/google";
-import { GeistSans } from "geist/font/sans";
+import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import JsonLd from "@/components/JsonLd";
 import {
@@ -13,11 +12,19 @@ import {
 } from "@/lib/content/site";
 import { siteGraph } from "@/lib/content/schema";
 
-const instrumentSerif = Instrument_Serif({
+// The same faces City Spotlight runs on: DM Serif Display for the headlines,
+// DM Sans for everything else. Geist Mono stays for the kickers and labels.
+const dmSerif = DM_Serif_Display({
   weight: "400",
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -63,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${dmSerif.variable} ${dmSans.variable} ${GeistMono.variable}`}
     >
       <body>
         {/* One graph, cross-referenced by id, on every page. */}

@@ -164,17 +164,24 @@ const TIMELINE = [
   {
     when: "Day 90",
     tag: "Complete",
-    body: "Everything delivered and installed. Your Content Map in hand, and nothing left on your desk.",
+    body: "Everything delivered and installed. Your map in hand, and nothing left on your desk.",
   },
 ];
 
 const FAQ: { question: string; answers: string[] }[] = [
   {
+    question: "How does this attract better clients?",
+    answers: [
+      "We build everything from two things: your actual story in your words, and the actual objections you hear before somebody signs.",
+      "That pulls in the people who were always going to like working with you, because they can finally see who you are. And it filters out the bad fits, because you answered their real questions before they called.",
+      "Fewer tire kickers, more of the calls you want. Not because we targeted anyone, because you finally sound like yourself.",
+    ],
+  },
+  {
     question: "I am terrible on camera.",
     answers: [
-      "Everybody says this. Nobody has been right yet.",
-      "There is no teleprompter and no script to memorize. We sit down and talk. We ask questions, you answer them the way you would answer a customer standing in their driveway. It is a conversation, not a performance. You will say “wait, can I start over” about forty times and every one of those gets cut.",
-      "If you can explain your work to a customer, you can do this.",
+      "Almost everybody says that. You are not performing, you are answering questions. We ask, you talk, we handle the rest.",
+      "One day, and it is done for the year.",
     ],
   },
   {
@@ -281,35 +288,34 @@ export default function HomePage() {
               The Foundation &middot; 90 days
             </Kicker>
             <h1
-              className="animate-slideUp font-serif text-5xl leading-[1.02] tracking-tight text-paper sm:text-6xl md:text-7xl"
+              className="animate-slideUp font-serif text-5xl leading-[0.95] font-black tracking-tighter text-paper sm:text-6xl md:text-8xl"
               style={{ animationDelay: "100ms" }}
             >
-              In 90 days, be the one they{" "}
-              <span className="italic text-purple-400">call first</span>.
+              Show up as your best self.{" "}
+              <span className="italic text-purple-400">
+                Attract the clients you actually want.
+              </span>
             </h1>
+            {/* The honest gap, named once. Then we move to the suite. */}
             <p
-              className="mt-8 animate-slideUp font-serif text-2xl italic leading-snug text-paper md:text-3xl"
+              className="mt-8 max-w-2xl animate-slideUp font-serif text-2xl italic leading-snug text-paper md:text-3xl"
               style={{ animationDelay: "200ms" }}
             >
-              Right now you are losing jobs in a room you are not in.
+              You are good at the work. Everyone else is working off whatever
+              they can find online.
             </p>
-            <div
-              className="mt-8 max-w-2xl animate-slideUp space-y-5 text-lg leading-relaxed text-ash-300"
+            <p
+              className="mt-8 max-w-2xl animate-slideUp text-lg leading-relaxed text-ash-300"
               style={{ animationDelay: "250ms" }}
             >
-              <p>
-                Someone gets your name. Then they Google you. In the next 48
-                hours they compare you against every competitor they can find.
-                Your photos. Your reviews. Your website. Your story. Then they
-                decide who to call first.
-              </p>
-              <p>
-                You are not in that room.{" "}
-                <strong className="font-semibold text-paper">
-                  Your Google profile is.
-                </strong>
-              </p>
-            </div>
+              That is not a marketing problem, it is a supply problem: nobody
+              ever made you the material.{" "}
+              <strong className="font-semibold text-paper">
+                We make all of it.
+              </strong>{" "}
+              Every video, photo, and word, organized by exactly where it goes
+              and installed for you over 90 days.
+            </p>
             <div
               className="mt-12 flex animate-slideUp flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8"
               style={{ animationDelay: "300ms" }}
@@ -332,7 +338,7 @@ export default function HomePage() {
           left floating without the how. */}
       <section className="border-t border-shale bg-ink py-20 sm:py-24">
         <div className="mx-auto max-w-[980px] px-6 text-center">
-          <p className="font-serif text-3xl leading-tight tracking-tight text-paper sm:text-4xl md:text-5xl">
+          <p className="font-serif text-3xl leading-tight font-black tracking-tighter text-paper sm:text-4xl md:text-6xl">
             We turn local business owners into{" "}
             <span className="italic text-gold-500">hometown legends.</span>
           </p>
@@ -343,28 +349,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. The problem */}
+      {/* 3. The three ideas. These land before any list of deliverables,
+          because the list means nothing until the shape is understood. */}
       <section className="bg-paper py-24 sm:py-32">
-        <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-6">Why it is still not fixed</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
-            You look smaller online than you actually are.
+        <div className="mx-auto max-w-7xl px-6">
+          <Kicker className="mb-6">The shape of it</Kicker>
+          <h2 className="max-w-3xl font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
+            Three ideas the whole thing rests on.
           </h2>
-          <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
-            <p>And fixing it has been stuck on you for two years.</p>
-            <p>
-              Your web guy is waiting on copy you never send. You sit down to
-              write your About page and freeze, because writing about yourself
-              feels either braggy or boring. Someone referred you last month and
-              you quietly cringed imagining them looking you up.
-            </p>
-            <p>
-              You are not behind because you are bad at the work. You are behind
-              because the work of saying what you do keeps landing on the busiest
-              person in the building.
-            </p>
+          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
+            {[
+              {
+                title: "Evergreen.",
+                body: "Your story does not change every 90 days. Filmed once, it works for years. The library gets deeper instead of getting thrown out.",
+              },
+              {
+                title: "Every piece has a job.",
+                body: "Nothing exists to fill a feed. Each piece is built for one moment in the decision to hire you, and we tell you which is which.",
+              },
+              {
+                title: "Organized by where it goes.",
+                body: "Not a folder of files. A labeled box per destination, and we put it there for you.",
+              },
+            ].map((idea) => (
+              <div key={idea.title} className="border-t border-ash-100 pt-8">
+                <h3 className="mb-4 font-serif text-2xl tracking-tight text-black">
+                  {idea.title}
+                </h3>
+                <p className="text-base leading-relaxed text-ash-700">
+                  {idea.body}
+                </p>
+              </div>
+            ))}
           </div>
-          <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl leading-snug text-black md:text-3xl">
+          <p className="mt-16 border-l border-purple-600 pl-8 font-serif text-2xl italic leading-snug text-black md:text-3xl">
             We take it off your desk. All of it.
           </p>
         </div>
@@ -376,22 +394,17 @@ export default function HomePage() {
           <Kicker dark className="mb-8">
             What it is
           </Kicker>
-          <p className="font-serif text-4xl leading-tight tracking-tight text-paper md:text-5xl">
+          <p className="font-serif text-4xl leading-tight font-black tracking-tighter text-paper md:text-6xl">
             You talk for one day. We hand you everything a customer sees{" "}
             <span className="italic text-gold-500">before they call.</span>
           </p>
-          <div className="mt-10 max-w-2xl space-y-6 text-lg leading-relaxed text-ash-300">
-            <p>
-              One day of filming and photography, plus every word your business
-              needs. Written, shot, mapped to where it belongs, and loaded into
-              your Google profile, your social profiles, and your website.
-            </p>
-            <p>
-              We work inside the look you already have. What we fix is the part
-              that is actually costing you jobs, which is that every place a
-              customer checks you out is either empty or says nothing.
-            </p>
-          </div>
+          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-ash-300">
+            One day of filming and photography, plus every word your business
+            needs. Written, shot, mapped to where it belongs, and loaded into
+            your Google profile, your social profiles, and your website. Built
+            from two things: your actual story in your words, and the real
+            questions people ask before they hire you.
+          </p>
           <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {WORK_PAIR.map((p) => (
               <MediaFrame key={p.src} image={p.src} alt={p.alt} aspect="video" dark />
@@ -408,7 +421,7 @@ export default function HomePage() {
               <Kicker dark className="mb-6">
                 What it looks like
               </Kicker>
-              <h2 className="font-serif text-3xl tracking-tight text-paper md:text-4xl">
+              <h2 className="font-serif text-3xl font-black tracking-tighter text-paper md:text-4xl">
                 Real people. Real rooms. No stock.
               </h2>
             </div>
@@ -432,26 +445,23 @@ export default function HomePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What makes it different</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Every piece mapped to{" "}
             <span className="italic text-purple-600">where you need it</span>.
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
             <div className="space-y-5 text-lg leading-relaxed text-ash-700">
               <p>
-                Most agencies hand you a folder of files and a style guide. You
-                open it, feel overwhelmed, and it dies in your downloads.
-              </p>
-              <p>
-                Nothing here arrives loose. Every line is written for one exact
-                place, at the right length for that field, on the right platform.
+                Nothing arrives loose. Every line is written for one exact
+                place, at the right length for that field, on the right
+                platform.
               </p>
               <p className="text-black">
                 <strong className="font-semibold">
                   Then we put it there for you.
                 </strong>{" "}
-                You still keep the full kit, mapped and labeled, so anyone you
-                hire later can pick it up and keep going.
+                You keep the full kit, mapped and labeled, so anyone you hire
+                later can pick it up and keep going.
               </p>
             </div>
             <div className="border border-ash-100 bg-bone p-8">
@@ -488,7 +498,7 @@ export default function HomePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">How it works</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Four steps. One of them is yours.
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
@@ -511,7 +521,7 @@ export default function HomePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What you get, by destination</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Five destinations. Every field filled in.
           </h2>
           {/* Featured: Google */}
@@ -575,7 +585,7 @@ export default function HomePage() {
               </div>
               <div>
                 <h3 className="font-serif text-xl tracking-tight text-black md:text-2xl">
-                  Your Content Map
+                  Your map
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-ash-700">
                   More comes out on capture day than we can use. You get all of
@@ -613,7 +623,7 @@ export default function HomePage() {
           <div className="mb-14 flex items-end justify-between">
             <div>
               <Kicker className="mb-6">Selected work</Kicker>
-              <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+              <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
                 We have done this before.
               </h2>
             </div>
@@ -664,7 +674,7 @@ export default function HomePage() {
           <Kicker dark className="mb-6">
             Let us do the math
           </Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-paper md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-paper md:text-6xl">
             What this costs in pieces.
           </h2>
           <p className="mt-8 max-w-2xl text-lg text-ash-300">
@@ -730,7 +740,7 @@ export default function HomePage() {
               { v: "Forever", k: "How long you own it" },
             ].map((s) => (
               <div key={s.k} className="bg-ink p-8">
-                <span className="block font-serif text-4xl tracking-tight text-gold-500">
+                <span className="block font-serif text-4xl font-black tracking-tighter text-gold-500">
                   {s.v}
                 </span>
                 <span className="mt-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
@@ -751,7 +761,7 @@ export default function HomePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Our promise</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Three promises.
           </h2>
           <div className="mt-12 divide-y divide-ash-100 border-y border-ash-100">
@@ -779,7 +789,7 @@ export default function HomePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Timeline</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Ninety days, with work in your hands in two weeks.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
@@ -848,7 +858,7 @@ export default function HomePage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What people ask before they book</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Straight answers.
           </h2>
           <div className="mt-10">
@@ -874,7 +884,7 @@ export default function HomePage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-8">Who you are working with</Kicker>
-          <p className="font-serif text-3xl leading-tight tracking-tight text-black md:text-4xl">
+          <p className="font-serif text-3xl leading-tight font-black tracking-tighter text-black md:text-4xl">
             We shoot these{" "}
             <span className="italic text-purple-600">ourselves.</span>
           </p>
@@ -940,12 +950,13 @@ export default function HomePage() {
       {/* 14. Final CTA */}
       <section className="bg-black py-24 text-paper sm:py-32">
         <div className="mx-auto max-w-[980px] px-6 text-center">
-          <p className="font-serif text-4xl leading-tight tracking-tight text-paper md:text-5xl">
+          <p className="font-serif text-4xl leading-tight font-black tracking-tighter text-paper md:text-6xl">
             You talk for one day. We fill in{" "}
             <span className="italic text-gold-500">every blank.</span>
           </p>
-          <p className="mx-auto mt-6 max-w-md text-lg text-ash-300">
-            That is the whole deal.
+          <p className="mx-auto mt-6 max-w-xl font-serif text-xl italic leading-snug text-ash-300 md:text-2xl">
+            You show up as yourself, once. We make everything else, and we keep
+            it running.
           </p>
           <div className="mt-10">
             <CtaButton href={BOOKING_URL} variant="solidLight">

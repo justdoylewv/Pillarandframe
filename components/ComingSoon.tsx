@@ -37,7 +37,7 @@ export default function ComingSoon() {
             Now in post
           </span>
 
-          <h1 className="mt-6 font-serif text-5xl leading-[0.98] tracking-tight text-paper sm:text-6xl md:text-7xl">
+          <h1 className="mt-6 font-serif text-5xl leading-[0.98] font-black tracking-tighter text-paper sm:text-6xl md:text-7xl">
             The site is{" "}
             <span className="italic text-purple-400">in post.</span>
           </h1>

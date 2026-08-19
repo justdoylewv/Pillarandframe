@@ -10,7 +10,7 @@ import { CASE_STUDIES } from "@/lib/content/caseStudies";
 export const metadata: Metadata = {
   title: "Case studies | Columbus and Ohio video work",
   description:
-    "Real clients, real numbers. Story-led film and content work across healthcare, IT, and founder-led service brands in Ohio.",
+    "Real clients, real numbers. Story-led film and studio work across healthcare, IT, and founder-led service brands in Ohio.",
   alternates: { canonical: "/work" },
 };
 
@@ -50,7 +50,7 @@ export default function WorkPage() {
       <section className="border-b border-ash-100 bg-paper pt-24 pb-16 sm:pt-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-8">The work</Kicker>
-          <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
+          <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] font-black tracking-tighter text-black sm:text-5xl md:text-6xl">
             Real clients. Real systems. Real numbers.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
@@ -85,7 +85,7 @@ export default function WorkPage() {
                         .join(" · ")}
                     </span>
                   </div>
-                  <h2 className="font-serif text-4xl tracking-tight text-black transition-colors group-hover:text-purple-600 md:text-5xl">
+                  <h2 className="font-serif text-4xl font-black tracking-tighter text-black transition-colors group-hover:text-purple-600 md:text-6xl">
                     {featured.client}
                   </h2>
                   <p className="mt-3 max-w-xl font-serif text-lg italic leading-relaxed text-ash-500">

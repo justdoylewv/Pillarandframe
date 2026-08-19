@@ -2,7 +2,7 @@ import type { FaqItem } from "./types";
 
 // The Engine: the monthly retainer that runs after the Founder Launch
 // Kit sets the foundations. We film you once a month and turn it into a month
-// of content in your voice.
+// of pieces in your voice.
 
 // How it works, in four steps (the monthly loop).
 export const HOW_IT_WORKS: { num: string; title: string; body: string }[] = [
@@ -14,7 +14,7 @@ export const HOW_IT_WORKS: { num: string; title: string; body: string }[] = [
   {
     num: "2",
     title: "We build.",
-    body: "One filming session becomes a full month of content. Videos, captions, written posts, and quote graphics, all in your voice.",
+    body: "One filming session becomes your next month of pieces. Videos, written pieces, and quote graphics from your own words, all in your voice.",
   },
   {
     num: "3",
@@ -24,7 +24,7 @@ export const HOW_IT_WORKS: { num: string; title: string; body: string }[] = [
   {
     num: "4",
     title: "It goes live.",
-    body: "Post it yourself, or let us post it for you. Your call.",
+    body: "Publish it yourself, or let us publish it for you. Your call.",
   },
 ];
 
@@ -37,12 +37,12 @@ export const MONTHLY_DELIVERABLES: {
   {
     count: "8",
     label: "Short videos",
-    body: "Ready to post, captioned and branded.",
+    body: "Ready to publish, captioned and branded.",
   },
   {
     count: "8",
-    label: "Written posts",
-    body: "In your voice, ready to post.",
+    label: "Written pieces",
+    body: "In your voice, ready to publish.",
   },
   {
     count: "4",
@@ -69,7 +69,7 @@ export const CADENCE: { when: string; body: string }[] = [
   },
   {
     when: "Every month",
-    body: "A short online filming session between visits, so your content stays fresh.",
+    body: "A short online filming session between visits, so your material stays current.",
   },
   {
     when: "Every month",
@@ -98,7 +98,7 @@ export const RETAINER: Offer = {
   period: "/month",
   note: "Three-month minimum. After that you are month to month. Leave anytime, and everything we make is yours to keep.",
   includes: [
-    "A full month of content, every month, in your voice",
+    "A full month of pieces, every month, in your voice",
     "We come to you once a quarter to film",
     "A quick monthly filming session in between",
     "A planning and coaching call every month",
@@ -117,7 +117,7 @@ export const TRUST_ENGINE_FAQ: FaqItem[] = [
   {
     question: "Do I need The Foundation first?",
     answer:
-      "Usually, yes. The Foundation is your starting point: your story, your Content Marketing Guide, your branded look, your profiles installed. The Engine keeps it running every month. If your foundations are already solid, we can start the retainer directly.",
+      "Usually, yes. The Foundation is your starting point: your story, your playbook, your branded look, your profiles installed. The Engine keeps it working every month. If your foundations are already solid, we can start directly.",
   },
   {
     question: "How much of my time does this take?",
@@ -132,7 +132,7 @@ export const TRUST_ENGINE_FAQ: FaqItem[] = [
   {
     question: "We tried posting. Nothing happened.",
     answer:
-      "One-off posting isn't a system. This is a full month of content, planned around one clear story, delivered on time every month. Consistency is the strategy.",
+      "One-off publishing isn't a system. This is a full month of pieces, planned around one clear story, delivered on time every month. Consistency is the strategy.",
   },
   {
     question: "Who actually does the work?",
@@ -142,7 +142,22 @@ export const TRUST_ENGINE_FAQ: FaqItem[] = [
   {
     question: "Is there a contract?",
     answer:
-      "A three-month minimum, because trust takes a little time to build. After that you are month to month, and everything we make is yours to keep, forever.",
+      "A three-month minimum, because trust takes a little time to build. After that you are month to month. Leave whenever you like.",
+  },
+  {
+    question: "How is this different from a social media manager?",
+    answer:
+      "It probably is not, if what you want is volume. They cost less, and that is a fine answer. What we do is make the material once, properly, and organize it so it works in your sales process, not just your feed.",
+  },
+  {
+    question: "How do I know it is working?",
+    answer:
+      "You get a score every month. Five categories, a hundred points, against two competitors we name. Same rubric every time. If it does not move, we tell you, and we tell you what we are changing.",
+  },
+  {
+    question: "What happens if I stop?",
+    answer:
+      "You keep everything. Every file, photo, video, and document. It stops growing. It does not disappear.",
   },
   {
     question: "Why not just run ads?",

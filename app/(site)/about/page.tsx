@@ -65,7 +65,7 @@ export default function AboutPage() {
       <section className="border-b border-ash-100 bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-8">The studio</Kicker>
-          <h1 className="font-serif text-5xl leading-[1.02] tracking-tight text-black sm:text-6xl md:text-7xl">
+          <h1 className="font-serif text-5xl leading-[1.02] font-black tracking-tighter text-black sm:text-6xl md:text-7xl">
             Referrals are the best business you get.{" "}
             <span className="italic text-purple-600">
               We help you get more.
@@ -84,7 +84,7 @@ export default function AboutPage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What we keep hearing</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             The same three sentences, for fifteen years.
           </h2>
           <div className="mt-12 divide-y divide-ash-100 border-y border-ash-100">
@@ -134,7 +134,7 @@ export default function AboutPage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What we do about it</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             We take it off your desk.
           </h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-ash-700 md:text-xl">
@@ -179,7 +179,7 @@ export default function AboutPage() {
           <Kicker dark className="mb-6">
             Where this comes from
           </Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-paper md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-paper md:text-6xl">
             Fifteen years. Corner shops to the Fortune 500.
           </h2>
           <div className="mt-10 max-w-2xl space-y-6 text-lg leading-relaxed text-ash-300">
@@ -212,7 +212,7 @@ export default function AboutPage() {
               { v: "100s", k: "of interviews" },
             ].map((s) => (
               <div key={s.k} className="bg-ink p-8">
-                <span className="block font-serif text-4xl tracking-tight text-gold-500">
+                <span className="block font-serif text-4xl font-black tracking-tighter text-gold-500">
                   {s.v}
                 </span>
                 <span className="mt-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
@@ -240,7 +240,7 @@ export default function AboutPage() {
       <section className="bg-bone py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">How we work</Kicker>
-          <h2 className="mb-16 max-w-3xl font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="mb-16 max-w-3xl font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Real people. Real proof. No shortcuts.
           </h2>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
@@ -256,7 +256,7 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="mt-20 border-b border-t border-ash-100 py-16 text-center">
-            <p className="font-serif text-2xl italic leading-tight tracking-tight text-black md:text-4xl">
+            <p className="font-serif text-2xl italic leading-tight font-black tracking-tighter text-black md:text-4xl">
               &ldquo;Trust is the most important piece of gear.&rdquo;
             </p>
           </div>
@@ -267,7 +267,7 @@ export default function AboutPage() {
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Also from the studio</Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             City Spotlight Ohio
           </h2>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-ash-700 md:text-xl">
@@ -294,7 +294,7 @@ export default function AboutPage() {
           <Kicker dark className="mb-8 justify-center">
             Talk to us
           </Kicker>
-          <h2 className="font-serif text-4xl tracking-tight text-paper md:text-6xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-paper md:text-6xl">
             Want more referrals, and more of them to close?
           </h2>
           <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-ash-300 md:text-xl">

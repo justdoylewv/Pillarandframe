@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       colors: {

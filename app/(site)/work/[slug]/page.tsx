@@ -111,7 +111,7 @@ export default function CaseStudyPage({ params }: PageProps) {
               </span>
             ))}
           </div>
-          <h1 className="mb-8 font-serif text-5xl leading-[0.95] tracking-tight text-black sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-8 font-serif text-5xl leading-[0.95] font-black tracking-tighter text-black sm:text-6xl md:text-7xl lg:text-8xl">
             {study.client}
           </h1>
           <p className="mx-auto max-w-3xl font-serif text-lg italic leading-snug text-ash-500 md:text-2xl">
@@ -180,7 +180,7 @@ export default function CaseStudyPage({ params }: PageProps) {
         <div className="grid grid-cols-1 divide-y divide-ash-100 border-y border-ash-100 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {study.stats.map((stat) => (
             <div key={stat.label} className="py-10 sm:px-8 sm:first:pl-0">
-              <span className="block font-serif text-5xl tracking-tight text-black">
+              <span className="block font-serif text-5xl font-black tracking-tighter text-black">
                 {stat.value}
               </span>
               <span className="mt-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
@@ -200,7 +200,7 @@ export default function CaseStudyPage({ params }: PageProps) {
               <MediaFrame
                 key={img}
                 image={img}
-                alt={`${study.client} content ${i + 1}`}
+                alt={`${study.client} still ${i + 1}`}
                 aspect="square"
               />
             ))}
@@ -219,7 +219,7 @@ export default function CaseStudyPage({ params }: PageProps) {
               <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.3em] text-ash-300">
                 Next story
               </span>
-              <span className="font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600 md:text-4xl">
+              <span className="font-serif text-3xl font-black tracking-tighter text-black transition-colors group-hover:text-purple-600 md:text-4xl">
                 {next.client}
               </span>
             </div>
