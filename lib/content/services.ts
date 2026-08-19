@@ -55,9 +55,9 @@ export const MONTHLY_DELIVERABLES: {
     body: "Captions for every video, plus quote graphics from your best lines.",
   },
   {
-    count: "1",
-    label: "Long-form piece",
-    body: "A guide, an article, or a customer story.",
+    count: "1/qtr",
+    label: "Long-form video and guide",
+    body: "Filmed on the quarterly visit, then written up as a guide worth keeping.",
   },
 ];
 
@@ -65,7 +65,7 @@ export const MONTHLY_DELIVERABLES: {
 export const CADENCE: { when: string; body: string }[] = [
   {
     when: "Every quarter",
-    body: "We come to you in person to film. Better footage, deeper stories, real face time.",
+    body: "A filming day at your place. Every visit produces a new long-form video, and we turn it into a guide.",
   },
   {
     when: "Every month",
@@ -99,10 +99,10 @@ export const RETAINER: Offer = {
   note: "Three-month minimum. After that you are month to month. Leave anytime, and everything we make is yours to keep.",
   includes: [
     "A full month of pieces, every month, in your voice",
-    "We come to you once a quarter to film",
+    "A quarterly filming day, and a long-form video turned into a guide",
     "A quick monthly filming session in between",
     "A planning and coaching call every month",
-    "Captions, quote graphics, and a long-form piece",
+    "Captions and quote graphics from your best lines",
     "Your voice profile, kept current",
   ],
 };

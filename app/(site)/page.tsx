@@ -50,22 +50,35 @@ const STEPS = [
   },
 ];
 
-const GOOGLE_DESTINATION = {
-  title: "Your Google Business Profile",
-  tag: "Start here",
-  why: "The first thing a stranger sees, and the thing that decides who gets called first. The highest-leverage square foot you own, and it is free.",
+// The lead deliverable. The films come first everywhere they appear.
+const FILM_LIBRARY = {
+  title: "Your film library",
+  tag: "The lead deliverable",
+  why: "Eight films from one day, each mapped to where it goes. The three core films every business needs, and the five objection answers people want settled before they call.",
   items: [
-    "Business description, paste-ready",
-    "Every service, in buyer language",
-    "Categories and service area",
-    "10 seeded Q&As",
-    "Your photo set, ordered for upload",
-    "Your first 4 posts, written",
-    "A review-request message",
+    "Your story film",
+    "What you do, on camera",
+    "A customer win",
+    "5 objection answers, on camera",
+    "Intro, outro, and titles",
+    "Captioned and sized per platform",
   ],
 };
 
 const DESTINATIONS: { title: string; why: string; items: string[] }[] = [
+  {
+    title: "Your Google Business Profile",
+    why: "The first thing a stranger sees, and the thing that decides who gets called first. Your films and photos load here first.",
+    items: [
+      "Business description, paste-ready",
+      "Every service, in buyer language",
+      "Categories and service area",
+      "10 seeded Q&As",
+      "Your photo set, ordered for upload",
+      "Your first 4 posts, written",
+      "A review-request message",
+    ],
+  },
   {
     title: "Your website",
     why: "Three pages, written as a copy-paste document your developer can build from. We can build it for you as a separate project.",
@@ -73,17 +86,7 @@ const DESTINATIONS: { title: string; why: string; items: string[] }[] = [
       "Home, with headline, proof, and services",
       "About, your full founder story",
       "Services, with objections answered",
-    ],
-  },
-  {
-    title: "Your media library",
-    why: "Eight videos and thirty photos from one filming day, mapped to where each goes.",
-    items: [
-      "Your story, and what you do",
-      "5 answers to why people hesitate",
-      "One customer win",
-      "30 photos. No stock.",
-      "Intro, outro, and titles",
+      "Your story film, embedded",
     ],
   },
   {
@@ -109,15 +112,16 @@ const DESTINATIONS: { title: string; why: string; items: string[] }[] = [
   },
 ];
 
+// Films first. They are the lead deliverable and the biggest line.
 const VALUE_STACK: { piece: string; price: string }[] = [
+  { piece: "Eight finished films: three core, five objection answers", price: "$6,000" },
+  { piece: "Photography, one day, 30 finished images", price: "$2,000" },
+  { piece: "Your branded intro, outro, and titles", price: "$750" },
   { piece: "Positioning and messaging strategy", price: "$2,000" },
   { piece: "Website copy, three pages, strategic", price: "$2,500" },
   { piece: "Google Business Profile built out properly", price: "$1,000" },
   { piece: "Social profile copy, founder post, 5 launch posts", price: "$1,000" },
   { piece: "Bio bank: three lengths, one-liner, signature, directories", price: "$500" },
-  { piece: "Photography, one day, 30 finished images", price: "$2,000" },
-  { piece: "Eight finished videos from one filming day", price: "$6,000" },
-  { piece: "Your branded intro, outro, and titles", price: "$750" },
 ];
 
 const PROMISES = [
@@ -441,56 +445,86 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. The mechanism */}
+      {/* 5. One day becomes all of it. The films lead; photos and words
+          cascade out of the same day. */}
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What makes it different</Kicker>
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            Every piece mapped to{" "}
-            <span className="italic text-purple-600">where you need it</span>.
+            One filming day{" "}
+            <span className="italic text-purple-600">becomes all of it.</span>
           </h2>
-          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
-            <div className="space-y-5 text-lg leading-relaxed text-ash-700">
-              <p>
-                Nothing arrives loose. Every line is written for one exact
-                place, at the right length for that field, on the right
-                platform.
-              </p>
-              <p className="text-black">
-                <strong className="font-semibold">
-                  Then we put it there for you.
-                </strong>{" "}
-                You keep the full kit, mapped and labeled, so anyone you hire
-                later can pick it up and keep going.
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ash-700">
+            Strategy first: your playbook decides what we film, so every piece
+            is aimed at trust and closed deals. Then the day cascades.
+          </p>
+
+          <div className="mt-14">
+            {/* Strategy */}
+            <div className="border border-ash-100 bg-bone p-6 sm:p-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
+                First &middot; Strategy
+              </span>
+              <p className="mt-2 text-base leading-relaxed text-ash-700">
+                Your playbook: the story, the pillars, what to say. You approve
+                it before a camera comes out.
               </p>
             </div>
-            <div className="border border-ash-100 bg-bone p-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
-                Your kit, mapped
+            <div className="mx-auto h-8 w-px bg-ash-300" aria-hidden="true" />
+
+            {/* The day */}
+            <div className="border border-l-[3px] border-ash-100 border-l-gold-500 bg-black p-8 text-paper">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold-500">
+                Then &middot; One filming day
               </span>
-              <ul className="mt-6 divide-y divide-ash-100">
-                {[
-                  { where: "Google Business Profile", what: "Description, 750 characters" },
-                  { where: "Google Business Profile", what: "Services, categories, 10 Q&As" },
-                  { where: "LinkedIn", what: "Headline and About section" },
-                  { where: "Facebook and Instagram", what: "Bio and about copy" },
-                  { where: "Your website", what: "Home headline and subhead" },
-                ].map((row, i) => (
-                  <li key={i} className="py-3 first:pt-0 last:pb-0">
-                    <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">
-                      {row.where}
-                    </span>
-                    <span className="mt-1 block text-[15px] leading-relaxed text-ash-700">
-                      {row.what}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 border-t border-ash-100 pt-5 text-[15px] leading-relaxed text-black">
-                We load every one of these. You watch it happen.
+              <p className="mt-2 max-w-2xl text-base leading-relaxed text-ash-300">
+                We come to you. You talk, we film and shoot. That is your whole
+                part.
               </p>
+            </div>
+            <div className="mx-auto h-8 w-px bg-ash-300" aria-hidden="true" />
+
+            {/* What cascades out */}
+            <div className="grid grid-cols-1 border border-ash-100 sm:grid-cols-3 sm:divide-x sm:divide-ash-100">
+              <div className="border-t-[3px] border-t-gold-500 bg-bone p-8">
+                <span className="block font-serif text-4xl font-black tracking-tighter text-black">
+                  8 films
+                </span>
+                <p className="mt-4 text-[15px] leading-relaxed text-ash-700">
+                  Your three core films: your story, what you do, and a
+                  customer win. Plus the five objection answers every business
+                  needs, the questions people ask before they hire you,
+                  answered on camera.
+                </p>
+              </div>
+              <div className="p-8">
+                <span className="block font-serif text-4xl font-black tracking-tighter text-black">
+                  30 photos
+                </span>
+                <p className="mt-4 text-[15px] leading-relaxed text-ash-700">
+                  You, your team, your work. Real rooms, no stock.
+                </p>
+              </div>
+              <div className="p-8">
+                <span className="block font-serif text-4xl font-black tracking-tighter text-black">
+                  Every word
+                </span>
+                <p className="mt-4 text-[15px] leading-relaxed text-ash-700">
+                  Website copy, Google profile, socials, bios. Written from
+                  what you said on camera, in your voice.
+                </p>
+              </div>
             </div>
           </div>
+
+          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-ash-700">
+            Every piece mapped to where it goes.{" "}
+            <strong className="font-semibold text-black">
+              Then we put it there for you.
+            </strong>{" "}
+            You keep the full kit, labeled, so anyone you hire later can pick
+            it up and keep going.
+          </p>
         </div>
       </section>
 
@@ -520,25 +554,28 @@ export default function HomePage() {
       {/* 7. What you get */}
       <section className="bg-paper py-24 sm:py-32">
         <div className="mx-auto max-w-[980px] px-6">
-          <Kicker className="mb-6">What you get, by destination</Kicker>
+          <Kicker className="mb-6">What you get</Kicker>
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            Five destinations. Every field filled in.
+            The films lead.{" "}
+            <span className="italic text-purple-600">
+              Every field filled in.
+            </span>
           </h2>
-          {/* Featured: Google */}
+          {/* Featured: the film library, the lead deliverable */}
           <div className="mt-12 border border-ash-100 border-l-[3px] border-l-gold-500 bg-bone p-8 md:p-10">
             <div className="flex flex-wrap items-baseline gap-3">
               <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
-                {GOOGLE_DESTINATION.title}
+                {FILM_LIBRARY.title}
               </h3>
               <span className="border border-gold-500 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-gold-700">
-                {GOOGLE_DESTINATION.tag}
+                {FILM_LIBRARY.tag}
               </span>
             </div>
             <p className="mt-3 max-w-2xl text-base leading-relaxed text-ash-700">
-              {GOOGLE_DESTINATION.why}
+              {FILM_LIBRARY.why}
             </p>
             <ul className="mt-6 grid grid-cols-1 gap-x-10 gap-y-2 sm:grid-cols-2">
-              {GOOGLE_DESTINATION.items.map((it) => (
+              {FILM_LIBRARY.items.map((it) => (
                 <li key={it} className="flex gap-3 text-[15px] leading-relaxed text-ash-700">
                   <Tick gold />
                   <span>{it}</span>
@@ -547,7 +584,7 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* The other four */}
+          {/* The destinations it all lands in */}
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             {DESTINATIONS.map((d) => (
               <div key={d.title} className="border border-ash-100 p-8">
@@ -906,10 +943,6 @@ export default function HomePage() {
               of the year. You are not going to be our first interview.
             </p>
           </div>
-          <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
-            Real Human Origin &middot; No AI &middot; No Stock &middot; Verbatim
-          </p>
-
           <div className="mt-12 border-t border-ash-100 pt-10">
             <Kicker className="mb-6">Where we work</Kicker>
             <ServiceArea />

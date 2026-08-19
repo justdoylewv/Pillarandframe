@@ -164,8 +164,9 @@ export default function TrustEnginePage() {
             ))}
           </div>
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-ash-500">
-            One filming session becomes a full month of pieces. Your Foundation
-            keeps working underneath it all year.
+            One filming session becomes a full month of pieces, and every quarter
+            produces a new long-form video, turned into a guide. Your
+            Foundation keeps working underneath it all year.
           </p>
         </div>
       </section>
