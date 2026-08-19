@@ -32,6 +32,21 @@
 //     below. Read at build time, so it takes a redeploy either way.
 export const COMING_SOON = process.env.NEXT_PUBLIC_COMING_SOON !== "false";
 
+// The reviewer's way in, while the site is still gated.
+//
+//   https://pillarandframe.vercel.app/?preview=<token>
+//
+// That opens the real site for that browser for a month and works on any
+// deployment that is already live, production included. No rebuild, no
+// environment variable. Add ?preview=off to any page to put the holding page
+// back and check what a stranger sees.
+//
+// This repository is public, so treat the token as a soft latch rather than a
+// lock. The worst case is that someone reads the code and looks at an
+// unlaunched marketing site early. Set PREVIEW_TOKEN in Vercel to override it
+// with something only you know.
+export const PREVIEW_TOKEN = process.env.PREVIEW_TOKEN || "frame-the-shot";
+
 // ---------------------------------------------------------------------------
 // Identity
 // ---------------------------------------------------------------------------

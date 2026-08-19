@@ -1,14 +1,61 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { COMING_SOON } from "@/lib/content/site";
+import { COMING_SOON, PREVIEW_TOKEN } from "@/lib/content/site";
 
-// While the site is in coming soon mode, every page route serves the holding
-// page. Assets, the OG image, robots, and the sitemap are matched out below so
-// they keep working. Set COMING_SOON to false and this becomes a no-op.
+// The holding page is decided here, per request, rather than baked into the
+// pages at build time. Two consequences worth knowing:
+//
+//   1. A preview link works on any deployment that is already live, including
+//      production. No rebuild, no environment variable, no waiting.
+//   2. Launching is still a deliberate act. Nothing opens on its own.
+
+const PREVIEW_COOKIE = "pf-preview";
+const HOLDING_PAGE = "/coming-soon";
+
+// A month. Long enough to review over several sittings without re-entering it.
+const PREVIEW_MAX_AGE = 60 * 60 * 24 * 30;
+
 export function middleware(request: NextRequest) {
-  if (!COMING_SOON) return NextResponse.next();
-  if (request.nextUrl.pathname === "/") return NextResponse.next();
-  return NextResponse.rewrite(new URL("/", request.url));
+  const { pathname, searchParams } = request.nextUrl;
+
+  // ?preview=TOKEN opens the door for this browser, then gets stripped from
+  // the address so the token does not travel on in shared links or referrers.
+  const offered = searchParams.get("preview");
+  if (offered !== null) {
+    const clean = request.nextUrl.clone();
+    clean.searchParams.delete("preview");
+    const response = NextResponse.redirect(clean);
+    if (offered === PREVIEW_TOKEN) {
+      response.cookies.set(PREVIEW_COOKIE, PREVIEW_TOKEN, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: true,
+        path: "/",
+        maxAge: PREVIEW_MAX_AGE,
+      });
+    } else {
+      // ?preview=off, or a wrong token, puts the holding page back.
+      response.cookies.delete(PREVIEW_COOKIE);
+    }
+    return response;
+  }
+
+  const previewing =
+    request.cookies.get(PREVIEW_COOKIE)?.value === PREVIEW_TOKEN;
+
+  if (!COMING_SOON || previewing) {
+    // The real site. Send anyone who lands on the holding page to the home
+    // page, so a stale bookmark does not strand a reviewer on it.
+    if (pathname === HOLDING_PAGE) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+    return NextResponse.next();
+  }
+
+  // Gated. Every address serves the holding page, and the address bar keeps
+  // whatever the visitor typed.
+  if (pathname === HOLDING_PAGE) return NextResponse.next();
+  return NextResponse.rewrite(new URL(HOLDING_PAGE, request.url));
 }
 
 export const config = {

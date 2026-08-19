@@ -4,45 +4,23 @@ import Kicker from "@/components/Kicker";
 import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
-import ComingSoon from "@/components/ComingSoon";
 import JsonLd from "@/components/JsonLd";
 import ServiceArea from "@/components/ServiceArea";
-import {
-  BOOKING_URL,
-  COMING_SOON,
-  SITE_NAME,
-  SITE_URL,
-} from "@/lib/content/site";
+import { BOOKING_URL, SITE_NAME, SITE_URL } from "@/lib/content/site";
 import { faqSchema, serviceSchema } from "@/lib/content/schema";
 import { getCaseStudy } from "@/lib/content/caseStudies";
 import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 
-export const metadata: Metadata = COMING_SOON
-  ? {
-      title: { absolute: "Pillar & Frame | Coming soon" },
-      description:
-        "A story-led film studio in Ohio. The new site is on its way. The calendar is open in the meantime.",
-      alternates: { canonical: "/" },
-      openGraph: {
-        title: "Pillar & Frame | Coming soon",
-        description:
-          "A story-led film studio in Ohio. The new site is on its way. The calendar is open in the meantime.",
-      },
-      twitter: {
-        title: "Pillar & Frame | Coming soon",
-        description: "A story-led film studio in Ohio. The new site is on its way.",
-      },
-    }
-  : {
-      // City and service in the title. A referral checking us out and a
-      // category searcher have to see the same two facts in the tab.
-      title: {
-        absolute: `${SITE_NAME} | Video and Copy Studio in Columbus, Ohio`,
-      },
-      description:
-        "One filming day, then every word, photo, and video your business needs, installed over 90 days. For service businesses in Columbus and central Ohio.",
-      alternates: { canonical: "/" },
-    };
+export const metadata: Metadata = {
+  // City and service in the title. A referral checking us out and a category
+  // searcher have to see the same two facts in the tab.
+  title: {
+    absolute: `${SITE_NAME} | Video and Copy Studio in Columbus, Ohio`,
+  },
+  description:
+    "One filming day, then every word, photo, and video your business needs, installed over 90 days. For service businesses in Columbus and central Ohio.",
+  alternates: { canonical: "/" },
+};
 
 // Placeholder capture-day photo. Swap in lib/content/photos.ts.
 const HERO_IMAGE: string | null = HERO_PHOTO;
@@ -260,9 +238,6 @@ function Tick({ gold = false }: { gold?: boolean }) {
 }
 
 export default function HomePage() {
-  // The full page below is intact and unreachable while the switch is on.
-  if (COMING_SOON) return <ComingSoon />;
-
   return (
     <div className="animate-fadeIn">
       {/* Built from the same FAQ array the page renders below, so the markup

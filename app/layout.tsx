@@ -4,11 +4,8 @@ import Script from "next/script";
 import { Instrument_Serif } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
 import {
-  COMING_SOON,
   ENTITY_DESCRIPTION,
   PLAUSIBLE_DOMAIN,
   SITE_NAME,
@@ -79,9 +76,9 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         ) : null}
-        {!COMING_SOON && <SiteHeader />}
-        <main id="main-content">{children}</main>
-        {!COMING_SOON && <SiteFooter />}
+        {/* Chrome lives in (site)/layout.tsx so the holding page can render
+            without it. */}
+        {children}
       </body>
     </html>
   );
