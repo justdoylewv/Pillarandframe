@@ -4,6 +4,8 @@ import Script from "next/script";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import JsonLd from "@/components/JsonLd";
+import AdminProvider from "@/components/AdminProvider";
+import AdminBar from "@/components/AdminBar";
 import {
   ENTITY_DESCRIPTION,
   PLAUSIBLE_DOMAIN,
@@ -84,8 +86,13 @@ export default function RootLayout({
           />
         ) : null}
         {/* Chrome lives in (site)/layout.tsx so the holding page can render
-            without it. */}
-        {children}
+            without it. The admin provider wraps everything so an editable
+            string works on any page; the bar renders for nobody unless the
+            admin cookie is present. */}
+        <AdminProvider>
+          {children}
+          <AdminBar />
+        </AdminProvider>
       </body>
     </html>
   );

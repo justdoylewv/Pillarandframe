@@ -18,6 +18,13 @@ const PREVIEW_MAX_AGE = 60 * 60 * 24 * 30;
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
+  // Admin sign-in and its API stay reachable while the site is gated, so the
+  // copy can be edited before launch. The routes check the signed cookie
+  // themselves; this only keeps the holding page from swallowing them.
+  if (pathname === "/admin" || pathname.startsWith("/api/admin")) {
+    return NextResponse.next();
+  }
+
   // ?preview=TOKEN opens the door for this browser, then gets stripped from
   // the address so the token does not travel on in shared links or referrers.
   const offered = searchParams.get("preview");

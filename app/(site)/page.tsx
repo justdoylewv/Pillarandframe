@@ -6,6 +6,7 @@ import MediaFrame from "@/components/MediaFrame";
 import HomeReel from "@/components/HomeReel";
 import JsonLd from "@/components/JsonLd";
 import ServiceArea from "@/components/ServiceArea";
+import Editable from "@/components/Editable";
 import { BOOKING_URL, SITE_NAME, SITE_URL } from "@/lib/content/site";
 import { faqSchema, serviceSchema } from "@/lib/content/schema";
 import { getCaseStudy } from "@/lib/content/caseStudies";
@@ -289,18 +290,19 @@ export default function HomePage() {
               className="animate-slideUp font-serif text-5xl leading-[0.95] font-black tracking-tighter text-paper sm:text-6xl md:text-8xl"
               style={{ animationDelay: "100ms" }}
             >
-              Show up as your best self.{" "}
-              <span className="italic text-purple-400">
+              <Editable id="home.hero.line1">Show up as your best self.</Editable>{" "}
+              <Editable id="home.hero.line2" className="italic text-purple-400">
                 Attract the clients you actually want.
-              </span>
+              </Editable>
             </h1>
             {/* The honest gap, named once. Then we move to the suite. */}
             <p
               className="mt-8 max-w-2xl animate-slideUp font-serif text-2xl italic leading-snug text-paper md:text-3xl"
               style={{ animationDelay: "200ms" }}
             >
-              You are good at the work. Everyone else is working off whatever
-              they can find online.
+              <Editable id="home.hero.sub">
+                You are good at the work. Everyone else is working off whatever they can find online.
+              </Editable>
             </p>
             <p
               className="mt-8 max-w-2xl animate-slideUp text-lg leading-relaxed text-ash-300"
@@ -337,12 +339,15 @@ export default function HomePage() {
       <section className="border-t border-shale bg-ink py-20 sm:py-24">
         <div className="mx-auto max-w-[980px] px-6 text-center">
           <p className="font-serif text-3xl leading-tight font-black tracking-tighter text-paper sm:text-4xl md:text-6xl">
-            We turn local business owners into{" "}
-            <span className="italic text-gold-500">hometown legends.</span>
+            <Editable id="home.offer.line1">We turn local business owners into</Editable>{" "}
+            <Editable id="home.offer.line2" className="italic text-gold-500">
+              hometown legends.
+            </Editable>
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ash-300 md:text-xl">
-            By telling their story the way a documentary would, and putting it
-            where their town will actually see it.
+            <Editable id="home.offer.sub">
+              By telling their story the way a documentary would, and putting it where their town will actually see it.
+            </Editable>
           </p>
         </div>
       </section>
@@ -353,7 +358,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">The shape of it</Kicker>
           <h2 className="max-w-3xl font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            Three ideas the whole thing rests on.
+            <Editable id="home.ideas.h2">Three ideas the whole thing rests on.</Editable>
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
             {[
@@ -445,12 +450,15 @@ export default function HomePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What makes it different</Kicker>
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            One filming day{" "}
-            <span className="italic text-purple-600">becomes all of it.</span>
+            <Editable id="home.cascade.h2a">One filming day</Editable>{" "}
+            <Editable id="home.cascade.h2b" className="italic text-purple-600">
+              becomes all of it.
+            </Editable>
           </h2>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ash-700">
-            Strategy first: your playbook decides what we film, so every piece
-            is aimed at trust and closed deals. Then the day cascades.
+            <Editable id="home.cascade.sub">
+              Strategy first: your playbook decides what we film, so every piece is aimed at trust and closed deals. Then the day cascades.
+            </Editable>
           </p>
 
           <div className="mt-14">
@@ -527,7 +535,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">How it works</Kicker>
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            Four steps. One of them is yours.
+            <Editable id="home.how.h2">Four steps. One of them is yours.</Editable>
           </h2>
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {STEPS.map((s) => (
@@ -550,10 +558,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What you get</Kicker>
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            The films lead.{" "}
-            <span className="italic text-purple-600">
+            <Editable id="home.get.h2a">The films lead.</Editable>{" "}
+            <Editable id="home.get.h2b" className="italic text-purple-600">
               Every field filled in.
-            </span>
+            </Editable>
           </h2>
           {/* Featured: the film library, the lead deliverable */}
           <div className="mt-12 border border-ash-100 border-l-[3px] border-l-gold-500 bg-bone p-8 md:p-10">
@@ -890,7 +898,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">What people ask before they book</Kicker>
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
-            Straight answers.
+            <Editable id="home.faq.h2">Straight answers.</Editable>
           </h2>
           <div className="mt-10">
             {FAQ.map((item) => (
@@ -978,12 +986,15 @@ export default function HomePage() {
       <section className="bg-black py-24 text-paper sm:py-32">
         <div className="mx-auto max-w-[980px] px-6 text-center">
           <p className="font-serif text-4xl leading-tight font-black tracking-tighter text-paper md:text-6xl">
-            You talk for one day. We fill in{" "}
-            <span className="italic text-gold-500">every blank.</span>
+            <Editable id="home.cta.h2a">You talk for one day. We fill in</Editable>{" "}
+            <Editable id="home.cta.h2b" className="italic text-gold-500">
+              every blank.
+            </Editable>
           </p>
           <p className="mx-auto mt-6 max-w-xl font-serif text-xl italic leading-snug text-ash-300 md:text-2xl">
-            You show up as yourself, once. We make everything else, and we keep
-            it running.
+            <Editable id="home.cta.sub">
+              You show up as yourself, once. We make everything else, and we keep it running.
+            </Editable>
           </p>
           <div className="mt-10">
             <CtaButton href={BOOKING_URL} variant="solidLight">
