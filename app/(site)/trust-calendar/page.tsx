@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Kicker from "@/components/Kicker";
-import LeadForm from "@/components/LeadForm";
+import GhlForm from "@/components/GhlForm";
 import { SITE_NAME } from "@/lib/content/site";
 
 export const metadata: Metadata = {
@@ -59,7 +59,7 @@ export default function TrustCalendarPage() {
             </div>
 
             <div className="border border-shale bg-ink p-8 sm:p-10">
-              <LeadForm />
+              <GhlForm />
             </div>
           </div>
         </div>

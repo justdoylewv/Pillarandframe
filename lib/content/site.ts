@@ -169,6 +169,17 @@ export const BOOKING_URL =
 
 export const CTA_LABEL = "Book a free strategy call";
 
+// The GoHighLevel form behind the 90 Day Trust Calendar. Paste the form's
+// embed URL here, the one that looks like
+// https://api.leadconnectorhq.com/widget/form/<formId>
+//
+// GoHighLevel handles the capture and the automation sends the file, so the
+// site holds no lead data and the file link never has to live in the page.
+//
+// While this is empty the download page asks people to email instead, rather
+// than showing a form that goes nowhere.
+export const GHL_FORM_URL: string = "";
+
 // ---------------------------------------------------------------------------
 // Related
 // ---------------------------------------------------------------------------
