@@ -1,62 +1,32 @@
-// Home-page short-form reel: four vertical (9x16) clips from real client work.
+// Home-page short-form reel: vertical (9x16) clips from real client work.
 //
-// Sourced from Google Drive. Because clean silent-autoplay-loop needs a proper
-// video host (Drive embeds carry player chrome and will not loop muted), each
-// item shows its real vertical still now (poster) and starts autoplaying the
-// moment a `mp4` path or `vimeoId` is filled in.
+// Each item can carry motion one of three ways. First one set wins:
+//   - youtubeId: a YouTube Shorts id. Plays silent and looping, and the poster
+//     is derived from the id, so this needs nothing but the id.
+//   - vimeoId:   a numeric Vimeo id. Silent, chrome-free background player.
+//   - mp4:       a web-optimized vertical file in public/reel/ (H.264, about
+//     1080x1920, no audio, faststart, ideally under 4MB). Lightest of the
+//     three, and the only one with no third-party request.
 //
-// To turn on motion, do ONE of these per item:
-//   - vimeoId: upload the clip to Vimeo, paste its numeric id. It plays as a
-//     silent, chrome-free background player. Easiest, no file handling.
-//   - mp4: drop a web-optimized vertical MP4 (H.264, ~1080x1920, no audio,
-//     faststart, ideally under ~4MB) into public/reel/ and point to it.
+// With none of those set, the card shows its poster, or a placeholder.
 //
-// posterDriveId is the Drive file the still is pulled from; the poster only
-// renders if that file is shared "anyone with the link."
+// The caption is optional. A card with no client and title renders clean, so a
+// clip can go up before its attribution is confirmed rather than going up
+// under a label that might be wrong.
 
 export interface ReelItem {
-  client: string;
-  title: string;
-  href: string;
-  posterDriveId: string;
-  poster: string;
-  mp4?: string;
+  client?: string;
+  title?: string;
+  poster?: string;
+  youtubeId?: string;
   vimeoId?: string;
-}
-
-function drivePoster(id: string): string {
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+  mp4?: string;
 }
 
 export const HOME_REEL: ReelItem[] = [
-  {
-    client: "Frontier Technologies",
-    title: "The IBM case study",
-    href: "/work/frontier-technologies",
-    posterDriveId: "1I5o1pJMj8t8DkUU0DIsAGgKR_hvf9BSa",
-    poster: drivePoster("1I5o1pJMj8t8DkUU0DIsAGgKR_hvf9BSa"),
-    // vimeoId: "",
-    // mp4: "/reel/frontier-ibm-case-study.mp4",
-  },
-  {
-    client: "Frontier Technologies",
-    title: "What sets them apart",
-    href: "/work/frontier-technologies",
-    posterDriveId: "1Z5kvDQ7eKCJapgqgttB-e9-sy4ZTHMUj",
-    poster: drivePoster("1Z5kvDQ7eKCJapgqgttB-e9-sy4ZTHMUj"),
-  },
-  {
-    client: "DG Lending",
-    title: "For first-time buyers",
-    href: "/work/dg-lending",
-    posterDriveId: "13xr8BXxbbp9PyLSovui_dze1seMlrZJ-",
-    poster: drivePoster("13xr8BXxbbp9PyLSovui_dze1seMlrZJ-"),
-  },
-  {
-    client: "DG Lending",
-    title: "Always here for you",
-    href: "/work/dg-lending",
-    posterDriveId: "1x92f-YzcKMOCUwBCX2HeF_V4x230yW46",
-    poster: drivePoster("1x92f-YzcKMOCUwBCX2HeF_V4x230yW46"),
-  },
+  // TODO: add client and title to each of these once confirmed. They render
+  // without a caption until then.
+  { youtubeId: "xveuxmjOVwY" },
+  { youtubeId: "Ppf5KjpMJj4" },
+  { youtubeId: "wEEOsnNqPt8" },
 ];
