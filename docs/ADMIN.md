@@ -78,3 +78,47 @@ than a database restore.
 - **Someone else saved while you were editing**: two sessions edited at once.
   Reload and redo the change. The save is refused rather than overwriting the
   other person, on purpose.
+
+
+---
+
+# The 90 Day Trust Calendar download
+
+The download at `/trust-calendar` asks for a name and email before handing the
+file over.
+
+## Setup
+
+One environment variable in Vercel, for **Production** and **Preview**:
+
+| Variable | What it is |
+| --- | --- |
+| `LEAD_WEBHOOK_URL` | An https endpoint that accepts a JSON POST. A GoHighLevel inbound webhook, or a Make scenario with a webhook trigger. |
+| `LEAD_MAGNET_URL` | Optional. The file to hand over. Defaults to the Drive link already in the code. |
+
+Until `LEAD_WEBHOOK_URL` is set the form refuses to accept anybody, and tells
+them to email instead. That is deliberate: taking a name and an email with
+nowhere to put them is worse than not asking.
+
+The POST body looks like this:
+
+```json
+{
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "source": "pillarandframe.com",
+  "magnet": "The 90 Day Trust Calendar",
+  "submittedAt": "2026-08-20T14:02:11.000Z"
+}
+```
+
+## Two things worth knowing
+
+The file URL is never in the page. It is returned by the API only after a
+submission is accepted, so the form cannot be walked around by reading the page
+source. That also means the Drive file has to be shared as **anyone with the
+link** or the download will fail for everyone but you.
+
+If the webhook is down, the visitor still gets the file and the lead is lost.
+They asked properly, so making them pay for an outage on our side would be the
+wrong trade. The response carries `delivered: false` when that happens.

@@ -328,11 +328,16 @@ export default function HomePage() {
               </Editable>
             </p>
             <div
-              className="mt-12 flex animate-slideUp flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8"
+              className="mt-12 flex animate-slideUp flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-4"
               style={{ animationDelay: "300ms" }}
             >
               <CtaButton href={BOOKING_URL} variant="solidLight">
                 {FIT_CALL}
+              </CtaButton>
+              {/* Second door. Not everyone landing here is ready to talk, and
+                  the ones who are not still leave a name. */}
+              <CtaButton href="/trust-calendar" variant="outlineLight">
+                Get the 90 Day Trust Calendar
               </CtaButton>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
                 <span className="text-gold-500">$5,000 early founder pricing</span>{" "}
