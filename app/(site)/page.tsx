@@ -231,12 +231,6 @@ const SELECTED_WORK = [
     industry: "IT services",
     line: "A 35-year company makes its leadership impossible to miss on LinkedIn.",
   },
-  {
-    slug: "memorial-health",
-    client: "Memorial Health",
-    industry: "Healthcare",
-    line: "A new emergency department, filmed while it's built.",
-  },
 ];
 
 function Tick({ gold = false }: { gold?: boolean }) {
@@ -439,8 +433,8 @@ export default function HomePage() {
           </div>
           <HomeReel />
           <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
-            Trusted by Frontier Technologies &middot; Memorial Health &middot; DG
-            Lending
+            Trusted by Frontier Technologies &middot; Dowling Group &middot; Marco
+            Randazzo &middot; Lauryn Dempsey
           </p>
         </div>
       </section>

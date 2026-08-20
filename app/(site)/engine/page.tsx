@@ -395,7 +395,7 @@ export default function TrustEnginePage() {
           <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             The engine, in the wild.
           </h2>
-          <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
+          <div className="mt-16 grid grid-cols-1 gap-10">
             <Link
               href="/work/frontier-technologies"
               className="group block border-t border-ash-100 pt-8"
@@ -407,23 +407,6 @@ export default function TrustEnginePage() {
                 A founder&rsquo;s personal brand, built from scratch and posted
                 every week. Director-level buyers, more conversations, podcast
                 invitations. The brand coming online.
-              </p>
-              <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
-                Read the story
-                <span className="h-[1px] w-8 bg-black transition-all group-hover:w-16 group-hover:bg-purple-600" />
-              </span>
-            </Link>
-            <Link
-              href="/work/memorial-health"
-              className="group block border-t border-ash-100 pt-8"
-            >
-              <h3 className="mb-4 font-serif text-3xl tracking-tight text-black transition-colors group-hover:text-purple-600">
-                Memorial Health
-              </h3>
-              <p className="mb-6 text-base leading-relaxed text-ash-700">
-                A hospital foundation films its new emergency department while
-                it&rsquo;s built. Donor stories now, opening-day material later,
-                from the same effort.
               </p>
               <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-black">
                 Read the story

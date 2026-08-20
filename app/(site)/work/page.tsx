@@ -5,7 +5,7 @@ import CtaButton from "@/components/CtaButton";
 import MediaFrame from "@/components/MediaFrame";
 import JsonLd from "@/components/JsonLd";
 import { BOOKING_URL, CTA_LABEL, SITE_URL } from "@/lib/content/site";
-import { CASE_STUDIES } from "@/lib/content/caseStudies";
+import { CASE_STUDIES, CLIENT_ROSTER } from "@/lib/content/caseStudies";
 
 export const metadata: Metadata = {
   title: "Case studies | Columbus and Ohio video work",
@@ -59,6 +59,31 @@ export default function WorkPage() {
           </p>
         </div>
       </section>
+
+      {/* Clients without a written story yet. Named, nothing claimed. */}
+      {CLIENT_ROSTER.length > 0 && (
+        <section className="border-t border-ash-100 bg-bone py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6">
+            <Kicker className="mb-6">Also working with</Kicker>
+            <div className="mt-10 grid grid-cols-1 divide-y divide-ash-100 border-y border-ash-100 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {CLIENT_ROSTER.map((c) => (
+                <div key={c.name} className="py-8 sm:px-8 sm:first:pl-0 sm:last:pr-0">
+                  <h2 className="font-serif text-2xl tracking-tight text-black">
+                    {c.name}
+                  </h2>
+                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ash-500">
+                    {c.industry}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 max-w-2xl text-base leading-relaxed text-ash-700">
+              Their stories are being written. We publish a case study when
+              there is something real to point at, not before.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Cards */}
       <section className="bg-paper py-20 sm:py-24">

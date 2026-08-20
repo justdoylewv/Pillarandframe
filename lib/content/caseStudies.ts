@@ -1,5 +1,20 @@
 import type { CaseStudy } from "./types";
 
+// Clients we work with who do not have a written case study yet. Name and
+// industry only: everything else on this site is sourced from something the
+// client actually said or a number we can point at, and for these we have
+// neither yet. They move up into CASE_STUDIES as their stories are written.
+export interface ClientCredit {
+  name: string;
+  industry: string;
+}
+
+export const CLIENT_ROSTER: ClientCredit[] = [
+  { name: "Dowling Group", industry: "Mortgage" },
+  { name: "Marco Randazzo", industry: "Real estate" },
+  { name: "Lauryn Dempsey", industry: "Real estate" },
+];
+
 // All copy transcribed verbatim from CONTENT.md. Pull quotes for DG Lending
 // and Wealthstrong are pending collection and render nothing while null.
 // Hero images, galleries, and video links are pending picks and approvals;
@@ -25,7 +40,7 @@ First the story. Who she is, what she stands for, the handful of ideas she wants
 
 Then the engine. We film Reshma, long form and short. We cut the videos, design the images, and write the captions in her voice. Then we post to LinkedIn every week. She shows up on camera. We handle everything after.
 
-A little over a year in, the account has grown by around five hundred followers. The number is not the point. Who they are is. Most of them sit at director level inside the exact accounts Frontier wants to be known in. This is not reach for its own sake. It is the right room, filling up.
+Fifteen months in, the account has grown by around five hundred followers. The number is not the point. Who they are is. Most of them sit at director level inside the exact accounts Frontier wants to be known in. This is not reach for its own sake. It is the right room, filling up.
 
 And the brand is starting to do what a brand does. More conversations. Invitations to guest on other people's podcasts. People reaching out because they finally understand what Frontier does, and who is behind it.
 
@@ -44,7 +59,7 @@ A personal brand does not arrive in a launch. It comes online slowly, then all a
     ],
     stats: [
       { value: "500+", label: "new followers, mostly director-level" },
-      { value: "52+", label: "founder posts, filmed and written for them" },
+      { value: "170+", label: "pieces published, filmed and written for them" },
       { value: "1", label: "personal brand, coming online" },
     ],
     heroImage:
@@ -60,11 +75,16 @@ A personal brand does not arrive in a launch. It comes online slowly, then all a
     ],
     videoUrl: null,
     videoProvider: null,
-    nextSlug: "memorial-health",
+    nextSlug: "",
     ctaHeading: "Want your proof working like this?",
     ctaServiceLabel: "See The Engine",
     ctaServiceHref: "/engine",
   },
+];
+
+// Retired with the Systems Coaching service. Kept for reference; not rendered
+// on the site. Restore by moving an entry back into CASE_STUDIES.
+export const ARCHIVED_CASE_STUDIES: CaseStudy[] = [
   {
     slug: "memorial-health",
     client: "Memorial Health",
@@ -133,11 +153,6 @@ The film is done. The campaign has what it needs to raise the money. And when th
     ctaServiceLabel: "See The Engine",
     ctaServiceHref: "/engine",
   },
-];
-
-// Retired with the Systems Coaching service. Kept for reference; not rendered
-// on the site. Restore by moving an entry back into CASE_STUDIES.
-export const ARCHIVED_CASE_STUDIES: CaseStudy[] = [
   {
     slug: "dg-lending",
     client: "DG Lending",

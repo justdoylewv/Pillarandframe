@@ -28,7 +28,6 @@ const COLUMNS: {
     heading: "Work",
     links: [
       { label: "Frontier Technologies", href: "/work/frontier-technologies" },
-      { label: "Memorial Health", href: "/work/memorial-health" },
       { label: "All work", href: "/work" },
     ],
   },
