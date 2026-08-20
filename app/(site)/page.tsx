@@ -885,8 +885,8 @@ export default function HomePage() {
             </div>
           </div>
           <p className="mt-10 text-sm leading-relaxed text-ash-500">
-            Scope is one location, one capture day, one founder on camera, and two
-            rounds of revisions.
+            Scope is one location, one capture day, up to two people from your
+            team on camera, and two rounds of revisions.
           </p>
         </div>
       </section>
@@ -972,8 +972,8 @@ export default function HomePage() {
                 <strong className="font-semibold text-black">
                   first ten clients pay $5,000
                 </strong>
-                . After that it is $7,500, because by then we will have the case
-                studies to justify it.
+                . After that it is $7,500. Same work either way. You are
+                getting the early rate for being early.
               </p>
             </div>
           </div>
