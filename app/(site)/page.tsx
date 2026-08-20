@@ -284,7 +284,9 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-28 sm:py-32">
           <div className="max-w-[980px]">
             <Kicker dark className="mb-8 animate-slideUp">
-              The Foundation &middot; 90 days
+              <Editable id="home.hero.kicker">
+                For Central Ohio professional services businesses
+              </Editable>
             </Kicker>
             <h1
               className="animate-slideUp font-serif text-5xl leading-[0.95] font-black tracking-tighter text-paper sm:text-6xl md:text-8xl"
@@ -295,26 +297,35 @@ export default function HomePage() {
                 Attract the clients you actually want.
               </Editable>
             </h1>
-            {/* The honest gap, named once. Then we move to the suite. */}
+            {/* The honest gap, then the turn, then what we do about it. Sizes
+                step down so the three land in that order. */}
             <p
               className="mt-8 max-w-2xl animate-slideUp font-serif text-2xl italic leading-snug text-paper md:text-3xl"
               style={{ animationDelay: "200ms" }}
             >
               <Editable id="home.hero.sub">
-                You are good at the work. Everyone else is working off whatever they can find online.
+                You are good at the work. Your potential clients are working off whatever they can find online.
+              </Editable>
+            </p>
+            <p
+              className="mt-6 max-w-2xl animate-slideUp font-serif text-xl leading-snug text-paper md:text-2xl"
+              style={{ animationDelay: "230ms" }}
+            >
+              <Editable id="home.hero.turn">Your story is great.</Editable>{" "}
+              <Editable id="home.hero.turn2" className="italic text-gold-500">
+                You just haven&rsquo;t told it yet.
               </Editable>
             </p>
             <p
               className="mt-8 max-w-2xl animate-slideUp text-lg leading-relaxed text-ash-300"
               style={{ animationDelay: "250ms" }}
             >
-              That is not a marketing problem, it is a supply problem: nobody
-              ever made you the material.{" "}
               <strong className="font-semibold text-paper">
                 We make all of it.
               </strong>{" "}
-              Every video, photo, and word, organized by exactly where it goes
-              and installed for you over 90 days.
+              <Editable id="home.hero.body">
+                Every video, photo, and word, organized by exactly where it goes and installed for you over 90 days.
+              </Editable>
             </p>
             <div
               className="mt-12 flex animate-slideUp flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8"
