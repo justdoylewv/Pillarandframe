@@ -44,12 +44,29 @@ function SoundIcon({ on }: { on: boolean }) {
   );
 }
 
+function PlayPauseIcon({ paused }: { paused: boolean }) {
+  return (
+    <svg
+      className="h-3.5 w-3.5 text-paper"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      {paused ? <path d="M8 5v14l11-7z" /> : <path d="M6 4h4v16H6zM14 4h4v16h-4z" />}
+    </svg>
+  );
+}
+
 function ReelCard({ item, id }: { item: ReelItem; id: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [posterStep, setPosterStep] = useState(0);
   const [soundOn, setSoundOn] = useState(false);
+  // Held in a ref as well, so the intersection observers below do not restart
+  // a clip the viewer deliberately paused.
+  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
   // A YouTube player is only mounted once its card reaches the viewport. Three
   // players is a lot of third-party weight to spend before anyone scrolls.
   const [ytLive, setYtLive] = useState(false);
@@ -93,6 +110,34 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
     );
   }
 
+  function vimeoCmd(method: "play" | "pause") {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ method }),
+      "https://player.vimeo.com"
+    );
+  }
+
+  function youtubeCmd(func: "playVideo" | "pauseVideo") {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func, args: [] }),
+      "https://www.youtube.com"
+    );
+  }
+
+  function togglePlay() {
+    const next = !paused;
+    setPaused(next);
+    pausedRef.current = next;
+    if (item.mp4 && videoRef.current) {
+      if (next) videoRef.current.pause();
+      else videoRef.current.play().catch(() => {});
+    } else if (item.vimeoId) {
+      vimeoCmd(next ? "pause" : "play");
+    } else if (item.youtubeId) {
+      youtubeCmd(next ? "pauseVideo" : "playVideo");
+    }
+  }
+
   function setSound(on: boolean) {
     setSoundOn(on);
     if (item.mp4 && videoRef.current) {
@@ -114,7 +159,7 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            v.play().catch(() => {});
+            if (!pausedRef.current) v.play().catch(() => {});
           } else {
             v.pause();
             v.muted = true;
@@ -138,7 +183,9 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             setYtLive(true);
+            if (!pausedRef.current) youtubeCmd("playVideo");
           } else if (ytLive) {
+            youtubeCmd("pauseVideo");
             youtubeSet(true);
             setSoundOn(false);
           }
@@ -176,9 +223,28 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
 
   // The poster sits under a YouTube card until its player is mounted, so the
   // grid never flashes empty boxes on the way down the page.
+  //
+  // origin is required for the player to accept postMessage commands, and it
+  // is only knowable in the browser. The player is client-mounted anyway, so
+  // this costs nothing.
   const ytSrc = item.youtubeId
-    ? `https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${item.youtubeId}&controls=0&playsinline=1&modestbranding=1&rel=0&enablejsapi=1`
+    ? `https://www.youtube.com/embed/${item.youtubeId}` +
+      `?autoplay=1&mute=1&loop=1&playlist=${item.youtubeId}` +
+      `&controls=0&playsinline=1&modestbranding=1&rel=0&enablejsapi=1` +
+      (typeof window !== "undefined"
+        ? `&origin=${encodeURIComponent(window.location.origin)}`
+        : "")
     : null;
+
+  // The player ignores commands until something registers as a listener. This
+  // is the handshake the IFrame API script would otherwise send, which saves
+  // pulling in that script for two buttons.
+  function ytHandshake() {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "listening", id, channel: "widget" }),
+      "https://www.youtube.com"
+    );
+  }
 
   const inner = (
     <>
@@ -200,6 +266,7 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
           src={ytSrc}
           title={hasCaption ? label : "Reel clip"}
           loading="lazy"
+          onLoad={ytHandshake}
           allow="autoplay; encrypted-media; picture-in-picture"
           /* Filling the frame exactly rather than oversizing to crop chrome.
              If the embed pillarboxes, the cost is black edges. Oversizing to
@@ -237,11 +304,26 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
         </div>
       ) : null}
 
-      {/* Sound toggle indicator (motion only) */}
+      {/* Transport. Sits above the full-card sound target below. */}
       {hasMotion && (
-        <span className="absolute bottom-4 right-4 flex h-8 w-8 items-center justify-center border border-paper/40 bg-black/50 backdrop-blur-sm transition-colors group-hover:bg-black/70">
-          <SoundIcon on={soundOn} />
-        </span>
+        <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={paused ? `Play ${label}` : `Pause ${label}`}
+            className="flex h-8 w-8 items-center justify-center border border-paper/40 bg-black/50 backdrop-blur-sm transition-colors hover:bg-black/80"
+          >
+            <PlayPauseIcon paused={paused} />
+          </button>
+          <button
+            type="button"
+            onClick={handleClick}
+            aria-label={soundOn ? `Mute ${label}` : `Play ${label} with sound`}
+            className="flex h-8 w-8 items-center justify-center border border-paper/40 bg-black/50 backdrop-blur-sm transition-colors hover:bg-black/80"
+          >
+            <SoundIcon on={soundOn} />
+          </button>
+        </div>
       )}
 
       {hasCaption && (
@@ -264,26 +346,20 @@ function ReelCard({ item, id }: { item: ReelItem; id: string }) {
   const frame =
     "group relative block aspect-[9/16] w-full overflow-hidden border border-shale bg-ink";
 
-  // Motion cards toggle sound on click and never navigate. Poster-only
-  // placeholders are non-interactive until a clip is added.
-  if (hasMotion) {
-    return (
-      <div ref={cardRef}>
+  // Clicking anywhere on a motion card still toggles sound, but that target is
+  // now a sibling of the transport rather than its parent: a button cannot
+  // legally contain other buttons. Poster-only placeholders stay inert.
+  return (
+    <div ref={cardRef} className={frame}>
+      {inner}
+      {hasMotion && (
         <button
           type="button"
           onClick={handleClick}
           aria-label={soundOn ? `Mute ${label}` : `Play ${label} with sound`}
-          className={`${frame} text-left`}
-        >
-          {inner}
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <div ref={cardRef}>
-      <div className={frame}>{inner}</div>
+          className="absolute inset-0 z-10 h-full w-full cursor-pointer"
+        />
+      )}
     </div>
   );
 }
