@@ -32,7 +32,7 @@ const STEPS = [
   {
     n: "01",
     title: "We do our homework",
-    body: "Before we film, we read your reviews and study your market, so your copy is written in the words your customers actually use. Not industry jargon.",
+    body: "Before we film, we read your reviews and study your market, so your copy is written in the words your clients actually use. Not industry jargon.",
   },
   {
     n: "02",
@@ -59,7 +59,7 @@ const FILM_LIBRARY = {
   items: [
     "Your story film",
     "What you do, on camera",
-    "A customer win",
+    "A client win",
     "5 objection answers, on camera",
     "Intro, outro, and titles",
     "Captioned and sized per platform",
@@ -414,7 +414,7 @@ export default function HomePage() {
             What it is
           </Kicker>
           <p className="font-serif text-4xl leading-tight font-black tracking-tighter text-paper md:text-6xl">
-            You talk for one day. We hand you everything a customer sees{" "}
+            You talk for one day. We hand you everything a client sees{" "}
             <span className="italic text-gold-500">before they call.</span>
           </p>
           <p className="mt-10 max-w-2xl text-lg leading-relaxed text-ash-300">
@@ -510,7 +510,7 @@ export default function HomePage() {
                 </span>
                 <p className="mt-4 text-[15px] leading-relaxed text-ash-700">
                   Your three core films: your story, what you do, and a
-                  customer win. Plus the five objection answers every business
+                  client win. Plus the five objection answers every business
                   needs, the questions people ask before they hire you,
                   answered on camera.
                 </p>

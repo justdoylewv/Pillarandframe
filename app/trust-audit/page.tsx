@@ -74,7 +74,7 @@ const STEPS = [
   {
     n: "2",
     title: "We look you up",
-    body: "The way a customer would. Your Google profile, website, socials, and reviews.",
+    body: "The way a client would. Your Google profile, website, socials, and reviews.",
   },
   {
     n: "3",
@@ -147,7 +147,7 @@ export default function TrustAuditPage() {
             Free &middot; No call required
           </Kicker>
           <h1 className="mx-auto max-w-[20ch] font-serif text-[2.4rem] leading-[1.02] font-black tracking-tighter text-paper sm:text-6xl md:text-7xl">
-            See what a customer sees{" "}
+            See what a client sees{" "}
             <span className="italic text-gold-500">before they call you.</span>
           </h1>
           <p className="mx-auto mt-8 max-w-[36ch] text-xl leading-relaxed text-ash-300 md:text-2xl">

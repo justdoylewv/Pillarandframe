@@ -26,13 +26,21 @@ export const BOOK_PHOTO = "/photos/book-conversation.webp";
 // Real people, real rooms. The photography deliverable, on the home page.
 // ---------------------------------------------------------------------------
 
+// Order matters here. portrait-02 and portrait-03 are the same person in the
+// same chair from the same session, so they read as one photo printed twice
+// when they sit together. They are pinned to the two ends of the strip, which
+// keeps them apart at every breakpoint: six across, three across where they
+// would otherwise stack in one column, and two across.
+//
+// The first four are also what the Trust Audit page shows, so those four have
+// to stand on their own as a set.
 export const PHOTO_STRIP: Photo[] = [
-  { src: "/photos/portrait-01.webp", alt: "A portrait shot on location" },
-  { src: "/photos/portrait-02.webp", alt: "A founder at work, shot on location" },
   { src: "/photos/portrait-03.webp", alt: "A founder on a call, shot on location" },
+  { src: "/photos/portrait-01.webp", alt: "A portrait shot on location" },
+  { src: "/photos/portrait-06.webp", alt: "A portrait shot on location" },
   { src: "/photos/portrait-04.webp", alt: "A founder outside the office" },
   { src: "/photos/portrait-05.webp", alt: "A portrait shot outdoors" },
-  { src: "/photos/portrait-06.webp", alt: "A portrait shot on location" },
+  { src: "/photos/portrait-02.webp", alt: "A founder at work, shot on location" },
 ];
 
 // The work itself, on the dark band beside the story.
