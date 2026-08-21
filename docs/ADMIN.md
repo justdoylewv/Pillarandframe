@@ -138,3 +138,59 @@ padding to 0 since the card already frames it.
 The button currently opens the page. A modal on the home page is the other
 option and converts a little better for a download, at the cost of a page that
 can be linked, indexed, and shared. Say the word and it is a small change.
+
+
+---
+
+# The Trust Audit landing page
+
+`/trust-audit` is the lead-capture page. Four tap-to-answer questions, then
+name, email, business, and website. It sits outside the main site chrome on
+purpose: every nav link on a landing page is a way out of it, so the header
+carries the wordmark and one booking link and nothing else.
+
+## Setup
+
+One environment variable in Vercel, for **Production** and **Preview**:
+
+| Variable | What it is |
+| --- | --- |
+| `SURVEY_WEBHOOK_URL` | An https endpoint that takes a JSON POST. A GoHighLevel inbound webhook, or a Make scenario. |
+
+Until it is set the last step tells people to email instead.
+
+The POST body:
+
+```json
+{
+  "business_type": "Real estate",
+  "lead_source": "Referrals and word of mouth",
+  "current_state": "A website, and that is about it",
+  "blocker": "No time",
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "business": "Smith Realty",
+  "website": "smithrealty.com",
+  "source": "pillarandframe.com/trust-audit",
+  "offer": "Free Trust Audit",
+  "submittedAt": "2026-08-20T14:02:11.000Z"
+}
+```
+
+## Two things worth knowing
+
+The webhook is called from the server, not the browser, so the endpoint is not
+sitting in the page source for anyone to flood. That is the one change from the
+template, which posts straight from the client.
+
+Nothing is sent until the last step, so an abandoned survey leaves no
+half-finished record behind. If the webhook fails, the visitor still sees the
+thank-you: somebody who answered five questions should not be told to start
+again because our endpoint blinked. The response carries `delivered: false`.
+
+## The promise on this page
+
+It commits to a written audit within two business days, scored out of a hundred
+across five categories, against two named competitors. That is a real
+deliverable someone has to produce by hand. Change the copy if the offer
+changes.
