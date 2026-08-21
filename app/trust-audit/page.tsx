@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
 import Kicker from "@/components/Kicker";
 import JsonLd from "@/components/JsonLd";
-import TrustAuditSurvey from "@/components/TrustAuditSurvey";
+import MediaFrame from "@/components/MediaFrame";
+import TrustAuditModal from "@/components/TrustAuditModal";
 import { CLIENT_ROSTER } from "@/lib/content/caseStudies";
+import { PHOTO_STRIP, HERO_PHOTO } from "@/lib/content/photos";
 import { faqSchema } from "@/lib/content/schema";
 import { SITE_NAME, SITE_URL } from "@/lib/content/site";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: `Free Trust Audit | ${SITE_NAME}`,
-  },
+  title: { absolute: `Free Trust Audit | ${SITE_NAME}` },
   description:
     "A written breakdown of how your business looks to someone checking you out online, scored against two competitors we name. Free for Columbus and central Ohio businesses.",
   alternates: { canonical: "/trust-audit" },
 };
+
+const PROMISES = [
+  "Written by a person, not a tool",
+  "Back within two business days",
+  "No call, no pitch, nothing to cancel",
+];
 
 const INSIDE = [
   {
@@ -24,12 +30,12 @@ const INSIDE = [
   {
     n: "02",
     title: "Two competitors, named",
-    body: "Scored the same way, side by side with you. This is the part that stings and the part that is useful.",
+    body: "Scored the same way and set beside you. This is the part that stings, and the part that is useful.",
   },
   {
     n: "03",
     title: "The gaps, in priority order",
-    body: "What is costing you the most, first. Most of it you can fix yourself, and we say which.",
+    body: "Whatever is costing you the most, first. Plenty of it you can fix yourself, and we say which.",
   },
 ];
 
@@ -37,12 +43,12 @@ const STEPS = [
   {
     n: "1",
     title: "Answer four questions",
-    body: "About a minute. No call to book and nothing to schedule.",
+    body: "About a minute. Nothing to book and nothing to schedule.",
   },
   {
     n: "2",
     title: "We look you up",
-    body: "The way a customer would. Google profile, website, socials, reviews.",
+    body: "The way a customer would. Your Google profile, website, socials, and reviews.",
   },
   {
     n: "3",
@@ -62,26 +68,26 @@ const FAQ = [
   {
     question: "What does it cost?",
     answers: [
-      "Nothing. We run this to start conversations with businesses we might be a fit for, and the fastest way to do that is to be useful first.",
-    ],
-  },
-  {
-    question: "How long does it take?",
-    answers: [
-      "The questions take about a minute. The audit comes back within two business days, because a person actually looks you up and writes it.",
+      "Nothing. We run these to start conversations with businesses we might be a fit for, and the fastest way to do that is to be useful first.",
     ],
   },
   {
     question: "What if my online presence is bad?",
     answers: [
-      "Then the audit is worth more to you, not less. Nobody gets a scolding. Most of what we find is ordinary and fixable, and we tell you which parts you can handle yourself.",
+      "Then the audit is worth more to you, not less. Nobody gets a scolding. Most of what we find is ordinary and fixable.",
+    ],
+  },
+  {
+    question: "Who actually writes it?",
+    answers: [
+      "We do, by hand. That is why it takes two days instead of two minutes, and why it says something a scanner cannot.",
     ],
   },
 ];
 
 export default function TrustAuditPage() {
   return (
-    <div className="animate-fadeIn" id="top">
+    <div className="animate-fadeIn">
       <JsonLd data={faqSchema(FAQ)} />
       <JsonLd
         data={{
@@ -93,108 +99,147 @@ export default function TrustAuditPage() {
             "A written breakdown of how a business looks to someone checking it out online, scored against two named competitors.",
         }}
       />
+      <TrustAuditModal />
 
-      {/* Hero and the survey together, so the thing to do is on screen from
-          the first moment rather than a scroll away. */}
-      <section className="bg-black py-16 text-paper sm:py-24">
+      {/* Hero: one message, one thing to press. */}
+      <section className="relative overflow-hidden bg-black py-20 sm:py-28">
+        <div className="absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={HERO_PHOTO}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/85" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-[820px] px-6 text-center">
+          <Kicker dark className="mb-8 justify-center">
+            Free &middot; No call required
+          </Kicker>
+          <h1 className="mx-auto max-w-[20ch] font-serif text-[2.4rem] leading-[1.02] font-black tracking-tighter text-paper sm:text-6xl md:text-7xl">
+            See what a customer sees{" "}
+            <span className="italic text-gold-500">before they call you.</span>
+          </h1>
+          <p className="mx-auto mt-8 max-w-[36ch] text-xl leading-relaxed text-ash-300 md:text-2xl">
+            Somebody gets your name, then looks you up. We will tell you exactly
+            what they find, and score it against two of your competitors.
+          </p>
+          <div className="mt-12">
+            <button
+              type="button"
+              data-open-audit
+              className="w-full rounded-[2px] border border-paper bg-paper px-10 py-5 font-mono text-[13px] uppercase tracking-[0.2em] text-black transition-colors hover:bg-bone sm:w-auto"
+            >
+              Start my free audit
+            </button>
+          </div>
+          <p className="mt-6 text-base text-ash-300">
+            Four questions, about a minute.
+          </p>
+        </div>
+      </section>
+
+      {/* Promise bar, straight off the hero. */}
+      <section className="border-t border-shale bg-ink py-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 sm:grid-cols-3">
+          {PROMISES.map((p) => (
+            <div key={p} className="flex items-center gap-3">
+              <span
+                className="h-[6px] w-[6px] shrink-0 bg-gold-500"
+                aria-hidden="true"
+              />
+              <span className="text-lg font-medium text-paper">{p}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* What is in it */}
+      <section className="bg-paper py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-16">
-            <div>
-              <Kicker dark className="mb-8">
-                Free &middot; No call required
-              </Kicker>
-              <h1 className="font-serif text-4xl leading-[0.95] font-black tracking-tighter text-paper sm:text-5xl md:text-6xl">
-                See what a customer sees{" "}
-                <span className="italic text-gold-500">
-                  before they call you.
+          <Kicker className="mb-6">What you get</Kicker>
+          <h2 className="max-w-[24ch] font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
+            A real document, not a score widget.
+          </h2>
+          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
+            {INSIDE.map((item) => (
+              <div key={item.n} className="border-t border-ash-100 pt-8">
+                <span className="mb-5 block font-mono text-[11px] uppercase tracking-[0.3em] text-gold-700">
+                  {item.n}
                 </span>
-              </h1>
-              <p className="mt-8 max-w-xl text-lg leading-relaxed text-ash-300">
-                Somebody gets your name, then looks you up. We will tell you
-                exactly what they find, score it out of a hundred, and put it
-                next to two of your competitors.
-              </p>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-ash-300">
-                Four questions, about a minute. The audit is written by a person
-                and lands within two business days.
-              </p>
-
-              <div className="mt-12 grid grid-cols-1 divide-y divide-shale border-y border-shale sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-                {INSIDE.map((item) => (
-                  <div key={item.n} className="py-6 sm:px-6 sm:first:pl-0 sm:last:pr-0">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold-500">
-                      {item.n}
-                    </span>
-                    <h3 className="mt-3 font-serif text-lg tracking-tight text-paper">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ash-500">
-                      {item.body}
-                    </p>
-                  </div>
-                ))}
+                <h3 className="mb-4 font-serif text-2xl tracking-tight text-black">
+                  {item.title}
+                </h3>
+                <p className="text-lg leading-relaxed text-ash-700">
+                  {item.body}
+                </p>
               </div>
-            </div>
-
-            {/* Light card, so the survey is unmistakably the thing to do. */}
-            <div className="border border-ash-100 border-l-[3px] border-l-gold-500 bg-paper p-6 sm:p-8">
-              <TrustAuditSurvey />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Who this is for and who we work with */}
-      <section className="bg-paper py-20 sm:py-24">
+      {/* Proof */}
+      <section className="bg-bone py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-6">
-          <Kicker className="mb-6">Who this is for</Kicker>
-          <h2 className="max-w-3xl font-serif text-3xl font-black tracking-tighter text-black md:text-5xl">
+          <Kicker className="mb-6">Who we work with</Kicker>
+          <h2 className="max-w-[24ch] font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Central Ohio professional services businesses.
           </h2>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ash-700">
-            Realtors, lenders, advisors, and trade businesses in Delaware,
-            Franklin, and Union counties. The kind of business where most of the
-            work arrives by referral, and where what someone finds online
-            decides whether the referral turns into a call.
+          <p className="mt-8 max-w-[52ch] text-xl leading-relaxed text-ash-700">
+            Realtors, lenders, advisors, and trade businesses across Delaware,
+            Franklin, and Union counties. Businesses where the work arrives by
+            referral, and what someone finds online decides whether that
+            referral turns into a call.
           </p>
 
-          <div className="mt-14 border-t border-ash-100 pt-10">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-ash-500">
-              Currently working with
-            </p>
-            <div className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
-              {["Frontier Technologies", ...CLIENT_ROSTER.map((c) => c.name)].map(
-                (name) => (
-                  <span
-                    key={name}
-                    className="font-serif text-xl tracking-tight text-black md:text-2xl"
-                  >
-                    {name}
-                  </span>
-                )
-              )}
-            </div>
+          <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-y border-ash-100 py-8">
+            {["Frontier Technologies", ...CLIENT_ROSTER.map((c) => c.name)].map(
+              (name) => (
+                <span
+                  key={name}
+                  className="font-serif text-2xl tracking-tight text-black md:text-3xl"
+                >
+                  {name}
+                </span>
+              )
+            )}
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {PHOTO_STRIP.slice(0, 4).map((photo) => (
+              <MediaFrame
+                key={photo.src}
+                image={photo.src}
+                alt={photo.alt}
+                aspect="portrait"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="bg-bone py-20 sm:py-24">
+      <section className="bg-paper py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-6">
           <Kicker className="mb-6">How it works</Kicker>
-          <h2 className="font-serif text-3xl font-black tracking-tighter text-black md:text-5xl">
-            Three steps, one of them yours.
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
+            Three steps. One of them yours.
           </h2>
-          <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3 lg:gap-14">
+          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-16">
             {STEPS.map((s) => (
               <div key={s.n} className="border-t border-ash-100 pt-8">
-                <span className="mb-5 block font-mono text-[10px] uppercase tracking-[0.3em] text-ash-300">
+                <span className="mb-5 block font-mono text-[11px] uppercase tracking-[0.3em] text-ash-300">
                   {s.n}
                 </span>
-                <h3 className="mb-3 font-serif text-2xl tracking-tight text-black">
+                <h3 className="mb-4 font-serif text-2xl tracking-tight text-black">
                   {s.title}
                 </h3>
-                <p className="text-base leading-relaxed text-ash-700">{s.body}</p>
+                <p className="text-lg leading-relaxed text-ash-700">{s.body}</p>
               </div>
             ))}
           </div>
@@ -202,21 +247,21 @@ export default function TrustAuditPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-paper py-20 sm:py-24">
+      <section className="bg-bone py-20 sm:py-28">
         <div className="mx-auto max-w-[980px] px-6">
           <Kicker className="mb-6">Before you start</Kicker>
-          <h2 className="font-serif text-3xl font-black tracking-tighter text-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-black tracking-tighter text-black md:text-6xl">
             Straight answers.
           </h2>
-          <div className="mt-10">
+          <div className="mt-12">
             {FAQ.map((item) => (
-              <div key={item.question} className="border-t border-ash-100 py-8">
-                <h3 className="mb-3 font-serif text-xl tracking-tight text-black md:text-2xl">
+              <div key={item.question} className="border-t border-ash-100 py-9">
+                <h3 className="mb-4 font-serif text-2xl tracking-tight text-black md:text-3xl">
                   {item.question}
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {item.answers.map((a, i) => (
-                    <p key={i} className="text-base leading-relaxed text-ash-700">
+                    <p key={i} className="text-lg leading-relaxed text-ash-700">
                       {a}
                     </p>
                   ))}
@@ -228,24 +273,41 @@ export default function TrustAuditPage() {
       </section>
 
       {/* Close */}
-      <section className="bg-black py-20 text-paper sm:py-24">
-        <div className="mx-auto max-w-[980px] px-6 text-center">
-          <p className="font-serif text-3xl leading-tight font-black tracking-tighter text-paper md:text-5xl">
+      <section className="bg-black py-20 text-paper sm:py-28">
+        <div className="mx-auto max-w-[820px] px-6 text-center">
+          <h2 className="mx-auto max-w-[22ch] font-serif text-4xl leading-tight font-black tracking-tighter text-paper md:text-6xl">
             You are already good at the work.{" "}
             <span className="italic text-gold-500">
               This tells you how it looks.
             </span>
-          </p>
-          <div className="mt-10">
-            <a
-              href="#top"
-              className="inline-block rounded-[2px] border border-paper bg-paper px-9 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-black transition-colors hover:bg-bone"
+          </h2>
+          <div className="mt-12">
+            <button
+              type="button"
+              data-open-audit
+              className="w-full rounded-[2px] border border-paper bg-paper px-10 py-5 font-mono text-[13px] uppercase tracking-[0.2em] text-black transition-colors hover:bg-bone sm:w-auto"
             >
-              Start the audit
-            </a>
+              Start my free audit
+            </button>
           </div>
+          <p className="mt-6 text-base text-ash-300">
+            Free, and the audit is yours whether we work together or not.
+          </p>
         </div>
       </section>
+
+      {/* Sticky bar on small screens, so the action is never scrolled away. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-shale bg-black/95 p-3 backdrop-blur sm:hidden">
+        <button
+          type="button"
+          data-open-audit
+          className="w-full rounded-[2px] border border-paper bg-paper px-6 py-4 font-mono text-[12px] uppercase tracking-[0.2em] text-black"
+        >
+          Start my free audit
+        </button>
+      </div>
+      {/* Room for the bar, so it never covers the last line of the page. */}
+      <div className="h-20 sm:hidden" aria-hidden="true" />
     </div>
   );
 }
