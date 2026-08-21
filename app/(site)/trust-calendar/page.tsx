@@ -58,7 +58,9 @@ export default function TrustCalendarPage() {
               </p>
             </div>
 
-            <div className="border border-shale bg-ink p-4 sm:p-6">
+            {/* Light, so the form reads against the dark section. The gold edge is
+                the same treatment the featured cards use elsewhere. */}
+            <div className="border border-ash-100 border-l-[3px] border-l-gold-500 bg-paper p-4 sm:p-6">
               <GhlForm />
             </div>
           </div>

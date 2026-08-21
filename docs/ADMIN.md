@@ -110,6 +110,29 @@ offer or the file changes.
 Make sure the automation attaches the file or links to it, and that the Drive
 file is shared as **anyone with the link** if you link rather than attach.
 
+## Form colours
+
+The card behind the form is light (`#FAF8F3`) with a gold edge, so set the form
+for a light background:
+
+| Setting | Hex |
+| --- | --- |
+| Form background | transparent, or `#FAF8F3` |
+| Heading text | `#0A0A0B` |
+| Field labels | `#4A463E` |
+| Field background | `#FFFFFF` |
+| Field text | `#0A0A0B` |
+| Placeholder | `#807A6E` |
+| Field border | `#E5DFD3` |
+| Field border, focused | `#5B27D4` |
+| Button background | `#0A0A0B` |
+| Button text | `#FAF8F3` |
+| Button hover | `#1F1D26` |
+| Fine print | `#807A6E` |
+
+Font DM Sans, radius 0 with 2px on the button, no shadow, and set the form's own
+padding to 0 since the card already frames it.
+
 ## If you would rather it were a pop-up
 
 The button currently opens the page. A modal on the home page is the other
