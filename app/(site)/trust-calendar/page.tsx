@@ -58,7 +58,7 @@ export default function TrustCalendarPage() {
               </p>
             </div>
 
-            <div className="border border-shale bg-ink p-8 sm:p-10">
+            <div className="border border-shale bg-ink p-4 sm:p-6">
               <GhlForm />
             </div>
           </div>
