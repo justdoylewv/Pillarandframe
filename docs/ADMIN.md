@@ -144,10 +144,36 @@ can be linked, indexed, and shared. Say the word and it is a small change.
 
 # The Trust Audit landing page
 
-`/trust-audit` is the lead-capture page. Four tap-to-answer questions, then
-name, email, business, and website. It sits outside the main site chrome on
-purpose: every nav link on a landing page is a way out of it, so the header
-carries the wordmark and one booking link and nothing else.
+`/trust-audit` is the lead-capture page. Five tap-to-answer questions, a
+read-out of what those answers already say, then name, email, business, and
+website. It sits outside the main site chrome on purpose: every nav link on a
+landing page is a way out of it, so the header carries the wordmark and one
+booking link and nothing else.
+
+## The questions are the rubric
+
+The audit scores five categories: **Findability, Proof, Voice, Answers,
+Freshness**. The survey asks about four of them directly, plus one question up
+front that sets which competitors we compare against. Freshness is the one we
+check without asking.
+
+That is the reason the survey is worth a minute to the person filling it in.
+They are not being sorted, they are being handed the framework, and the
+question about where they rank makes them go and look. Two of the answer sets
+are written so the honest answer is usually the uncomfortable one, which is the
+finding.
+
+Each option carries a `note`. The notes are shown back on the last step, above
+the name and email fields, so the payoff comes before the ask rather than two
+days after it. **Every note has to be true of the answer alone.** We have not
+looked at their business at that point, so a note may say what the answer
+implies and what we will go and check. It may not state anything about them as
+fact. Keep that rule if you edit the copy.
+
+To change a question, edit `STEPS` in `components/TrustAuditModal.tsx`. If you
+rename a field, rename it in `ANSWER_FIELDS` in `app/api/survey/route.ts` in the
+same sitting, or that answer reaches the webhook empty. If you add or drop a
+category, `CATEGORIES` in `app/trust-audit/page.tsx` has to match.
 
 ## Setup
 
@@ -164,9 +190,10 @@ The POST body:
 ```json
 {
   "business_type": "Real estate",
-  "lead_source": "Referrals and word of mouth",
-  "current_state": "A website, and that is about it",
-  "blocker": "No time",
+  "findability": "I did not look",
+  "proof": "A few months back",
+  "voice": "No",
+  "answers": "Why us and not the bigger name",
   "name": "Jane Smith",
   "email": "jane@example.com",
   "business": "Smith Realty",
@@ -191,6 +218,7 @@ again because our endpoint blinked. The response carries `delivered: false`.
 ## The promise on this page
 
 It commits to a written audit within two business days, scored out of a hundred
-across five categories, against two named competitors. That is a real
-deliverable someone has to produce by hand. Change the copy if the offer
-changes.
+across the five named categories, against two competitors we name and score the
+same way. That is a real deliverable someone has to produce by hand, and naming
+the rubric on the page means the scoring has to be consistent between one audit
+and the next. Change the copy if the offer changes.

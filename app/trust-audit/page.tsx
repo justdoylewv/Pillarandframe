@@ -21,6 +21,32 @@ const PROMISES = [
   "No call, no pitch, nothing to cancel",
 ];
 
+// The five scoring categories, in the order the survey asks about them. The
+// survey is the rubric, so these have to stay in step with STEPS in
+// components/TrustAuditModal.tsx.
+const CATEGORIES = [
+  {
+    name: "Findability",
+    body: "Whether you come up at all when somebody searches your category and your town.",
+  },
+  {
+    name: "Proof",
+    body: "Reviews, how recent they are, and whether anyone else vouches for the work.",
+  },
+  {
+    name: "Voice",
+    body: "Whether a stranger can hear you before they call you, or only read about you.",
+  },
+  {
+    name: "Answers",
+    body: "The question people ask right before they decide, and whether you answer it anywhere.",
+  },
+  {
+    name: "Freshness",
+    body: "The date on the last thing you published, which is the first thing a careful buyer checks.",
+  },
+];
+
 const INSIDE = [
   {
     n: "01",
@@ -42,8 +68,8 @@ const INSIDE = [
 const STEPS = [
   {
     n: "1",
-    title: "Answer four questions",
-    body: "About a minute. Nothing to book and nothing to schedule.",
+    title: "Answer five questions",
+    body: "Who you compete with, then four of the five things we score. About a minute, and nothing to schedule.",
   },
   {
     n: "2",
@@ -138,7 +164,8 @@ export default function TrustAuditPage() {
             </button>
           </div>
           <p className="mt-6 text-base text-ash-300">
-            Four questions, about a minute.
+            Five questions, about a minute. You get something back on the last
+            one.
           </p>
         </div>
       </section>
@@ -179,6 +206,32 @@ export default function TrustAuditPage() {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* The rubric, named. It is the same five things the survey asks
+              about, which is what makes answering it worth a minute. */}
+          <div className="mt-20 border-t border-ash-100 pt-12">
+            <h3 className="font-serif text-2xl tracking-tight text-black md:text-3xl">
+              The five categories
+            </h3>
+            <dl className="mt-8 grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
+              {CATEGORIES.map((c) => (
+                <div key={c.name} className="flex gap-5">
+                  <span
+                    className="mt-[11px] h-[6px] w-[6px] shrink-0 bg-gold-500"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <dt className="font-serif text-xl tracking-tight text-black">
+                      {c.name}
+                    </dt>
+                    <dd className="mt-2 text-lg leading-relaxed text-ash-700">
+                      {c.body}
+                    </dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>

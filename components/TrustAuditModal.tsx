@@ -9,58 +9,156 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * the hero button, the closing button, and the sticky mobile bar all drive the
  * same thing without prop-drilling a handler around the page.
  *
- * A modal rather than a panel in the layout: the survey gets the whole screen
- * and one question at a time, which is the reason a multi-step form converts
- * better than the same fields in a column.
+ * The questions are the rubric. Each one is a category we score, in the order
+ * we score it, so answering the survey teaches the framework the audit is
+ * written against. That is the point: a survey that only sorts leads gives the
+ * person nothing, and they can feel it.
+ *
+ * Every option carries a note, and the notes are shown back before we ask for
+ * an email. Nothing in them is invented. Each is a true statement about the
+ * answer that was given, which is the only claim we can make before we have
+ * looked at anything.
  */
 
-interface Choice {
-  name: string;
-  question: string;
-  options: string[];
+interface Option {
+  label: string;
+  // Shown in the read-out. Written to be true of the answer alone, since at
+  // this point we have not looked at their business.
+  note: string;
 }
 
-const STEPS: Choice[] = [
+interface Step {
+  name: string;
+  // The scoring category. Named on the page too, so the two match.
+  category: string;
+  question: string;
+  help?: string;
+  options: Option[];
+}
+
+const STEPS: Step[] = [
   {
     name: "business_type",
-    question: "What kind of business do you run?",
+    category: "The comparison",
+    question: "What kind of business is this?",
+    help: "So we know who to hold you up against.",
     options: [
-      "Real estate",
-      "Mortgage or lending",
-      "Legal, accounting, or financial",
-      "Home or trade services",
-      "Something else",
+      {
+        label: "Real estate",
+        note: "We will score two agents working your area the same way, and name them.",
+      },
+      {
+        label: "Mortgage or lending",
+        note: "We will score two lenders working your area the same way, and name them.",
+      },
+      {
+        label: "Legal, accounting, or financial",
+        note: "We will score two firms in your area the same way, and name them.",
+      },
+      {
+        label: "Home or trade services",
+        note: "We will score two businesses in your trade nearby the same way, and name them.",
+      },
+      {
+        label: "Something else",
+        note: "We will find two businesses competing for the same work and score them the same way.",
+      },
     ],
   },
   {
-    name: "lead_source",
-    question: "Where does most of your business come from today?",
+    name: "findability",
+    category: "Findability",
+    question: "Search your category and your town. Where do you land?",
+    help: "Go ahead and try it. We will wait.",
     options: [
-      "Referrals and word of mouth",
-      "Google and search",
-      "Social media",
-      "Paid ads",
-      "A mix, or hard to say",
+      {
+        label: "In the top few results",
+        note: "Findability is not your problem, so the audit will spend its time on what people find once they arrive. That is the half almost nobody checks.",
+      },
+      {
+        label: "Somewhere further down page one",
+        note: "Close enough that the gap is worth chasing. Usually it comes down to two or three things, and we will name which ones are holding the position.",
+      },
+      {
+        label: "I could not find myself at all",
+        note: "More common than people expect, and it is the finding that changes the most. We will work out whether it is the profile, the site, or the category you are filed under.",
+      },
+      {
+        label: "I did not look",
+        note: "Then this is the first thing in your audit. We run the search from outside any account, which is the only way to see what a stranger sees rather than what Google shows you.",
+      },
     ],
   },
   {
-    name: "current_state",
-    question: "What do you have online right now?",
+    name: "proof",
+    category: "Proof",
+    question: "When did your last review come in?",
+    help: "A rough guess is fine.",
     options: [
-      "Not much, honestly",
-      "A website, and that is about it",
-      "Website and a Google profile",
-      "All of it, but it has gone stale",
+      {
+        label: "Within the last week or two",
+        note: "Current, which is the part that counts. The next question is whether you reply to them, and most people do not.",
+      },
+      {
+        label: "Sometime in the last month",
+        note: "Healthy. What we watch for is the gap, because a quiet stretch of two or three months is the thing a stranger reads as a business slowing down.",
+      },
+      {
+        label: "A few months back",
+        note: "This is usually the fastest thing on the list to fix. Recency counts for more than the total, and a newest review from months ago undercuts a wall of five stars above it.",
+      },
+      {
+        label: "Longer than that, or I am not sure",
+        note: "Worth knowing for certain. We will pull the actual date, and the dates your two competitors are showing next to yours.",
+      },
     ],
   },
   {
-    name: "blocker",
-    question: "What has kept you from fixing it?",
+    name: "voice",
+    category: "Voice",
+    question: "Is there a video of you anywhere a stranger could find?",
+    help: "Anything counts. It does not have to be good.",
     options: [
-      "No time",
-      "I would not know what to say",
-      "I hate being on camera",
-      "We tried, and it fizzled out",
+      {
+        label: "Yes, on our website",
+        note: "Then the question is what it does. A lot of them say the name of the business over music and answer nothing, and we will tell you plainly which kind yours is.",
+      },
+      {
+        label: "On social somewhere, probably buried",
+        note: "Then it is doing close to nothing. A video that cannot be found on the page where the decision happens counts about the same as no video.",
+      },
+      {
+        label: "Only something old I would rather not point to",
+        note: "Old still beats nothing, but it dates you, and an outdated one can cost more than it returns. We will say whether it is worth keeping up.",
+      },
+      {
+        label: "No",
+        note: "Then nobody hears your voice until the first call. For work that arrives by referral, that is the whole distance between being recommended and being chosen.",
+      },
+    ],
+  },
+  {
+    name: "answers",
+    category: "Answers",
+    question: "What do people ask right before they decide?",
+    help: "The last thing standing between a conversation and a yes.",
+    options: [
+      {
+        label: "What it is going to cost",
+        note: "Then price is the conversation, and right now it is happening without you in the room. There is a way to answer it before the call that does not mean publishing a number.",
+      },
+      {
+        label: "Whether we have done this before",
+        note: "A proof problem, and the most fixable one here. It takes one client willing to say it out loud, on camera, in their own words.",
+      },
+      {
+        label: "How long it takes",
+        note: "A timeline question is a risk question underneath. People are asking how long they are exposed, and a plain answer published where they can find it settles it early.",
+      },
+      {
+        label: "Why us and not the bigger name",
+        note: "Then you are being compared on a page you did not write. This is the piece we would make first, because it is the one doing the most work.",
+      },
     ],
   },
 ];
@@ -126,9 +224,12 @@ export default function TrustAuditModal() {
   }, [open, close]);
 
   // Move focus onto each new question, so keyboard and screen reader users are
-  // not left behind when the step swaps under them.
+  // not left behind when the step swaps under them. The card scrolls back to
+  // the top with it, since the read-out step is taller than a question.
   useEffect(() => {
-    if (open) headingRef.current?.focus();
+    if (!open) return;
+    headingRef.current?.focus();
+    cardRef.current?.parentElement?.scrollTo({ top: 0 });
   }, [open, step, done]);
 
   function choose(name: string, value: string) {
@@ -160,6 +261,14 @@ export default function TrustAuditModal() {
 
   const current = STEPS[step - 1];
   const pct = Math.round((step / TOTAL) * 100);
+
+  // What they told us, paired back with the note for the option they picked.
+  // Skips the first question, which sets the comparison rather than scoring
+  // anything, and appears at the top of the read-out on its own.
+  const readout = STEPS.map((s) => {
+    const picked = s.options.find((o) => o.label === answers[s.name]);
+    return picked ? { category: s.category, ...picked } : null;
+  }).filter(Boolean) as { category: string; label: string; note: string }[];
 
   return (
     <div
@@ -211,9 +320,13 @@ export default function TrustAuditModal() {
               That is everything we need.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-ash-700">
-              Your audit lands in your inbox within two business days. A real
-              write-up of how you show up online right now, scored against two
-              competitors we name.
+              Your audit lands in your inbox within two business days. All five
+              categories scored, the working shown, and two competitors named and
+              scored the same way.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ash-700">
+              The questions you just answered are four of the five things we
+              score. Anything you fix before the audit arrives is a point back.
             </p>
             <button
               type="button"
@@ -225,7 +338,8 @@ export default function TrustAuditModal() {
           </div>
         ) : (
           <>
-            <div className="h-[3px] w-full bg-ash-100" role="presentation">
+            {/* Stops short of the close button rather than running under it. */}
+            <div className="mr-10 h-[3px] bg-ash-100" role="presentation">
               <div
                 className="h-full bg-gold-500 transition-all duration-300"
                 style={{ width: `${pct}%` }}
@@ -233,7 +347,9 @@ export default function TrustAuditModal() {
             </div>
 
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-ash-500">
-              {current ? `Question ${step} of ${TOTAL}` : "Last step"}
+              {current
+                ? `${current.category} · ${step} of ${TOTAL}`
+                : `Last step · ${TOTAL} of ${TOTAL}`}
             </p>
 
             {current ? (
@@ -245,21 +361,26 @@ export default function TrustAuditModal() {
                 >
                   {current.question}
                 </h2>
+                {current.help && (
+                  <p className="mt-3 text-base leading-relaxed text-ash-700">
+                    {current.help}
+                  </p>
+                )}
                 <div className="mt-7 flex flex-col gap-2.5">
                   {current.options.map((opt) => {
-                    const selected = answers[current.name] === opt;
+                    const selected = answers[current.name] === opt.label;
                     return (
                       <button
-                        key={opt}
+                        key={opt.label}
                         type="button"
-                        onClick={() => choose(current.name, opt)}
+                        onClick={() => choose(current.name, opt.label)}
                         className={`min-h-[56px] rounded-[2px] border px-5 py-4 text-left text-[17px] font-medium transition-colors ${
                           selected
                             ? "border-gold-500 bg-gold-500 text-black"
                             : "border-ash-100 bg-white text-black hover:border-black"
                         }`}
                       >
-                        {opt}
+                        {opt.label}
                       </button>
                     );
                   })}
@@ -272,8 +393,32 @@ export default function TrustAuditModal() {
                   tabIndex={-1}
                   className="mt-3 font-serif text-[1.6rem] leading-tight font-black tracking-tighter text-black outline-none md:text-3xl"
                 >
-                  Where should we send it?
+                  Here is what you just told us.
                 </h2>
+
+                {/* The payoff, before the ask rather than after it. Every line
+                    is true of the answer given, which is all we can honestly
+                    say before looking at anything. */}
+                <ul className="mt-7 space-y-5 border-y border-ash-100 py-7">
+                  {readout.map((item) => (
+                    <li key={item.category}>
+                      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold-700">
+                        {item.category}
+                      </p>
+                      <p className="mt-2 text-[17px] font-medium leading-snug text-black">
+                        {item.label}
+                      </p>
+                      <p className="mt-2 text-base leading-relaxed text-ash-700">
+                        {item.note}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-7 text-lg leading-relaxed text-ash-700">
+                  The audit puts a number on each of those, shows the working,
+                  and scores two competitors beside you. Where should we send it?
+                </p>
 
                 {FIELDS.map((f) => (
                   <div key={f.id} className="mt-6">

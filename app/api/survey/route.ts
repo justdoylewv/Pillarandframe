@@ -12,11 +12,15 @@ function webhook(): string | null {
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+// The survey's five questions, which are also the five categories the audit
+// scores. Keep these in step with STEPS in components/TrustAuditModal.tsx: a
+// field renamed there and not here arrives at the webhook empty.
 const ANSWER_FIELDS = [
   "business_type",
-  "lead_source",
-  "current_state",
-  "blocker",
+  "findability",
+  "proof",
+  "voice",
+  "answers",
 ] as const;
 
 export async function POST(request: Request) {
