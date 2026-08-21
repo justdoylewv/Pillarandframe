@@ -144,11 +144,10 @@ can be linked, indexed, and shared. Say the word and it is a small change.
 
 # The Trust Audit landing page
 
-`/trust-audit` is the lead-capture page. Five tap-to-answer questions, a
-read-out of what those answers already say, then name, email, business, and
-website. It sits outside the main site chrome on purpose: every nav link on a
-landing page is a way out of it, so the header carries the wordmark and one
-booking link and nothing else.
+`/trust-audit` is the lead-capture page. Five tap-to-answer questions, then
+name, email, business, and website. It sits outside the main site chrome on
+purpose: every nav link on a landing page is a way out of it, so the header
+carries the wordmark and one booking link and nothing else.
 
 ## The questions are the rubric
 
@@ -163,12 +162,28 @@ question about where they rank makes them go and look. Two of the answer sets
 are written so the honest answer is usually the uncomfortable one, which is the
 finding.
 
-Each option carries a `note`. The notes are shown back on the last step, above
-the name and email fields, so the payoff comes before the ask rather than two
-days after it. **Every note has to be true of the answer alone.** We have not
-looked at their business at that point, so a note may say what the answer
-implies and what we will go and check. It may not state anything about them as
-fact. Keep that rule if you edit the copy.
+## The finding on the last step
+
+Each option carries a `note` and a `weight`. On the last step, above the name
+and email fields, we show **one** note: the answer with the heaviest weight,
+with an earlier question breaking a tie. So somebody who cannot be found at all
+hears about that rather than about their reviews.
+
+One rather than all five, because the last step is where people abandon and a
+recap of what they just clicked through is not worth the height it costs. That
+choice is what keeps the step to roughly one screen instead of two.
+
+The weights, roughly: 5 is invisible in search, 4 is a real gap, 3 is a gap
+worth naming, 2 is minor, 1 is informative but not a failure, and 0 means the
+answer is healthy and never leads. The question about what people ask before
+deciding is 1 across the board, since no answer to it is a failure. That is
+what leads when everything else comes back clean, so there is always something
+to show.
+
+**Every note has to be true of the answer alone.** We have not looked at their
+business at that point, so a note may say what the answer implies and what we
+will go and check. It may not state anything about them as fact. Keep that rule
+if you edit the copy.
 
 To change a question, edit `STEPS` in `components/TrustAuditModal.tsx`. If you
 rename a field, rename it in `ANSWER_FIELDS` in `app/api/survey/route.ts` in the

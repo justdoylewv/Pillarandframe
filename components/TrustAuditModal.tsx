@@ -14,17 +14,24 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * written against. That is the point: a survey that only sorts leads gives the
  * person nothing, and they can feel it.
  *
- * Every option carries a note, and the notes are shown back before we ask for
- * an email. Nothing in them is invented. Each is a true statement about the
- * answer that was given, which is the only claim we can make before we have
+ * Every option carries a note, and one of them is shown back before we ask for
+ * an email. One rather than all five: the last step is where people abandon,
+ * and a recap of what someone just clicked through is not worth the height it
+ * costs there. Nothing in the notes is invented. Each is a true statement about
+ * the answer that was given, which is the only claim we can make before we have
  * looked at anything.
  */
 
 interface Option {
   label: string;
-  // Shown in the read-out. Written to be true of the answer alone, since at
-  // this point we have not looked at their business.
+  // Shown on the last step if this is the answer we lead with. Written to be
+  // true of the answer alone, since at this point we have not looked at their
+  // business.
   note: string;
+  // How much this answer costs them, roughly. The heaviest one across all the
+  // answers is the note we show. Zero means the answer is fine and there is
+  // nothing to lead with.
+  weight: number;
 }
 
 interface Step {
@@ -43,25 +50,32 @@ const STEPS: Step[] = [
     question: "What kind of business is this?",
     help: "So we know who to hold you up against.",
     options: [
+      // Weight 0 throughout. This sets the comparison rather than scoring
+      // anything, so it is never the finding we lead with.
       {
         label: "Real estate",
         note: "We will score two agents working your area the same way, and name them.",
+        weight: 0,
       },
       {
         label: "Mortgage or lending",
         note: "We will score two lenders working your area the same way, and name them.",
+        weight: 0,
       },
       {
         label: "Legal, accounting, or financial",
         note: "We will score two firms in your area the same way, and name them.",
+        weight: 0,
       },
       {
         label: "Home or trade services",
         note: "We will score two businesses in your trade nearby the same way, and name them.",
+        weight: 0,
       },
       {
         label: "Something else",
         note: "We will find two businesses competing for the same work and score them the same way.",
+        weight: 0,
       },
     ],
   },
@@ -74,18 +88,22 @@ const STEPS: Step[] = [
       {
         label: "In the top few results",
         note: "Findability is not your problem, so the audit will spend its time on what people find once they arrive. That is the half almost nobody checks.",
+        weight: 0,
       },
       {
         label: "Somewhere further down page one",
         note: "Close enough that the gap is worth chasing. Usually it comes down to two or three things, and we will name which ones are holding the position.",
+        weight: 2,
       },
       {
         label: "I could not find myself at all",
         note: "More common than people expect, and it is the finding that changes the most. We will work out whether it is the profile, the site, or the category you are filed under.",
+        weight: 5,
       },
       {
         label: "I did not look",
         note: "Then this is the first thing in your audit. We run the search from outside any account, which is the only way to see what a stranger sees rather than what Google shows you.",
+        weight: 4,
       },
     ],
   },
@@ -98,18 +116,22 @@ const STEPS: Step[] = [
       {
         label: "Within the last week or two",
         note: "Current, which is the part that counts. The next question is whether you reply to them, and most people do not.",
+        weight: 0,
       },
       {
         label: "Sometime in the last month",
         note: "Healthy. What we watch for is the gap, because a quiet stretch of two or three months is the thing a stranger reads as a business slowing down.",
+        weight: 0,
       },
       {
         label: "A few months back",
         note: "This is usually the fastest thing on the list to fix. Recency counts for more than the total, and a newest review from months ago undercuts a wall of five stars above it.",
+        weight: 3,
       },
       {
         label: "Longer than that, or I am not sure",
         note: "Worth knowing for certain. We will pull the actual date, and the dates your two competitors are showing next to yours.",
+        weight: 4,
       },
     ],
   },
@@ -122,18 +144,22 @@ const STEPS: Step[] = [
       {
         label: "Yes, on our website",
         note: "Then the question is what it does. A lot of them say the name of the business over music and answer nothing, and we will tell you plainly which kind yours is.",
+        weight: 0,
       },
       {
         label: "On social somewhere, probably buried",
         note: "Then it is doing close to nothing. A video that cannot be found on the page where the decision happens counts about the same as no video.",
+        weight: 3,
       },
       {
         label: "Only something old I would rather not point to",
         note: "Old still beats nothing, but it dates you, and an outdated one can cost more than it returns. We will say whether it is worth keeping up.",
+        weight: 3,
       },
       {
         label: "No",
         note: "Then nobody hears your voice until the first call. For work that arrives by referral, that is the whole distance between being recommended and being chosen.",
+        weight: 4,
       },
     ],
   },
@@ -143,21 +169,28 @@ const STEPS: Step[] = [
     question: "What do people ask right before they decide?",
     help: "The last thing standing between a conversation and a yes.",
     options: [
+      // Weight 1 throughout. No answer here is a failure, so none of them
+      // outranks a real gap, but every one is worth saying something about.
+      // This is what leads when the rest of the answers are healthy.
       {
         label: "What it is going to cost",
         note: "Then price is the conversation, and right now it is happening without you in the room. There is a way to answer it before the call that does not mean publishing a number.",
+        weight: 1,
       },
       {
         label: "Whether we have done this before",
         note: "A proof problem, and the most fixable one here. It takes one client willing to say it out loud, on camera, in their own words.",
+        weight: 1,
       },
       {
         label: "How long it takes",
         note: "A timeline question is a risk question underneath. People are asking how long they are exposed, and a plain answer published where they can find it settles it early.",
+        weight: 1,
       },
       {
         label: "Why us and not the bigger name",
         note: "Then you are being compared on a page you did not write. This is the piece we would make first, because it is the one doing the most work.",
+        weight: 1,
       },
     ],
   },
@@ -262,13 +295,18 @@ export default function TrustAuditModal() {
   const current = STEPS[step - 1];
   const pct = Math.round((step / TOTAL) * 100);
 
-  // What they told us, paired back with the note for the option they picked.
-  // Skips the first question, which sets the comparison rather than scoring
-  // anything, and appears at the top of the read-out on its own.
-  const readout = STEPS.map((s) => {
-    const picked = s.options.find((o) => o.label === answers[s.name]);
-    return picked ? { category: s.category, ...picked } : null;
-  }).filter(Boolean) as { category: string; label: string; note: string }[];
+  // One finding, not five. The heaviest answer wins, and an earlier question
+  // breaks a tie, so a business that cannot be found hears about that rather
+  // than about its reviews.
+  const lead = STEPS.reduce<{ category: string; note: string; weight: number } | null>(
+    (best, s) => {
+      const picked = s.options.find((o) => o.label === answers[s.name]);
+      if (!picked || picked.weight === 0) return best;
+      if (best && best.weight >= picked.weight) return best;
+      return { category: s.category, note: picked.note, weight: picked.weight };
+    },
+    null
+  );
 
   return (
     <div
@@ -393,32 +431,22 @@ export default function TrustAuditModal() {
                   tabIndex={-1}
                   className="mt-3 font-serif text-[1.6rem] leading-tight font-black tracking-tighter text-black outline-none md:text-3xl"
                 >
-                  Here is what you just told us.
+                  Where should we send it?
                 </h2>
 
-                {/* The payoff, before the ask rather than after it. Every line
-                    is true of the answer given, which is all we can honestly
-                    say before looking at anything. */}
-                <ul className="mt-7 space-y-5 border-y border-ash-100 py-7">
-                  {readout.map((item) => (
-                    <li key={item.category}>
-                      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold-700">
-                        {item.category}
-                      </p>
-                      <p className="mt-2 text-[17px] font-medium leading-snug text-black">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 text-base leading-relaxed text-ash-700">
-                        {item.note}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-7 text-lg leading-relaxed text-ash-700">
-                  The audit puts a number on each of those, shows the working,
-                  and scores two competitors beside you. Where should we send it?
-                </p>
+                {/* One finding, before the ask rather than after it. It is true
+                    of the answer given, which is all we can honestly say before
+                    looking at anything. */}
+                {lead && (
+                  <div className="mt-6 border-l-[3px] border-l-gold-500 bg-bone px-5 py-4">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold-700">
+                      Where we will start &middot; {lead.category}
+                    </p>
+                    <p className="mt-2 text-base leading-relaxed text-ash-700">
+                      {lead.note}
+                    </p>
+                  </div>
+                )}
 
                 {FIELDS.map((f) => (
                   <div key={f.id} className="mt-6">
