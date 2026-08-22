@@ -35,6 +35,7 @@ const COLUMNS: {
     heading: "Studio",
     links: [
       { label: "About", href: "/about" },
+      { label: "Service area", href: "/service-area" },
       { label: "Book a call", href: "/book" },
     ],
   },

@@ -112,7 +112,7 @@ export const COUNTIES = ["Delaware", "Franklin", "Union"];
 export const SERVICE_AREA_SENTENCE =
   "Based in Delaware, Ohio, serving Columbus and the surrounding counties of Delaware, Franklin, and Union.";
 
-// The towns we serve, ordered outward from Delaware.
+// The towns we serve, grouped by county and ordered outward from Delaware.
 //
 // These must match the service area set on the Google Business Profile
 // exactly. Google reads a mismatch between the profile and the site as
@@ -120,31 +120,49 @@ export const SERVICE_AREA_SENTENCE =
 // nothing behind it. If you add or remove a town on the profile, change it
 // here in the same sitting.
 //
+// Grouped rather than flat so the service area page can lay them out by
+// county, which reads as a real place description instead of a keyword list.
+// A run-on list of town names separated by dots is the oldest local SEO tell
+// there is, and it is the thing that makes a page look automated.
+//
 // Columbus is on the list because we do serve it. That is separate from what
 // we expect to rank for: proximity means the map pack is realistic around
 // Delaware and the northern suburbs, and Columbus proper is not a promise.
-export const SERVICE_AREA_TOWNS: string[] = [
-  // Delaware County, closest to home
-  "Delaware",
-  "Powell",
-  "Lewis Center",
-  "Sunbury",
-  "Galena",
-  "Ostrander",
-  // Franklin County
-  "Westerville",
-  "Worthington",
-  "Dublin",
-  "New Albany",
-  "Upper Arlington",
-  "Hilliard",
-  "Columbus",
-  // Union County
-  "Marysville",
-  "Plain City",
-  "Richwood",
-  "Milford Center",
+export const SERVICE_AREA: { county: string; towns: string[] }[] = [
+  {
+    county: "Delaware",
+    towns: [
+      "Delaware",
+      "Powell",
+      "Lewis Center",
+      "Sunbury",
+      "Galena",
+      "Ostrander",
+    ],
+  },
+  {
+    county: "Franklin",
+    towns: [
+      "Westerville",
+      "Worthington",
+      "Dublin",
+      "New Albany",
+      "Upper Arlington",
+      "Hilliard",
+      "Columbus",
+    ],
+  },
+  {
+    county: "Union",
+    towns: ["Marysville", "Plain City", "Richwood", "Milford Center"],
+  },
 ];
+
+// Flat, for the schema and anywhere a plain list is wanted. Derived so the
+// two can never disagree.
+export const SERVICE_AREA_TOWNS: string[] = SERVICE_AREA.flatMap(
+  (group) => group.towns
+);
 
 // ---------------------------------------------------------------------------
 // Contact

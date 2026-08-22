@@ -9,9 +9,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return [{ url: SITE_URL, changeFrequency: "daily", priority: 1 }];
   }
 
+  // Stamped at build time. A sitemap without dates gives a crawler no reason
+  // to recheck anything, and every deploy is a genuine rebuild of these pages.
+  const lastModified = new Date();
+
   const staticUrls: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/engine`, changeFrequency: "monthly", priority: 0.9 },
+    {
+      url: `${SITE_URL}/service-area`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     { url: `${SITE_URL}/work`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/book`, changeFrequency: "monthly", priority: 0.7 },
@@ -23,5 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticUrls, ...caseStudyUrls];
+  return [...staticUrls, ...caseStudyUrls].map((entry) => ({
+    lastModified,
+    ...entry,
+  }));
 }

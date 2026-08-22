@@ -9,6 +9,7 @@ import ServiceArea from "@/components/ServiceArea";
 import Editable from "@/components/Editable";
 import { BOOKING_URL, SITE_NAME, SITE_URL } from "@/lib/content/site";
 import { faqSchema, serviceSchema } from "@/lib/content/schema";
+import { BUYING_QUESTIONS, toFaqItems } from "@/lib/content/questions";
 import { getCaseStudy } from "@/lib/content/caseStudies";
 import { HERO_PHOTO, PHOTO_STRIP, WORK_PAIR } from "@/lib/content/photos";
 
@@ -173,7 +174,17 @@ const TIMELINE = [
   },
 ];
 
+// Two kinds of question sit in this list, on purpose.
+//
+// The first few are the ones people type: cost, timeline, and whether to hire a
+// freelancer instead. Those are written to be lifted whole by an assistant, so
+// each answer stands on its own without the page around it, and they lead
+// because that is also the order a buyer wants them in.
+//
+// The rest are objections. Nobody searches "I am terrible on camera", and it
+// is still the thing standing between a reader and a call, so it stays.
 const FAQ: { question: string; answers: string[] }[] = [
+  ...toFaqItems(BUYING_QUESTIONS),
   {
     question: "How does this attract better clients?",
     answers: [
