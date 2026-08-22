@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Kicker from "@/components/Kicker";
 import JsonLd from "@/components/JsonLd";
 import CtaButton from "@/components/CtaButton";
@@ -13,6 +14,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/content/site";
+import { TOWNS } from "@/lib/content/towns";
 
 // One page for the whole service area, rather than one page per town.
 //
@@ -100,20 +102,35 @@ export default function ServiceAreaPage() {
                   {group.county} County
                 </h3>
                 <ul className="mt-6 space-y-3">
-                  {group.towns.map((town) => (
-                    <li
-                      key={town}
-                      className="flex items-baseline gap-4 text-lg leading-relaxed text-ash-700"
-                    >
-                      <span
-                        className="h-[5px] w-[5px] shrink-0 translate-y-[-3px] bg-gold-500"
-                        aria-hidden="true"
-                      />
-                      <span>
-                        {town}, {BASE_REGION}
-                      </span>
-                    </li>
-                  ))}
+                  {group.towns.map((town) => {
+                    // A town links to its own page only once it has a film to
+                    // carry one. Until then it is text here, which is the
+                    // honest version rather than a link to a thin page.
+                    const page = TOWNS.find((t) => t.name === town);
+                    return (
+                      <li
+                        key={town}
+                        className="flex items-baseline gap-4 text-lg leading-relaxed text-ash-700"
+                      >
+                        <span
+                          className="h-[5px] w-[5px] shrink-0 translate-y-[-3px] bg-gold-500"
+                          aria-hidden="true"
+                        />
+                        {page ? (
+                          <Link
+                            href={`/service-area/${page.slug}`}
+                            className="text-black underline decoration-ash-300 underline-offset-4 transition-colors hover:decoration-black"
+                          >
+                            {town}, {BASE_REGION}
+                          </Link>
+                        ) : (
+                          <span>
+                            {town}, {BASE_REGION}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

@@ -237,3 +237,98 @@ across the five named categories, against two competitors we name and score the
 same way. That is a real deliverable someone has to produce by hand, and naming
 the rubric on the page means the scoring has to be consistent between one audit
 and the next. Change the copy if the offer changes.
+
+
+---
+
+# Local search and AI answers
+
+Two things drive this: the questions the site answers, and where the towns
+live. Neither needs a blog.
+
+## The questions
+
+`lib/content/questions.ts` holds the questions people actually type. The FAQs
+elsewhere on the site are objection handling, which is a different job: "I am
+terrible on camera" belongs on a sales page and nobody has ever searched it.
+
+**The rule that makes an answer citable: the first paragraph has to stand
+completely alone.** An assistant lifts one paragraph and shows it without the
+question above it, without the page around it, and without the sentence before
+it. So a lead answer names its subject instead of saying "we", carries its own
+numbers, and depends on nothing earlier. Forty to eighty words: shorter reads
+as a stub, longer gets cut mid-thought.
+
+Anything that needs the page around it goes in `more`. It renders and is added
+to the schema, but it is not doing the retrieval work.
+
+**Every number has to be true and checkable somewhere a human can see it.** No
+invented market rates, no made-up turnaround averages, no "most businesses
+see" statistics. A fabricated figure that gets picked up is then attributed to
+us in places we cannot correct.
+
+`BUYING_QUESTIONS` renders at the top of the home page FAQ. `AREA_QUESTIONS`
+renders on the service area page and on every town page.
+
+## Why there is one service area page and not seventeen
+
+The obvious move is a page per town with the name swapped. That pattern is
+named in Google's own spam policy as a doorway page, and assistants are worse
+for it than search is, because near-duplicates get collapsed before anything
+is cited. The whole domain can be dragged down by it.
+
+The test a town page has to pass: **is there anything on it that somebody in
+that town could not have read on the page for the next town over?**
+
+So `/service-area` covers all seventeen towns on one legitimate page, and town
+pages exist only where there is a City Spotlight Ohio film for that town. A
+film passes the test on its own. It is footage of that place, a transcript
+full of that town's specifics, and something no competitor can copy.
+
+## Adding a town page
+
+`TOWNS` in `lib/content/towns.ts` is empty, so the route builds nothing today.
+Add an entry and the page, the sitemap entry, and the link from the service
+area page all appear together.
+
+Every field is required. There is no partial entry, because a page without a
+transcript cannot be read by the crawlers this is for, and one without an
+upload date is not eligible for a video result.
+
+| Field | What it is |
+| --- | --- |
+| `slug` | URL segment, lowercase and hyphenated |
+| `name` | Must match a town in `SERVICE_AREA` exactly |
+| `county` | Without the word "County" |
+| `intro` | What is true about working here that is not true of the next town over. If it could be pasted onto another town's page unchanged, the page is not ready. |
+| `film.url` | The YouTube URL for the City Spotlight film |
+| `film.title` | As published |
+| `film.description` | One or two sentences on what it is about |
+| `film.uploadDate` | ISO date it went live |
+| `film.transcript` | The spoken words. Newlines become paragraphs. |
+| `clients` | Optional. Businesses filmed there, by name. |
+
+Two build-time guards, so a mistake fails the build rather than shipping:
+
+- A town not listed in `SERVICE_AREA` stops the build by name. Add it to the
+  service area and the Google Business Profile first.
+- An unknown slug returns 404 rather than rendering an empty page.
+
+## What the site cannot do on its own
+
+Worth being straight about: for a query like "best video production company in
+Columbus", an assistant assembles its answer mostly from **other people's**
+pages, not yours. Directories, chamber listings, local press, podcast
+appearances, and roundups are the input it reads. Your own site establishes
+what you are and what you charge, and it cannot vote for itself.
+
+The highest-return work is off this repository:
+
+1. Google Business Profile: categories, services, photos, and posts, with
+   review recency mattering more than review count.
+2. Consistent name, description, and service area everywhere the business is
+   listed. The sentence in `SERVICE_AREA_SENTENCE` is the one to paste.
+3. Getting named on local pages that already rank: chamber, sponsorships,
+   supplier and partner sites, local news.
+4. `SAME_AS` in `lib/content/site.ts`, filled in as profiles go live.
+   LinkedIn and YouTube are the two that move the needle most.

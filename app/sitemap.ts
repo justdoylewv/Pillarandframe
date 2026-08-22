@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { COMING_SOON, SITE_URL } from "@/lib/content/site";
 import { CASE_STUDIES } from "@/lib/content/caseStudies";
+import { TOWNS } from "@/lib/content/towns";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // While the holding page is up, every route serves the same thing. Only
@@ -32,7 +33,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticUrls, ...caseStudyUrls].map((entry) => ({
+  // Empty until a town has a City Spotlight film to carry its page. Listed
+  // automatically once one does, so adding a film is a single data edit.
+  const townUrls: MetadataRoute.Sitemap = TOWNS.map((t) => ({
+    url: `${SITE_URL}/service-area/${t.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticUrls, ...townUrls, ...caseStudyUrls].map((entry) => ({
     lastModified,
     ...entry,
   }));
