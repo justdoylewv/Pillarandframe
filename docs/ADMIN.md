@@ -332,3 +332,83 @@ The highest-return work is off this repository:
    supplier and partner sites, local news.
 4. `SAME_AS` in `lib/content/site.ts`, filled in as profiles go live.
    LinkedIn and YouTube are the two that move the needle most.
+
+
+---
+
+# Legal pages and A2P 10DLC
+
+`/privacy` and `/terms` exist for A2P 10DLC registration, which is what lets a
+GoHighLevel number send text messages that actually arrive.
+
+## Not legal advice
+
+These were written to meet what carriers check for and to describe what this
+site truly does. They are not a substitute for a lawyer reading them. Before
+registering, have somebody qualified look at the disclaimer, the limitation of
+liability, and the governing law sections in particular.
+
+## Fill these in before registering
+
+Three constants in `lib/content/site.ts`. The pages read fine without them and
+are **not ready to submit** until they are set.
+
+| Constant | Why it matters |
+| --- | --- |
+| `LEGAL_ENTITY_NAME` | The registered legal name, with its entity suffix. Carriers compare the name on the privacy policy against the name on the campaign, and a mismatch is a common rejection. Empty falls back to "Pillar & Frame", which is the trading name, not the legal one. |
+| `BUSINESS_ADDRESS` | A postal address, as an array of lines. A PO box or registered agent address is fine. Empty omits the address block rather than printing a placeholder. |
+| `LEGAL_EFFECTIVE_DATE` | Update whenever the substance changes, not for a typo. |
+
+## Why these two pages are not behind the holding page
+
+`middleware.ts` has an `ALWAYS_PUBLIC` list. A carrier reviewing the
+registration opens these from a plain link, and behind the gate they would
+serve the holding page and the registration would fail. They answer the same
+way whatever the launch switch is set to.
+
+The same reasoning puts the chat widget in `app/layout.tsx` rather than in the
+site chrome: it has to be live on whatever is actually published today.
+
+## What a carrier looks for, and where it is
+
+| Requirement | Where |
+| --- | --- |
+| Mobile data not shared or sold | Privacy, section 4, in the boxed clause |
+| Opt-in consent never shared | Privacy, section 4 |
+| Program description | Terms, section 3 |
+| Message frequency varies | Terms, section 3 |
+| Message and data rates may apply | Terms, section 3 |
+| STOP to opt out | Terms, section 3 |
+| HELP for help, with contact | Terms, section 3 |
+| Carriers not liable | Terms, section 3 |
+| Consent not a condition of purchase | Terms, section 3, in the boxed clause |
+| Business contactable | Email and phone in both footers and both pages |
+
+The boxed clause in privacy section 4 is quoted in the wording carriers
+recognise. **Do not paraphrase it.** Reviewers scan for that phrasing, and a
+tidier rewrite is a slower approval.
+
+## Forms and phone numbers
+
+The chat widget loads on every page, so every form on the site shares a page
+with it. Audited at the time of writing:
+
+| Form | Collects a phone number? |
+| --- | --- |
+| Trust Audit survey (`components/TrustAuditModal.tsx`) | No. Name, email, business, website. |
+| Admin sign-in | No. Password only. |
+| Booking (`/book`) | Not on our page. It is a link out to the GoHighLevel calendar, which opens in a new tab. |
+| Trust Calendar form (`components/GhlForm.tsx`) | **Cannot be checked from this repository.** It is an iframe and its fields are configured in GoHighLevel. |
+
+**Check the Trust Calendar form in GoHighLevel yourself.** If it asks for a
+phone number it becomes an SMS opt-in point, and it then needs consent wording
+that matches the campaign filed with the carrier, plus a link to the privacy
+policy. The same applies if the chat widget is ever set to ask for a number.
+
+## The address and the schema
+
+`BUSINESS_ADDRESS` prints on the site. It is deliberately **not** added to the
+LocalBusiness schema, which still publishes city and state only. That is not an
+oversight: this is a service-area business, Google's guidance is to leave the
+street address out for one, and the address on the privacy policy is there to
+satisfy a different requirement. Keep them separate.

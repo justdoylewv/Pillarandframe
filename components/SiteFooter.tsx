@@ -2,6 +2,7 @@ import Link from "next/link";
 import Wordmark from "@/components/Wordmark";
 import {
   BOOKING_URL,
+  BUSINESS_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   EVENT_BOOK_CALL,
@@ -118,9 +119,20 @@ export default function SiteFooter() {
               Book a free strategy call
             </a>
           </div>
-          <p className="mt-8 text-xs text-ash-300">
-            &copy; 2026 Pillar &amp; Frame &middot; Ohio
-          </p>
+          {BUSINESS_ADDRESS.length > 0 && (
+            <address className="mt-8 text-xs not-italic text-ash-500">
+              {BUSINESS_ADDRESS.join(", ")}
+            </address>
+          )}
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ash-300">
+            <span>&copy; {new Date().getFullYear()} Pillar &amp; Frame &middot; Ohio</span>
+            <Link href="/privacy" className="transition-colors hover:text-black">
+              Privacy policy
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-black">
+              Terms of service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

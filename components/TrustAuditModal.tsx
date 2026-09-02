@@ -519,7 +519,14 @@ export default function TrustAuditModal() {
                 </button>
                 <p className="mt-4 text-sm leading-relaxed text-ash-500">
                   No call required and nothing to cancel. We will not share your
-                  details.
+                  details. See our{" "}
+                  <a
+                    href="/privacy"
+                    className="underline underline-offset-4 transition-colors hover:text-black"
+                  >
+                    privacy policy
+                  </a>
+                  .
                 </p>
               </form>
             )}

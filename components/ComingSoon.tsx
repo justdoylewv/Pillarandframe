@@ -1,7 +1,9 @@
+import Link from "next/link";
 import CtaButton from "@/components/CtaButton";
 import Wordmark from "@/components/Wordmark";
 import {
   BOOKING_URL,
+  BUSINESS_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   CTA_LABEL,
@@ -91,20 +93,49 @@ export default function ComingSoon() {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Footer.
+          While the site is gated this is the only page most visitors reach, so
+          it carries the full contact details and the legal links rather than
+          leaving them on pages nobody can open. A2P registration is reviewed
+          against whatever is actually live. */}
       <footer className="mx-auto w-full max-w-7xl px-6 py-8">
-        <div className="flex flex-col gap-3 text-sm text-ash-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>{SERVICE_AREA_SENTENCE}</p>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
-            {PHONE_IS_PUBLIC && CONTACT_PHONE && (
+        <div className="flex flex-col gap-4 text-sm text-ash-500 sm:flex-row sm:items-start sm:justify-between">
+          <div className="space-y-1">
+            <p>{SERVICE_AREA_SENTENCE}</p>
+            {BUSINESS_ADDRESS.length > 0 && (
+              <address className="not-italic">
+                {BUSINESS_ADDRESS.join(", ")}
+              </address>
+            )}
+          </div>
+          <div className="flex flex-col gap-2 sm:items-end">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
               <a
-                href={`tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`}
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="transition-colors hover:text-paper"
               >
-                {CONTACT_PHONE}
+                {CONTACT_EMAIL}
               </a>
-            )}
-            <span className="text-ash-700">&copy; 2026 Pillar &amp; Frame</span>
+              {PHONE_IS_PUBLIC && CONTACT_PHONE && (
+                <a
+                  href={`tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`}
+                  className="transition-colors hover:text-paper"
+                >
+                  {CONTACT_PHONE}
+                </a>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <Link href="/privacy" className="transition-colors hover:text-paper">
+                Privacy policy
+              </Link>
+              <Link href="/terms" className="transition-colors hover:text-paper">
+                Terms of service
+              </Link>
+              <span className="text-ash-700">
+                &copy; {new Date().getFullYear()} Pillar &amp; Frame
+              </span>
+            </div>
           </div>
         </div>
       </footer>

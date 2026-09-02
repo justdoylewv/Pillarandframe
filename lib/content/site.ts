@@ -170,17 +170,15 @@ export const SERVICE_AREA_TOWNS: string[] = SERVICE_AREA.flatMap(
 
 export const CONTACT_EMAIL = "doyle@pillarandframe.com";
 
-// The tracked local number. It is not published anywhere until it exists:
-// the old 720 number is a Colorado area code, and once a wrong number is
-// indexed and cited it is slow and expensive to correct.
+// The tracked local number. 380 is a central Ohio overlay on the 614 area
+// code, so it reads local to Columbus, which is the point.
 //
-// To publish: set CONTACT_PHONE to the 937 number and PHONE_IS_PUBLIC to true.
-// Nothing else needs to change. The number will appear in the footer, on the
-// book page, and in the LocalBusiness schema at the same moment.
-// Typed wider than their current values on purpose, so setting the number and
-// flipping the flag is a one-line change that does not fail the type check.
-export const CONTACT_PHONE: string = "";
-export const PHONE_IS_PUBLIC: boolean = false;
+// Published everywhere at once: the footer, the coming soon page, the legal
+// pages, and the LocalBusiness schema all read these two values. A2P 10DLC
+// registration requires the number to be reachable and the business to be
+// contactable, so this stays public and stays correct.
+export const CONTACT_PHONE: string = "+1 380-324-0535";
+export const PHONE_IS_PUBLIC: boolean = true;
 
 export const BOOKING_URL =
   "https://api.leadconnectorhq.com/widget/bookings/strategycallpillarandframe";
@@ -203,6 +201,44 @@ export const GHL_FORM_URL: string =
 // Matches the form name in GoHighLevel, so the two are recognisable as the
 // same thing when a submission comes through.
 export const GHL_FORM_NAME = "Trust Calendar";
+
+// The GoHighLevel chat widget, loaded on every page including the holding
+// page and the legal pages. Empty means no widget renders at all.
+//
+// If this widget is ever set to ask for a phone number, that turns it into an
+// SMS opt-in point and the consent wording and the terms have to match what
+// was filed with the carrier. Check the widget settings in GoHighLevel, not
+// this file: the fields live there.
+export const GHL_CHAT_WIDGET_ID: string = "6a978ded80392d2a8cce2370";
+
+// ---------------------------------------------------------------------------
+// Legal
+// ---------------------------------------------------------------------------
+
+// The registered legal name of the business, exactly as it appears on the
+// filing. This is not decoration: A2P 10DLC registration checks the name on
+// the privacy policy against the name on the campaign, and a mismatch is a
+// common rejection reason.
+//
+// While this is empty the legal pages fall back to the trading name, which is
+// fine to read but is NOT ready to submit for A2P. Set it to the registered
+// name, including the entity suffix, before registering.
+export const LEGAL_ENTITY_NAME: string = "";
+
+// Mailing address for the legal pages. Carriers and app stores expect a real
+// postal address on a privacy policy. A PO box or registered agent address is
+// acceptable; this does not have to be where anybody sits.
+//
+// Left empty, the address block is omitted rather than printing a placeholder.
+export const BUSINESS_ADDRESS: string[] = [];
+
+// The date the current wording took effect. Update it whenever the substance
+// of either legal page changes, not for a typo fix.
+export const LEGAL_EFFECTIVE_DATE = "September 2, 2026";
+
+// What the SMS program is called on the consent checkbox and in the terms.
+// Keep it identical to the campaign description filed with the carrier.
+export const SMS_PROGRAM_NAME = "Pillar & Frame client and enquiry messaging";
 
 // ---------------------------------------------------------------------------
 // Related

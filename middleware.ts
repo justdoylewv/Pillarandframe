@@ -12,6 +12,15 @@ import { COMING_SOON, PREVIEW_TOKEN } from "@/lib/content/site";
 const PREVIEW_COOKIE = "pf-preview";
 const HOLDING_PAGE = "/coming-soon";
 
+// Pages that stay public even while the site is gated.
+//
+// A2P 10DLC registration is reviewed against the live site: a carrier opens
+// the privacy policy and the terms from a plain link and looks for the mobile
+// data clause and the STOP and HELP wording. Behind the holding page they
+// would serve the holding page, and the registration fails. These are also the
+// pages a visitor is entitled to reach at any time, so they are not gated.
+const ALWAYS_PUBLIC = ["/privacy", "/terms"];
+
 // A month. Long enough to review over several sittings without re-entering it.
 const PREVIEW_MAX_AGE = 60 * 60 * 24 * 30;
 
@@ -22,6 +31,12 @@ export function middleware(request: NextRequest) {
   // copy can be edited before launch. The routes check the signed cookie
   // themselves; this only keeps the holding page from swallowing them.
   if (pathname === "/admin" || pathname.startsWith("/api/admin")) {
+    return NextResponse.next();
+  }
+
+  // The legal pages, before the gate and before the preview handling, so they
+  // answer the same way for everybody whatever the launch switch is set to.
+  if (ALWAYS_PUBLIC.includes(pathname)) {
     return NextResponse.next();
   }
 

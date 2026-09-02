@@ -8,6 +8,7 @@ import AdminProvider from "@/components/AdminProvider";
 import AdminBar from "@/components/AdminBar";
 import {
   ENTITY_DESCRIPTION,
+  GHL_CHAT_WIDGET_ID,
   PLAUSIBLE_DOMAIN,
   SITE_NAME,
   SITE_URL,
@@ -82,6 +83,22 @@ export default function RootLayout({
             defer
             data-domain={PLAUSIBLE_DOMAIN}
             src="https://plausible.io/js/script.outbound-links.tagged-events.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
+        {/* GoHighLevel chat widget.
+            In the root layout on purpose, so it loads on the holding page and
+            the legal pages too. A2P registration is reviewed against the live
+            site, and a widget that only appears once the site launches is not
+            there when the carrier looks.
+            Disclosed in the privacy policy, since it is a third party that
+            receives whatever somebody types into it. */}
+        {GHL_CHAT_WIDGET_ID ? (
+          <Script
+            src="https://widgets.leadconnectorhq.com/loader.js"
+            data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+            data-widget-id={GHL_CHAT_WIDGET_ID}
+            data-source="WEB_USER"
             strategy="afterInteractive"
           />
         ) : null}
