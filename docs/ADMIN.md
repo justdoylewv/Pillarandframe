@@ -412,3 +412,94 @@ LocalBusiness schema, which still publishes city and state only. That is not an
 oversight: this is a service-area business, Google's guidance is to leave the
 street address out for one, and the address on the privacy policy is there to
 satisfy a different requirement. Keep them separate.
+
+
+---
+
+# The Comeback (`/comeback`)
+
+The live site for now. `middleware.ts` points the gate here, so every address
+that is not otherwise public renders this page. The rest of the site is built
+and unpublished behind it, and launching is still the same one switch.
+
+`/comeback` is also on the always-public list, not just the gate target, so it
+keeps its own address after launch instead of redirecting to the home page. It
+is a funnel page that outlives the gate.
+
+## The numbers that change without the page changing
+
+All in `lib/content/comeback.ts`. The GoHighLevel `{{custom_values.*}}` tags
+from the source copy do not resolve on this site, so they are constants here.
+
+| Constant | Effect |
+| --- | --- |
+| `FOUNDING_SPOTS_LEFT` | The count in the pricing section and the P.S. **At zero the pricing section swaps itself to the standard price**, so closing the founding offer is this one number. |
+| `COHORT_NAME`, `COHORT_DEADLINE` | Named in the scarcity section and the P.S. |
+| `COMEBACK_VIDEO_URL` | Empty, so the hero renders without a player. Set it to the YouTube URL and the block appears with a poster and a play button. It never autoplays. |
+
+## The interactive parts
+
+**The Leak calculator** is the argument of the page made tactile. Two dials,
+and the number moves as they drag. It is deliberately **not** gated behind the
+email: somebody who drags their own quote count and watches six figures appear
+has understood the offer in a way no paragraph manages, and gating that trades
+the thing that convinces them for an address they will hand over anyway once
+convinced. The email form sits underneath, after the number.
+
+It opens on 180 quotes at $9,000, which is the worked example in the copy
+above it, so the two always agree.
+
+Under 150 quotes it says so, because that is the guarantee's own condition and
+finding out later would be worse.
+
+**The trade switcher** in the Why Now section is the swappable line from the
+source copy, turned into something the visitor picks. That was offered as
+"build industry versions of this page"; one tap gets the same line in front of
+the right person without four near-identical pages to maintain.
+
+**The FAQ** is an accordion. Every answer stays in the DOM whatever is open, so
+the FAQPage schema and the page agree and a crawler sees all twelve.
+
+## SMS consent
+
+This page collects mobile numbers, which makes the demo form the site's SMS
+opt-in point. Three rules in `components/comeback/DemoForm.tsx`:
+
+1. The consent box starts unticked and the form will not submit without it. A
+   pre-ticked box is not consent.
+2. The wording beside the box comes from `SMS_CONSENT_TEXT`, the same constant
+   stored with the record, so what somebody agreed to and what we say they
+   agreed to cannot drift.
+3. Every submission stores the consent text, an ISO timestamp, and the page it
+   came from. That record is what a carrier asks for, and a checkbox column on
+   its own does not answer the question.
+
+The server refuses a demo submission without `smsConsent: true` even if the
+browser is bypassed.
+
+## Connecting it
+
+One environment variable in Vercel, Production and Preview:
+
+| Variable | What it is |
+| --- | --- |
+| `COMEBACK_WEBHOOK_URL` | An https endpoint taking a JSON POST. A GoHighLevel inbound webhook, or a Make scenario. Falls back to `SURVEY_WEBHOOK_URL` if unset. |
+
+Until it is set, both forms tell the visitor to email instead rather than
+silently dropping a lead.
+
+Two payload shapes, distinguished by `intent`: `leak_number` carries the
+quote count, average job value, the leak, and the 3 percent figure;
+`demo_request` carries the phone in E.164 and the consent record.
+
+## Still to fill in
+
+- **The hero video.** Script is section 17 of the source copy. Set
+  `COMEBACK_VIDEO_URL` when it exists.
+- **Section 13 proof.** Currently the honest pre-results version. Swap it the
+  day there are real numbers with written permission.
+- **Memorial Health** is not on the page. The source copy bracketed it "with
+  permission" and no permission is on record.
+- **The counties.** `COMEBACK_COUNTIES` lists nine. `COUNTIES` in `site.ts`,
+  which drives the LocalBusiness schema and should match the Google Business
+  Profile, lists three. Reconcile them, on the profile first.

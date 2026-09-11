@@ -4,10 +4,16 @@ import { CASE_STUDIES } from "@/lib/content/caseStudies";
 import { TOWNS } from "@/lib/content/towns";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // While the holding page is up, every route serves the same thing. Only
-  // list the one URL so crawlers do not index a dozen copies of it.
+  // While the gate is up, the Comeback page is the site. These three are the
+  // only addresses that serve their own content, so they are the only ones
+  // listed: everything else would be a duplicate of /comeback.
   if (COMING_SOON) {
-    return [{ url: SITE_URL, changeFrequency: "daily", priority: 1 }];
+    const now = new Date();
+    return [
+      { url: `${SITE_URL}/comeback`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+      { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+      { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    ];
   }
 
   // Stamped at build time. A sitemap without dates gives a crawler no reason
@@ -25,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/work`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/book`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/comeback`, changeFrequency: "weekly", priority: 0.9 },
     // Listed even while the site is gated, since they are reachable then.
     { url: `${SITE_URL}/privacy`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.3 },
