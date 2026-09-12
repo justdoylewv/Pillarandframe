@@ -1,0 +1,250 @@
+/* Pillar & Frame token system.
+   Custom properties only. Every value below is either specified in the brief
+   or derived from it, and the two contrast notes are measured, not assumed. */
+
+:root {
+  /* Palette, exactly as specified. */
+  --ink: #14161a;
+  --concrete: #e8e6e1;
+  --steel: #6c7278;
+  --hivis: #e4572e;
+  --paper: #ffffff;
+
+  /* Measured contrast ratios against WCAG AA (4.5 normal, 3.0 large):
+       steel on paper      4.87:1   body text, fine
+       steel on concrete   3.90:1   LARGE TEXT ONLY, fails for body
+       paper on hivis      3.68:1   fails at button text size
+       ink on hivis        4.92:1   what the primary button uses instead
+       ink on paper       18.3:1
+       ink on concrete    14.5:1
+     Two rules fall out of that, and they are not stylistic:
+       1. On a concrete section, body copy is --ink. Steel is for large text.
+       2. The primary button is ink on hi-vis, never paper on hi-vis. */
+  --text: var(--ink);
+  --text-quiet: var(--steel);
+  --rule: #d5d2cc;
+
+  /* Type. Inter Tight for headlines, Inter for body. */
+  --font-display: "Inter Tight", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Only the H1 scales. Everything else is fixed, so one typographic moment
+     per page stays the only typographic moment. */
+  --h1: clamp(2.5rem, 7vw, 5.25rem);
+  --h2: 1.75rem;
+  --h3: 1.25rem;
+  --body: 1.0625rem;
+  --small: 0.9375rem;
+
+  --lh-tight: 1.02;
+  --lh-body: 1.55;
+
+  /* Body line length ceiling from the brief. */
+  --measure: 80ch;
+
+  /* 4px scale. */
+  --s1: 0.25rem;
+  --s2: 0.5rem;
+  --s3: 1rem;
+  --s4: 1.5rem;
+  --s5: 2rem;
+  --s6: 3rem;
+  --s7: 4.5rem;
+  --s8: 7rem;
+
+  --gutter: var(--s4);
+  --maxw: 88rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--body);
+  line-height: var(--lh-body);
+  /* Left-aligned throughout. No centred text blocks. */
+  text-align: left;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--h1);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.035em;
+  max-width: 24ch;
+}
+
+h2 {
+  font-size: var(--h2);
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: var(--h3);
+  line-height: 1.25;
+}
+
+p,
+li {
+  max-width: var(--measure);
+}
+
+p {
+  margin: 0 0 var(--s3);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Visible keyboard focus on everything interactive, and only for keyboards. */
+:focus-visible {
+  outline: 2px solid var(--hivis);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Full-bleed media. No radius, no shadow, no frame. */
+.bleed {
+  width: 100%;
+  margin: 0;
+}
+
+.bleed > img,
+.bleed > video {
+  width: 100%;
+  object-fit: cover;
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+.quiet {
+  color: var(--text-quiet);
+}
+
+/* On concrete, body copy cannot be steel. See the contrast note above. */
+.on-concrete {
+  background: var(--concrete);
+}
+
+.on-concrete p,
+.on-concrete li {
+  color: var(--ink);
+}
+
+/* Primary action. Ink on hi-vis, because paper on hi-vis fails AA. */
+.btn {
+  display: inline-block;
+  background: var(--hivis);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--body);
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--hivis);
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #d04a22;
+  border-color: #d04a22;
+}
+
+.btn-quiet {
+  display: inline-block;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip:focus {
+  left: var(--gutter);
+  top: var(--s2);
+  z-index: 10;
+  background: var(--paper);
+  padding: var(--s2) var(--s3);
+  border: 1px solid var(--ink);
+}
+
+/* The one load moment: the H1 wipes up once. Nothing else on the site moves. */
+@keyframes rise {
+  from {
+    transform: translateY(0.35em);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reveal > span {
+  display: block;
+  animation: rise 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal > span {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Down to 360px. */
+@media (max-width: 40rem) {
+  :root {
+    --gutter: var(--s3);
+    --s7: 3rem;
+    --s8: 4rem;
+  }
+}

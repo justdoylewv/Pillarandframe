@@ -1,0 +1,32 @@
+---
+// SCAFFOLD CHECK ONLY.
+// This is not the home page. The real one is the split door with three cards,
+// and it is blocked on 01-website-copy.md, which the brief says to use
+// verbatim. This file exists so the layout and tokens can be verified, and it
+// gets replaced wholesale the moment the copy arrives.
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Pillar & Frame" path="/">
+  <section class="wrap" style="padding-block: var(--s7) var(--s6);">
+    <h1 class="reveal"><span>Layout and tokens, standing up.</span></h1>
+    <p class="measure" style="margin-top: var(--s4);">
+      Placeholder. The home page copy has not been supplied yet, so nothing
+      here is real page content. Nav, footer, palette, type scale, focus rings,
+      and the single load reveal are all live and checkable.
+    </p>
+    <p style="margin-top: var(--s4);">
+      <a class="btn" href="/audit">Get your audit</a>
+    </p>
+  </section>
+
+  <section class="on-concrete" style="padding-block: var(--s6); margin-top: var(--s6);">
+    <div class="wrap">
+      <h2>Body copy on concrete is ink, not steel</h2>
+      <p style="margin-top: var(--s3);">
+        Steel on concrete measures 3.90 to 1, which passes for large text and
+        fails for body. This paragraph is ink so it clears AA.
+      </p>
+    </div>
+  </section>
+</Base>
