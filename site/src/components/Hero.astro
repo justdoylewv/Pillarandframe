@@ -1,0 +1,47 @@
+---
+import Reel from "./Reel.astro";
+// Two-line H1, one-sentence sub, two buttons, then the reel. The H1 and sub
+// carry the single load animation on the site.
+interface Props {
+  title: string;
+  sub: string;
+  primary: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  reelSrc?: string;
+  posterSrc?: string;
+  reelLabel?: string;
+}
+const { title, sub, primary, secondary, reelSrc, posterSrc = "", reelLabel } = Astro.props;
+---
+
+<section class="section hero">
+  <div class="container">
+    <h1 class="fade-up" set:html={title} />
+    <p class="hero-sub fade-up">{sub}</p>
+    <div class="btn-row">
+      <a class="btn" href={primary.href}>{primary.label}</a>
+      {secondary && <a class="btn--secondary" href={secondary.href}>{secondary.label}</a>}
+    </div>
+    {reelSrc && (
+      <div class="hero-reel">
+        <Reel src={reelSrc} poster={posterSrc} label={reelLabel} />
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-bottom: var(--space-block);
+  }
+  .hero-sub {
+    max-width: var(--max-prose);
+    margin-top: var(--space-stack);
+  }
+  .btn-row {
+    margin-top: var(--space-block);
+  }
+  .hero-reel {
+    margin-top: var(--space-block);
+  }
+</style>

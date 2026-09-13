@@ -1,0 +1,22 @@
+---
+// Concrete ground, radius, 24px padding. Number on top, label in steel below.
+// Left-aligned like everything else.
+interface Props { number: string; label: string }
+const { number, label } = Astro.props;
+---
+
+<div class="stat-tile">
+  <p class="stat-number">{number}</p>
+  <p class="meta">{label}</p>
+</div>
+
+<style>
+  .stat-tile {
+    background: var(--concrete);
+    border-radius: var(--radius);
+    padding: var(--space-stack);
+  }
+  .meta {
+    margin-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+import { SITE_NAME, NAV } from "../lib/site.js";
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header class="nav" data-nav>
+  <div class="container nav-inner">
+    <a href="/" class="wordmark">{SITE_NAME}</a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="nav-links"
+      data-nav-toggle
+    >
+      Menu
+    </button>
+
+    <nav aria-label="Main" class="nav-links" id="nav-links">
+      <ul>
+        {
+          NAV.map((item) => (
+            <li>
+              <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="btn nav-cta" href="/audit">Get your audit</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+    transition: border-color 150ms;
+  }
+  /* The hairline arrives on scroll, so the nav reads as part of the page at
+     the top and as a bar once content is underneath it. */
+  .nav[data-scrolled] {
+    border-bottom-color: var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-stack);
+    padding-block: 1rem;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .nav-links ul {
+    display: flex;
+    gap: var(--space-stack);
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--steel);
+    font-size: var(--fs-button);
+  }
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    color: var(--ink);
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.9rem;
+    font-size: var(--fs-button);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* Mobile: links collapse behind Menu. The button stays visible. */
+  @media (max-width: 52rem) {
+    .nav-inner {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .nav-toggle {
+      display: inline-block;
+      order: 2;
+    }
+    .nav-cta {
+      order: 3;
+    }
+    .nav-links {
+      order: 4;
+      width: 100%;
+      display: none;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .nav-links[data-open] {
+      display: block;
+    }
+    .nav-links ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    .nav-links li {
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-links a {
+      display: block;
+      padding: 0.9rem 0;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const links = document.getElementById("nav-links");
+
+  function onScroll() {
+    if (!nav) return;
+    if (window.scrollY > 4) nav.setAttribute("data-scrolled", "");
+    else nav.removeAttribute("data-scrolled");
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    if (open) links?.removeAttribute("data-open");
+    else links?.setAttribute("data-open", "");
+  });
+</script>

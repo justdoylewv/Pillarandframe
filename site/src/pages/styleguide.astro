@@ -1,0 +1,215 @@
+---
+// Every component in 07 §4, in order, with placeholder content and its name
+// above it. Noindexed, excluded from the sitemap, deleted before final deploy.
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Reel from "../components/Reel.astro";
+import LogoStrip from "../components/LogoStrip.astro";
+import StatTile from "../components/StatTile.astro";
+import StatRow from "../components/StatRow.astro";
+import CaseStudyFeature from "../components/CaseStudyFeature.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import Quote from "../components/Quote.astro";
+import FounderBlock from "../components/FounderBlock.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import ComparisonTable from "../components/ComparisonTable.astro";
+import Calculator from "../components/Calculator.astro";
+import Disqualifiers from "../components/Disqualifiers.astro";
+import FAQ from "../components/FAQ.astro";
+import CTABand from "../components/CTABand.astro";
+import DeliverablesTable from "../components/DeliverablesTable.astro";
+import ThreeDoors from "../components/ThreeDoors.astro";
+import AuditForm from "../components/AuditForm.astro";
+import { getCollection } from "astro:content";
+
+const work = await getCollection("work");
+const powerfield = work.find((e) => e.data.slug === "powerfield")!;
+
+const stats = [
+  { number: "14 days", label: "from capture to delivery" },
+  { number: "9 deliverables", label: "every project, same list" },
+  { number: "1 approval", label: "your team clicks once" },
+  { number: "0 files", label: "we don't hand over folders" },
+];
+---
+
+<Base title="Styleguide" noindex>
+  <div class="container sg">
+    <p class="meta">Styleguide · every component in 07 §4, in order</p>
+
+    <h2 class="sg-name">Nav and Footer</h2>
+    <p>Above and below this page.</p>
+
+    <h2 class="sg-name">Hero</h2>
+  </div>
+  <Hero
+    title="One day on your site.<br />A year of proof."
+    sub="[Hero sub, from 01. One sentence, at most 68 characters wide, sitting under the headline.]"
+    primary={{ label: "Get your audit", href: "/audit" }}
+    secondary={{ label: "See the work", href: "/work" }}
+    reelSrc="/video/hero.mp4"
+    posterSrc="/video/hero-poster.jpg"
+  />
+
+  <div class="container sg">
+    <h2 class="sg-name">Reel</h2>
+    <Reel src="/video/commercial-reel.mp4" poster="/video/hero-poster.jpg" caption="The one-day cut · PowerField" />
+
+    <h2 class="sg-name">LogoStrip</h2>
+    <p class="meta">Three placeholder marks. No label until there are five.</p>
+    <LogoStrip logos={[
+      { src: "/images/logos/placeholder-1.svg", alt: "Client one" },
+      { src: "/images/logos/placeholder-2.svg", alt: "Client two" },
+      { src: "/images/logos/placeholder-3.svg", alt: "Client three" },
+    ]} />
+
+    <h2 class="sg-name">StatTile</h2>
+    <div style="max-width: 16rem;"><StatTile number="14 days" label="from capture to delivery" /></div>
+
+    <h2 class="sg-name">StatRow</h2>
+    <StatRow stats={stats} />
+
+    <h2 class="sg-name">CaseStudyFeature</h2>
+    <CaseStudyFeature entry={powerfield} />
+
+    <h2 class="sg-name">CaseStudyCard</h2>
+    <div class="sg-cards"><CaseStudyCard entry={powerfield} /></div>
+
+    <h2 class="sg-name">Quote</h2>
+    <Quote text="[Quote text, one to two sentences, from 01.]" name="[Name]" title="[Title]" company="[Company]" />
+
+    <h2 class="sg-name">FounderBlock</h2>
+    <FounderBlock
+      imgSrc="/images/founder.jpg"
+      captionLines={["Central Ohio · 2026", "Doyle Maurer", "On a commercial solar install"]}
+      title="Nine videos for one installer. Then they asked for more."
+      paragraphs={[
+        "I've filmed job sites, run Meta ads, built funnels, and coached contractors on their CRM. The thing I kept seeing: good work, no proof, and video that got delivered and never used.",
+        "Pillar & Frame is built around the part after the shoot. Fixed deliverables, captions written, calendar loaded, one approval. If the footage doesn't get used, the shoot didn't happen.",
+      ]}
+      stats={[{ number: "[X]", label: "projects filmed" }, { number: "[X]", label: "assets delivered" }]}
+    />
+
+    <h2 class="sg-name">ProcessSteps</h2>
+    <ProcessSteps steps={[
+      { title: "Clearance", body: "[One line, from 01.]" },
+      { title: "One day", body: "[One line, from 01.]" },
+      { title: "Two weeks", body: "[One line, from 01.]" },
+      { title: "It runs", body: "[One line, from 01.]" },
+    ]} />
+
+    <h2 class="sg-name">ComparisonTable</h2>
+    <ComparisonTable
+      columns={["Pillar & Frame", "Video production company", "Social media agency"]}
+      rows={[
+        { label: "Films on your job site", values: [true, true, false] },
+        { label: "Fixed deliverable list, fixed price", values: [true, false, "sometimes"] },
+        { label: "Objection videos for after the estimate", values: [true, false, false] },
+        { label: "A hiring piece from a labour budget", values: [true, false, false] },
+        { label: "Captions written, calendar loaded", values: [true, false, true] },
+        { label: "Your actual crews, not stock", values: [true, true, false] },
+        { label: "Handles site clearance", values: [true, "sometimes", false] },
+        { label: "Ongoing without a posting fee", values: [true, false, false] },
+        { label: "Refund if unused", values: [true, false, false] },
+      ]}
+    />
+  </div>
+
+  <div class="section section--concrete">
+    <div class="container">
+      <h2 class="sg-name">Calculator</h2>
+      <Calculator
+        sliders={[
+          { id: "customers", label: "Customers in your system", min: 500, max: 10000, step: 100, default: 2500 },
+          { id: "contacted", label: "Contacted last season", min: 0, max: 5000, step: 50, default: 300 },
+          { id: "ticket", label: "Average tune-up ticket", min: 99, max: 499, step: 10, default: 189, prefix: "$" },
+        ]}
+        formula="residential"
+        outputLine="sitting in your system right now, before plan sign-ups and replacements."
+        footnote="Your math, not a guarantee. 6% is conservative for a 12–24 month cold list with a seasonal reason to act."
+        cta={{ label: "Get my number", href: "/audit?type=residential" }}
+      />
+    </div>
+  </div>
+
+  <div class="container sg">
+    <h2 class="sg-name">Disqualifiers</h2>
+    <Disqualifiers items={[
+      { title: "You want the cheapest video guy.", body: "We're not the line item to negotiate. Same list, same price, every project." },
+      { title: "Nobody on your team will click approve.", body: "We load twelve weeks. Someone has to press one button. If that's nobody, it stays in a folder like the last one." },
+      { title: "Your projects can't be filmed and you don't want the operations version.", body: "Confidential builds are a different offer with a different contract. We'll say so on the call." },
+      { title: "You're finishing one project a year.", body: "The quarterly needs supply. One project is a Project Capture, and that's fine — but it's not a retainer." },
+    ]} />
+
+    <h2 class="sg-name">FAQ</h2>
+    <FAQ items={[
+      { q: "Who's this for?", a: "Commercial contractors, specialty subs and installers doing $10M+, and residential trades doing $2–5M. Central Ohio first, and wherever the project is." },
+      { q: "Are you a video production company?", a: "We film, but that's the input. What we deliver is a fixed set of assets already loaded into a system your team approves once. The difference is what happens after the shoot." },
+      { q: "What does it cost?", a: "One commercial project, one day: $8,500. Quarterly: $7,500. Operations: $4,000 a visit. Residential reactivation: $6,000. It's on every page." },
+    ]} />
+  </div>
+
+  <div class="sg">
+    <h2 class="sg-name container">CTABand</h2>
+  </div>
+  <CTABand
+    imgSrc="/images/cta-band.jpg"
+    title="Want this on your next project?"
+    primary={{ label: "Get your free proof audit", href: "/audit" }}
+    secondary={{ label: "See the work", href: "/work" }}
+    footnote="[One line of small text, from 01.]"
+  />
+
+  <div class="container sg">
+    <h2 class="sg-name">DeliverablesTable</h2>
+    <DeliverablesTable rows={[
+      { asset: "[Asset]", spec: "[Spec]", where: "[Where it goes]" },
+      { asset: "[Asset]", spec: "[Spec]", where: "[Where it goes]" },
+      { asset: "[Asset]", spec: "[Spec]", where: "[Where it goes]" },
+    ]} />
+
+    <h2 class="sg-name">ThreeDoors</h2>
+    <ThreeDoors doors={[
+      { title: "Commercial", body: "[Door body, from 01.]", href: "/commercial" },
+      { title: "Operations", body: "[Door body, from 01.]", href: "/operations" },
+      { title: "Residential", body: "[Door body, from 01.]", href: "/residential" },
+    ]} />
+
+    <h2 class="sg-name">AuditForm · commercial</h2>
+    <AuditForm type="commercial" />
+    <h2 class="sg-name">AuditForm · operations</h2>
+    <AuditForm type="operations" />
+    <h2 class="sg-name">AuditForm · residential</h2>
+    <AuditForm type="residential" />
+  </div>
+</Base>
+
+<style>
+  .sg {
+    padding-block: var(--space-block);
+  }
+  .sg-name {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--steel);
+    margin-top: var(--space-section);
+    margin-bottom: var(--space-stack);
+    padding-top: var(--space-stack);
+    border-top: 1px solid var(--line);
+    letter-spacing: 0;
+  }
+  .sg-name:first-of-type {
+    margin-top: var(--space-stack);
+  }
+  .sg-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 52rem) {
+    .sg-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

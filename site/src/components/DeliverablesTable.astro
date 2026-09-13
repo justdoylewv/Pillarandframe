@@ -1,0 +1,66 @@
+---
+// Two or three columns, hairlines between rows.
+interface Props { rows: { asset: string; spec?: string; where?: string }[]; columns?: string[] }
+const { rows, columns = ["What you get", "Spec", "Where it goes"] } = Astro.props;
+const showSpec = rows.some((r) => r.spec);
+const showWhere = rows.some((r) => r.where);
+---
+
+<table class="deliverables">
+  <thead>
+    <tr>
+      <th scope="col">{columns[0]}</th>
+      {showSpec && <th scope="col">{columns[1]}</th>}
+      {showWhere && <th scope="col">{columns[2]}</th>}
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr>
+        <th scope="row">{r.asset}</th>
+        {showSpec && <td>{r.spec}</td>}
+        {showWhere && <td>{r.where}</td>}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .deliverables {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 1rem 1rem 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  thead th {
+    font-weight: 500;
+    color: var(--steel);
+    font-size: var(--fs-small);
+  }
+  tbody th {
+    font-weight: 500;
+  }
+  @media (max-width: 40rem) {
+    thead {
+      display: none;
+    }
+    tr {
+      display: grid;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    th,
+    td {
+      border: 0;
+      padding: 0.15rem 0;
+    }
+    td {
+      color: var(--steel);
+    }
+  }
+</style>

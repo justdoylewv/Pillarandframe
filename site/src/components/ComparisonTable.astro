@@ -1,0 +1,90 @@
+---
+// true is a hi-vis check, false a steel dash, a string is text. First column
+// on concrete. Scrolls sideways on mobile with a hint.
+interface Props { columns: string[]; rows: { label: string; values: (boolean | string)[] }[] }
+const { columns, rows } = Astro.props;
+---
+
+<div class="compare-wrap">
+  <p class="meta hint">Swipe to compare</p>
+  <table class="compare">
+    <thead>
+      <tr>
+        <th scope="col"><span class="sr-only">Feature</span></th>
+        {columns.map((c) => <th scope="col">{c}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row">{r.label}</th>
+          {r.values.map((v) => (
+            <td>
+              {v === true ? (
+                <span class="yes" aria-label="Yes">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                </span>
+              ) : v === false ? (
+                <span class="no" aria-label="No">–</span>
+              ) : (
+                v
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .compare-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hint {
+    display: none;
+    margin-bottom: 0.75rem;
+  }
+  .compare {
+    width: 100%;
+    min-width: 40rem;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  thead th {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--steel);
+    font-size: var(--fs-small);
+  }
+  thead th:nth-child(2) {
+    color: var(--ink);
+  }
+  tbody th {
+    font-weight: 400;
+  }
+  /* The first data column, subtly concrete. */
+  th:nth-child(2),
+  td:nth-child(2) {
+    background: var(--concrete);
+  }
+  .yes {
+    color: var(--hivis);
+    display: inline-block;
+  }
+  .no {
+    color: var(--steel);
+  }
+  @media (max-width: 52rem) {
+    .hint {
+      display: block;
+    }
+  }
+</style>

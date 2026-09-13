@@ -1,9 +1,21 @@
 ---
 import "../styles/tokens.css";
-import { SITE_NAME, REGION, CONTACT_EMAIL, LINKEDIN_URL, NAV } from "../lib/site.js";
+import "../styles/base.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_NAME, SITE_URL } from "../lib/site.js";
 
-const { title, description, path = "" } = Astro.props;
-const year = new Date().getFullYear();
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const { title, description = "", noindex = false, ogImage = "/og.jpg" } = Astro.props;
+const path = Astro.url.pathname;
+const canonical = new URL(path, SITE_URL).href;
+const fullTitle = path === "/" ? title : `${title} · ${SITE_NAME}`;
 ---
 
 <!doctype html>
@@ -11,166 +23,37 @@ const year = new Date().getFullYear();
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={`https://pillarandframe.com${path}`} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Google Fonts with swap, as the brief allows. Preconnect so the
-         stylesheet request does not wait on a fresh connection, and only the
-         two weights actually used are requested. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, SITE_URL).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Only the display face is preloaded: it paints the H1, which is the
+         one thing above the fold that would otherwise swap visibly. -->
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600&family=Inter:wght@400;500&display=swap"
+      rel="preload"
+      href="/fonts/inter-tight-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
   </head>
-
   <body>
     <a class="skip" href="#main">Skip to content</a>
-
-    <header class="site-head">
-      <div class="wrap head-inner">
-        <a href="/" class="wordmark">{SITE_NAME}</a>
-        <nav aria-label="Main">
-          <ul>
-            {
-              NAV.map((item) => (
-                <li>
-                  <a
-                    href={item.href}
-                    aria-current={path === item.href ? "page" : undefined}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <a class="btn" href="/audit">Get your audit</a>
-        </nav>
-      </div>
-    </header>
-
+    <Nav />
     <main id="main">
       <slot />
     </main>
-
-    <footer class="site-foot">
-      <div class="wrap foot-inner">
-        <span>{SITE_NAME}</span>
-        <span aria-hidden="true">·</span>
-        <span>{REGION}</span>
-        <span aria-hidden="true">·</span>
-        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-        {
-          LINKEDIN_URL && (
-            <>
-              <span aria-hidden="true">·</span>
-              <a href={LINKEDIN_URL} rel="noopener">LinkedIn</a>
-            </>
-          )
-        }
-      </div>
-      <div class="wrap">
-        <p class="small quiet">&copy; {year} {SITE_NAME}</p>
-      </div>
-    </footer>
-
-    <style>
-      .site-head {
-        border-bottom: 1px solid var(--rule);
-      }
-
-      .head-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--s4);
-        padding-block: var(--s3);
-      }
-
-      .wordmark {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 1.125rem;
-        letter-spacing: -0.02em;
-        text-decoration: none;
-      }
-
-      /* Right-aligned, per the brief. */
-      nav {
-        display: flex;
-        align-items: center;
-        gap: var(--s4);
-        margin-left: auto;
-      }
-
-      nav ul {
-        display: flex;
-        gap: var(--s4);
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      nav a:not(.btn) {
-        text-decoration: none;
-        color: var(--steel);
-      }
-
-      nav a:not(.btn):hover,
-      nav a[aria-current="page"] {
-        color: var(--ink);
-      }
-
-      .site-foot {
-        border-top: 1px solid var(--rule);
-        margin-top: var(--s8);
-        padding-block: var(--s5) var(--s4);
-      }
-
-      .foot-inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: var(--s2);
-      }
-
-      .foot-inner a {
-        text-decoration: none;
-      }
-
-      .foot-inner a:hover {
-        text-decoration: underline;
-      }
-
-      .small {
-        font-size: var(--small);
-      }
-
-      .site-foot p {
-        margin-top: var(--s3);
-        margin-bottom: 0;
-      }
-
-      /* Down to 360px: the nav stacks under the wordmark rather than
-         squeezing, and the button stays full width so it is still a target. */
-      @media (max-width: 52rem) {
-        .head-inner {
-          flex-wrap: wrap;
-        }
-        nav {
-          width: 100%;
-          margin-left: 0;
-          flex-wrap: wrap;
-          gap: var(--s3);
-        }
-        nav ul {
-          flex-wrap: wrap;
-          gap: var(--s3);
-        }
-      }
-    </style>
+    <Footer />
   </body>
 </html>

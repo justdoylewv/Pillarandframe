@@ -3,6 +3,10 @@
 export const SITE_NAME = "Pillar & Frame";
 export const REGION = "Central Ohio";
 export const CONTACT_EMAIL = "doyle@pillarandframe.com";
+export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "https://pillarandframe.com";
+
+// Bracketed until 01-website-copy.md supplies it. Listed in the manifest.
+export const FOOTER_DESCRIPTION = "[One-line description, from 01]";
 
 // Empty until the real profile URL is known. The footer omits the link rather
 // than pointing at a guess.
