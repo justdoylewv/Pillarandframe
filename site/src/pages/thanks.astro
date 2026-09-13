@@ -1,0 +1,46 @@
+---
+import Base from "../layouts/Base.astro";
+import Reel from "../components/Reel.astro";
+import { THANKS } from "../lib/copy";
+const calendar = import.meta.env.CALENDAR_EMBED_URL || "";
+---
+
+<Base title="Got it" noindex>
+  <section class="section">
+    <div class="container">
+      <h1 class="fade-up">{THANKS.h1}</h1>
+
+      <div data-panel="commercial">
+        <p class="prose mt">{THANKS.commercial}</p>
+        <div class="mt-block"><Reel src="/video/commercial-reel.mp4" poster="/video/hero-poster.jpg" caption="The one-day cut · PowerField" /></div>
+      </div>
+
+      <div data-panel="operations" hidden>
+        <p class="prose mt">{THANKS.operations}</p>
+        <div class="mt-block calendar">
+          {calendar
+            ? <iframe src={calendar} title="Book a 15-minute call" loading="lazy"></iframe>
+            : <div class="placeholder ratio-16x9" data-label="[Calendar embed. Set CALENDAR_EMBED_URL.]"></div>}
+        </div>
+      </div>
+
+      <div data-panel="residential" hidden>
+        <p class="prose mt">{THANKS.residential}</p>
+        <div class="mt-block"><Reel src="/video/residential-explainer.mp4" poster="/video/hero-poster.jpg" caption="The explainer" /></div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .mt { margin-top: var(--space-stack); }
+  .mt-block { margin-top: var(--space-block); }
+  .calendar iframe { width: 100%; min-height: 40rem; border: 0; border-radius: var(--radius-media); }
+</style>
+
+<script>
+  const type = new URLSearchParams(location.search).get("type");
+  const valid = ["commercial", "operations", "residential"];
+  const want = type && valid.includes(type) ? type : "commercial";
+  document.querySelectorAll<HTMLElement>("[data-panel]").forEach((p) => { p.hidden = p.dataset.panel !== want; });
+</script>

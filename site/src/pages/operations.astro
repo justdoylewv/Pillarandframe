@@ -1,0 +1,73 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatRow from "../components/StatRow.astro";
+import DeliverablesTable from "../components/DeliverablesTable.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import FAQ from "../components/FAQ.astro";
+import Disqualifiers from "../components/Disqualifiers.astro";
+import CTABand from "../components/CTABand.astro";
+import { OPERATIONS as O } from "../lib/copy";
+---
+
+<Base title="Operations" description={O.sub}>
+  <Hero title={O.h1} sub={O.sub} primary={O.cta} secondary={{ label: "See the work", href: "/work" }} reelSrc={O.reel.src} posterSrc={O.reel.poster} />
+
+  <section class="section pt-0">
+    <div class="container"><StatRow stats={O.stats} /></div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>{O.problemHeading}</h2>
+      <div class="prose mt">{O.problem.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{O.tableHeading}</h2>
+      <div class="mt"><DeliverablesTable rows={O.table} /></div>
+      <p class="mt prose">{O.tableLine}</p>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container two-col">
+      <div><h2>{O.whoHeading}</h2><p class="mt">{O.who}</p></div>
+      <div><h2>{O.confidentialHeading}</h2><p class="mt">{O.confidential}</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="mt"><ProcessSteps steps={O.steps} /></div>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container two-col">
+      <div><h2>{O.priceHeading}</h2><p class="mt">{O.price}</p></div>
+      <div><h2>{O.guaranteeHeading}</h2><p class="mt">{O.guarantee}</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><FAQ items={O.faq} /></div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container"><Disqualifiers items={O.disqualifiers} /></div>
+  </section>
+
+  <CTABand imgSrc="/images/cta-band.jpg" title={O.band.title} primary={O.cta} secondary={{ label: "See the work", href: "/work" }} />
+</Base>
+
+<style>
+  .mt { margin-top: var(--space-stack); }
+  .pt-0 { padding-top: 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-block); }
+  .two-col p { max-width: var(--max-prose); }
+  @media (max-width: 52rem) { .two-col { grid-template-columns: 1fr; } }
+</style>

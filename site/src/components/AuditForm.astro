@@ -84,6 +84,8 @@ const errorCopy = `That didn't send. Try again, or email ${CONTACT_EMAIL}.`;
       const button = form.querySelector<HTMLButtonElement>("[data-submit]");
       error && (error.hidden = true);
 
+      const email = form.querySelector<HTMLInputElement>('input[type="email"]');
+      email?.setCustomValidity(email.validity.valid ? "" : "We need an email to send this to.");
       if (!form.reportValidity()) return;
 
       const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;

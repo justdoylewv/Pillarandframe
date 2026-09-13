@@ -1,0 +1,151 @@
+---
+// The case study template from 07 §5. Renders any collection entry.
+import Base from "../../layouts/Base.astro";
+import StatRow from "../../components/StatRow.astro";
+import Quote from "../../components/Quote.astro";
+import Reel from "../../components/Reel.astro";
+import CTABand from "../../components/CTABand.astro";
+import { getCollection } from "astro:content";
+import { CASE_STUDY_BAND } from "../../lib/copy";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("work");
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+---
+
+<Base title={d.name} description={`${d.name} · ${d.trade} · ${d.city}. ${d.headlineResult}`}>
+  <section class="section">
+    <div class="container">
+      <h1 class="fade-up">{d.name}</h1>
+      <p class="meta fade-up">{d.trade} · {d.city}</p>
+      {d.liveSite && <p class="live"><a href={d.liveSite} rel="noopener">Visit the live site</a></p>}
+      <div class="stats"><StatRow stats={d.stats} /></div>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container quotes">
+      {d.quotes.slice(0, 2).map((q) => <Quote text={q.text} name={q.name} title={q.title} company={d.name} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Inside the engagement</h2>
+      <ol class="engagement">
+        {d.engagement.map((b, i) => (
+          <li>
+            <p class="meta">{String(i + 1).padStart(2, "0")}</p>
+            <h2 class="h3">{b.title}</h2>
+            <p>{b.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>The shift</h2>
+      <div class="shift">
+        <div>
+          <div class="media ratio-16x9 placeholder" data-label={`Image placeholder: ${d.shift.before.img}`}>
+            <img src={d.shift.before.img} alt="" loading="lazy" />
+          </div>
+          <p class="meta">Before</p>
+          <p>{d.shift.before.body}</p>
+        </div>
+        <div>
+          <div class="media ratio-16x9 placeholder" data-label={`Image placeholder: ${d.shift.now.img}`}>
+            <img src={d.shift.now.img} alt="" loading="lazy" />
+          </div>
+          <p class="meta">Now</p>
+          <p>{d.shift.now.body}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{d.built.title}</h2>
+      <ul class="built">
+        {d.built.items.map((it) => <li>{it}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  {d.reel && (
+    <section class="section section--concrete">
+      <div class="container">
+        <Reel src={d.reel} poster={d.thumb} caption={`${d.name} · project film`} />
+      </div>
+    </section>
+  )}
+
+  <CTABand imgSrc="/images/cta-band.jpg" title={CASE_STUDY_BAND.title} primary={CASE_STUDY_BAND.primary} secondary={{ label: "See the work", href: "/work" }} />
+</Base>
+
+<style>
+  .meta {
+    margin-top: 0.75rem;
+  }
+  .live {
+    margin-top: var(--space-stack);
+  }
+  .stats {
+    margin-top: var(--space-block);
+  }
+  .quotes {
+    display: grid;
+    gap: var(--space-block);
+  }
+  .engagement {
+    list-style: none;
+    margin-top: var(--space-block);
+    display: grid;
+    gap: var(--space-block);
+  }
+  .engagement li > * + * {
+    margin-top: 0.5rem;
+  }
+  .engagement p:last-child {
+    max-width: var(--max-prose);
+  }
+  .shift {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-block);
+    margin-top: var(--space-block);
+  }
+  .shift .media {
+    position: relative;
+  }
+  .shift .media img {
+    position: absolute;
+    inset: 0;
+  }
+  .shift .meta {
+    margin-top: 0.75rem;
+  }
+  .shift p:last-child {
+    margin-top: 0.5rem;
+  }
+  .built {
+    list-style: none;
+    margin-top: var(--space-block);
+    border-top: 1px solid var(--line);
+  }
+  .built li {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 52rem) {
+    .shift {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

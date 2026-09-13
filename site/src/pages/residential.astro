@@ -1,0 +1,71 @@
+---
+// Form at the top per 01. Calculator sits on concrete above the price block;
+// the price block is on paper here, since 07 puts both on concrete and two
+// concrete sections cannot be adjacent.
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import AuditForm from "../components/AuditForm.astro";
+import StatRow from "../components/StatRow.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import Calculator from "../components/Calculator.astro";
+import FAQ from "../components/FAQ.astro";
+import Disqualifiers from "../components/Disqualifiers.astro";
+import CTABand from "../components/CTABand.astro";
+import { RESIDENTIAL as R } from "../lib/copy";
+---
+
+<Base title="Residential" description={R.sub}>
+  <Hero title={R.h1} sub={R.sub}>
+    <div class="hero-form"><AuditForm type="residential" /></div>
+  </Hero>
+
+  <section class="section pt-0">
+    <div class="container"><StatRow stats={R.stats} /></div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>{R.problemHeading}</h2>
+      <div class="prose mt">{R.problem.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{R.stepsHeading}</h2>
+      <div class="mt"><ProcessSteps steps={R.steps} /></div>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <Calculator sliders={R.calculator.sliders} formula="residential" outputLine={R.calculator.outputLine} footnote={R.calculator.footnote} cta={R.cta} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-col">
+      <div><h2>{R.guaranteeHeading}</h2><p class="mt">{R.guarantee}</p></div>
+      <div><h2>{R.priceHeading}</h2><p class="mt">{R.price}</p></div>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container"><FAQ items={R.faq} /></div>
+  </section>
+
+  <section class="section">
+    <div class="container"><Disqualifiers items={R.disqualifiers} /></div>
+  </section>
+
+  <CTABand imgSrc="/images/cta-band.jpg" title={R.band.title} primary={R.cta} secondary={{ label: "See the work", href: "/work" }} />
+</Base>
+
+<style>
+  .mt { margin-top: var(--space-stack); }
+  .pt-0 { padding-top: 0; }
+  .hero-form { margin-top: var(--space-block); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-block); }
+  .two-col p { max-width: var(--max-prose); }
+  @media (max-width: 52rem) { .two-col { grid-template-columns: 1fr; } }
+</style>

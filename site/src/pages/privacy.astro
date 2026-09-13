@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+import LegalDoc from "../components/LegalDoc.astro";
+import { SITE_NAME, CONTACT_EMAIL } from "../lib/site.js";
+const PHONE = "+1 380-324-0535";
+const URL_ = "https://pillarandframe.com";
+const S = [
+  { heading: "Who we are", blocks: [
+    `${SITE_NAME} is a video company based in Delaware, Ohio, operating the website at ${URL_}. This policy explains what personal information we collect, why we collect it, and what we do with it.`,
+    `You can reach us at ${CONTACT_EMAIL} or ${PHONE} with any question about this policy or about information we hold on you.` ] },
+  { heading: "Information we collect", blocks: [
+    "We collect only what you give us and what a website records automatically. We do not buy personal information from data brokers and we do not build profiles on people who have not contacted us.",
+    { subhead: "Information you give us" },
+    { list: [
+      "Your name, company, and website, when you request a proof audit.",
+      "Your name, company, project type, and how your stakeholders receive updates today, when you book a call.",
+      "Your name, company, email, and three figures about your customer list, when you ask for your number.",
+      "The contents of emails, calls, and text messages between us." ] },
+    { subhead: "Information collected automatically" },
+    { list: [ "Standard server logs, including IP address, browser type, and the pages requested.", "No cookies are set by this site." ] } ] },
+  { heading: "How we use it", blocks: [
+    "We use personal information to answer you, to prepare and send anything you have asked for, to provide services you have engaged us for, to send messages you have agreed to receive, and to meet our legal and accounting obligations.",
+    "We do not sell personal information. We do not rent it, and we do not trade it." ] },
+  { heading: "Mobile information and SMS", blocks: [
+    "This section governs phone numbers and text messaging, and it applies in addition to everything else in this policy.",
+    { note: "No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties." },
+    "In plain terms: if you give us your mobile number, we use it to talk to you. We do not pass it to advertisers, we do not include it in any list that is sold or exchanged, and your consent to receive text messages is never shared with anyone.",
+    "Text messages are sent only to people who have asked to receive them. You can stop them at any time by replying STOP, and you can reply HELP for assistance. Full messaging terms are in our Terms of Service." ] },
+  { heading: "Who we share information with", blocks: [
+    "We share personal information only with the service providers that run parts of this business for us, and only so far as they need it to do that work. They are bound to protect it and may not use it for their own purposes.",
+    { list: [ "GoHighLevel (LeadConnector), which receives our form submissions and runs our booking calendar, email, and text messaging.", "Vercel, which hosts this website and processes server logs." ] },
+    "We also disclose information where the law requires it, or to establish or defend a legal claim. If the business is ever sold or merged, personal information may transfer with it, and this policy continues to apply until you are told otherwise." ] },
+  { heading: "Cookies and tracking", blocks: [
+    "This site sets no cookies. There is no advertising network on it, no analytics script, and no cross-site tracking. The booking calendar on the confirmation page is served by GoHighLevel and may set its own cookies when it loads." ] },
+  { heading: "How long we keep it", blocks: [
+    "Enquiries and their correspondence are kept while the conversation is live and for a reasonable period afterwards, so we can pick up where we left off. Records tied to paid work are kept for as long as accounting and tax rules require. Anything else is deleted when it no longer serves the purpose it was collected for." ] },
+  { heading: "Your choices and rights", blocks: [
+    "You can ask us what personal information we hold about you, ask us to correct it, or ask us to delete it. Write to us and we will act on it.",
+    { list: [ "To stop text messages, reply STOP to any message from us.", "To stop marketing emails, use the unsubscribe link in any of them.", "To ask for a copy of your information or its deletion, email us." ] },
+    "Opting out of marketing does not stop messages we have to send about work already in progress." ] },
+  { heading: "Children", blocks: [ "This site and these services are for businesses, and are not directed to children under 13. We do not knowingly collect personal information from children. If you believe a child has given us information, tell us and we will delete it." ] },
+  { heading: "Security", blocks: [ "The site is served over HTTPS, and information you submit is held in the systems named in section 5, each protected by their own access controls. No method of transmission or storage is completely secure, and we do not claim otherwise. We hold no card details on this website." ] },
+  { heading: "Changes to this policy", blocks: [ "If this policy changes in substance, the effective date at the top changes with it. Continuing to use the site after that means the revised policy applies." ] },
+  { heading: "Contact us", blocks: [ `Questions about this policy, or a request about your information, go to ${CONTACT_EMAIL} or ${PHONE}.` ] },
+];
+---
+<Base title="Privacy policy" description={`How ${SITE_NAME} collects, uses, and protects personal information, including mobile and SMS data.`}>
+  <LegalDoc title="Privacy policy" effective="September 2, 2026" intro={`This policy covers ${URL_} and everything ${SITE_NAME} does with personal information, including phone numbers and text messaging.`} sections={S} />
+</Base>

@@ -75,6 +75,10 @@ const { columns, rows } = Astro.props;
   td:nth-child(2) {
     background: var(--concrete);
   }
+  :global(.section--concrete) th:nth-child(2),
+  :global(.section--concrete) td:nth-child(2) {
+    background: var(--paper);
+  }
   .yes {
     color: var(--hivis);
     display: inline-block;

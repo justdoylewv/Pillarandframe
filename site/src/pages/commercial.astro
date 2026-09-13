@@ -1,0 +1,90 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatRow from "../components/StatRow.astro";
+import DeliverablesTable from "../components/DeliverablesTable.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import CaseStudyFeature from "../components/CaseStudyFeature.astro";
+import FAQ from "../components/FAQ.astro";
+import Disqualifiers from "../components/Disqualifiers.astro";
+import CTABand from "../components/CTABand.astro";
+import { getCollection } from "astro:content";
+import { COMMERCIAL as C, HOME } from "../lib/copy";
+const powerfield = (await getCollection("work")).find((e) => e.data.slug === "powerfield");
+---
+
+<Base title="Commercial" description={C.sub}>
+  <Hero title={C.h1} sub={C.sub} primary={C.cta} secondary={{ label: "See the work", href: "/work" }} reelSrc={C.reel.src} posterSrc={C.reel.poster} />
+
+  <section class="section pt-0">
+    <div class="container"><StatRow stats={C.stats} /></div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>{C.problemHeading}</h2>
+      <div class="prose mt">{C.problem.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{C.tableHeading}</h2>
+      <div class="mt"><DeliverablesTable rows={C.table} /></div>
+      <p class="mt prose">{C.tableLine}</p>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="mt"><ProcessSteps steps={HOME.steps} /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{C.nobodyHeading}</h2>
+      <p class="prose mt">{C.nobody}</p>
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container two-col">
+      <div><h2>{C.priceHeading}</h2><p class="mt">{C.price}</p></div>
+      <div><h2>{C.guaranteeHeading}</h2><p class="mt">{C.guarantee}</p></div>
+    </div>
+  </section>
+
+  {powerfield && (
+    <section class="section">
+      <div class="container"><CaseStudyFeature entry={powerfield} /></div>
+    </section>
+  )}
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>{C.auditHeading}</h2>
+      <p class="prose mt">{C.audit}</p>
+      <p class="mt"><a class="btn" href={C.cta.href}>{C.cta.label}</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><FAQ items={C.faq} /></div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container"><Disqualifiers items={C.disqualifiers} /></div>
+  </section>
+
+  <CTABand imgSrc="/images/cta-band.jpg" title={C.band.title} primary={C.cta} secondary={{ label: "See the work", href: "/work" }} />
+</Base>
+
+<style>
+  .mt { margin-top: var(--space-stack); }
+  .pt-0 { padding-top: 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-block); }
+  .two-col p { max-width: var(--max-prose); }
+  @media (max-width: 52rem) { .two-col { grid-template-columns: 1fr; } }
+</style>

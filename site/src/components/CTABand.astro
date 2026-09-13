@@ -8,7 +8,7 @@ interface Props {
   secondary?: { label: string; href: string };
   footnote?: string;
 }
-const { imgSrc, title, primary, secondary, footnote } = Astro.props;
+const { imgSrc, title, primary, secondary, footnote = "Fixed deliverables · fixed price · refund if unused" } = Astro.props;
 ---
 
 <section class="cta-band">

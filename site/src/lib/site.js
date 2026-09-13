@@ -6,7 +6,7 @@ export const CONTACT_EMAIL = "doyle@pillarandframe.com";
 export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "https://pillarandframe.com";
 
 // Bracketed until 01-website-copy.md supplies it. Listed in the manifest.
-export const FOOTER_DESCRIPTION = "[One-line description, from 01]";
+export const FOOTER_DESCRIPTION = "Video for contractors. One day on site, a year of proof.";
 
 // Empty until the real profile URL is known. The footer omits the link rather
 // than pointing at a guess.

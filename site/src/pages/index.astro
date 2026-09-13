@@ -1,14 +1,125 @@
 ---
-// SCAFFOLD. Not the home page. The Home template needs the hero sub, three
-// doors, process bodies, and three quotes from 01-website-copy.md, which has
-// not arrived. Replaced wholesale at Phase 3.
+// Home. Template order from 07 §5, copy from 01 and 07 §6. Sections alternate
+// paper and concrete after the hero, never two concrete together.
 import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import LogoStrip from "../components/LogoStrip.astro";
+import ThreeDoors from "../components/ThreeDoors.astro";
+import CaseStudyFeature from "../components/CaseStudyFeature.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import FounderBlock from "../components/FounderBlock.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import StatRow from "../components/StatRow.astro";
+import ComparisonTable from "../components/ComparisonTable.astro";
+import Disqualifiers from "../components/Disqualifiers.astro";
+import Quote from "../components/Quote.astro";
+import FAQ from "../components/FAQ.astro";
+import CTABand from "../components/CTABand.astro";
+import { getCollection } from "astro:content";
+import { HOME } from "../lib/copy";
+
+const work = await getCollection("work");
+const featured = work.find((e) => e.data.featured) ?? work[0];
+// Only real, non-featured entries get a card. None yet, so no row.
+const more = work.filter((e) => !e.data.featured).slice(0, 3);
+
+const logos = [1, 2, 3].map((i) => ({ src: `/images/logos/placeholder-${i}.svg`, alt: `Client logo placeholder ${i}` }));
 ---
-<Base title="Pillar & Frame">
-  <section class="section">
+
+<Base title="Pillar & Frame · Video for contractors in Central Ohio" description={HOME.sub}>
+  <Hero
+    title={HOME.h1}
+    sub={HOME.sub}
+    primary={{ label: "Get your audit", href: "/audit" }}
+    secondary={{ label: "See the work", href: "/work" }}
+    reelSrc="/video/hero.mp4"
+    posterSrc="/video/hero-poster.jpg"
+  />
+
+  <LogoStrip logos={logos} />
+
+  <section class="section section--concrete">
     <div class="container">
-      <h1 class="fade-up">One day on your site.<br />A year of proof.</h1>
-      <p class="prose fade-up" style="margin-top: var(--space-stack);">Home page awaiting 01-website-copy.md. The components are on <a href="/styleguide">/styleguide</a>.</p>
+      <ThreeDoors doors={HOME.doors} linkText={HOME.doorLink} />
     </div>
   </section>
+
+  {featured && (
+    <section class="section">
+      <div class="container">
+        <CaseStudyFeature entry={featured} />
+      </div>
+    </section>
+  )}
+
+  {more.length > 0 && (
+    <section class="section section--concrete">
+      <div class="container cards">
+        {more.map((e) => <CaseStudyCard entry={e} />)}
+      </div>
+    </section>
+  )}
+
+  <section class={`section ${more.length > 0 ? "" : "section--concrete"}`}>
+    <div class="container">
+      <FounderBlock {...HOME.founder} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-block">
+      <ProcessSteps steps={HOME.steps} />
+      <StatRow stats={HOME.stats} />
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <ComparisonTable columns={HOME.comparison.columns} rows={HOME.comparison.rows} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <Disqualifiers items={HOME.disqualifiers} />
+    </div>
+  </section>
+
+  <section class="section section--concrete">
+    <div class="container">
+      <h2>{HOME.quotesHeading}</h2>
+      <div class="quotes">
+        {HOME.quotes.map((q) => <Quote {...q} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <FAQ items={HOME.faq} />
+    </div>
+  </section>
+
+  <CTABand imgSrc="/images/cta-band.jpg" title={HOME.cta.title} primary={HOME.cta.primary} secondary={HOME.cta.secondary} />
 </Base>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .stack-block > * + * {
+    margin-top: var(--space-block);
+  }
+  .quotes {
+    margin-top: var(--space-block);
+    display: grid;
+    gap: var(--space-block);
+  }
+  @media (max-width: 52rem) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

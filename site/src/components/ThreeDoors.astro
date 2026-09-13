@@ -1,7 +1,7 @@
 ---
 // Three equal cards, whole card is the link. Same shape as CaseStudyCard.
-interface Props { doors: { title: string; body: string; href: string }[] }
-const { doors } = Astro.props;
+interface Props { doors: { title: string; body: string; href: string }[]; linkText?: string }
+const { doors, linkText = "See how it works" } = Astro.props;
 ---
 
 <div class="doors">
@@ -9,6 +9,7 @@ const { doors } = Astro.props;
     <a class="door" href={d.href}>
       <h3>{d.title}</h3>
       <p>{d.body}</p>
+      <p class="door-link">{linkText}</p>
     </a>
   ))}
 </div>
@@ -33,6 +34,12 @@ const { doors } = Astro.props;
   }
   .door p {
     margin-top: 0.75rem;
+  }
+  .door-link {
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
   }
   @media (max-width: 52rem) {
     .doors {

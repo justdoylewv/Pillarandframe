@@ -5,7 +5,7 @@ import Reel from "./Reel.astro";
 interface Props {
   title: string;
   sub: string;
-  primary: { label: string; href: string };
+  primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
   reelSrc?: string;
   posterSrc?: string;
@@ -18,10 +18,13 @@ const { title, sub, primary, secondary, reelSrc, posterSrc = "", reelLabel } = A
   <div class="container">
     <h1 class="fade-up" set:html={title} />
     <p class="hero-sub fade-up">{sub}</p>
-    <div class="btn-row">
-      <a class="btn" href={primary.href}>{primary.label}</a>
-      {secondary && <a class="btn--secondary" href={secondary.href}>{secondary.label}</a>}
-    </div>
+    {(primary || secondary) && (
+      <div class="btn-row">
+        {primary && <a class="btn" href={primary.href}>{primary.label}</a>}
+        {secondary && <a class="btn--secondary" href={secondary.href}>{secondary.label}</a>}
+      </div>
+    )}
+    <slot />
     {reelSrc && (
       <div class="hero-reel">
         <Reel src={reelSrc} poster={posterSrc} label={reelLabel} />
