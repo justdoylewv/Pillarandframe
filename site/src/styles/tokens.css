@@ -2,27 +2,36 @@
    Nothing here is a taste decision; change the source, then change this. */
 
 :root {
-  /* Colour */
-  --ink: #14161a;
-  --steel: #6c7278;
-  --concrete: #e8e6e1;
-  --paper: #ffffff;
-  --hivis: #e4572e;
-  --line: #d6d3cc;
+  /* Colour. The 07 roles, filled with the Pillar & Frame brand values from
+     the current site, as 07 §3 says to do where brand values exist. */
+  --ink: #0a0a0b;          /* black */
+  --ink-2: #141319;        /* ink, dark section ground */
+  --steel: #4a463e;        /* ash-700 */
+  --concrete: #f1ece2;     /* bone, the alternating ground */
+  --paper: #faf8f3;        /* paper */
+  --hivis: #ffce1a;        /* gold-500, the accent */
+  --hivis-text: #b58b00;   /* gold-700, gold where it has to read on light */
+  --purple: #5b27d4;       /* purple-600, focus ring */
+  --line: #e5dfd3;         /* ash-100 */
+  --steel-on-concrete: #4a463e;
+  --paper-quiet: #bfb7a8;  /* ash-300, quiet text on dark */
 
-  /* Measured against WCAG AA (4.5 body, 3.0 large):
-       ink on paper       18.3:1
-       ink on concrete    14.5:1
-       steel on paper      4.87:1   body, fine
-       steel on concrete   3.90:1   large text only. Body on concrete is ink.
-       paper on hivis      3.68:1   fails at button size
-       ink on hivis        4.92:1   the primary button, see base.css
-     The plan asks for paper text on the hi-vis button and also asks for AA.
-     Those cannot both be true at 16px, so the button is ink on hi-vis. */
+  /* Measured against WCAG AA (4.5 body, 3.0 large, 3.0 UI):
+       black on paper     17.9:1
+       black on bone      15.9:1
+       ash-700 on paper    8.9:1   body and meta, fine
+       ash-700 on bone     8.0:1
+       ash-500 on paper    4.0:1   FAILS at 14px, which is why steel is ash-700
+       gold-500 on black  13.3:1   the italic emphasis on the dark hero
+       gold-700 on paper   3.0:1   passes as a UI icon, not as text
+       gold-500 on paper   1.4:1   never text, never an icon; ground only
+       purple on paper     7.4:1   focus ring
+       paper on black     17.9:1   the primary button */
 
-  /* Type */
-  --font-display: "Inter Tight", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  /* Type. DM Serif Display for headlines and stat numbers, DM Sans for
+     everything else, as on the current site. */
+  --font-display: "DM Serif Display", "DM Serif Display Fallback", Georgia, serif;
+  --font-body: "DM Sans", "DM Sans Fallback", Arial, sans-serif;
 
   /* Desktop / mobile from the scale, via clamp between 360px and 1200px. */
   --fs-h1: clamp(2.5rem, 1.357rem + 5.08vw, 4rem);         /* 40 / 64 */
@@ -42,10 +51,10 @@
   --lh-body: 1.55;
   --lh-small: 1.4;
 
-  --track-h1: -0.02em;
-  --track-h2: -0.015em;
-  --track-h3: -0.01em;
-  --track-stat: -0.02em;
+  --track-h1: -0.03em;
+  --track-h2: -0.025em;
+  --track-h3: -0.015em;
+  --track-stat: -0.03em;
 
   /* Spacing & shape */
   --space-section: clamp(4.5rem, 3.214rem + 5.71vw, 7.5rem); /* 72 / 120 */
@@ -54,8 +63,8 @@
   --space-gutter: 1.5rem;
   --max-width: 75rem;     /* 1200 */
   --max-prose: 68ch;
-  --radius: 8px;
-  --radius-media: 4px;
+  --radius: 2px;
+  --radius-media: 0;
   --shadow: none;
 }
 

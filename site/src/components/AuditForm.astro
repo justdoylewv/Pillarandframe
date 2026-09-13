@@ -64,6 +64,12 @@ const errorCopy = `That didn't send. Try again, or email ${CONTACT_EMAIL}.`;
   .audit-form {
     max-width: 36rem;
   }
+  :global(.on-dark) .audit-form label {
+    color: var(--paper);
+  }
+  :global(.on-dark) .audit-form .form-error {
+    color: var(--paper);
+  }
   .fields {
     display: grid;
     gap: var(--space-stack);

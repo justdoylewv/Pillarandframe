@@ -21,7 +21,8 @@ export const ERRORS = {
 // ---------------------------------------------------------------------------
 
 export const HOME = {
-  h1: "One day on your site.<br />A year of proof.",
+  h1: "One day on your site.",
+  h1Emphasis: "A year of proof.",
   sub: "We film the work you actually do and put it where it wins bids, hires crews, shows stakeholders progress, and fills the schedule. Central Ohio, and wherever the project is.",
   doors: [
     {

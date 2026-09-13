@@ -7,7 +7,7 @@ export default defineConfig({
   site: "https://pillarandframe.com",
   output: "static",
   trailingSlash: "never",
-  build: { format: "file", inlineStylesheets: "auto" },
+  build: { format: "file", inlineStylesheets: "always" },
   devToolbar: { enabled: false },
   integrations: [
     sitemap({ filter: (page) => !page.includes("/styleguide") }),

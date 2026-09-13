@@ -4,6 +4,8 @@ import Reel from "./Reel.astro";
 // carry the single load animation on the site.
 interface Props {
   title: string;
+  /** A second clause set in gold italic, the current site's signature. */
+  emphasis?: string;
   sub: string;
   primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
@@ -11,12 +13,15 @@ interface Props {
   posterSrc?: string;
   reelLabel?: string;
 }
-const { title, sub, primary, secondary, reelSrc, posterSrc = "", reelLabel } = Astro.props;
+const { title, emphasis, sub, primary, secondary, reelSrc, posterSrc = "", reelLabel } = Astro.props;
 ---
 
-<section class="section hero">
+<section class="section hero on-dark">
   <div class="container">
-    <h1 class="fade-up" set:html={title} />
+    <h1 class="fade-up">
+      <Fragment set:html={title} />
+      {emphasis && <> <span class="em">{emphasis}</span></>}
+    </h1>
     <p class="hero-sub fade-up">{sub}</p>
     {(primary || secondary) && (
       <div class="btn-row">
@@ -36,6 +41,16 @@ const { title, sub, primary, secondary, reelSrc, posterSrc = "", reelLabel } = A
 <style>
   .hero {
     padding-bottom: var(--space-block);
+    background: var(--ink-2);
+  }
+  /* The emphasis clause takes its own line, as on the current site. */
+  .hero h1 :global(.em) {
+    display: block;
+  }
+  .hero :global(.btn) {
+    background: var(--paper);
+    border-color: var(--paper);
+    color: var(--ink);
   }
   .hero-sub {
     max-width: var(--max-prose);

@@ -7,7 +7,7 @@ const { doors, linkText = "See how it works" } = Astro.props;
 <div class="doors">
   {doors.map((d) => (
     <a class="door" href={d.href}>
-      <h3>{d.title}</h3>
+      <h2 class="h3">{d.title}</h2>
       <p>{d.body}</p>
       <p class="door-link">{linkText}</p>
     </a>
@@ -27,7 +27,7 @@ const { doors, linkText = "See how it works" } = Astro.props;
     padding: var(--space-stack);
     text-decoration: none;
   }
-  .door:hover h3 {
+  .door:hover h2 {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.15em;

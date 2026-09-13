@@ -14,7 +14,7 @@ const { imgSrc, captionLines, title, paragraphs, stats } = Astro.props;
 <div class="founder">
   <div>
     <div class="media ratio-4x5 placeholder" data-label={`Image placeholder: ${imgSrc}`}>
-      <img src={imgSrc} alt="Doyle Maurer on a job site" loading="lazy" />
+      <img src={imgSrc} alt="Doyle Maurer on a job site" width="1200" height="1500" loading="lazy" />
     </div>
     <p class="meta caption">{captionLines.join(" · ")}</p>
   </div>

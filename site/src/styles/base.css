@@ -1,25 +1,50 @@
 /* Base. Reset, fonts, type, grounds, buttons, focus, motion. */
 
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/inter-400.woff2") format("woff2");
+  src: url("/fonts/dm-sans-400.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "DM Sans";
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/inter-500.woff2") format("woff2");
+  src: url("/fonts/dm-sans-500.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Inter Tight";
-  font-weight: 600;
+  font-family: "DM Serif Display";
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/inter-tight-600.woff2") format("woff2");
+  src: url("/fonts/dm-serif-display-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Serif Display";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("/fonts/dm-serif-display-400-italic.woff2") format("woff2");
+}
+/* Metric-matched fallbacks so the swap does not reflow. size-adjust is
+   measured in a browser against the local face; see the build notes. */
+@font-face {
+  font-family: "DM Serif Display Fallback";
+  src: local("Georgia");
+  size-adjust: 108.1%;
+  ascent-override: 92%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "DM Sans Fallback";
+  src: local("Arial");
+  size-adjust: 103.4%;
+  ascent-override: 99%;
+  descent-override: 31%;
+  line-gap-override: 0%;
 }
 
 /* Reset */
@@ -82,8 +107,17 @@ h3,
 .h2,
 .h3 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
   margin: 0;
+}
+/* The current site's signature: a second clause in gold italic. Only where
+   the copy already has two sentences; never invented. */
+.em {
+  font-style: italic;
+  color: var(--hivis-text);
+}
+.on-dark .em {
+  color: var(--hivis);
 }
 h1,
 .h1 {
@@ -118,7 +152,7 @@ h3,
 }
 .stat-number {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
   font-size: var(--fs-stat);
   line-height: var(--lh-stat);
   letter-spacing: var(--track-stat);
@@ -144,10 +178,16 @@ h3,
 .section--concrete {
   background: var(--concrete);
 }
-/* On concrete, body copy is ink. Steel is reserved for large or metadata text
-   there, since it measures 3.90:1 on that ground. */
+/* On concrete, body copy is ink and every steel label darkens to the
+   concrete variant. Plain steel measures 3.90:1 on that ground and fails AA
+   at 14px; the variant clears it. */
 .section--concrete p:not(.meta):not(.steel) {
   color: var(--ink);
+}
+.section--concrete .meta,
+.section--concrete .steel,
+.stat-tile .meta {
+  color: var(--steel-on-concrete);
 }
 .section-head {
   margin-bottom: var(--space-block);
@@ -179,22 +219,49 @@ h3,
   border: 1px solid transparent;
 }
 .btn {
-  background: var(--hivis);
-  border-color: var(--hivis);
-  color: var(--ink);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 .btn:hover {
-  background: #cf4c24;
-  border-color: #cf4c24;
+  background: #1f1d26;
+  border-color: #1f1d26;
 }
 .btn--secondary {
   background: transparent;
-  border-color: var(--ink);
+  border-color: var(--paper-quiet);
   color: var(--ink);
 }
 .btn--secondary:hover {
+  border-color: var(--ink);
+}
+/* On a dark ground the pair inverts, as on the current site. */
+.on-dark {
   background: var(--ink);
   color: var(--paper);
+}
+.on-dark h1,
+.on-dark h2 {
+  color: var(--paper);
+}
+.on-dark p {
+  color: var(--paper-quiet);
+}
+.on-dark .btn {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
+.on-dark .btn:hover {
+  background: var(--concrete);
+  border-color: var(--concrete);
+}
+.on-dark .btn--secondary {
+  border-color: rgba(250, 248, 243, 0.35);
+  color: var(--paper);
+}
+.on-dark .btn--secondary:hover {
+  border-color: var(--paper);
 }
 .btn-row {
   display: flex;
@@ -204,7 +271,7 @@ h3,
 
 /* Focus. Visible on every interactive element, keyboard only. */
 :focus-visible {
-  outline: 2px solid var(--hivis);
+  outline: 2px solid var(--purple);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -327,5 +394,6 @@ h3,
 .form-error {
   color: var(--ink);
   border-left: 3px solid var(--hivis);
+  /* the one gold rule this component is allowed */
   padding-left: 0.75rem;
 }

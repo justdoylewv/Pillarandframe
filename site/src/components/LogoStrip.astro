@@ -18,11 +18,11 @@ const scroll = logos.length >= 5;
         <ul>
           {logos.map((l) => (
             <li>
-              {l.href ? <a href={l.href}><img src={l.src} alt={l.alt} loading="lazy" /></a> : <img src={l.src} alt={l.alt} loading="lazy" />}
+              {l.href ? <a href={l.href}><img src={l.src} alt={l.alt} width="140" height="32" loading="lazy" /></a> : <img src={l.src} alt={l.alt} width="140" height="32" loading="lazy" />}
             </li>
           ))}
           {scroll && logos.map((l) => (
-            <li aria-hidden="true"><img src={l.src} alt="" loading="lazy" /></li>
+            <li aria-hidden="true"><img src={l.src} alt="" width="140" height="32" loading="lazy" /></li>
           ))}
         </ul>
       </div>

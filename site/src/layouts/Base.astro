@@ -38,15 +38,12 @@ const fullTitle = path === "/" ? title : `${title} · ${SITE_NAME}`;
     <meta property="og:image" content={new URL(ogImage, SITE_URL).href} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Only the display face is preloaded: it paints the H1, which is the
-         one thing above the fold that would otherwise swap visibly. -->
-    <link
-      rel="preload"
-      href="/fonts/inter-tight-600.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <!-- All three faces preloaded: 70KB total, and each one that arrives
+         before first paint is a swap that never happens. -->
+    <link rel="preload" href="/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-serif-display-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-500.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
