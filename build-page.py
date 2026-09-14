@@ -11,6 +11,9 @@ reel=media_config.get('reel',{})
 origin='https://pillarandframe.com'
 head=re.sub(r'<script id="hero-video-schema".*?</script>', '', head, flags=re.S)
 head=re.sub(r'<link id="hero-poster-preload"[^>]*>', '', head)
+import hashlib
+css_v=hashlib.md5((root/'dist/style.css').read_bytes()).hexdigest()[:8]
+head=re.sub(r'(href="/style\.css)(\?v=[^"]*)?(")', lambda m: m.group(1)+'?v='+css_v+m.group(3), head)
 def abs_url(u):return u if u.startswith('http') else origin+u
 if reel.get('src') and reel.get('kind') in ('video','embed'):
  schema={'@context':'https://schema.org','@type':'VideoObject','name':reel['title'],'description':reel['description'],'thumbnailUrl':[abs_url(reel['poster'])],'duration':reel['duration']}

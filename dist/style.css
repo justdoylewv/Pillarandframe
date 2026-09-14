@@ -9,3 +9,13 @@ body{font-size:16px;line-height:1.6}button{font:inherit;border:0;cursor:pointer}
 .video-play{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:linear-gradient(0deg,#061b2460,transparent 60%);color:white;font-size:16px;font-weight:600;text-shadow:0 1px 8px #0008}.video-play[hidden]{display:none}.video-play-icon{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--lime);color:var(--ink);font-size:28px;padding-left:4px;text-shadow:none;box-shadow:0 8px 35px #0004;transition:transform .2s}.video-play:hover .video-play-icon{transform:scale(1.06)}.video-play:focus-visible{outline:3px solid var(--lime);outline-offset:-6px}.media video:focus-visible{outline:3px solid var(--lime);outline-offset:-4px}@media(max-width:740px){.video-play-icon{width:64px;height:64px;font-size:23px}.video-play{gap:10px;font-size:14px}}@media(prefers-reduced-motion:reduce){.video-play-icon{transition:none}}
 
 footer .legal-links{font-size:14px}footer .legal-links a:hover,footer p a:hover{color:var(--lime)}
+
+@media(max-width:740px){
+.hero{padding-top:24px;padding-bottom:26px}
+.hero .pill{margin-bottom:16px}
+.hero h1{margin-bottom:16px}
+.hero-sub{margin-bottom:14px}
+.hero-copy{margin-bottom:22px}
+.hero-benefits{margin-bottom:26px}
+.local-promise{margin-top:18px}
+}
