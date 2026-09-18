@@ -26,22 +26,25 @@ window.PILLAR_CONTENT = {
     },
     "stakeholders-1": {
       "kind": "embed",
-      "src": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/iframe?poster=https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/thumbnails/thumbnail.jpg?time=1s%26height=540",
-      "poster": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/thumbnails/thumbnail.jpg?time=1s&height=540",
+      "src": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/25a424a73bf1c9495a7ece8b82734f47/iframe?poster=https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/25a424a73bf1c9495a7ece8b82734f47/thumbnails/thumbnail.jpg?time=1s%26height=540",
+      "poster": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/25a424a73bf1c9495a7ece8b82734f47/thumbnails/thumbnail.jpg?time=1s&height=540",
       "title": "Project story, owners and lenders",
       "caption": "",
       "captions": "",
       "description": "A Pillar & Frame project story used to keep owners, lenders and boards confident in the work without another meeting.",
-      "hls": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/manifest/video.m3u8",
-      "dash": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/manifest/video.mpd"
+      "hls": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/25a424a73bf1c9495a7ece8b82734f47/manifest/video.m3u8",
+      "dash": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/25a424a73bf1c9495a7ece8b82734f47/manifest/video.mpd"
     },
     "hiring-1": {
-      "kind": "video",
-      "src": "",
-      "poster": "",
-      "title": "Hiring \u00b7 Sample 1",
-      "caption": "Project title \u00b7 Client name",
-      "captions": ""
+      "kind": "embed",
+      "src": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/iframe?poster=https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/thumbnails/thumbnail.jpg?time=1s%26height=540",
+      "poster": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/thumbnails/thumbnail.jpg?time=1s&height=540",
+      "title": "Project story, recruitment",
+      "caption": "",
+      "captions": "",
+      "description": "A Pillar & Frame project story used to attract tradespeople, showing real crews on the work they did.",
+      "hls": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/manifest/video.m3u8",
+      "dash": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/8040234083173fdff9074f2cfd9d9c49/manifest/video.mpd"
     }
   },
   "quotes": [

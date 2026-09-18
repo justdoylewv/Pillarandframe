@@ -26,7 +26,7 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 - The PowerField result is missing. Do not invent a number.
 - Validate the day's coverage in October before a public launch: client interview, crew interview and b-roll.
 - Confirm tier pricing: video plus written at $8,500 / $9,500 / $11,500, video only at $6,500 / $7,500 / $9,500. Approximately $2,000 delivery cost is an internal estimate; cold-buyer pricing remains untested.
-- sales-1 and stakeholders-1 now carry real films. hiring-1 is still an empty placeholder. Both new films need a real `title` and `caption` naming the project and client; they currently carry neutral role-based titles and no caption.
+- All three sample slots now carry real films, so no placeholders remain on the page. Each still needs a real `title` and `caption` naming the project and client; they currently carry neutral role-based titles and no caption.
 - Confirm the supplied fourteen-day guarantee and approval timing before public launch.
 - Booking URL supplied and connected to all booking CTAs: https://api.leadconnectorhq.com/widget/booking/ihHVVEe4Cdt6qncNDcpU
 
@@ -46,9 +46,10 @@ If the video is set to require signed URLs in the Cloudflare dashboard, the publ
 
 ## Use case films
 
-Two more Stream videos are embedded the same way, one under each use case heading:
+Three more Stream videos are embedded the same way, one under each use case heading:
 
 - `sales-1`, under "Closes deals faster": video id `f535c54a02b4883aab7d9294c64a73e3`.
-- `stakeholders-1`, under "Keeps stakeholders confident": video id `8040234083173fdff9074f2cfd9d9c49`.
+- `stakeholders-1`, under "Keeps stakeholders confident": video id `25a424a73bf1c9495a7ece8b82734f47`.
+- `hiring-1`, under "Attracts the best tradespeople": video id `8040234083173fdff9074f2cfd9d9c49`. This is the installation film that first sat under stakeholder confidence.
 
-Both carry HLS and DASH manifests in `content.js` for a future native player, and both are written into the static page as iframes with VideoObject metadata, as the hero film is. Neither has a duration in its schema, because none was supplied; add `duration` when it is known. Titles are role-based placeholders and captions are empty, so nothing implies a project or client that has not been confirmed.
+All three carry HLS and DASH manifests in `content.js` for a future native player, and all three are written into the static page as iframes with VideoObject metadata, as the hero film is. None has a duration in its schema, because none was supplied; add `duration` when it is known. Titles are role-based placeholders and captions are empty, so nothing implies a project or client that has not been confirmed.
