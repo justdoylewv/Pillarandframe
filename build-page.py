@@ -15,23 +15,39 @@ import hashlib
 css_v=hashlib.md5((root/'dist/style.css').read_bytes()).hexdigest()[:8]
 head=re.sub(r'(href="/style\.css)(\?v=[^"]*)?(")', lambda m: m.group(1)+'?v='+css_v+m.group(3), head)
 def abs_url(u):return u if u.startswith('http') else origin+u
-if reel.get('src') and reel.get('kind') in ('video','embed'):
- schema={'@context':'https://schema.org','@type':'VideoObject','name':reel['title'],'description':reel['description'],'thumbnailUrl':[abs_url(reel['poster'])],'duration':reel['duration']}
- if reel['kind']=='video': schema['contentUrl']=abs_url(reel['src'])
+samples=media_config.get('samples',{})
+def video_schema(item):
+ s={'@context':'https://schema.org','@type':'VideoObject','name':item['title'],'description':item.get('description') or item['title']}
+ if item.get('poster'): s['thumbnailUrl']=[abs_url(item['poster'])]
+ if item.get('duration'): s['duration']=item['duration']
+ if item['kind']=='video': s['contentUrl']=abs_url(item['src'])
  else:
-  schema['embedUrl']=reel['src']
-  if reel.get('hls'): schema['contentUrl']=reel['hls']
- head=head.replace('</head>','<link id="hero-poster-preload" rel="preload" as="image" href="'+e(reel['poster'],quote=True)+'"><script id="hero-video-schema" type="application/ld+json">'+json.dumps(schema)+'</script></head>')
+  s['embedUrl']=item['src'].split('?')[0]
+  if item.get('hls'): s['contentUrl']=item['hls']
+ return s
+schemas=[video_schema(x) for x in [reel]+[samples[k] for k in sorted(samples)] if x.get('src') and x.get('kind') in ('video','embed')]
+if schemas:
+ inject=''
+ if reel.get('poster'): inject+='<link id="hero-poster-preload" rel="preload" as="image" href="'+e(reel['poster'],quote=True)+'">'
+ inject+='<script id="hero-video-schema" type="application/ld+json">'+json.dumps(schemas[0] if len(schemas)==1 else schemas)+'</script>'
+ head=head.replace('</head>',inject+'</head>')
 TOGGLE_JS='''<script>(function(){var t=[].slice.call(document.querySelectorAll('.plan-toggle button'));function s(b){t.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;var pnl=document.getElementById(x.getAttribute('aria-controls'));if(pnl)pnl.hidden=!on;});}t.forEach(function(b,i){b.addEventListener('click',function(){s(b);});b.addEventListener('keydown',function(ev){var n=ev.key==='ArrowRight'?i+1:ev.key==='ArrowLeft'?i-1:-1;if(n<0||n>=t.length)return;ev.preventDefault();t[n].focus();s(t[n]);});});})();</script>'''
 def p(s):return '<p>'+s+'</p>'
 def heading(k,t):return '<div class="section-heading"><p class="eyebrow">'+k+'</p><h2>'+t+'</h2></div>'
 def cta(label='Book a 15-minute call'):return '<a class="button booking" href="#booking">'+label+' <span aria-hidden="true">↗</span></a>'
 def ul(items):return '<ul>'+''.join('<li>'+x+'</li>' for x in items)+'</ul>'
+def cap(key):
+ item=samples.get(key,{})
+ c=item.get('caption','')
+ if not c and item.get('src'): return ''
+ return '<p class="sample-caption">'+(c or 'Project title · Client name')+'</p>'
 def slot(key,title):
- if key=='reel' and reel.get('kind')=='embed' and reel.get('src'):
-  return '<div class="media" data-media="reel"><iframe src="'+e(reel['src'],quote=True)+'" title="'+e(reel['title'],quote=True)+'" width="960" height="540" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
- if key=='reel' and reel.get('kind')=='video' and reel.get('src'):
-  return '<div class="media" data-media="reel"><video controls playsinline preload="none" width="960" height="540" poster="'+e(reel['poster'],quote=True)+'" src="'+e(reel['src'],quote=True)+'" aria-label="'+e(reel['title'],quote=True)+'">Your browser does not support video playback.</video></div>'
+ item=reel if key=='reel' else samples.get(key,{})
+ name=e(item.get('title') or title,quote=True)
+ if item.get('src') and item.get('kind')=='embed':
+  return '<div class="media" data-media="'+key+'"><iframe src="'+e(item['src'],quote=True)+'" title="'+name+'" width="960" height="540" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+ if item.get('src') and item.get('kind')=='video':
+  return '<div class="media" data-media="'+key+'"><video controls playsinline preload="none" width="960" height="540" poster="'+e(item.get('poster',''),quote=True)+'" src="'+e(item['src'],quote=True)+'" aria-label="'+name+'">Your browser does not support video playback.</video></div>'
  return '<div class="media" data-media="'+key+'"><div class="media-empty"><span class="frame-icon" aria-hidden="true">▷</span><strong>'+title+'</strong><span>Content placeholder · Video coming soon</span></div></div>'
 
 h=[head,'<body><a class="skip" href="#main">Skip to content</a><div class="dark-top"><header class="wrap"><a class="brand" href="#main">pillar<span class="amp">&amp;</span>frame.</a><span class="location">Central Ohio</span><nav aria-label="Main navigation"><a href="#results">Project stories</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>'+cta()+'</nav></header></div><main id="main">']
@@ -46,7 +62,7 @@ h+=['<section class="section wrap" id="process">'+heading('BUILT AROUND YOUR JOB
 usecases=[('sales','SALES','Closes deals faster','The committee stops taking your word for it and watches someone who already hired you.',['The project story goes in every pre-qual package','Your estimator sends the page on Thursday instead of a nudge','One link answers the question a proposal cannot']),('stakeholders','OWNERS, LENDERS, BOARDS','Keeps stakeholders confident','The people funding the work see it in their own time, without another meeting.',['A record of what was built and how it went','One page they can forward instead of forwarding a report','Dated, current and theirs to share internally']),('hiring','HIRING','Attracts the best tradespeople','Your people by name, on the work they did. That beats a job board every time.',['The story shows real crews doing real work','The social cut runs on hiring posts','The page sits on the careers page and does the convincing'])]
 h+=['<section class="section results" id="results"><div class="wrap">'+heading('WHERE IT GOES','Win the bid.<br>Keep the owner.<br>Fill the crew.')]
 for key,label,title,desc,items in usecases:
- h+=['<article class="usecase"><div class="usecase-copy"><div><p class="eyebrow">'+label+'</p><h3>'+title+'</h3>'+p(desc)+'</div>'+ul(items)+'</div><div class="sample-grid">'+''.join('<div class="sample">'+slot(key+'-'+str(i),label.title()+' · Sample '+str(i))+'<p class="sample-caption">Project title · Client name</p></div>' for i in range(1,4))+'</div></article>']
+ h+=['<article class="usecase"><div class="usecase-copy"><div><p class="eyebrow">'+label+'</p><h3>'+title+'</h3>'+p(desc)+'</div>'+ul(items)+'</div><div class="sample-grid">'+''.join('<div class="sample">'+slot(key+'-'+str(i),label.title()+' · Sample '+str(i))+cap(key+'-'+str(i))+'</div>' for i in range(1,2))+'</div></article>']
 h+=['</div></section>']
 h+=['<section class="section compound"><div class="wrap sameness"><div><p class="eyebrow">IT COMPOUNDS</p><h2>One link is useful.<br><span>Four is a library.</span></h2></div><div>'+p('Do this once a quarter and by the end of the year every bid has a comparable project attached, every open role has real crews behind it, and every stakeholder has something current to look at.')+p('Nobody is digging through a folder of phone photos, because there is no reason to.')+'</div></div></section>']
 h+=['<section class="section wrap deadline">'+heading('THE DEADLINE','A finished building is just a building.')+p('The proof is the work, and the work only exists while it is happening. Once the site demobilizes, no version of this can be recovered. Not at any price, not by anyone.')+p('If there is a job running right now that you would want a committee to see, that is the one.')+'</section>']

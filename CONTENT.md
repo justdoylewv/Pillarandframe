@@ -7,7 +7,7 @@ The site remains an owner-private review. Do not change its audience without Doy
 Edit `dist/content.js`. No page markup changes are required for these slots:
 - `bookingUrl`: approved HTTPS scheduling link. All booking CTAs use it. While empty, the CTA opens an honest booking-coming-soon message.
 - `reel`: the full-width hero reel.
-- `samples`: nine named slots: sales-1 through sales-3, stakeholders-1 through stakeholders-3, hiring-1 through hiring-3.
+- `samples`: one named slot per use case: sales-1, stakeholders-1, hiring-1. The page renders exactly one sample per section, so adding more keys has no effect until `build-page.py` widens the range.
 - `quotes`: three objects with quote, name, title, and company. Only approved quotes with a name replace the placeholders.
 
 For a media item:
@@ -18,15 +18,15 @@ For a media item:
 
 Empty sources show labeled placeholders; no client footage, quotes, results or logos have been fabricated. The previous AI illustration is retained as an unused asset and is not presented as project evidence. No Testimonial Hero footage, brand assets, or third-party players are embedded.
 
-Testimonial Hero reference inspection: full-width Wistia brand film and groups of three Wistia samples (via Embedly), with poster images and play buttons. This page uses the presentation pattern with original design and configurable first-party content.
+Testimonial Hero reference inspection: full-width Wistia brand film and groups of three Wistia samples (via Embedly), with poster images and play buttons; the pricing page toggles between two package ladders. This page uses those presentation patterns with original design and configurable first-party content.
 
 ## Doyle's confirmation notes — not website copy
 
 - Three genuine client quotes; PowerField is pending. One real quote is preferable to three placeholders.
 - The PowerField result is missing. Do not invent a number.
-- Validate half-day coverage in October before a public launch: client interview, crew interview and b-roll.
-- Confirm $4,500 / $5,500 / $7,500 tier pricing. Approximately $2,000 delivery cost is an internal estimate; cold-buyer pricing remains untested.
-- Fill all nine sample slots. Reusing PowerField is acceptable with honest labels.
+- Validate the day's coverage in October before a public launch: client interview, crew interview and b-roll.
+- Confirm tier pricing: video plus written at $8,500 / $9,500 / $11,500, video only at $6,500 / $7,500 / $9,500. Approximately $2,000 delivery cost is an internal estimate; cold-buyer pricing remains untested.
+- sales-1 and stakeholders-1 now carry real films. hiring-1 is still an empty placeholder. Both new films need a real `title` and `caption` naming the project and client; they currently carry neutral role-based titles and no caption.
 - Confirm the supplied fourteen-day guarantee and approval timing before public launch.
 - Booking URL supplied and connected to all booking CTAs: https://api.leadconnectorhq.com/widget/booking/ihHVVEe4Cdt6qncNDcpU
 
@@ -43,3 +43,12 @@ The PowerField Energy Overview film is hosted on Cloudflare Stream, video id `48
 `build-page.py` writes the iframe into the static page, so the film plays without JavaScript, and emits VideoObject metadata with the title, description, duration, Stream thumbnail, embed URL, and the HLS manifest as the content URL. No release date or transcript has been invented; add `uploadDate` and a captions track when they exist.
 
 If the video is set to require signed URLs in the Cloudflare dashboard, the public iframe stops working. Leave it on public playback.
+
+## Use case films
+
+Two more Stream videos are embedded the same way, one under each use case heading:
+
+- `sales-1`, under "Closes deals faster": video id `f535c54a02b4883aab7d9294c64a73e3`.
+- `stakeholders-1`, under "Keeps stakeholders confident": video id `8040234083173fdff9074f2cfd9d9c49`.
+
+Both carry HLS and DASH manifests in `content.js` for a future native player, and both are written into the static page as iframes with VideoObject metadata, as the hero film is. Neither has a duration in its schema, because none was supplied; add `duration` when it is known. Titles are role-based placeholders and captions are empty, so nothing implies a project or client that has not been confirmed.
