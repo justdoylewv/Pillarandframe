@@ -27,7 +27,7 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 - Validate the day's coverage in October before a public launch: client interview, crew interview and b-roll.
 - Confirm tier pricing: video plus written at $8,500 / $9,500 / $11,500, video only at $6,500 / $7,500 / $9,500. Approximately $2,000 delivery cost is an internal estimate; cold-buyer pricing remains untested.
 - All three sample slots now carry real films, so no placeholders remain on the page. Each still needs a real `title` and `caption` naming the project and client; they currently carry neutral role-based titles and no caption.
-- Confirm the supplied fourteen-day guarantee and approval timing before public launch.
+- Delivery guarantee changed from fourteen days to thirty on 19 September 2026 at Doyle's instruction; fourteen was judged too aggressive. Confirm the thirty-day guarantee and approval timing before public launch.
 - Booking URL supplied and connected to all booking CTAs: https://api.leadconnectorhq.com/widget/booking/ihHVVEe4Cdt6qncNDcpU
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
