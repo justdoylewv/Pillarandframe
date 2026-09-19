@@ -49,20 +49,20 @@ window.PILLAR_CONTENT = {
   },
   "quotes": [
     {
-      "quote": "",
-      "name": "",
+      "quote": "If you’re a local business owner who’s willing to do the work, this is the team you want pointing you in the right direction. Best decision I made in my first couple of years.",
+      "name": "Marco Randazzo",
       "title": "",
       "company": ""
     },
     {
-      "quote": "",
-      "name": "",
+      "quote": "Pillar & Frame has been amazing for my business! They really care about their customers and are so helpful. I highly recommend this company!",
+      "name": "Stacey Dowling",
       "title": "",
       "company": ""
     },
     {
-      "quote": "",
-      "name": "",
+      "quote": "If you’re looking for someone to showcase your story with authenticity and heart, we highly recommend Pillar & Frame!",
+      "name": "Rachel Watson",
       "title": "",
       "company": ""
     }

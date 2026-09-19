@@ -8,7 +8,7 @@ Edit `dist/content.js`. No page markup changes are required for these slots:
 - `bookingUrl`: approved HTTPS scheduling link. All booking CTAs use it. While empty, the CTA opens an honest booking-coming-soon message.
 - `reel`: the full-width hero reel.
 - `samples`: one named slot per use case: sales-1, stakeholders-1, hiring-1. The page renders exactly one sample per section, so adding more keys has no effect until `build-page.py` widens the range.
-- `quotes`: three objects with quote, name, title, and company. Only approved quotes with a name replace the placeholders.
+- `quotes`: three objects with quote, name, title, and company. A quote with both a `quote` and a `name` is written into the static page; anything short of that falls back to the dashed placeholder card. `title` and `company` are optional and are joined to the name with a middle dot when present.
 
 For a media item:
 - `kind: "video"`: set `src` to a local MP4 path such as `/media/project-story.mp4` or an HTTPS media URL. Set `poster` to an approved still and `captions` to an English WebVTT file. Native controls include play/pause, seeking, volume and fullscreen. Mobile inline playback, no autoplay, preload none.
@@ -16,13 +16,13 @@ For a media item:
 - `title`: accessible player title.
 - `caption`: project name and client shown beneath a sample. Label reused projects honestly; do not imply a different project or outcome.
 
-Empty sources show labeled placeholders; no client footage, quotes, results or logos have been fabricated. The previous AI illustration is retained as an unused asset and is not presented as project evidence. No Testimonial Hero footage, brand assets, or third-party players are embedded.
+Empty sources show labeled placeholders; no client footage, quotes, results or logos have been fabricated. Client quotes are reproduced word for word, including punctuation and the word "customers", and are trimmed only by whole sentences if ever shortened. The previous AI illustration is retained as an unused asset and is not presented as project evidence. No Testimonial Hero footage, brand assets, or third-party players are embedded.
 
 Testimonial Hero reference inspection: full-width Wistia brand film and groups of three Wistia samples (via Embedly), with poster images and play buttons; the pricing page toggles between two package ladders. This page uses those presentation patterns with original design and configurable first-party content.
 
 ## Doyle's confirmation notes — not website copy
 
-- Three genuine client quotes; PowerField is pending. One real quote is preferable to three placeholders.
+- Three approved client quotes are live: Marco Randazzo, Stacey Dowling, Rachel Watson. Supplied by Doyle on 19 September 2026 and reproduced verbatim. Names only, no title or company, because none of the three is a commercial contractor and the page sells to commercial contractors. A PowerField quote is still pending.
 - The PowerField result is missing. Do not invent a number.
 - Validate the day's coverage in October before a public launch: client interview, crew interview and b-roll.
 - Confirm tier pricing: video plus written at $8,500 / $9,500 / $11,500, video only at $6,500 / $7,500 / $9,500. Approximately $2,000 delivery cost is an internal estimate; cold-buyer pricing remains untested.
