@@ -69,7 +69,6 @@ h+=['<section class="section wrap deadline">'+heading('THE DEADLINE','A finished
 PRICES={
  # Fill these in. Anything left None renders as "Ask" rather than a number.
  'core_written':None,'core_video':None,
- 'annual_written':None,'annual_video':None,  # per project, on a four-project year
  'build_written':'$1,500 to $3,000','build_video':'$1,500 to $3,000',
  'recruiting':None,'stakeholder':None,'trade_partner':None,
  'safety':None,'pursuit':None,'leadership':None,
@@ -78,16 +77,12 @@ def money(k):return PRICES.get(k) or 'Ask'
 core={
  'written':[('The core three',money('core_written'),'one project','The film, the written case study and the social set. Everything one job produces, out of one day on site.',
     ['Hero case study film, 2\u20134 min','Written case study, 800\u20131,200 words','Social cut set, 5\u201310 verticals at 15\u201345s'],False),
-   ('The year',money('annual_written'),'per project, four a year','Four projects on an annual agreement. One a quarter, booked ahead, at a better price than buying them one at a time.',
-    ['Everything in the core three, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True),
-   ('The Build Record',money('build_written'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it. On an eighteen month build this is the largest contract here.',
-    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core three at completion','The written case study at completion'],False)],
+   ('The Build Record',money('build_written'),'a month, while the work runs','A job in progress is invisible to everyone not standing on it. We come out once a month, so there is always something current to send the owner, the lender and the board. One long build or a project a quarter, same arrangement.',
+    ['A site visit every month','A short update cut each month for owners, lenders and the board','Everything in the core three for every project completed','Footage of the work that is now behind drywall'],True)],
  'video':[('The core two',money('core_video'),'one project','The film and the social set, without the written case study. Same day on site, same footage.',
     ['Hero case study film, 2\u20134 min','Social cut set, 5\u201310 verticals at 15\u201345s'],False),
-   ('The year',money('annual_video'),'per project, four a year','Four projects on an annual agreement. One a quarter, booked ahead, at a better price than buying them one at a time.',
-    ['Everything in the core two, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True),
-   ('The Build Record',money('build_video'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it. On an eighteen month build this is the largest contract here.',
-    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core two at completion','The written case study at completion'],False)],
+   ('The Build Record',money('build_video'),'a month, while the work runs','A job in progress is invisible to everyone not standing on it. We come out once a month, so there is always something current to send the owner, the lender and the board. One long build or a project a quarter, same arrangement.',
+    ['A site visit every month','A short update cut each month for owners, lenders and the board','Everything in the core two for every project completed','Footage of the work that is now behind drywall'],True)],
 }
 addon_films=[
  ('Recruiting cut, 60\u201390s','Talent acquisition','Crew voices, the career path, and why people stay.',money('recruiting')),
@@ -99,7 +94,7 @@ addon_films=[
 ]
 h+=['<section class="section wrap" id="pricing">'+heading('PRICING','One package.<br>One day on site.')+'<p class="section-intro">One price for the core, then a menu you can pull from. Same capture, same thirty days, same guarantee.</p><div class="plan-toggle" role="tablist" aria-label="Package format"><button type="button" role="tab" id="tab-written" aria-controls="panel-written" aria-selected="true">Video + written</button><button type="button" role="tab" id="tab-video" aria-controls="panel-video" aria-selected="false" tabindex="-1">Video only</button></div><p class="plan-note">The written case study is 800 to 1,200 words, written from the same interviews. Add it later at the difference in price.</p>']
 for key,cards in core.items():
- h+=['<div class="pricing-grid trio" id="panel-'+key+'" role="tabpanel" aria-labelledby="tab-'+key+'"'+('' if key=='written' else ' hidden')+'>']
+ h+=['<div class="pricing-grid pair" id="panel-'+key+'" role="tabpanel" aria-labelledby="tab-'+key+'"'+('' if key=='written' else ' hidden')+'>']
  for name,price,unit,desc,features,featured in cards:
   h+=['<article class="price-card'+(' featured' if featured else '')+'"><h3>'+name+'</h3><p class="price">'+price+'<span class="price-unit">'+unit+'</span></p>'+p(desc)+'<ul class="feature-list">'+''.join('<li>'+f+'<span aria-label="Included">\u2713</span></li>' for f in features)+'</ul>'+cta('Book an intro call')+'</article>']
  h+=['</div>']
@@ -115,7 +110,6 @@ def quote_card(i):
   who=' · '.join(e(x,quote=False) for x in [q.get('name'),q.get('title'),q.get('company')] if x)
   return '<article class="card" data-quote="'+str(i)+'"><span class="eyebrow">CLIENT STORY</span><p class="quote-text">“'+e(q['quote'],quote=False)+'”</p><p class="quote-person">'+who+'</p></article>'
  return '<article class="card quote-slot" data-quote="'+str(i)+'"><span class="eyebrow">CLIENT QUOTE PLACEHOLDER</span><p class="quote-text">Client quote to be added.</p><p class="quote-person">Name · Title · Company</p></article>'
-h+=['<section class="section soft" id="proof"><div class="wrap">'+heading('PROOF','One project, on the record.')+'<div class="proof-band">'+p('The film at the top of this page is a Pillar &amp; Frame project story for <strong>PowerField Energy</strong>, shot on their Central Ohio installation. Two minutes and thirty-five seconds of real crews on a real site.')+p('It is the whole argument. If it does not look like work you would put your name on, nothing else on this page matters.')+'<a class="secondary" href="#reel">Watch the PowerField film <span aria-hidden="true">\u2191</span></a></div></div></section>']
 terms=[('Thirty days or you do not pay.','Every deliverable in your hands thirty days after we leave the site. A day late and the project is free and you keep everything. The clock pauses while we are waiting on you, which means approvals, releases and sign-off from the owner or your client. It starts again the day we have what we need.'),('We work around your job.','Up to a full day on site, on your schedule. The work does not slow down.'),('If the footage is not right, we come back on our dime.','Our crews are local, so there are never travel costs. Not for the shoot and not if we need to come back.')]
 h+=['<section class="section soft"><div class="wrap">'+heading('TERMS','The things we guarantee.')+'<div class="three-grid">'+''.join('<article><h3>'+a+'</h3>'+p(b)+'</article>' for a,b in terms)+'</div><p class="terms-note">We do not guarantee you win the bid. Nobody honest can. We guarantee the proof exists, it arrives on time, and getting it does not cost you a day of production.</p></div></section>']
 faqs=[('Why is the price the same for every client?','Because the deliverables are. Custom scopes are why other vendors take three weeks to send you a proposal.'),('What is the difference between video plus written and video only?','Video only is the hero film and the social set. Video plus written adds the case study, eight hundred to twelve hundred words written from the same interviews. Same day on site either way.'),('Can I upgrade after the shoot?','Yes. We capture everything on the day regardless of package. Add the written case study or any add-on film within thirty days of the shoot at the difference in price.'),('What if the project is confidential?','Then it runs as work for hire. Delivered into your systems and never shown publicly, to named recipients only. Same price.'),('How long from the call to the page being live?','About five weeks. A week to sort access and scheduling, a day on site, then thirty days to deliver.'),('What do you need from my client?','Twenty minutes on camera and a release. We handle the ask if you would rather we did.'),('What if the weather turns?','We reschedule at no charge and the thirty day clock starts from the new date.'),('What if our approvals take a while?','The clock pauses. Thirty days is our time, not yours. If the owner sits on a release for three weeks, those three weeks are not counted against us, and the guarantee still stands on the rest.'),('Do we own the footage?','Yes. Your organized raw archive is included in every package.')]
