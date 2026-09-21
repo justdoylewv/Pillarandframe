@@ -70,6 +70,7 @@ PRICES={
  # Fill these in. Anything left None renders as "Ask" rather than a number.
  'core_written':None,'core_video':None,
  'annual_written':None,'annual_video':None,  # per project, on a four-project year
+ 'build_written':None,'build_video':None,    # per month, for the length of the build
  'recruiting':None,'stakeholder':None,'trade_partner':None,
  'safety':None,'pursuit':None,'leadership':None,'quote_cards':None,
 }
@@ -78,11 +79,15 @@ core={
  'written':[('The core three',money('core_written'),'one project','The film, the written case study and the social set. Everything one job produces, out of one day on site.',
     ['Hero case study film, 2\u20134 min','Written case study, 800\u20131,200 words','Social cut set, 5\u201310 verticals at 15\u201345s'],False),
    ('The year',money('annual_written'),'per project, four a year','Four projects on an annual agreement. One a quarter, booked ahead, at a better price than buying them one at a time.',
-    ['Everything in the core three, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True)],
+    ['Everything in the core three, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True),
+   ('The Build Record',money('build_written'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it.',
+    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core three at completion','Priced by build length, not by deliverable'],False)],
  'video':[('The core two',money('core_video'),'one project','The film and the social set, without the written case study. Same day on site, same footage.',
     ['Hero case study film, 2\u20134 min','Social cut set, 5\u201310 verticals at 15\u201345s'],False),
    ('The year',money('annual_video'),'per project, four a year','Four projects on an annual agreement. One a quarter, booked ahead, at a better price than buying them one at a time.',
-    ['Everything in the core two, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True)],
+    ['Everything in the core two, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True),
+   ('The Build Record',money('build_video'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it.',
+    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core two at completion','Priced by build length, not by deliverable'],False)],
 }
 addon_films=[
  ('Recruiting cut, 60\u201390s','Talent acquisition','Crew voices, the career path, and why people stay.',money('recruiting')),
@@ -94,13 +99,13 @@ addon_films=[
 ]
 h+=['<section class="section wrap" id="pricing">'+heading('PRICING','One package.<br>One day on site.')+'<p class="section-intro">One price for the core, then a menu you can pull from. Same capture, same thirty days, same guarantee.</p><div class="plan-toggle" role="tablist" aria-label="Package format"><button type="button" role="tab" id="tab-written" aria-controls="panel-written" aria-selected="true">Video + written</button><button type="button" role="tab" id="tab-video" aria-controls="panel-video" aria-selected="false" tabindex="-1">Video only</button></div><p class="plan-note">The written case study is 800 to 1,200 words, written from the same interviews. Add it later at the difference in price.</p>']
 for key,cards in core.items():
- h+=['<div class="pricing-grid pair" id="panel-'+key+'" role="tabpanel" aria-labelledby="tab-'+key+'"'+('' if key=='written' else ' hidden')+'>']
+ h+=['<div class="pricing-grid trio" id="panel-'+key+'" role="tabpanel" aria-labelledby="tab-'+key+'"'+('' if key=='written' else ' hidden')+'>']
  for name,price,unit,desc,features,featured in cards:
   h+=['<article class="price-card'+(' featured' if featured else '')+'"><h3>'+name+'</h3><p class="price">'+price+'<span class="price-unit">'+unit+'</span></p>'+p(desc)+'<ul class="feature-list">'+''.join('<li>'+f+'<span aria-label="Included">\u2713</span></li>' for f in features)+'</ul>'+cta('Book an intro call')+'</article>']
  h+=['</div>']
-h+=['<div class="included"><h3>Included in the core, whichever you pick</h3>'+ul(['Local crews. No travel costs, ever.','Site access, permissions and releases handled before the shoot','Up to a full day on site, working around your job','Interview direction so nobody has to perform','Your organized raw footage','One revision round','Thirty day delivery, guaranteed'])+'</div>']
+h+=['<div class="included"><h3>Included in the core, whichever you pick</h3>'+ul(['Local crews. No travel costs, ever.','Site access, permissions and releases handled before the shoot','Up to a full day on site, working around your job','Interview direction so nobody has to perform','Twenty to thirty selected stills, culled and colour corrected','Your organized raw footage','One revision round','Thirty day delivery, guaranteed'])+'</div>']
 h+=['<div class="addon-films"><h3>Add-on films</h3>'+p('Each of these answers to a different budget holder on the same job. Your marketing director does not have to carry all of it, and mostly should not.')+'<div class="tw"><table><caption class="sr-only">Add-on films, who they are for, and pricing</caption><thead><tr><th scope="col">Film</th><th scope="col">Who it is for</th><th scope="col">Price</th></tr></thead><tbody>'+''.join('<tr><td><strong>'+a+'</strong><span class="addon-note">'+d+'</span></td><td>'+b+'</td><td>'+c+'</td></tr>' for a,b,d,c in addon_films)+'</tbody></table></div></div>']
-h+=['<div class="pricing-details"><div><h3>Capture options</h3>'+p('<strong>Up to a full day on site.</strong> One project, the interviews and the b-roll. Every add-on film is cut from that same day.')+p('<strong>Multi-project day.</strong> Three sites in one day, same market, shorter coverage on each. Ask.')+'</div><div><h3>Other add-ons</h3><table><caption class="sr-only">Optional deliverables and pricing</caption><thead><tr><th scope="col">Add-on</th><th scope="col">Price</th></tr></thead><tbody>'+''.join('<tr><td>'+a+'</td><td>'+b+'</td></tr>' for a,b in [('Photography, culled and colour corrected stills','$4,000'),('Quote cards, set of 6',money('quote_cards')),('Extra quote answer video','$350 each'),('Crew spotlight graphics, set of 6','$600'),('Silent captioned loop for trade show booths','$600'),('Additional person on camera','$450')])+'</tbody></table></div></div>'+TOGGLE_JS+'</section>']
+h+=['<div class="pricing-details"><div><h3>Capture options</h3>'+p('<strong>Up to a full day on site.</strong> One project, the interviews and the b-roll. Every add-on film is cut from that same day.')+p('<strong>Multi-project day.</strong> Three sites in one day, same market, shorter coverage on each. Ask.')+'</div><div><h3>Other add-ons</h3><table><caption class="sr-only">Optional deliverables and pricing</caption><thead><tr><th scope="col">Add-on</th><th scope="col">Price</th></tr></thead><tbody>'+''.join('<tr><td>'+a+'</td><td>'+b+'</td></tr>' for a,b in [('Full photography pass, beyond the stills included','$1,500'),('Quote cards, set of 6',money('quote_cards')),('Extra quote answer video','$350 each'),('Crew spotlight graphics, set of 6','$600'),('Silent captioned loop for trade show booths','$600'),('Additional person on camera','$450')])+'</tbody></table></div></div>'+TOGGLE_JS+'</section>']
 # The quote cards are parked, not deleted: the approved quotes are still in content.js
 # and quote_card() still renders them if the section is put back. See CONTENT.md.
 quotes=media_config.get('quotes',[])
