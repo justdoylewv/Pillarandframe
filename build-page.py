@@ -70,7 +70,7 @@ PRICES={
  # Fill these in. Anything left None renders as "Ask" rather than a number.
  'core_written':None,'core_video':None,
  'annual_written':None,'annual_video':None,  # per project, on a four-project year
- 'build_written':None,'build_video':None,    # per month, for the length of the build
+ 'build_written':'$1,500 to $3,000','build_video':'$1,500 to $3,000',
  'recruiting':None,'stakeholder':None,'trade_partner':None,
  'safety':None,'pursuit':None,'leadership':None,'quote_cards':None,
 }
@@ -80,14 +80,14 @@ core={
     ['Hero case study film, 2\u20134 min','Written case study, 800\u20131,200 words','Social cut set, 5\u201310 verticals at 15\u201345s'],False),
    ('The year',money('annual_written'),'per project, four a year','Four projects on an annual agreement. One a quarter, booked ahead, at a better price than buying them one at a time.',
     ['Everything in the core three, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True),
-   ('The Build Record',money('build_written'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it.',
-    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core three at completion','Priced by build length, not by deliverable'],False)],
+   ('The Build Record',money('build_written'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it. On an eighteen month build this is the largest contract here.',
+    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core three at completion','The written case study at completion'],False)],
  'video':[('The core two',money('core_video'),'one project','The film and the social set, without the written case study. Same day on site, same footage.',
     ['Hero case study film, 2\u20134 min','Social cut set, 5\u201310 verticals at 15\u201345s'],False),
    ('The year',money('annual_video'),'per project, four a year','Four projects on an annual agreement. One a quarter, booked ahead, at a better price than buying them one at a time.',
     ['Everything in the core two, four times','Capture days held a quarter ahead','One invoice schedule, one approval rhythm','By December every bid has a comparable project attached'],True),
-   ('The Build Record',money('build_video'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it.',
-    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core two at completion','Priced by build length, not by deliverable'],False)],
+   ('The Build Record',money('build_video'),'per month, while it runs','One job that runs for a year or more. A site visit every month, so the owner sees it going up instead of hearing about it. On an eighteen month build this is the largest contract here.',
+    ['A site visit every month','A short update cut for owners, lenders and the board','Everything in the core two at completion','The written case study at completion'],False)],
 }
 addon_films=[
  ('Recruiting cut, 60\u201390s','Talent acquisition','Crew voices, the career path, and why people stay.',money('recruiting')),
