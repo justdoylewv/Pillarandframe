@@ -28,7 +28,8 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 - Confirm tier pricing: video plus written at $8,500 / $9,500 / $11,500, video only at $6,500 / $7,500 / $9,500. Approximately $2,000 delivery cost is an internal estimate; cold-buyer pricing remains untested.
 - All three sample slots now carry real films, so no placeholders remain on the page. Each still needs a real `title` and `caption` naming the project and client; they currently carry neutral role-based titles and no caption.
 - Delivery guarantee changed from fourteen days to thirty on 19 September 2026 at Doyle's instruction; fourteen was judged too aggressive. Confirm the thirty-day guarantee and approval timing before public launch.
-- Booking URL supplied and connected to all booking CTAs: https://api.leadconnectorhq.com/widget/booking/ihHVVEe4Cdt6qncNDcpU
+- Booking URL supplied and connected to all booking CTAs on both landing pages: https://api.leadconnectorhq.com/widget/bookings/30minchatdoyle
+- The call is a **30 minute discovery call** as of 2 October 2026. The hero and closing buttons say "Book a 30-minute discovery call"; the header button says "Book a discovery call" because the full label wraps on a phone. The previous 15 minute link is retired.
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
