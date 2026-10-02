@@ -1,6 +1,6 @@
 // Replace empty strings with approved content. See CONTENT.md.
 window.PILLAR_CONTENT = {
-  "bookingUrl": "https://api.leadconnectorhq.com/widget/booking/ihHVVEe4Cdt6qncNDcpU",
+  "bookingUrl": "https://api.leadconnectorhq.com/widget/bookings/30minchatdoyle",
   "reel": {
     "kind": "embed",
     "src": "https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/48541099eb193915f4f9346d4d141e58/iframe?poster=https://customer-s1p4vr78n6e8vtaw.cloudflarestream.com/48541099eb193915f4f9346d4d141e58/thumbnails/thumbnail.jpg?time=1s%26height=540",
