@@ -77,5 +77,11 @@ window.PILLAR_CONTENT = {
       "title": "",
       "company": ""
     }
-  ]
+  ],
+  "proof": {
+    "_note": "Nothing here renders until it has content. Quote cards, the logo row and the case study link each appear only when filled. Never write a quote that was not said.",
+    "quotes": [],
+    "logos": [],
+    "caseStudyUrl": ""
+  }
 };

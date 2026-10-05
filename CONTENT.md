@@ -33,6 +33,41 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
+## Oct 5 brief: what is live and what is still owed
+
+Items 1 to 4 of Doyle's 5 October brief are built. Item 5 (the /hiring,
+/build-record, /general-contractors and /specialty-trades pages) was marked
+Later and is not built.
+
+**Blocked on Doyle, and deliberately rendering nothing until he fills it:**
+- `proof.quotes` in `content.js` is empty, so the proof strip does not render at
+  all. It appears the moment a real quote is added. **Never write a quote that
+  was not said**: the brief says to hide the cards rather than ship placeholder
+  text, and that is what the build does.
+- `proof.logos` is empty pending Doyle confirming which client logos may be shown.
+- `proof.caseStudyUrl` is empty. Every package sells "the page", so a buyer
+  should be able to click one. Publish a real case study page and put the URL here.
+- `MOST_CHOSEN` at the top of `build-page.py` is `None`. Set it to
+  `'Story + Social'` **only once that is actually true**; with no closed
+  commercial clients it would be a fabricated claim today.
+
+**Proposed prices, live but unconfirmed.** The brief marks every one of these
+"Needs Doyle to confirm before launch". They are live because the brief also
+says never to put pricing behind a contact form:
+- Site Day $2,500, fully credited against any package within thirty days
+- Story Program $9,000 a project, four a year, $36,000 against $38,000 at list
+- Crew Capture from $1,250 a month
+- The Build Record stays $3,000 a month
+
+**Crew Capture is listed as live, not as a waitlist.** The brief left that open.
+Change the copy if it should be "coming soon".
+
+**The value comparison carries a dated claim.** Agency figures are from a
+competitor's public pricing page as of 5 October 2026 and the page says so.
+Recheck before any relaunch, and keep the "Not listed" wording rather than
+claiming the competitor does not offer something. The competitor is not named
+on the site and should not be.
+
 ## Page editing
 
 `build-page.py` contains the supplied page copy and generates `dist/index.html`. It preserves an existing `dist/content.js`. Styling is in `dist/style.css`; runtime media/booking replacement is in `dist/media.js`.
