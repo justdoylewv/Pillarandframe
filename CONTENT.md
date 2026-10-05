@@ -55,18 +55,38 @@ Later and is not built.
 "Needs Doyle to confirm before launch". They are live because the brief also
 says never to put pricing behind a contact form:
 - Site Day $2,500, fully credited against any package within thirty days
-- Story Program $9,000 a project, four a year, $36,000 against $38,000 at list
 - Crew Capture from $1,250 a month
 - The Build Record stays $3,000 a month
+
+**The Story Program was folded into the Build Record on 5 October 2026.** Both
+were ongoing offers at exactly $36,000 a year and competed for one decision.
+The Build Record absorbed it and kept the Story Program's best idea: visits bank
+as credits, so a delayed job or an unsigned release is never a wasted month.
 
 **Crew Capture is listed as live, not as a waitlist.** The brief left that open.
 Change the copy if it should be "coming soon".
 
-**The value comparison carries a dated claim.** Agency figures are from a
-competitor's public pricing page as of 5 October 2026 and the page says so.
-Recheck before any relaunch, and keep the "Not listed" wording rather than
-claiming the competitor does not offer something. The competitor is not named
-on the site and should not be.
+**The value comparison is sourced but undated on the page.** Doyle asked for the
+date line removed on 5 October 2026, so the claims now carry provenance
+("published rates and industry norms") but no as-of date. **Recheck these before
+any relaunch and re-date them if they are ever challenged.** Sources used:
+
+- Package price, $11,600 to $13,300: a competitor's published onsite rates.
+- Social cuts, $1,500 to $5,000 as a separate package: vidico.com and
+  blarevideo.com social package pricing.
+- Edited stills, around $375 an hour on a four hour minimum: lotiva.com media
+  production rate card, where video and photo crew are booked separately.
+- Raw footage kept unless bought out: minifridgemedia.com and standard video
+  production contract terms.
+- Turnaround of four to six weeks: thinkbrandedmedia.com and lapseproductions.com
+  corporate video timelines.
+
+The competitor is not named on the site and should not be.
+
+**Not compared, deliberately:** revision rounds. The industry norm is two
+included rounds; Pillar & Frame includes one. A comparison table may be
+selective but it must not claim a win that is not there. **This is a real
+competitive gap worth closing.**
 
 ## Page editing
 
