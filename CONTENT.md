@@ -99,9 +99,39 @@ Structure: hero, why the money sits, the four blockers, what we run, the two
 lanes, the deadline, the quarterly cycle, the four numbers, pricing, terms, FAQ,
 closing call.
 
-Pricing: Foundation Day $5,000 a quarter, then Supply + Coach $3,500 a month or
-Run It $6,000 a month. Published and fixed, no contact gating, same as the other
-pages.
+Pricing is a three step ladder, restructured on 6 October 2026 because the first
+version read as two unrelated charges:
+
+1. **The plan, $750, once.** A strategy call and the written plan: balance,
+   expiry and eligible categories in writing, the two to four plays, the
+   placement plan and the pre-approval wording. Credited in full against the
+   filming day within thirty days, and the buyer keeps it either way.
+2. **The first filming day, $5,000, once to start.** Unchanged from the old
+   Foundation Day, but now presented as a one time start rather than a standing
+   quarterly charge.
+3. **Then it runs monthly.** Supply + Coach $3,500 or Run It $6,000.
+
+The free twenty minute fund audit still sits in front of all three. Everything
+is published and fixed, no contact gating, same as the other pages.
+
+**The money question Doyle has to settle.** Step two now says "this is the only
+production invoice you will see", and step three includes a filming day every
+quarter at no extra charge. That is what makes the ladder legible, and it costs
+real revenue:
+
+- Old shape, Supply + Coach: $5,000 × 4 quarters + $42,000 a year = **$62,000**.
+- New shape, Supply + Coach, year one: $750 + $5,000 + $42,000 = **$47,750**,
+  and $42,000 a year after that.
+- Run It absorbs the same three extra filming days: $72,000 less roughly
+  $15,000 of production leaves about $57,000 of non production revenue.
+
+If that is too thin, the fix is one line: change step two's second paragraph and
+the step three note so the filming day is billed each quarter at $5,000 on top
+of the monthly. **Do not leave both readings on the page**; the whole point of
+the restructure was that a buyer could not tell what the running cost was.
+
+**$750 is a proposed price, not a confirmed one.** It was chosen to be cheap
+against a $42,000 a year commitment. Confirm it before launch.
 
 **Honesty rules from Part 11 of the Plan, applied here and binding on any edit:**
 - The ~12,000 US partner figure is deliberately **not** on the page. The source
