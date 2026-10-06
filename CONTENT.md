@@ -88,6 +88,42 @@ included rounds; Pillar & Frame includes one. A comparison table may be
 selective but it must not claim a win that is not there. **This is a real
 competitive gap worth closing.**
 
+## Partner marketing page, /partner-marketing
+
+Built 6 October 2026 from "Pillar & Frame: The Plan". It sells the outsourced
+partner marketing function to companies sitting on co-op and MDF funds, and it
+uses the same ink and lime identity as the other two pages, at Doyle's
+instruction.
+
+Structure: hero, why the money sits, the four blockers, what we run, the two
+lanes, the deadline, the quarterly cycle, the four numbers, pricing, terms, FAQ,
+closing call.
+
+Pricing: Foundation Day $5,000 a quarter, then Supply + Coach $3,500 a month or
+Run It $6,000 a month. Published and fixed, no contact gating, same as the other
+pages.
+
+**Honesty rules from Part 11 of the Plan, applied here and binding on any edit:**
+- The ~12,000 US partner figure is deliberately **not** on the page. The source
+  does not disclose its method, so it stays out of client-facing material.
+- The unclaimed-funds share is labelled "Industry estimates put" rather than
+  stated as fact.
+- Fees are described as marketing services and demand generation, **never as
+  labor**. Do not reword this; it is how co-op and MDF eligibility works.
+- The last FAQ answers "have you run this for a channel partner before" with
+  "not yet". **Do not replace that with an implied result.** There are no case
+  studies for this offer and none may be invented.
+- Programme terms are described as published by the vendor and confirmed in
+  week one, not as something Pillar & Frame guarantees.
+
+**Open items on this page:**
+- The URL `/partner-marketing` was chosen in the build, not specified by Doyle.
+- Every CTA says "Book a fund audit" and points at the existing 30 minute GHL
+  calendar, while the offer describes a twenty minute audit. Either create a
+  matching event type in GHL or change the page copy to thirty minutes.
+- There is no film on the page. No asset exists for this offer and placeholders
+  are not used.
+
 ## Page editing
 
 `build-page.py` contains the supplied page copy and generates `dist/index.html`. It preserves an existing `dist/content.js`. Styling is in `dist/style.css`; runtime media/booking replacement is in `dist/media.js`.
