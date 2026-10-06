@@ -106,10 +106,18 @@ version read as two unrelated charges:
    expiry and eligible categories in writing, the two to four plays, the
    placement plan and the pre-approval wording. Credited in full against the
    filming day within thirty days, and the buyer keeps it either way.
-2. **The first filming day, $5,000, once to start.** Unchanged from the old
-   Foundation Day, but now presented as a one time start rather than a standing
-   quarterly charge.
-3. **Then it runs monthly.** Supply + Coach $3,500 or Run It $6,000.
+2. **The foundation build, $5,000, once.** A filming day sits inside it, but
+   **this is not a shoot and the page must not describe it as one.** It is the
+   core set of converting assets that everything later runs on: the objection
+   answers, the scripted segments, the demos, the team intros, the panel
+   recordings, filed and tagged so the next quarter starts from material rather
+   than from nothing. Doyle corrected this framing on 6 October 2026. Do not let
+   it drift back to "the first filming day".
+3. **Then it runs monthly.** Supply + Coach $3,500 or Run It $6,000, on a
+   **three month minimum**, then thirty days notice either way. The minimum is
+   justified on the page by arithmetic rather than lock-in: the foundation
+   yields ninety days of material, placement takes weeks to show anything, and
+   the claim is filed as the quarter runs.
 
 The free twenty minute fund audit still sits in front of all three. Everything
 is published and fixed, no contact gating, same as the other pages.
@@ -132,6 +140,13 @@ the restructure was that a buyer could not tell what the running cost was.
 
 **$750 is a proposed price, not a confirmed one.** It was chosen to be cheap
 against a $42,000 a year commitment. Confirm it before launch.
+
+**The foundation build is still priced at $5,000 and that may now be low.** The
+number came from the old Foundation Day, when the step was described as a day of
+filming. It is now described as the core converting assets the whole engine runs
+on, which is a larger promise at the same price. Doyle supplied no new number, so
+$5,000 stands. Raise it if the reframe warrants it; the price lives in the
+`foundation-build` block in `build-page.py`.
 
 **Honesty rules from Part 11 of the Plan, applied here and binding on any edit:**
 - The ~12,000 US partner figure is deliberately **not** on the page. The source
