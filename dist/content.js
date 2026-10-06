@@ -91,9 +91,5 @@ window.PILLAR_CONTENT = {
       "result": ""
     },
     "projectStats": []
-  },
-  "credentials": {
-    "_note": "Listed on the mission-critical section only when true today. Each entry is a plain string, for example \"OSHA 30\". An empty list hides the credentials point entirely.",
-    "items": []
   }
 };

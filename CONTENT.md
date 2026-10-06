@@ -51,10 +51,15 @@ explainer, the Build Record card, the full Crew Capture card, the capture option
 block and the add-ons table. The sweep for leftovers is clean on the page and in
 the meta tags.
 
-Also built: the new H1, the data center and mission-critical section between
-"Where it goes" and "It compounds", the reworded return-visit guarantee, the four
-FAQ changes and three new FAQs, the updated comparison table, and US spelling
-throughout.
+Also built: the new H1, the reworded return-visit guarantee, the FAQ changes,
+the updated comparison table, and US spelling throughout.
+
+**The data center and mission-critical section was removed on 6 October 2026 at
+Doyle's instruction**, along with every mention of data centers: the hero
+eyebrow, the meta description, the restricted-site FAQ and the `credentials`
+slot in `content.js`. Confidential work is still covered by the "What if the
+project is confidential?" question. Do not reintroduce any of it without
+Doyle asking.
 
 **Two things render nothing until Doyle fills them in, by design:**
 - `proof.heroQuote` in `content.js`: the PowerField testimonial. It needs
@@ -64,10 +69,6 @@ throughout.
 - `proof.projectStats`: the stats strip, as `{"value":"1","label":"day on
   site"}` objects. Use only real counts from the PowerField job. **Never publish
   a number that was not counted.**
-- `credentials.items` in `content.js`: the mission-critical section's fourth
-  point. The brief said to list only the credentials that are true today, so the
-  point is omitted entirely while the list is empty. Add the true ones as plain
-  strings, for example `["OSHA 30", "FAA Part 107"]`, and the point appears.
 - `proof.logos`: the logo row is built and stays hidden. Doyle asked for at
   least three client logos with permission before it shows.
 
@@ -81,7 +82,8 @@ Project Story $12,500 (the brief offers $15,000 as an alternative to match the
 PowerField job), Progress Package "from $20,000" and "from $3,000 a month", Crew
 Capture "from $1,250 a month", and the $2M contract-value example in the lead
 line above the cards. The H1 is the brief's recommended line; two alternatives
-are in the brief if Doyle prefers one.
+are in the brief if Doyle prefers one. The credentials question in the brief
+(OSHA 30, FAA Part 107, site badging) is moot now that the section is gone.
 
 **Still to recheck:** the $11,600 to $13,300 agency figure in the comparison
 table. It was sourced on 5 October 2026 and the brief asks whether it is current.
