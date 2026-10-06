@@ -33,6 +33,68 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
+## Oct 6 brief: the pricing rebuild on the construction page
+
+Doyle's 6 October brief is built in full. The pricing section went from three
+tiers plus a video-only toggle plus three ongoing offers plus five add-ons down
+to **three offers and one follow-on**:
+
+| Offer | Price | Note |
+|---|---|---|
+| Site Day | $2,500 | Fully credited toward a Project Story within thirty days |
+| Project Story | $12,500 | Featured, labelled "Most chosen", first on mobile |
+| Progress Package | From $20,000 per build, or from $3,000 a month | Replaces the Build Record |
+| Crew Capture | From $1,250 a month | A strip under the cards, not a fourth card |
+
+Deleted: the Story, Story + Social and Full cards, the video-only toggle and its
+explainer, the Build Record card, the full Crew Capture card, the capture options
+block and the add-ons table. The sweep for leftovers is clean on the page and in
+the meta tags.
+
+Also built: the new H1, the data center and mission-critical section between
+"Where it goes" and "It compounds", the reworded return-visit guarantee, the four
+FAQ changes and three new FAQs, the updated comparison table, and US spelling
+throughout.
+
+**Two things render nothing until Doyle fills them in, by design:**
+- `proof.heroQuote` in `content.js`: the PowerField testimonial. It needs
+  `quote`, `name`, and optionally `title`, `company` and `result`. The whole
+  band stays out of the HTML until `quote` and `name` are both set. **Never
+  write a quote that was not said.**
+- `proof.projectStats`: the stats strip, as `{"value":"1","label":"day on
+  site"}` objects. Use only real counts from the PowerField job. **Never publish
+  a number that was not counted.**
+- `credentials.items` in `content.js`: the mission-critical section's fourth
+  point. The brief said to list only the credentials that are true today, so the
+  point is omitted entirely while the list is empty. Add the true ones as plain
+  strings, for example `["OSHA 30", "FAA Part 107"]`, and the point appears.
+- `proof.logos`: the logo row is built and stays hidden. Doyle asked for at
+  least three client logos with permission before it shows.
+
+**"Most chosen" on the Project Story card is Doyle's claim, instructed in the 6
+October brief.** The earlier note in this file warned against setting it while
+there are no closed commercial clients. It is live because Doyle asked for it.
+It is his assertion about his own business, not an inference from the data.
+
+**Prices live but unconfirmed, flagged in the brief as needing Doyle's sign-off:**
+Project Story $12,500 (the brief offers $15,000 as an alternative to match the
+PowerField job), Progress Package "from $20,000" and "from $3,000 a month", Crew
+Capture "from $1,250 a month", and the $2M contract-value example in the lead
+line above the cards. The H1 is the brief's recommended line; two alternatives
+are in the brief if Doyle prefers one.
+
+**Still to recheck:** the $11,600 to $13,300 agency figure in the comparison
+table. It was sourced on 5 October 2026 and the brief asks whether it is current.
+
+**Nav anchor:** "Project stories" in the header now points at `#reel`, not
+`#results`. The brief asked for it to land on the PowerField film; `#results` is
+the "Where it goes" section, which is further down the page.
+
+**Booking dialog fallback** no longer says "Online booking is coming soon". On
+all three pages it now reads as a failure message with Doyle's email and phone,
+because an automated reader saw the old text. The dialog only opens at all when
+`bookingUrl` is empty or fails to resolve.
+
 ## Oct 5 brief: what is live and what is still owed
 
 Items 1 to 4 of Doyle's 5 October brief are built. Item 5 (the /hiring,

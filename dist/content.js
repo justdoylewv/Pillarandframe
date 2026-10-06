@@ -79,9 +79,21 @@ window.PILLAR_CONTENT = {
     }
   ],
   "proof": {
-    "_note": "Nothing here renders until it has content. Quote cards, the logo row and the case study link each appear only when filled. Never write a quote that was not said.",
+    "_note": "Nothing here renders until it has content. The hero testimonial, the project stats strip, the logo row and the case study link each appear only when filled. Never write a quote that was not said, and never publish a number that was not counted.",
     "quotes": [],
     "logos": [],
-    "caseStudyUrl": ""
+    "caseStudyUrl": "",
+    "heroQuote": {
+      "quote": "",
+      "name": "",
+      "title": "",
+      "company": "",
+      "result": ""
+    },
+    "projectStats": []
+  },
+  "credentials": {
+    "_note": "Listed on the mission-critical section only when true today. Each entry is a plain string, for example \"OSHA 30\". An empty list hides the credentials point entirely.",
+    "items": []
   }
 };
