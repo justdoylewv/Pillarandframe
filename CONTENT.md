@@ -107,18 +107,60 @@ again rather than something every package includes.
 - `MOST_CHOSEN` is back to `None`. Setting it would be a claim with no closed
   commercial clients behind it.
 
+### 7 October: fewer price options
+
+Doyle: "too many price options on the page, let's simplify." Credits and a
+subscription term were considered and **ruled out**; do not reintroduce either.
+
+The construction page showed eleven Pillar & Frame prices. It now shows six:
+
+| Live | Price |
+|---|---|
+| Site Day | $2,500 |
+| Story | $8,500 video + written, $6,500 video only |
+| Story + Social | $9,500 / $7,500 |
+| Full | $11,500 / $8,500 |
+| The Build Record | $3,000 a month |
+| Crew Capture | From $1,250 a month |
+
+What was cut:
+- **The add-ons table**, five published prices, replaced by one line: "Need a
+  full photography pass, extra interviews, a booth loop or crew spotlight
+  graphics? Ask on the call." This is a **deliberate exception to the rule that
+  prices are never behind a conversation**, and it is Doyle's own wording from
+  the 6 October brief. Core prices stay published. Do not extend the exception
+  past add-ons.
+- **The capture options block.** The full-day line was already in the included
+  list, and the multi-project day moved back to the FAQ.
+- **The two full-width ongoing blocks.** The Build Record and Crew Capture are
+  now one band, "After the story, if you want it monthly", with the choice framed
+  as a single question: who is on site every month, us or your own supers. Same
+  two offers, same two prices, one decision instead of two pitches.
+
+Dead styles from the reverted 6 October build (`lead-line`, `card-note`,
+`strip`) were removed. `retainer`, `pricing-details` and `addon-films` are kept:
+`pricing-details` is still used by the healthcare page.
+
 ### Open
 
-- **Ten cuts at the same prices.** The tiers reverted to $8,500 / $9,500 /
+- **Crew Capture is the only "from" price on the page.** Everything else is fixed
+  and published, which is the page's whole argument against getting a proposal.
+  Either pin it or take it off. It was also never confirmed whether it should
+  launch or sit as a waitlist.
+- **Ten cuts at the five-cut price.** The tiers reverted to $8,500 / $9,500 /
   $11,500 while the social cut count doubled. Story + Social still steps $1,000
-  over Story and now carries ten cuts rather than five. That is Doyle's call, but
-  it is worth a look before launch.
+  over Story.
+- **"A frictionless process" is the only included-list item that is a claim
+  rather than a deliverable.** Make it concrete or drop it if it is ever
+  challenged.
 - **Recheck the $11,600 to $13,300 agency figure.** Sourced 5 October 2026.
 - **The data center and mission-critical section was removed on 6 October** at
-  Doyle's instruction, along with every mention of data centers: the hero
-  eyebrow, the meta description, the restricted-site FAQ and the `credentials`
-  slot in `content.js`. Confidential work is still covered by the "What if the
-  project is confidential?" question. Do not reintroduce any of it unasked.
+  Doyle's instruction, along with every mention of data centers. Confidential
+  work is still covered by the "What if the project is confidential?" question.
+  Do not reintroduce any of it unasked.
+- **Still blocked and highest value: a real case study page.** Every package
+  sells "the page" and a buyer cannot click one. `proof.caseStudyUrl` is empty,
+  the proof strip renders nothing, and the quote cards have nowhere to point.
 
 ## Oct 5 brief: what is live and what is still owed
 
