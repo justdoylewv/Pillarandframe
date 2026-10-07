@@ -141,6 +141,29 @@ Dead styles from the reverted 6 October build (`lead-line`, `card-note`,
 `strip`) were removed. `retainer`, `pricing-details` and `addon-films` are kept:
 `pricing-details` is still used by the healthcare page.
 
+### 7 October: both ongoing cards rebuilt
+
+Doyle: the Build Record's value did not read high enough, the stakeholder update
+cut was vague, and Crew Capture did not say that it is a guided, directed
+process.
+
+**The Build Record** now carries six lines instead of four. Added: twenty to
+thirty edited photos from every visit, and footage of the work that is now behind
+drywall, which was in the original card and was lost when the two offers were
+merged. The update cut now says who it is for and what is in it: owners, lenders
+and the board, what moved, what is next, what the draw paid for.
+
+**"Twenty to thirty edited photos from every visit" is the site's standard still
+count, borrowed from the full-day packages. A monthly Build Record visit may be
+shorter than a full day. Confirm this is deliverable every month before launch,
+or set a lower number.**
+
+**Crew Capture** now leads with direction rather than with the supers. Our shot
+list, our direction so nobody has to work out what to film, upload straight from
+the phone with no app to install and no files to move, and we cut, caption and
+write it the same as anything we film ourselves. The "no app to install" claim
+matches what the FAQ already says.
+
 ### Open
 
 - **Crew Capture is the only "from" price on the page.** Everything else is fixed
