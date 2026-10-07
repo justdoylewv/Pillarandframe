@@ -63,9 +63,17 @@ $2M example and the one-line add-ons replacement. None of that is live.
   one per cut. This is a delivery promise, not a tagline: if the planning session
   does not produce ten real problems, the page is wrong.
 - **Content strategy is planned up front.** The process section is now four steps
-  and starts with "We plan it before we film it." The included list carries "A
-  content plan agreed before the shoot, with every deliverable mapped to a
-  problem."
+  and starts with "We plan it before we film it."
+- **Four service items were added to the included list on 7 October**: onboarding
+  and a kick-off call, a dedicated project manager, a project storytelling
+  strategy session, and a frictionless process. The strategy session line absorbed
+  the earlier "content plan agreed before the shoot" item rather than sitting
+  beside it, because they were the same promise written twice.
+
+  **"A frictionless process, so the job never waits on us" is the only item on
+  that list that is a claim rather than a deliverable.** Everything else can be
+  checked against what was shipped. Doyle asked for it, so it is live; make it
+  concrete or drop it if it ever has to be defended.
 
 ### What was KEPT from the 6 October brief, and why
 
