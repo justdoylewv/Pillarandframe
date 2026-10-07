@@ -33,69 +33,84 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
-## Oct 6 brief: the pricing rebuild on the construction page
+## Oct 6 to 7: the pricing rebuild, and the revert
 
-Doyle's 6 October brief is built in full. The pricing section went from three
-tiers plus a video-only toggle plus three ongoing offers plus five add-ons down
-to **three offers and one follow-on**:
+Doyle's 6 October brief was built in full and then **the pricing half of it was
+reverted on 7 October at his instruction**. Read this whole section before
+touching the pricing, because what is live is a deliberate mix of the two.
 
-| Offer | Price | Note |
+### Live pricing: the three tiers, with ten mapped cuts
+
+| | Video + written | Video only |
 |---|---|---|
-| Site Day | $2,500 | Fully credited toward a Project Story within thirty days |
-| Project Story | $12,500 | Featured, labelled "Most chosen", first on mobile |
-| Progress Package | From $20,000 per build, or from $3,000 a month | Replaces the Build Record |
-| Crew Capture | From $1,250 a month | A strip under the cards, not a fourth card |
+| Story | $8,500 | $6,500 |
+| Story + Social | $9,500 | $7,500 |
+| Full | $11,500 | $8,500 |
 
-Deleted: the Story, Story + Social and Full cards, the video-only toggle and its
-explainer, the Build Record card, the full Crew Capture card, the capture options
-block and the add-ons table. The sweep for leftovers is clean on the page and in
-the meta tags.
+The video-only toggle is back, sitting between Site Day and the cards so a buyer
+watches the prices change. Site Day $2,500, the Build Record $3,000 a month,
+Crew Capture from $1,250 a month, the capture options block and the add-ons table
+are all back as they were.
 
-Also built: the new H1, the reworded return-visit guarantee, the FAQ changes,
-the updated comparison table, and US spelling throughout.
+**Reverted out of the page on 7 October:** Project Story at $12,500, the Progress
+Package, the "Most chosen" label, the Crew Capture strip, the lead line with the
+$2M example and the one-line add-ons replacement. None of that is live.
 
-**The data center and mission-critical section was removed on 6 October 2026 at
-Doyle's instruction**, along with every mention of data centers: the hero
-eyebrow, the meta description, the restricted-site FAQ and the `credentials`
-slot in `content.js`. Confidential work is still covered by the "What if the
-project is confidential?" question. Do not reintroduce any of it without
-Doyle asking.
+### What changed on the way back, at Doyle's instruction
 
-**Two things render nothing until Doyle fills them in, by design:**
-- `proof.heroQuote` in `content.js`: the PowerField testimonial. It needs
-  `quote`, `name`, and optionally `title`, `company` and `result`. The whole
-  band stays out of the HTML until `quote` and `name` are both set. **Never
-  write a quote that was not said.**
-- `proof.projectStats`: the stats strip, as `{"value":"1","label":"day on
-  site"}` objects. Use only real counts from the PowerField job. **Never publish
-  a number that was not counted.**
-- `proof.logos`: the logo row is built and stays hidden. Doyle asked for at
-  least three client logos with permission before it shows.
+- **Social cuts went from five to ten**, and they are no longer described as cuts
+  off the same reel. The copy commits to **ten problems named before the shoot**,
+  one per cut. This is a delivery promise, not a tagline: if the planning session
+  does not produce ten real problems, the page is wrong.
+- **Content strategy is planned up front.** The process section is now four steps
+  and starts with "We plan it before we film it." The included list carries "A
+  content plan agreed before the shoot, with every deliverable mapped to a
+  problem."
 
-**"Most chosen" on the Project Story card is Doyle's claim, instructed in the 6
-October brief.** The earlier note in this file warned against setting it while
-there are no closed commercial clients. It is live because Doyle asked for it.
-It is his assertion about his own business, not an inference from the data.
+### What was KEPT from the 6 October brief, and why
 
-**Prices live but unconfirmed, flagged in the brief as needing Doyle's sign-off:**
-Project Story $12,500 (the brief offers $15,000 as an alternative to match the
-PowerField job), Progress Package "from $20,000" and "from $3,000 a month", Crew
-Capture "from $1,250 a month", and the $2M contract-value example in the lead
-line above the cards. The H1 is the brief's recommended line; two alternatives
-are in the brief if Doyle prefers one. The credentials question in the brief
-(OSHA 30, FAA Part 107, site badging) is moot now that the section is gone.
+The revert covered pricing. These positioning changes stayed live, so the
+comparison table was reconciled rather than reverted wholesale:
 
-**Still to recheck:** the $11,600 to $13,300 agency figure in the comparison
-table. It was sourced on 5 October 2026 and the brief asks whether it is current.
+- The H1, "Turn the job you are building now into the proof that wins your next
+  bid."
+- "Local crews across Central Ohio. Vetted crews nationwide." Because that is
+  live, the comparison table keeps **"Who builds it"** (not the old dig at
+  network freelancers) and **"None in Central Ohio. Quoted at cost elsewhere"**
+  (not the old "None, ever"), and the included list says "No travel costs
+  anywhere in Central Ohio". The old wording would now contradict the hero.
+- The return-visit guarantee, which no longer leans on every crew being local.
+- The "Do you work outside Central Ohio?" question.
+- US spelling, the booking dialog fallback, and the `#reel` nav anchor.
 
-**Nav anchor:** "Project stories" in the header now points at `#reel`, not
-`#results`. The brief asked for it to land on the PowerField film; `#results` is
-the "Where it goes" section, which is further down the page.
+The comparison table's price row is back to **$8,500 to $11,500**, stills back to
+**twenty to thirty**, social cuts now **"Ten, each mapped to a problem"**, and the
+recruiting crew story row is gone because the crew story is a tier differentiator
+again rather than something every package includes.
 
-**Booking dialog fallback** no longer says "Online booking is coming soon". On
-all three pages it now reads as a failure message with Doyle's email and phone,
-because an automated reader saw the old text. The dialog only opens at all when
-`bookingUrl` is empty or fails to resolve.
+### Still rendering nothing, by design
+
+- `proof.heroQuote` in `content.js`: the PowerField testimonial. Needs `quote`
+  and `name` before the band appears. **Never write a quote that was not said.**
+- `proof.projectStats`: the stats strip, as `{"value":"1","label":"day on site"}`
+  objects. **Never publish a number that was not counted.**
+- `proof.logos`: hidden until there are at least three client logos with
+  permission.
+- `MOST_CHOSEN` is back to `None`. Setting it would be a claim with no closed
+  commercial clients behind it.
+
+### Open
+
+- **Ten cuts at the same prices.** The tiers reverted to $8,500 / $9,500 /
+  $11,500 while the social cut count doubled. Story + Social still steps $1,000
+  over Story and now carries ten cuts rather than five. That is Doyle's call, but
+  it is worth a look before launch.
+- **Recheck the $11,600 to $13,300 agency figure.** Sourced 5 October 2026.
+- **The data center and mission-critical section was removed on 6 October** at
+  Doyle's instruction, along with every mention of data centers: the hero
+  eyebrow, the meta description, the restricted-site FAQ and the `credentials`
+  slot in `content.js`. Confidential work is still covered by the "What if the
+  project is confidential?" question. Do not reintroduce any of it unasked.
 
 ## Oct 5 brief: what is live and what is still owed
 
