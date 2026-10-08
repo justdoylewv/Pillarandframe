@@ -240,6 +240,41 @@ included rounds; Pillar & Frame includes one. A comparison table may be
 selective but it must not claim a win that is not there. **This is a real
 competitive gap worth closing.**
 
+## Home services page, /home-services
+
+Built 8 October 2026. Same service as the construction page, sold to residential
+installers and smaller trades: HVAC, roofing, plumbing, electrical, remodeling.
+The buyer is a homeowner comparing three estimates at a kitchen table, not a
+committee reading a bid package, so none of the construction vocabulary is used
+(no bid package, pre-qual, estimator, lender or stakeholder).
+
+Deliverables: the homeowner film, ten mapped social cuts, the written project
+page and its one page version for the quote, and the crew story for recruiting.
+
+**Proposed prices, set in the build, not by Doyle. Confirm before launch:**
+
+| | Video + written | Video only |
+|---|---|---|
+| Install Day | $1,500, credited within thirty days | |
+| Story | $4,500 | $3,500 |
+| Story + Social | $5,500 | $4,500 |
+| Full | $6,500 | $5,500 |
+| Crew Capture | $950 a month, fixed | |
+
+Steps are a flat $1,000 at every rung and the written premium is $1,000 at every
+tier, so there is nothing for a buyer to arbitrage. Crew Capture is a fixed price
+here rather than "from", which is the change recommended for the construction
+page. There is no Build Record equivalent: residential installs run days, not
+months.
+
+**No film on the page.** There is no residential asset, and reusing a commercial
+film would mislabel it. The page ships without video, as the partner page does.
+
+**New residential FAQs worth checking with Doyle:** what if the homeowner will
+not go on camera (we pick another job, no charge), and the claim that "the
+homeowner release covers your own marketing use", which depends on the release
+template actually saying so.
+
 ## Partner marketing page, /partner-marketing
 
 Built 6 October 2026 from "Pillar & Frame: The Plan". It sells the outsourced
