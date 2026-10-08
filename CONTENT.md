@@ -39,7 +39,7 @@ Doyle's 6 October brief was built in full and then **the pricing half of it was
 reverted on 7 October at his instruction**. Read this whole section before
 touching the pricing, because what is live is a deliberate mix of the two.
 
-### Live pricing: the three tiers, with ten mapped cuts
+### Live pricing: the three tiers, with five mapped cuts
 
 | | Video + written | Video only |
 |---|---|---|
@@ -58,7 +58,9 @@ $2M example and the one-line add-ons replacement. None of that is live.
 
 ### What changed on the way back, at Doyle's instruction
 
-- **Social cuts went from five to ten**, and they are no longer described as cuts
+- **Social cuts went from five to ten on 7 October, then back to five on 8
+  October** because "10 verticals sounds like work". They are called social
+  cuts, not verticals, on every page. They are no longer described as cuts
   off the same reel. The copy commits to **ten problems named before the shoot**,
   one per cut. This is a delivery promise, not a tagline: if the planning session
   does not produce ten real problems, the page is wrong.
@@ -92,7 +94,7 @@ comparison table was reconciled rather than reverted wholesale:
 - US spelling, the booking dialog fallback, and the `#reel` nav anchor.
 
 The comparison table's price row is back to **$8,500 to $11,500**, stills back to
-**twenty to thirty**, social cuts now **"Ten, each mapped to a problem"**, and the
+**twenty to thirty**, social cuts were **"Ten, each mapped to a problem"** (the table has since been removed), and the
 recruiting crew story row is gone because the crew story is a tier differentiator
 again rather than something every package includes.
 
@@ -170,9 +172,6 @@ matches what the FAQ already says.
   and published, which is the page's whole argument against getting a proposal.
   Either pin it or take it off. It was also never confirmed whether it should
   launch or sit as a waitlist.
-- **Ten cuts at the five-cut price.** The tiers reverted to $8,500 / $9,500 /
-  $11,500 while the social cut count doubled. Story + Social still steps $1,000
-  over Story.
 - **"A frictionless process" is the only included-list item that is a claim
   rather than a deliverable.** Make it concrete or drop it if it is ever
   challenged.
@@ -259,7 +258,7 @@ October and carried Project Story $12,500, the Progress Package, the national
 agency comparison, five social cuts and twelve unanswered FAQ questions, all of
 which Doyle has since changed or removed. Showing that copy would compare two
 different offers rather than two styles. So the pricing, toggle, included list,
-ongoing pair, ten mapped cuts, four-step process and all thirteen FAQ answers
+ongoing pair, five mapped cuts, four-step process and all thirteen FAQ answers
 match `/` as of 8 October. **The page is a static snapshot. It does not update
 when `build-page.py` changes the core page.** Regenerate it with the script kept
 in the session scratchpad, or rebuild it by hand, if the comparison runs long.
@@ -297,7 +296,7 @@ The buyer is a homeowner comparing three estimates at a kitchen table, not a
 committee reading a bid package, so none of the construction vocabulary is used
 (no bid package, pre-qual, estimator, lender or stakeholder).
 
-Deliverables: the homeowner film, ten mapped social cuts, the written project
+Deliverables: the homeowner film, five mapped social cuts, the written project
 page and its one page version for the quote, and the crew story for recruiting.
 
 **Proposed prices, set in the build, not by Doyle. Confirm before launch:**
