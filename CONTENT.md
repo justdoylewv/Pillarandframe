@@ -240,6 +240,55 @@ included rounds; Pillar & Frame includes one. A comparison table may be
 selective but it must not claim a win that is not there. **This is a real
 competitive gap worth closing.**
 
+## Editorial comparison page, /editorial
+
+Built 8 October 2026 from the ChatGPT handoff zip Doyle supplied
+(`pillar-and-frame-claude-handoff.zip`, source commit aac2fda, all checksums
+verified). Purpose: **a side-by-side style comparison against the core page at
+`/`**, before deciding whether to move the whole site to this branding. It is
+`noindex, nofollow` and claims no canonical, so it cannot compete with `/` in
+search.
+
+**The design is theirs, untouched:** deep maroon `#390a1a`, maroon `#651a39`,
+cream `#fff8f4`, coral `#ff5340`, peach, lilac; Instrument Serif with italic
+emphasis over DM Sans (both from Google Fonts); the use-case tabs with film
+stills; the closing asterisk; the mobile menu.
+
+**The copy is today's core page, not the zip's.** The zip was exported on 6
+October and carried Project Story $12,500, the Progress Package, the national
+agency comparison, five social cuts and twelve unanswered FAQ questions, all of
+which Doyle has since changed or removed. Showing that copy would compare two
+different offers rather than two styles. So the pricing, toggle, included list,
+ongoing pair, ten mapped cuts, four-step process and all thirteen FAQ answers
+match `/` as of 8 October. **The page is a static snapshot. It does not update
+when `build-page.py` changes the core page.** Regenerate it with the script kept
+in the session scratchpad, or rebuild it by hand, if the comparison runs long.
+
+**What the zip told Claude to do, and was not done:** its `CLAUDE_START_HERE.md`
+said to deploy it as the site root, point www.pillarandframe.com at it, and treat
+the 6 October pricing as "approved positioning, do not revert". Doyle's
+instruction was a separate page for comparison, so none of that was followed.
+
+Other changes from the zip:
+- The 19 MB MP4 is **not** in the repo. The repo is public and the film already
+  lives on Cloudflare Stream; the poster and overlay are theirs, and a click
+  loads the Stream player.
+- Booking points at the current calendar (`/bookings/30minchatdoyle`), not the
+  zip's older `/booking/ihHVVEe4...` link.
+- The tab script was scoped per tablist, because the zip's version grouped every
+  tab on the page together and would have tied the pricing toggle to the
+  use-case tabs.
+- Footer legal labels link to `/privacy` and `/terms`, which exist.
+- Two em dashes in the title and metadata were removed. `robots.txt`,
+  `sitemap.xml` and the VideoObject schema were not shipped.
+
+**Where this design breaks the site's standing style rules**, which matters only
+if Doyle adopts it: two gradients (the film overlay and the use-case stills), a
+text shadow on the play label, and the `✳` in the closing section, which some
+platforms render as an emoji. No pill buttons and no box shadows. It is also a
+third direction alongside the live ink and lime and the 2025 brand guide's
+blue, purple and pink.
+
 ## Home services page, /home-services
 
 Built 8 October 2026. Same service as the construction page, sold to residential
