@@ -33,6 +33,70 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
+## 10 October 2026, second pass: the conversion review, and the mortgage page refocused
+
+### What the 9 October conversion review changed
+
+Applied across the shared copy, so `/`, `/editorial`, `/founding` and
+`/built-on-trust` stay identical in offer and terms:
+
+- **Portfolio permission is now the stated reason for the founding price.** The
+  three founding clients agree in writing which approved work Pillar & Frame can
+  feature. Consequence: **a project that must stay confidential no longer
+  qualifies for the founding rate** (it used to say "work for hire, same price").
+  Honest feedback is asked for after delivery; a review, referral or endorsement
+  is never a condition of the price. If a founding client's words are ever used
+  in advertising, disclose the reduced rate.
+- **The clock.** It pauses only for a specific input only the client can give,
+  named when it happens. Internal editing and staffing never pause it.
+- **No more absolute promises.** "Nobody stops working" became brief interviews
+  arranged around the job. The case study page no longer says it is "yours",
+  because hosting terms are undecided.
+- **FAQ rebuilt around the review's questions**: why the founding rate, who
+  qualifies, whether you have to manage the shoot, whether the client must be on
+  camera (a fact-led story with no implied endorsement if they decline), whether
+  fourteen days is final delivery, licensed music, whether it guarantees a won
+  bid (no), and extra locations or a crew film (separate scope).
+
+`/editorial` only, reordered so the example and the offer come sooner: hero, the
+PowerField film labelled accurately with **an illustrative "What a Project Story
+contains" layout (marked as illustrative, no invented client content)**, one
+condensed problem block, the founding offer, how it works with **your part and
+our part**, where it goes, **who it is for** (the review's fit criteria), **who
+you work with** (Doyle, text only), the deadline, terms, FAQ. "It compounds" was
+dropped because it sells recurring work.
+
+**Not applied, and why. These are Doyle's commercial decisions:**
+- The review's `$500 back` remedy instead of the full refund. The published
+  promise stays a full refund until Doyle changes it, and any change must be
+  explicit, never fine print.
+- The `$2,250 / $2,250` deposit split, the 21-day draft date, and final delivery
+  within five business days. None is stated until confirmed against real
+  delivery capacity.
+- Twelve months of page hosting.
+- The softer headline "Turn the work you are doing now into proof for your next
+  bid". The current headline is protected by the 5 October brief and the brand
+  guide; Doyle's call.
+- A photo and verified experience for the "who you work with" block. Text only
+  until supplied.
+- Analytics. Track held calls and deposits from the calendar and payment
+  records, not clicks.
+
+### /mortgage-brokers now sells the Evergreen Foundation
+
+Doyle asked for the mortgage page to be built around the foundation package. It
+now has one offer: **the Evergreen Foundation, $7,500, one time, yours to keep.**
+The Signal Engine retainer, its monthly stack, the rhythm section, the
+productized rules and the $750 engagement add-on are off the page; the monthly
+work is one line, a conversation after the foundation is delivered. **The
+"$5,000 inside the engine" path is not shown**, because it is a second price that
+depends on buying the retainer.
+
+The "what you do / what we run" block and the seven FAQs were written from the
+supplied copy, scoped to the foundation. The foundation shoot's length is not
+stated because it was not given. The DG Lending case study stays, with a line
+saying it came before the foundation had a fixed scope.
+
 ## 10 October 2026: one authoritative offer, and the identity system V2
 
 **Read this first. It supersedes the pricing notes further down.**
