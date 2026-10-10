@@ -33,6 +33,38 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
+## DG Lending work on /mortgage-brokers (10 October 2026)
+
+**Photos.** Five real photos from the DG Lending foundation shoot, in
+`dist/media/dg/`: the conference-table meeting (also the hero), a team member at
+her desk with a client, Stacey at an outdoor table, a loan officer on a call, and
+Stacey's portrait. Four came out of the DG Lending Activation Guide PDF, which
+holds curated picks from the shoot; the portrait is `Stacey-30.jpg` from
+`DG Lending / 1. Content / 5. Images (Final)`. **The Drive connector cannot move
+files over roughly 7 MB, and every other final photo is 7 to 14 MB**, so the rest
+of the 200-plus finals were not reviewed. To add more, export web-size copies
+(under 2 MB) into a Drive folder and they can be pulled in.
+
+Only Stacey is named in alt text; the other team members are described, not
+named. **The DG Lending logo in the guide was deliberately not used.**
+
+**Videos.** Three short-form square cuts play on the page: "Closing fast",
+"When other lenders say no, we look deeper" and "Why your lender matters". **They
+are the only three in the tracker with a direct, public Dropbox link**; every
+other row links to Dropbox Replay review pages, which cannot be embedded. They
+stream from Dropbox (`raw=1`), which could not be tested from the build
+environment. Dropbox throttles busy shared links, so **move them to Cloudflare
+Stream**, like the other films, before any real traffic. No public links were
+created for other files; that would publish client video and needs Doyle.
+
+**Permission.** All three cuts feature a DG Lending borrower telling his own
+story. He is not named on the page, but he is on camera. Confirm DG Lending, and
+through them the borrower, are fine with Pillar & Frame showing these as
+portfolio work.
+
+**Counts.** The tracker lists 85 finished pieces (80 short-form, 5 long-form);
+the page says 60 videos, Doyle's figure. Confirm which number to publish.
+
 ## 10 October 2026, second pass: the conversion review, and the mortgage page refocused
 
 ### What the 9 October conversion review changed

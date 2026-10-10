@@ -422,9 +422,6 @@ fd=[pf_head('Pillar &amp; Frame · Founding Project Story','A founding price for
 SE_CTA='Book the first strategy call'
 SE_TITLES=['Self-employed? You may not need tax returns','When other lenders say no, we look deeper','The biggest homebuying myth exposed',
  'Still waiting to save 20% down? Stop.','Side hustle or self-employed? You may still qualify','We walk every client to the finish line']
-se_cards=('<div class="hero-photo stone" style="padding:48px max(40px,calc((100vw - 1180px)/2)) 40px 48px"><div class="cards">'
- +''.join('<div><small>Short-form · 9:16</small><p>'+t+'</p></div>' for t in SE_TITLES)
- +'</div><p class="cards-note">Video titles from the DG Lending library.</p></div>')
 se_steps=[('Async setup: systems, without a meeting','We set up your accounts asynchronously. A short walkthrough video, plus links in a shared Google Drive and Gmail. Nothing to schedule. You click through on your own time and you are wired in.'),
  ('Survey: tell us the business','You fill out a creative discovery survey on your business. The basics, the borrowers, the wins, the stuff in your head. It gives us the raw material and makes the first call sharp instead of slow.'),
  ('Audience research: we read the room','We dig into what your audience actually wants. Your Google reviews, the questions borrowers keep asking, the language they use. Real signal, not guesswork, before we ever point a camera.'),
@@ -437,6 +434,18 @@ se_found=[('01','Founder story','Who you are, why you do this, why a borrower sh
  ('10–14','Five image posts','On-brand graphics. Quote cards, proof points and stat pieces to round out the launch feed.'),
  ('15','Deployment guide','Where and how to use every asset. What to pin, what to place on your website for trust, and how to go live organically.'),
  ('16–18','Brand pack, built once, on every video','A branded intro and outro on every video, so your content looks like a show, not a random clip. A lower-third template for your name and title. Plus a basic graphics package that sets the look for your captions, quote cards and stat pieces.')]
+DG_VIDEOS=[('https://www.dropbox.com/scl/fi/9p5uxvdunokajeflwwoxg/1.-75-Faster-v2-1x1-Editing-Work.mp4?rlkey=db9r2f8et8xms96k5xmfyxnca&raw=1','Closing fast','Client story'),
+ ('https://www.dropbox.com/scl/fi/09idumrc53zckm7lidbof/2.-Custom-fit-lending-v2-1x1.mp4?rlkey=2sufufv93tcqeubnaxj81drl7&raw=1','When other lenders say no, we look deeper','Client story'),
+ ('https://www.dropbox.com/scl/fi/g7c1k6z9cudrzzy276ci7/3.-DG-Lending-Cares-v2-1x1.mp4?rlkey=2l294tmz1cbrm6qzn11nlxgae&raw=1','Why your lender matters','Client story')]
+DG_PHOTOS=[('stacey-portrait.webp','Stacey Dowling of DG Lending, portrait from the foundation shoot',934,1400),
+ ('team-meeting.webp','Two DG Lending team members talking at a conference table',1400,933),
+ ('desk.webp','A DG Lending team member at her desk with a client',1400,934),
+ ('cafe.webp','Stacey Dowling of DG Lending in conversation at an outdoor table',1400,933),
+ ('call.webp','A DG Lending loan officer on a call outside the office',1400,933)]
+DG_GALLERY=('<div class="dg-work"><div class="dg-head"><h3>From the DG Lending library</h3><p>Three of the short-form cuts, square for feeds, and photos from the same shoot.</p></div>'
+ +'<div class="dg-videos">'+''.join('<figure><video controls playsinline preload="metadata" src="'+e(u,quote=True)+'#t=0.5" aria-label="'+e(t,quote=True)+'"></video><figcaption><small>'+k+' \u00b7 square cut</small>'+t+'</figcaption></figure>' for u,t,k in DG_VIDEOS)+'</div>'
+ +'<div class="dg-photos">'+''.join('<img src="/media/dg/'+f+'" alt="'+a+'" width="'+str(w)+'" height="'+str(h)+'" loading="lazy">' for f,a,w,h in DG_PHOTOS)+'</div>'
+ +'<p class="cards-note">More titles from the library: '+' \u00b7 '.join(SE_TITLES)+'</p></div>')
 def se_table(rows,heads):
  return ('<div class="tw"><table class="table"><thead><tr>'+''.join('<th scope="col">'+x+'</th>' for x in heads)+'</tr></thead><tbody>'
   +''.join('<tr><td>'+a+'</td><td><strong>'+b+'</strong><span>'+c+'</span></td></tr>' for a,b,c in rows)+'</tbody></table></div>')
@@ -456,7 +465,7 @@ mb=[pf_head('Pillar &amp; Frame · The Evergreen Foundation for Mortgage Brokers
  pf_hero('The Evergreen Foundation · for mortgage brokers','Filmed once. Working all year.',
   'One foundation shoot builds a launch kit you post from all year: your story, your proof, answers to the objections that cost you loans, a lead magnet, and a guide to where every piece goes.',
   (pfcta(SE_CTA),'<a class="text-link" href="#proof">See what we made for DG Lending</a>'),
-  'Real human origin. No AI. No stock. You bring the stories; we coach them out of you and build the kit.',se_cards,
+  'Real human origin. No AI. No stock. You bring the stories; we coach them out of you and build the kit.','<div class="hero-photo"><img src="/media/dg/team-meeting.webp" alt="Two DG Lending team members talking at a conference table, from our foundation shoot" width="1400" height="933"><span class="frame" aria-hidden="true"></span></div>',
   '<p class="offer-flag"><strong>$7,500</strong> · one time · yours to keep</p>'),
  '<section class="strip" aria-label="What the foundation is"><ul class="wrap">'+''.join('<li>'+x+'</li>' for x in ['One foundation shoot','Eighteen fixed launch pieces','A deployment guide for every asset','Yours to keep, no retainer'])+'</ul></section>',
  '<section class="section"><div class="wrap split"><div><p class="label">The problem</p><h2>The deal goes to whoever looks safer online. Not whoever does better work.</h2></div><div class="body">'
@@ -467,7 +476,7 @@ mb=[pf_head('Pillar &amp; Frame · The Evergreen Foundation for Mortgage Brokers
   'We filmed the DG Lending team and their clients and built a library they could post from for months. Long-form films, from a company overview to a first-time homebuyer guide and a client testimonial. Short-form cuts in vertical and square, each with a caption written in their voice. Photos of the team at work. And an activation guide showing where every piece goes on their website, on social and in email.')
  +'<div class="stats"><div><strong>60</strong><span>videos</span></div><div><strong>150</strong><span>photos of the team at work</span></div><div><strong>1</strong><span>activation guide for putting it all to work</span></div></div>'
  +(('<figure class="quote"><blockquote>“'+e(stacey['quote'],quote=False)+'”</blockquote><figcaption>'+e(stacey['name'],quote=False)+'</figcaption></figure>') if stacey else '')
- +'<p class="cards-note" style="margin-top:30px">DG Lending’s project came before the Evergreen Foundation had a fixed scope. The numbers above are what that project produced.</p></div></section>',
+ +DG_GALLERY+'<p class="cards-note" style="margin-top:30px">DG Lending’s project came before the Evergreen Foundation had a fixed scope. The numbers above are what that project produced.</p></div></section>',
  '<section class="section dark" id="how"><div class="wrap">'+pf_head_block('Before the cameras','We find your North Star first.','Great content starts with a clear story, not a camera. Before we film anything, we get to the core of who you are and what your business stands for. That is the work that makes every piece after it land.')
  +pf_cols(se_steps,2)
  +'<div class="note-box dark-box" style="margin-top:46px"><p class="label">The deliverable</p><h3>Your Content Marketing Guide</h3><p>Everything from that hour becomes one document. Your North Star: what you stand for, what you want to be known for, and what your audience wants from you. Every clip, post and caption we make gets checked against it. It is the reason your content sounds like you and points one direction, instead of noise that could belong to anyone.</p></div></div></section>',
