@@ -162,6 +162,8 @@ h2{font-size:clamp(36px,4.2vw,56px)}
 .included ul{columns:2;column-gap:56px;margin:0;padding:0;list-style:none}
 .included li{break-inside:avoid;padding:9px 0 9px 26px;position:relative;font-size:15.5px}
 .included li:before{content:'';position:absolute;left:0;top:20px;width:12px;height:2px;background:var(--copper)}
+.tiers.founding{grid-template-columns:minmax(0,560px);justify-content:center}
+.tier.featured .eyebrow{color:var(--on-green)}
 .ongoing{margin-top:76px}
 .ongoing .section-head h3{font-size:clamp(32px,3.4vw,44px)}
 .ongoing .tiers{grid-template-columns:repeat(2,minmax(0,460px));justify-content:center}

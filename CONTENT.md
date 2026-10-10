@@ -33,6 +33,106 @@ Testimonial Hero reference inspection: full-width Wistia brand film and groups o
 
 The supplied marketing claims, capacity, deadlines, prices and guarantees are reproduced as requested; they have not been independently substantiated.
 
+## 10 October 2026: one authoritative offer, and the identity system V2
+
+**Read this first. It supersedes the pricing notes further down.**
+
+### The one construction offer
+
+Doyle defined it on 10 October: **Founding Project Story, $4,500, for three
+qualifying Central Ohio contractors.** One site day and coordinated interviews;
+one 2–3 minute project film; three captioned social cuts; written case study,
+shareable page and one-page bid PDF; twenty-five edited stills and organized raw
+footage; one consolidated revision round; a handoff showing how to use the
+assets in sales.
+
+It is the only construction offer on `/`, `/editorial`, `/founding` and
+`/built-on-trust`. Site Day, the three tiers, the video-only toggle, the Build
+Record and Crew Capture are **off every construction page**. Ongoing work is one
+line: a conversation after the first story, once fit is established. The data
+lives in `FOUNDING` in `build-page.py`, so all four pages change together.
+Healthcare, home services and partner marketing keep their own offers; they sell
+to different buyers.
+
+**No struck-through "regular" price is shown.** Doyle asked to show the discount,
+but the founding package is not sold at any other price, and a reference price
+nobody pays is an unsupported comparison, which the 10 October review said to
+remove. Give a real post-founding price and it can go on the page.
+
+### The 10 October review, and what was done
+
+- **Two offers.** Fixed as above. `/editorial` and the other design pages stay
+  `noindex`; do not send prospects there. Outreach goes to `/founding`.
+- **Proof.** Outcome claims became descriptions of use: the hero benefits, the
+  hero copy and the three "Where it goes" headings no longer promise faster
+  sales or won bids. The H2 "Win the bid. Keep the owner. Fill the crew." stays,
+  as the 5 October brief requires. The films are labelled for what they are:
+  PowerField is a **company overview film**, not a project story; the
+  "stakeholders" sample is a **campaign film for a Central Ohio health system**;
+  the "hiring" sample is an **installation film**. The "sales" sample is labelled
+  only as an example of production work, **because nobody has said what it is.
+  Doyle: give it a real title and client.** No quotes were added; the three
+  approved quotes stay parked because Doyle pulled them as wrong-industry.
+- **FAQ answers on the page.** All twelve are answered inline on every focus page.
+- **"Most chosen" and the agency comparison.** Both were already gone; confirmed
+  absent everywhere.
+- **One-day capture.** The process now says it plainly: interviews tell the whole
+  project, the camera captures the agreed site day. Also a FAQ.
+- **The guarantee.** Now defines the first cut (the edited film, reviewable,
+  before revisions), when the clock starts (the day after the site day, or after
+  the last coordinated interview if later), what pauses it (only things only the
+  client can give, and we say when), the refund (anything paid is refunded in
+  full, the client keeps every file), and final delivery (after one consolidated
+  round of notes, no fixed date, confirmed when notes arrive). **Two of those
+  terms were written in the build and need Doyle's sign-off: the clock starting
+  after the last interview, and "we tell you when it pauses". Refund timing and
+  the payment schedule are not stated because they are not known.**
+- **One founding package.** Done.
+- **The call.** Every button on the focus pages now says "Book a project-fit
+  call", and the copy says what you leave with: a recommended story angle and a
+  clear scope. **The duration is deliberately not stated**, because the calendar
+  is still the 30-minute `30minchatdoyle` link. When a 15-minute GHL event exists,
+  send the link: it goes in `bookingUrl` and "15-minute" goes in `FIT_CTA`.
+
+**"Qualifying" is defined on the page as a Central Ohio contractor with a job we
+can film and a client or project lead willing to be interviewed.** That was
+inferred from the deliverables. Confirm or replace it.
+
+### Identity system V2 (the brand guidelines PDF)
+
+`/editorial`, `/founding` and `/mortgage-brokers` use `dist/pf-brand.css`:
+Graphite `#242A29`, Ivory `#F4F1E8`, Copper `#D99362`, Stone `#E5DDD1`, Deep
+Copper `#8F4B24` for links on ivory, Muted `#555D57`; Instrument Serif for display
+and DM Sans for text, from Google Fonts. Copper buttons carry graphite labels,
+never ivory, as the guide's contrast page requires. Split hero with a graphite
+panel and real PowerField footage; thin rectangles and short copper rules; the
+ampersand mark used once per page, whole, with its clear space.
+
+**The logos are PNGs extracted from the PDF** (`dist/brand/`), because the vector
+masters, fonts, tokens and `CLAUDE-HANDOFF.md` the guide refers to were not
+supplied. Send the handoff folder and the SVGs replace them.
+
+`/editorial` is now generated by `build-page.py` from the same variables as `/`.
+The old static copy of the ChatGPT export in `dist/editorial/` was deleted.
+
+### /mortgage-brokers: The Signal Engine
+
+Doyle's copy, built in the V2 identity, lightly adapted: "buyer" became
+"borrower", agents deciding who to refer were added to the research line, and
+every em dash and arrow was removed. **One contradiction in the supplied copy was
+resolved:** "Pause anytime" sat next to a three-month minimum, so the strip says
+"Month to month after the first three". The CTA is Doyle's "Book the first
+strategy call", which books the same 30-minute calendar.
+
+DG Lending facts and their sources: **60 videos** (Doyle), **150 photos** and the
+**activation guide** (the DG Lending Activation Guide in Drive), long-form films
+and short-form cuts in vertical and square with captions (the Content Tracker).
+The page says plainly that DG Lending's project was a foundation build made
+before the monthly engine existed. The six video titles in the hero are real
+titles from the tracker. Stacey Dowling's quote is the approved verbatim one,
+names only. **Confirm DG Lending has agreed to be named and to have its titles
+shown.** No borrower names appear.
+
 ## Oct 6 to 7: the pricing rebuild, and the revert
 
 Doyle's 6 October brief was built in full and then **the pricing half of it was
@@ -277,7 +377,7 @@ steel-frame worker; the real footage is solar.
   instead, because the site's standing rule is no gradients. It has no
   gradients, shadows, pill buttons or rounded cards.
 
-## Editorial comparison page, /editorial
+## Editorial comparison page, /editorial (superseded 10 October, see above)
 
 Built 8 October 2026 from the ChatGPT handoff zip Doyle supplied
 (`pillar-and-frame-claude-handoff.zip`, source commit aac2fda, all checksums
